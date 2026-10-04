@@ -1,0 +1,1469 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="おしごと">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#FAF6EF">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAIs0lEQVR4nOyda3MTVRjHz95yLW0aaKFyEUQU8DI6irxwRr+K38s3fhZ1xkGd4YUI4yAMIgKlt5S2uW42HkiyWZM+NZucpf9k/7/pi51ku5NsfnnOc25P3P1b3ypCDsNVhAhQDiJCOYgI5SAilIOIUA4iQjmICOUgIpSDiFAOIkI5iAjlICKUg4hQDiJCOYgI5SAilIOIUA4iQjmICOUgIpSDiFAOIkI5iAjlICKUg4hQDiJCOYgI5SAilIOIUA4iQjmICOUgIpSDiFAOIkI5iAjlICKUg4hQDiKSVjkCu1MrdloZ1bGPOs0KLK9p5Q+UHaj0YatUElSLnWbuf8zQdGx9mj5ZpZK0Rg4/k9TJcwSuHLVWUPWTCubLnTghs2Nv1XyVDAXXznug8RtXDm3GZr2tkmFZxSO5V3IqpygHmT1mQI5svpjLm04Jt2OdrZbKq8oo9dpBo3agsJkBObQZS+XTyizbO7FOT+AFrFMOMsNQDiJCOYgI5SAilIOIUA4iQjmICOUgIpSDiFAOIkI5iAjlICK4cnRUKkB+m8By9G+bnt3Wc5jKKKsq3sq/XdMvoN6fku0A24ErR7hCsJHA0odVdS7W+bvbL1QyBMCxAzlypKJhYeSYhIxjdQ9y+RPLp99WZnlUiXX62sUPlVF21v+q1/ZU5G0CgiuHY/fuWnHplPHPZu/JT8ofe82w6xh/AY36QVcO18aVA3dTUxD0Aq7jZZVp3HI5oZPHvabby4jbbFYmILxrruMp0+QuX2rYlr9d6TSbR5xmZTJuuZS9dFGZxnF7byr8DgAyA3I4nvkNZ1Y2k7v6njo+3H449IEzUmQ5enctjMDzBJuVqRjkHBnzOcexE4ZD4FZlJnKO+YwcPePbbFYmYNCseHMoh+P1E1JGjgkI75oz35GDvZW46LHzdvJyNNr+02rlafVlpVmrtlt1v6UfzDte3vVKmcLZwuJaYSnrJHKL7H5XlglpbIIk+7GaVtC+vfXkXmW9MzLvte839N9Gff/+yxeWsq4vn/mkfNazHWUUy7K09G3/1SiLbkAdC3GcFFSOSD/WfFflz5cbv2793Y0TR6PV+X3n2cO9rc9Pnr+8eEoZJZRDfxMwJ1hAh88jkcPw8OidnWc/rj8cx4yQmt/8Yf3B3cozZZQw0YbtsMBGjt6Bwcihw4DW4sHLzeiDF0+c/LR8bimTGzp5t1m/vf3k0d5W+MjPG4/3W80bKxd0W6NMgD8OlqLIca/yfMgMzaFmaPSD+qmhB+9WnuuLKEM4mf44GKodoHKEHTxTkeNpdVd/9UcfP9SMI57SF/mnGm8tiET41mCnV1Dl6ITz9QZ6K+1O8P36A2UI3TbpC6qpCbvosPVvYeXoHRgZO7+78zxWBno0Nb/1x66B9cYu/FBHOuTYNbx2/LcdAz2XcBFTwN5KLAJzzcpGbb/m91b0SH0TiW+u3AyPo/0XHTz0ZVfyC2oKwiUdsCPo6DnH9Anp44NBWclYZgwx1H+JXnYyBs0KatKBGjn692v6yPGiMdjzMrEZo/8evexkhM0KbM4BKodvbhlYrdVUCTD9ZfETUvQR0umXntfaxvopZi/reL04BDt8jphzhNmo7bjW1NOVsLdevzW7vx4As8OCKUfvwMgIWN41v7NBvV72oaYGfCUpohxm5+vzTjJymBB3MPcG2WGBlKN/p1wTX/qT2UJ4rMcq1BRE/73kTdXx6TIYQWezMiaRiRUDkePCwuCXd/Qo1sR+dAfBDr3sxIBvbULsrZjdznQmv+jZTit4tW1aj29Gl2io/46BjvLd/VuHPq4vuJZfVFMDvqRj/hNSx7KvLhn+KR19QdsycOsiCSmblfEwvp3p4/LZrLm0VF9KX1CZgJEjNgZn3broVuCrM+8oQ3x95rKpxeiDrU3srYxJpLdibF/C2ULps5PnRx8/Ij899KkvVi68VVhShgDfFIkox2BixWjZlo/Kb11ZHE4+pP7LUN+ky/tLq9dLa8ockbk39lbGI7mNkF+evlTK5H7ZHCwmHe2/SNxcuXitZPhnAMHn3jC7sr2DJPbXf7C8tuBlb208qo69cHDBzd5YufD2QhLFnxg5YmI8IR1Cf8zni8sP9zbvVta3j1yWUc4Wr5VW311cMbVXZQjwvfZwcnQ6nfBO2U5SL8+2LP2R6796u/XkoLJZP9hp1SqNqn6qlCksZ/KncsVzxVIumXmZwctwBnLoN26B7ZiFkyM0w83kVfLoj79riTom3EzOf50RA+6Yheut+IOEI9lvLQhhXgU4vQIYOUzOuuGDvKQDTo52WiMHYIcFUI5ERsBgiWxtUmjgNStBupoV5Lk34GbFSUWzglznGleOhEbA0EBeDAacc8xjhclR2KzEYL6rWo/CrmwM5ruq9SjIc2/IXdlUyIE894Y7tzKXVa1HQa5zjSVHtKq1nY6uLHKda6yJt+imBLT564To1rnuHqOlHVhyJFrVGpbIpkgFBWzkSEWb0gW2zjVWzpFEVWt8YMfBGDmOH9g612CRI0hjzgFb5xqtWUl23TkmsHWuYXOOFMkBu7WJchw/sHWuseQIUtmswNa5Bs05UpaQgta5Bosc5qpazxCwda6x5PBTtgysCxPSsTBY1XqGgK1zDTRCaraq9QwBW+caSo7eQaoSji6YK0mB5EhnV6ULZp1rJDmMVrWeLTDrXAMlpGarWs8WmFuboOToHTRq+88e3VFpQr/l7gFUzgEkRxhRa/s7+k+lEqihDqCcw7NBf6ryTeIg3QOgyFH0rNMFF/ZHVt8AtqVOeGYKZxsBSA7bskpZoFtDQH8dkiBAOYgI5SAilIOIUA4iQjmICOUgIpSDiFAOIkI5iAjlICKUg4hQDiJCOYgI5SAilIOIUA4iQjmICOUgIpSDiFAOIkI5iAjlICKUg4hQDiJCOYgI5SAilIOIUA4iQjmICOUgIpSDiFAOIkI5iAjlICKUg4hQDiJCOYgI5SAi/wIAAP//kdbCRAAAAAZJREFUAwDTDyp9yAD7jQAAAABJRU5ErkJggg==">
+<title>おしごと</title>
+<style>
+:root{
+  --bg:#FAF6EF; --ink:#3A3226; --ink2:#857761; --paper:#FFFCF5; --line:#E6DccB;
+  --red:#C8564B; --mint:#E4F2EA; --butter:#F7EEDA; --peach:#F8E6DA; --sky:#E1EFF4; --lav:#ECE7F3;
+  --sw:390px; --u:3.9px;
+}
+*{
+  -webkit-user-select:none; user-select:none;
+  -webkit-touch-callout:none;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  box-sizing:border-box;
+}
+html,body{
+  position:fixed; inset:0; overflow:hidden; margin:0;
+  overscroll-behavior:none;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+html{padding:0;background:var(--bg)}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Hiragino Maru Gothic ProN","ヒラギノ丸ゴ ProN",sans-serif;
+  transition:filter .6s ease;
+}
+html.night body{filter:brightness(.78) sepia(.12)}
+input,textarea{-webkit-user-select:text;user-select:text;font-family:inherit}
+button{font-family:inherit;color:inherit}
+#app{position:relative;width:100%;height:100%;overflow:hidden}
+.screen{position:absolute;inset:0;overflow:hidden;visibility:hidden;background:var(--bg)}
+.screen.on{visibility:visible}
+.root{position:absolute;inset:0}
+.stage{position:absolute;top:0;bottom:0;left:50%;width:var(--sw);margin-left:calc(var(--sw) / -2);display:flex;flex-direction:column}
+.cursor{display:inline;color:var(--ink2);animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.banner{
+  margin:calc(var(--u)*3) 64px 0 calc(var(--u)*4);
+  min-height:calc(var(--u)*13); padding:calc(var(--u)*2) calc(var(--u)*4);
+  background:var(--paper); border-radius:calc(var(--u)*7);
+  display:flex; align-items:center;
+  font-size:calc(var(--u)*5); line-height:1.3; letter-spacing:.02em;
+  box-shadow:0 calc(var(--u)*.8) 0 rgba(58,50,38,.08);
+  flex:none;
+}
+
+/* ---------- 共通の演出 ---------- */
+#fx{position:fixed;inset:0;pointer-events:none;z-index:40;overflow:hidden}
+.ripple{position:absolute;margin:calc(var(--u)*-11) 0 0 calc(var(--u)*-11);width:calc(var(--u)*22);height:calc(var(--u)*22);border-radius:50%;border:calc(var(--u)*1.2) solid rgba(240,190,120,.8);opacity:0;left:-999px;top:-999px}
+.spark{position:absolute;margin:calc(var(--u)*-3.5) 0 0 calc(var(--u)*-3.5);width:calc(var(--u)*7);height:calc(var(--u)*7);opacity:0;left:-999px;top:-999px}
+.spark svg{width:100%;height:100%;display:block}
+
+/* ---------- 起動画面 ---------- */
+.boot{align-items:center;justify-content:center;gap:calc(var(--u)*8)}
+.boot-title{font-size:calc(var(--u)*15);letter-spacing:.1em;color:var(--ink)}
+.boot-icons{display:flex;gap:calc(var(--u)*3)}
+.boot-icons div{width:calc(var(--u)*18);height:calc(var(--u)*18);border-radius:calc(var(--u)*5);display:flex;align-items:center;justify-content:center}
+.boot-icons svg{width:80%;height:80%}
+.boot-btn{width:calc(var(--u)*46);height:calc(var(--u)*46);border-radius:50%;background:#F4C99B;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*7);color:var(--ink);box-shadow:0 calc(var(--u)*1.5) 0 #DDA874;animation:breathe 2.4s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+
+/* ---------- おしごと えらび ---------- */
+.cards{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:calc(var(--u)*4);padding:calc(var(--u)*5) calc(var(--u)*5) calc(var(--u)*7);align-content:stretch}
+.card{border-radius:calc(var(--u)*7);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--u)*2);box-shadow:0 calc(var(--u)*1.4) 0 rgba(58,50,38,.12);font-size:calc(var(--u)*5);max-height:calc(var(--u)*80)}
+.card svg{width:70%;max-height:65%}
+.card.one{grid-column:1 / span 2}
+.c-pharmacy{background:#CDE8D8}.c-stamp{background:#F3E1B7}.c-register{background:#F4CFBC}.c-delivery{background:#CBE2EC}
+
+/* ---------- はんこ ---------- */
+.s-stamp{background:var(--butter)}
+.desk{position:relative;flex:1}
+.paper{position:absolute;left:9%;right:9%;top:6%;bottom:8%}
+.paper-in{position:absolute;inset:0;background:var(--paper);border-radius:calc(var(--u)*2.5);box-shadow:0 calc(var(--u)*1.2) calc(var(--u)*2) rgba(58,50,38,.12);padding:calc(var(--u)*6) calc(var(--u)*6)}
+.paper-title{font-size:calc(var(--u)*5.4);min-height:1.4em;border-bottom:calc(var(--u)*.6) solid var(--line);padding-bottom:calc(var(--u)*2);margin-bottom:calc(var(--u)*4)}
+.paper-row{font-size:calc(var(--u)*4);color:#B9AD9A;margin:calc(var(--u)*3.2) 0;display:flex;gap:calc(var(--u)*2);align-items:center}
+.paper-row b{font-weight:normal;flex:1;border-bottom:calc(var(--u)*.4) dashed var(--line);height:1em}
+.frame{position:absolute;width:calc(var(--u)*22);height:calc(var(--u)*22);margin:calc(var(--u)*-11) 0 0 calc(var(--u)*-11);border-radius:50%;border:calc(var(--u)*.8) dashed #E4A79E;display:flex;align-items:center;justify-content:center;text-align:center;font-size:calc(var(--u)*3.2);color:#D9A097;line-height:1.3}
+.hana{position:absolute;width:calc(var(--u)*26);height:calc(var(--u)*26);margin:calc(var(--u)*-13) 0 0 calc(var(--u)*-13);pointer-events:none}
+.stampmark{position:absolute;width:calc(var(--u)*19);height:calc(var(--u)*19);left:0;top:0;pointer-events:none}
+.stampmark .ink{position:absolute;inset:-8%;border-radius:50%;background:rgba(200,86,75,.35);filter:blur(calc(var(--u)*1.2));opacity:0}
+.stampmark .face{position:absolute;inset:0;border-radius:50%;border:calc(var(--u)*1.1) solid var(--red);color:var(--red);display:flex;align-items:center;justify-content:center;text-align:center;font-size:calc(var(--u)*3.8);line-height:1.15;font-weight:bold;background:rgba(255,252,245,.15)}
+
+/* ---------- レジ ---------- */
+.s-register{background:var(--peach)}
+.reg{position:relative;margin:calc(var(--u)*4) calc(var(--u)*5) 0;background:#E9B9A0;border-radius:calc(var(--u)*5);padding:calc(var(--u)*4);box-shadow:0 calc(var(--u)*1.4) 0 #CF9E86;flex:none}
+.reg-screen{background:#4F5E57;border-radius:calc(var(--u)*3);padding:calc(var(--u)*3) calc(var(--u)*4);color:#E3F0D5;display:flex;align-items:baseline;justify-content:space-between}
+.reg-label{font-size:calc(var(--u)*4.4)}
+.reg-num{font-size:calc(var(--u)*11);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.reg-num small{font-size:calc(var(--u)*4.4);margin-left:calc(var(--u)*1)}
+.tray{height:calc(var(--u)*15);margin-top:calc(var(--u)*3);background:#F6DACB;border-radius:calc(var(--u)*3);display:flex;align-items:center;gap:calc(var(--u)*1);padding:0 calc(var(--u)*2);overflow:hidden}
+.tray span{font-size:calc(var(--u)*8);line-height:1;display:inline-block}
+.slot{position:absolute;left:22%;right:22%;bottom:calc(var(--u)*-1.6);height:calc(var(--u)*3);background:#5D4F44;border-radius:calc(var(--u)*1.5);z-index:3}
+.payrow{flex:none;display:flex;justify-content:center;padding:calc(var(--u)*7) 0 calc(var(--u)*4)}
+.pay{position:relative;width:calc(var(--u)*62);height:calc(var(--u)*20);border-radius:calc(var(--u)*10);background:#F0A98E;box-shadow:0 calc(var(--u)*1.6) 0 #CF8A70;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*7);letter-spacing:.08em}
+.pay::after,.go::after{content:"";position:absolute;inset:calc(var(--u)*-2.5);border-radius:inherit;box-shadow:0 0 calc(var(--u)*5) calc(var(--u)*2) rgba(255,214,140,.95);opacity:0;pointer-events:none}
+.ready{animation:wobble .9s ease-in-out infinite}
+.ready::after{animation:glow 1.8s ease-in-out infinite}
+@keyframes wobble{0%,100%{transform:rotate(0)}25%{transform:rotate(-3deg) scale(1.03)}75%{transform:rotate(3deg) scale(1.03)}}
+@keyframes glow{0%,100%{opacity:.25}50%{opacity:1}}
+.belt{position:relative;flex:1;margin:calc(var(--u)*2) 0 calc(var(--u)*6);min-height:calc(var(--u)*30)}
+.belt-base{position:absolute;left:0;right:0;bottom:calc(var(--u)*3);height:calc(var(--u)*9);background:#8F877D;border-radius:calc(var(--u)*4.5);overflow:hidden}
+.belt-stripes{position:absolute;top:0;bottom:0;left:0;width:200%;background:repeating-linear-gradient(90deg,#8F877D 0 calc(var(--u)*5),#7E776E calc(var(--u)*5) calc(var(--u)*10))}
+.prod{position:absolute;left:0;bottom:calc(var(--u)*10);width:calc(var(--u)*22);height:calc(var(--u)*22);border-radius:calc(var(--u)*5);background:var(--paper);display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*13);box-shadow:0 calc(var(--u)*1) 0 rgba(58,50,38,.15);overflow:hidden;transition:opacity .35s ease}
+.prod.gone{opacity:0}
+.scanline{position:absolute;left:0;right:0;top:0;height:calc(var(--u)*2.2);background:rgba(232,110,100,.75);box-shadow:0 0 calc(var(--u)*2) rgba(232,110,100,.8);opacity:0}
+.flyer{position:absolute;width:calc(var(--u)*16);height:calc(var(--u)*16);margin:calc(var(--u)*-8) 0 0 calc(var(--u)*-8);display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*13);line-height:1;z-index:25;pointer-events:none}
+.receipt-clip{position:absolute;overflow:hidden;z-index:20;left:50%;width:calc(var(--u)*58);margin-left:calc(var(--u)*-29)}
+.receipt{background:var(--paper);padding:calc(var(--u)*7) calc(var(--u)*4) calc(var(--u)*6);font-size:calc(var(--u)*4.4);box-shadow:0 calc(var(--u)*1) calc(var(--u)*2) rgba(58,50,38,.15);border-top:calc(var(--u)*.6) dashed #C9BCA8}
+.rline{display:flex;justify-content:space-between;min-height:1.6em;align-items:center;white-space:nowrap}
+.rline.center{justify-content:center}
+.rline.total{font-size:calc(var(--u)*5.4);border-top:calc(var(--u)*.4) solid var(--line);margin-top:calc(var(--u)*1)}
+.cut-hint{position:absolute;left:0;right:0;top:calc(var(--u)*-0.2);text-align:center;font-size:calc(var(--u)*3.6);color:#B9AD9A;opacity:0}
+
+/* ---------- おくすりやさん ---------- */
+.s-pharmacy{background:var(--mint)}
+.rx{margin:calc(var(--u)*3) 64px 0 calc(var(--u)*4);background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*2.5) calc(var(--u)*4);box-shadow:0 calc(var(--u)*.8) 0 rgba(58,50,38,.08);flex:none;border-left:calc(var(--u)*2) solid #9FD3B5}
+.rx-title{font-size:calc(var(--u)*3.6);color:var(--ink2)}
+.rx-text{font-size:calc(var(--u)*5.4);min-height:1.4em}
+.counter{position:relative;flex:1.2}
+.bag{position:absolute;left:10%;top:6%;width:calc(var(--u)*40);height:calc(var(--u)*48)}
+.bag-in{position:absolute;inset:0}
+.bag svg{width:100%;height:100%;display:block;overflow:visible}
+.bag-flap{opacity:0;transition:opacity .3s ease}
+.bag.closed .bag-flap{opacity:1}
+.bag.closed .bag-open{opacity:0}
+.bag-label{position:absolute;left:12%;right:12%;top:70%;height:20%;display:flex;align-items:center;justify-content:center;text-align:center;font-size:calc(var(--u)*3.1);line-height:1.15;color:var(--ink)}
+.cust{position:absolute;right:4%;top:2%;width:calc(var(--u)*40);height:calc(var(--u)*56);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;transform:translateX(160%)}
+.cust-face{width:calc(var(--u)*32);height:calc(var(--u)*32);border-radius:50%;background:#FDF0DC;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*21);line-height:1;box-shadow:0 calc(var(--u)*1.2) 0 rgba(58,50,38,.1)}
+.bubble{position:relative;margin-bottom:calc(var(--u)*3);background:var(--paper);border-radius:calc(var(--u)*4);padding:calc(var(--u)*2) calc(var(--u)*3);font-size:calc(var(--u)*4.4);white-space:nowrap;opacity:0;box-shadow:0 calc(var(--u)*.8) 0 rgba(58,50,38,.08)}
+.bubble::after{content:"";position:absolute;left:50%;bottom:calc(var(--u)*-2.4);margin-left:calc(var(--u)*-2);border:calc(var(--u)*2) solid transparent;border-top-color:var(--paper);border-bottom:0}
+.medtray{position:relative;flex:1;margin:0 calc(var(--u)*4) calc(var(--u)*6);background:#D2E9DC;border-radius:calc(var(--u)*6);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;align-content:center;gap:calc(var(--u)*3);padding:calc(var(--u)*3)}
+.med{width:calc(var(--u)*22);height:calc(var(--u)*22);display:flex;align-items:center;justify-content:center;touch-action:none;position:relative}
+.med svg{width:100%;height:100%;display:block;pointer-events:none}
+
+/* ---------- たっきゅうびん ---------- */
+.s-delivery{background:var(--sky)}
+.scene{position:relative;flex:1.4;margin-top:calc(var(--u)*3);overflow:hidden;background:#D6EBF2}
+.hills{position:absolute;left:0;bottom:calc(var(--u)*12);width:200%;height:calc(var(--u)*26);display:flex}
+.hills .tile{position:relative;width:50%;height:100%}
+.hills svg{position:absolute;bottom:0}
+.sun{position:absolute;left:8%;top:10%;width:calc(var(--u)*16);height:calc(var(--u)*16);border-radius:50%;background:#F6DFA2}
+.cloud{position:absolute;height:calc(var(--u)*7);border-radius:calc(var(--u)*4);background:#F4F9FA}
+.road{position:absolute;left:0;right:0;bottom:0;height:calc(var(--u)*13);background:#CFC6B8}
+.road::after{content:"";position:absolute;left:0;right:0;top:45%;height:calc(var(--u)*1);background:repeating-linear-gradient(90deg,#F4EEE2 0 calc(var(--u)*7),transparent calc(var(--u)*7) calc(var(--u)*13))}
+.truck{position:absolute;bottom:calc(var(--u)*4);left:50%;width:calc(var(--u)*74);height:calc(var(--u)*40.7);margin-left:calc(var(--u)*-37)}
+.truck-in{position:absolute;inset:0}
+.truck svg{width:100%;height:100%;display:block;overflow:visible}
+.wheel{transform-box:fill-box;transform-origin:center}
+.truck.spin .wheel{animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bed{position:absolute;left:4%;width:62%;bottom:42%;height:46%;display:flex;align-items:flex-end;justify-content:flex-start;gap:2%}
+.bed div{width:32%;height:100%;display:flex;align-items:flex-end;justify-content:center;opacity:0}
+.bed svg{width:100%;height:auto}
+.dest{position:absolute;right:2%;bottom:calc(var(--u)*10);width:calc(var(--u)*46);height:calc(var(--u)*48);transform:translateX(170%)}
+.dest svg{width:100%;height:100%;display:block}
+.resident{position:absolute;left:30%;bottom:6%;width:calc(var(--u)*15);height:calc(var(--u)*15);font-size:calc(var(--u)*12);line-height:1;display:flex;align-items:center;justify-content:center;opacity:0}
+.hand{position:absolute;left:62%;bottom:20%;font-size:calc(var(--u)*8);opacity:0;transform-origin:50% 90%}
+.boxes{flex:1;display:flex;align-items:center;justify-content:space-evenly;padding:0 calc(var(--u)*3)}
+.box{touch-action:none;display:flex;align-items:flex-end;justify-content:center;position:relative}
+.box svg{width:100%;height:auto;display:block;pointer-events:none}
+.gorow{flex:none;display:flex;justify-content:center;padding:0 0 calc(var(--u)*7)}
+.go{position:relative;width:calc(var(--u)*62);height:calc(var(--u)*19);border-radius:calc(var(--u)*10);background:#9CC8DD;box-shadow:0 calc(var(--u)*1.6) 0 #79A9C1;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*7);letter-spacing:.08em}
+
+/* ---------- おしまい ---------- */
+.s-end{background:#E9E4F0}
+.endbox{align-items:center;justify-content:center;gap:calc(var(--u)*6);color:#5A5168}
+.endbox svg{width:calc(var(--u)*46);height:calc(var(--u)*46)}
+.endbox div{font-size:calc(var(--u)*8);letter-spacing:.1em}
+
+/* ---------- 親ロック ---------- */
+#lock{position:fixed;top:env(safe-area-inset-top);right:env(safe-area-inset-right);width:44px;height:44px;z-index:60;background:transparent;touch-action:none}
+#lockRing{position:absolute;right:10px;top:10px;width:24px;height:24px;opacity:0;pointer-events:none}
+#pin{position:fixed;inset:0;z-index:80;background:rgba(58,50,38,.45);display:flex;align-items:center;justify-content:center}
+#pin[hidden]{display:none}
+.pinbox{background:var(--paper);border-radius:20px;padding:22px 20px;width:min(86vw,320px);text-align:center}
+.pin-title{font-size:17px;margin-bottom:12px}
+.pin-dots{display:flex;justify-content:center;gap:14px;margin-bottom:18px}
+.pin-dots i{width:16px;height:16px;border-radius:50%;border:2px solid var(--ink2);display:block}
+.pin-dots i.f{background:var(--ink2)}
+.pinpad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pinpad button{height:56px;border-radius:14px;border:0;background:#EFE8DC;font-size:22px}
+.pinpad button.sm{font-size:14px}
+.pin-msg{min-height:20px;font-size:13px;color:var(--ink2);margin-top:10px}
+
+/* ---------- 保護者せってい ---------- */
+.s-parent{background:#F3EFE8}
+.scroll{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y}
+.pwrap{max-width:560px;margin:0 auto;padding:16px 16px 60px;font-size:15px;line-height:1.6}
+.pwrap h1{font-size:20px;margin:6px 0 14px;font-weight:bold}
+.pcard{background:var(--paper);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.pcard h2{font-size:15px;margin:0 0 8px;font-weight:bold}
+.pcard p{margin:6px 0;color:#5E5444;font-size:14px}
+.pcard ol{margin:6px 0;padding-left:1.4em;color:#5E5444;font-size:14px}
+.prow{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px}
+.pin-in,.txt{font-size:16px;padding:10px 12px;border:1.5px solid #D8CDBB;border-radius:10px;background:#FFFDF8;color:var(--ink);width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:#EFE8DC;border-radius:999px;padding:6px 6px 6px 14px;font-size:15px}
+.chip button{border:0;background:#DDD2C1;border-radius:50%;width:28px;height:28px;font-size:15px;line-height:1}
+.addrow{display:flex;gap:8px}
+.addrow .txt{flex:1}
+.pbtn{border:0;border-radius:12px;background:#E8DFD0;font-size:15px;padding:10px 16px;min-height:44px;white-space:nowrap}
+.pbtn.main{background:#9CC8DD}
+.pbtn.end{background:#E6C4BE}
+.seg{display:flex;border-radius:10px;overflow:hidden;border:1.5px solid #D8CDBB}
+.seg button{border:0;background:#FFFDF8;padding:8px 12px;font-size:14px;min-width:52px;min-height:40px}
+.seg button.on{background:#9CC8DD}
+.tg{position:relative;width:58px;height:34px;border-radius:17px;border:0;background:#D8CDBB;flex:none;transition:background .25s ease}
+.tg::after{content:"";position:absolute;left:3px;top:3px;width:28px;height:28px;border-radius:50%;background:#FFFDF8;transition:transform .25s ease}
+.tg.on{background:#8CC7A1}
+.tg.on::after{transform:translateX(24px)}
+.pmsg{font-size:13px;color:#6F8F5E;min-height:18px}
+.pbig{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.pbig .pbtn{font-size:17px;min-height:54px}
+
+@media (prefers-reduced-motion: reduce){
+  .ready{animation-duration:1.6s}
+  .boot-btn{animation-duration:3.2s}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <section class="screen" id="s-boot"></section>
+  <section class="screen" id="s-home"></section>
+  <section class="screen s-pharmacy" id="s-pharmacy"></section>
+  <section class="screen s-stamp" id="s-stamp"></section>
+  <section class="screen s-register" id="s-register"></section>
+  <section class="screen s-delivery" id="s-delivery"></section>
+  <section class="screen s-parent" id="s-parent"></section>
+  <section class="screen s-end" id="s-end"></section>
+</div>
+<div id="fx"></div>
+<div id="lock"><svg id="lockRing" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#3A3226" stroke-width="3" stroke-dasharray="62.84" stroke-dashoffset="62.84" transform="rotate(-90 12 12)" stroke-linecap="round"/></svg></div>
+<div id="pin" hidden>
+  <div class="pinbox">
+    <div class="pin-title">あんしょうばんごう（4けた）</div>
+    <div class="pin-dots"><i></i><i></i><i></i><i></i></div>
+    <div class="pinpad"></div>
+    <div class="pin-msg"></div>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+/* =========================================================
+   ここを編集すると、表示されることばを変えられます
+   ・すべてひらがなで、1つ12文字くらいまで
+   ・{name} は こどもの なまえ、{family} は かぞくの ことば に置きかわります
+   ========================================================= */
+const CONFIG = {
+  childName: "◯◯",
+  familyWords: ["とうちゃん", "かあちゃん", "ばあば", "じいじ"],
+};
+
+const MESSAGES = {
+  pharmacy: [
+    "{name}くん の おしごと",
+    "{family}の おくすり です",
+    "きょうも ありがとう",
+    "{name}くん じょうずだね",
+    "せんせいの おくすり",
+  ],
+  pharmacyLabel: [ "{name}くん の おくすり", "{family}の おくすり", "げんきに なあれ" ],
+  pharmacyThanks: [ "ありがとう", "ありがとう！", "たすかったよ" ],
+  home:     [ "おしごと えらび" ],
+  stamp:    [ "{name}くん かくにん ずみ", "{family}へ の しょるい", "できました" ],
+  stampStart:[ "{name}くん はんこ ください" ],
+  stampDone:[ "できた！", "できました！" ],
+  register: [ "{family} の おかいけい", "いらっしゃいませ", "また きてね" ],
+  registerDone: [ "ありがとうございました" ],
+  delivery: [ "{family}の おうち へ", "{name}くん はいたつ ちゅう", "にもつ を つもう" ],
+  deliveryDone: [ "はいたつ かんりょう！", "とどけました" ],
+};
+
+/* ---------- 設定の保存（失敗しても止まらない） ---------- */
+const STORE_KEY = "oshigoto.settings.v1";
+const GAMES = ["pharmacy", "stamp", "register", "delivery"];
+const DEFAULTS = {
+  childName: CONFIG.childName,
+  familyWords: CONFIG.familyWords.slice(),
+  sound: true,
+  volume: 1,
+  typeSpeed: 50,
+  night: false,
+  games: { pharmacy: true, stamp: true, register: true, delivery: true },
+  autoSwitch: 0,
+  pin: "0000",
+};
+function cloneDefaults(){ return JSON.parse(JSON.stringify(DEFAULTS)); }
+function sanitize(o){
+  const s = cloneDefaults();
+  if (!o || typeof o !== "object") return s;
+  if (typeof o.childName === "string" && o.childName.trim()) s.childName = o.childName.slice(0, 12);
+  if (Array.isArray(o.familyWords)) s.familyWords = o.familyWords.filter(w => typeof w === "string" && w.trim()).map(w => w.slice(0, 10)).slice(0, 12);
+  if (typeof o.sound === "boolean") s.sound = o.sound;
+  if ([0, 1, 2].includes(o.volume)) s.volume = o.volume;
+  if ([30, 50, 100].includes(o.typeSpeed)) s.typeSpeed = o.typeSpeed;
+  if (typeof o.night === "boolean") s.night = o.night;
+  if (o.games && typeof o.games === "object") GAMES.forEach(g => { if (typeof o.games[g] === "boolean") s.games[g] = o.games[g]; });
+  if (!GAMES.some(g => s.games[g])) s.games.stamp = true;
+  if ([0, 3, 5, 10].includes(o.autoSwitch)) s.autoSwitch = o.autoSwitch;
+  if (typeof o.pin === "string" && /^\d{4}$/.test(o.pin)) s.pin = o.pin;
+  return s;
+}
+function loadSettings(){
+  try { const raw = window.localStorage.getItem(STORE_KEY); if (raw) return sanitize(JSON.parse(raw)); } catch (e) {}
+  return cloneDefaults();
+}
+function saveSettings(){
+  try { window.localStorage.setItem(STORE_KEY, JSON.stringify(S)); } catch (e) {}
+}
+let S = loadSettings();
+
+/* ---------- 小さな道具 ---------- */
+const $ = (sel, root) => (root || document).querySelector(sel);
+const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+function h(html){ const t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstElementChild; }
+const rnd = (a, b) => a + Math.random() * (b - a);
+const ri = (a, b) => Math.floor(rnd(a, b + 1));
+const pick = a => a[Math.floor(Math.random() * a.length)];
+function shuffle(a){ a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+const center = r => ({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
+const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+function fillText(t){
+  const fam = S.familyWords.length ? S.familyWords : DEFAULTS.familyWords;
+  return t.replace(/\{name\}/g, S.childName || "◯◯").replace(/\{family\}/g, () => pick(fam));
+}
+const msg = key => fillText(pick(MESSAGES[key]));
+const REDUCED = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+const M = REDUCED ? 0.4 : 1;   // 動きの大きさ（OSの設定で小さくする）
+let U = 3.9;                    // 画面サイズの単位（px）
+
+/* ---------- タイマーとアニメのまとめ役（画面を出るときに全部止める） ---------- */
+class Scope {
+  constructor(){ this.alive = true; this.t = new Set(); this.i = new Set(); this.r = new Set(); this.a = new Set(); }
+  timeout(fn, ms){
+    if (!this.alive) return 0;
+    const id = setTimeout(() => { this.t.delete(id); if (this.alive) fn(); }, ms);
+    this.t.add(id); return id;
+  }
+  interval(fn, ms){
+    if (!this.alive) return 0;
+    const id = setInterval(() => { if (this.alive) fn(); }, ms);
+    this.i.add(id); return id;
+  }
+  stopInterval(id){ clearInterval(id); this.i.delete(id); }
+  raf(fn){
+    if (!this.alive) return 0;
+    const id = requestAnimationFrame(ts => { this.r.delete(id); if (this.alive) fn(ts); });
+    this.r.add(id); return id;
+  }
+  anim(el, kf, opt, done){
+    if (!this.alive || !el || !el.animate) { if (done) done(); return null; }
+    const o = Object.assign({ fill: "forwards" }, opt || {});
+    const a = el.animate(kf, o);
+    this.a.add(a);
+    if (o.iterations !== Infinity) {
+      a.onfinish = () => {
+        this.a.delete(a);
+        if (o.fill === "forwards" || o.fill === "both") {
+          try { a.commitStyles(); a.cancel(); } catch (e) {}
+        }
+        if (this.alive && done) done();
+      };
+    }
+    return a;
+  }
+  clear(){
+    this.alive = false;
+    this.t.forEach(clearTimeout); this.i.forEach(clearInterval); this.r.forEach(cancelAnimationFrame);
+    this.a.forEach(a => { try { a.cancel(); } catch (e) {} });
+    this.t.clear(); this.i.clear(); this.r.clear(); this.a.clear();
+  }
+}
+
+/* ---------- 音（Web Audio で合成） ---------- */
+const VOLUMES = [0.08, 0.16, 0.25];
+const Sound = {
+  ctx: null, master: null, noiseBuf: null, voices: [],
+  unlock(){
+    try {
+      if (!this.ctx) {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        this.ctx = new AC();
+        this.master = this.ctx.createGain();
+        this.master.connect(this.ctx.destination);
+        this.applyVolume();
+        const len = Math.floor(this.ctx.sampleRate * 0.5);
+        this.noiseBuf = this.ctx.createBuffer(1, len, this.ctx.sampleRate);
+        const d = this.noiseBuf.getChannelData(0);
+        for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+        const b = this.ctx.createBuffer(1, 1, 22050), s = this.ctx.createBufferSource();
+        s.buffer = b; s.connect(this.ctx.destination); s.start(0);
+      }
+      if (this.ctx.state !== "running") { const p = this.ctx.resume(); if (p && p.catch) p.catch(() => {}); }
+    } catch (e) {}
+  },
+  applyVolume(){
+    if (!this.master) return;
+    const v = S.sound ? Math.min(0.25, VOLUMES[S.volume] || 0.16) : 0;
+    try { this.master.gain.setValueAtTime(v, this.ctx.currentTime); } catch (e) { this.master.gain.value = v; }
+  },
+  play(name){
+    if (!S.sound || !this.ctx || this.ctx.state !== "running" || !SFX[name]) return;
+    try {
+      const r = SFX[name](this.ctx.currentTime);
+      const now = this.ctx.currentTime;
+      this.voices = this.voices.filter(v => v.end > now);
+      this.voices.push({ nodes: r.nodes, end: now + r.dur });
+      while (this.voices.length > 6) {
+        const old = this.voices.shift();
+        old.nodes.forEach(n => { try { n.stop(); } catch (e) {} });
+      }
+    } catch (e) {}
+  },
+  tone(t0, o){
+    const c = this.ctx, osc = c.createOscillator(), g = c.createGain();
+    const st = t0 + (o.delay || 0), len = o.t || 0.1;
+    osc.type = o.type || "sine";
+    osc.frequency.setValueAtTime(o.f, st);
+    if (o.f2) osc.frequency.exponentialRampToValueAtTime(o.f2, st + len);
+    g.gain.setValueAtTime(0.0001, st);
+    g.gain.exponentialRampToValueAtTime(o.g || 0.4, st + (o.attack || 0.005));
+    g.gain.exponentialRampToValueAtTime(0.0001, st + len);
+    osc.connect(g); g.connect(this.master);
+    osc.start(st); osc.stop(st + len + 0.03);
+    return osc;
+  },
+  noise(t0, o){
+    const c = this.ctx, src = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
+    const st = t0 + (o.delay || 0), len = o.t || 0.05;
+    src.buffer = this.noiseBuf; src.loop = true;
+    f.type = o.filter || "bandpass"; f.frequency.value = o.fq || 2000; f.Q.value = o.q || 0.8;
+    g.gain.setValueAtTime(0.0001, st);
+    g.gain.exponentialRampToValueAtTime(o.g || 0.3, st + (o.attack || 0.003));
+    if (o.hold) g.gain.setValueAtTime(o.g || 0.3, st + len - o.hold);
+    g.gain.exponentialRampToValueAtTime(0.0001, st + len);
+    src.connect(f); f.connect(g); g.connect(this.master);
+    src.start(st); src.stop(st + len + 0.03);
+    return src;
+  },
+};
+const SFX = {
+  tap:   t => ({ nodes: [Sound.tone(t, { type: "square", f: 880, t: 0.04, g: 0.1 })], dur: 0.05 }),
+  kata:  t => ({ nodes: [Sound.noise(t, { t: 0.015, g: 0.07, filter: "highpass", fq: 3000 })], dur: 0.02 }),
+  don:   t => ({ nodes: [Sound.tone(t, { f: 120, f2: 60, t: 0.28, g: 0.9 }), Sound.noise(t, { t: 0.06, g: 0.25, filter: "lowpass", fq: 800 })], dur: 0.3 }),
+  pi:    t => ({ nodes: [Sound.tone(t, { type: "triangle", f: 1200, t: 0.06, g: 0.5 })], dur: 0.07 }),
+  chime: t => ({ nodes: [Sound.tone(t, { f: 1046.5, t: 0.3, g: 0.35 }), Sound.tone(t, { f: 1568, t: 0.45, g: 0.32, delay: 0.11 })], dur: 0.58 }),
+  shara: t => ({ nodes: [Sound.noise(t, { t: 0.14, g: 0.12, filter: "highpass", fq: 6000 }), Sound.tone(t, { f: 1760, t: 0.14, g: 0.12, delay: 0.02 })], dur: 0.17 }),
+  pop:   t => ({ nodes: [Sound.tone(t, { f: 420, f2: 840, t: 0.1, g: 0.35 })], dur: 0.12 }),
+  pick:  t => ({ nodes: [Sound.tone(t, { f: 660, f2: 880, t: 0.07, g: 0.2 })], dur: 0.08 }),
+  boing: t => ({ nodes: [Sound.tone(t, { f: 330, f2: 220, t: 0.16, g: 0.3 })], dur: 0.18 }),
+  dosun: t => ({ nodes: [Sound.tone(t, { f: 95, f2: 50, t: 0.22, g: 0.85 }), Sound.noise(t, { t: 0.08, g: 0.3, filter: "lowpass", fq: 400 })], dur: 0.25 }),
+  broro: t => ({ nodes: [Sound.noise(t, { t: 1.9, g: 0.5, filter: "lowpass", fq: 220, q: 2, attack: 0.35, hold: 0.6 }), Sound.tone(t, { type: "triangle", f: 55, f2: 75, t: 1.9, g: 0.25, attack: 0.3 })], dur: 1.95 }),
+  post:  t => ({ nodes: [Sound.tone(t, { f: 660, t: 0.12, g: 0.3 }), Sound.tone(t, { f: 880, t: 0.16, g: 0.3, delay: 0.1 })], dur: 0.28 }),
+  cut:   t => ({ nodes: [Sound.noise(t, { t: 0.12, g: 0.25, filter: "bandpass", fq: 3500, q: 1.2 })], dur: 0.13 }),
+};
+
+/* ---------- タイピング表示 ---------- */
+const typers = new Set();
+function typeText(el, text, scope, done){
+  if (el._typer) el._typer.stop();
+  const chars = Array.from(text);
+  el.textContent = "";
+  const txt = document.createElement("span"), cur = document.createElement("span");
+  cur.className = "cursor"; cur.textContent = "▍";
+  el.append(txt, cur);
+  let i = 0, over = false, id = 0;
+  const T = {
+    scope,
+    stop(){ if (over) return; over = true; scope.stopInterval(id); typers.delete(T); el._typer = null; },
+    finish(){
+      if (over) return;
+      txt.textContent = text; T.stop();
+      if (!el.classList.contains("t")) cur.remove();   // カーソルを残すのは上の文字帯だけ
+      if (done && scope.alive) done();
+    },
+  };
+  id = scope.interval(() => {
+    i++;
+    txt.textContent = chars.slice(0, i).join("");
+    if (chars[i - 1] && chars[i - 1].trim()) Sound.play("kata");
+    if (i >= chars.length) T.finish();
+  }, S.typeSpeed);
+  typers.add(T); el._typer = T;
+  if (!chars.length) T.finish();
+  return T;
+}
+function finishAllTyping(){ Array.from(typers).forEach(T => { if (T.scope.alive) T.finish(); else typers.delete(T); }); }
+
+/* ---------- 触った反応（波紋と星。数に上限あり） ---------- */
+const STAR = '<svg viewBox="0 0 24 24"><path d="M12 1.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 8.8l7.1-.7z" fill="currentColor"/></svg>';
+const SPARK_COLORS = ["#F2C46D", "#F2A0A8", "#9FD3B5", "#9CC8DD", "#C9B3E6"];
+const FX = {
+  layer: null, ripples: [], sparks: [], ri: 0, si: 0,
+  init(){
+    this.layer = $("#fx");
+    for (let i = 0; i < 3; i++) { const r = h('<div class="ripple"></div>'); this.layer.appendChild(r); this.ripples.push(r); }
+    for (let i = 0; i < 7; i++) { const s = h('<div class="spark">' + STAR + "</div>"); this.layer.appendChild(s); this.sparks.push(s); }
+  },
+  ripple(x, y){
+    const r = this.ripples[this.ri++ % this.ripples.length];
+    if (r._a) r._a.cancel();
+    r.style.left = x + "px"; r.style.top = y + "px";
+    r._a = r.animate([
+      { transform: "scale(.3)", opacity: 0.6 },
+      { transform: "scale(1.15)", opacity: 0 },
+    ], { duration: 450, easing: "ease-out", fill: "forwards" });
+  },
+  burst(x, y, n){
+    n = n || 5;
+    for (let k = 0; k < n; k++) {
+      const s = this.sparks[this.si++ % this.sparks.length];
+      if (s._a) s._a.cancel();
+      s.style.left = x + "px"; s.style.top = y + "px"; s.style.color = pick(SPARK_COLORS);
+      const ang = (k / n) * Math.PI * 2 + rnd(-0.3, 0.3), d = U * rnd(10, 17) * (REDUCED ? 0.6 : 1);
+      s._a = s.animate([
+        { transform: "translate(0px,0px) scale(.4) rotate(0deg)", opacity: 1 },
+        { transform: `translate(${Math.cos(ang) * d}px,${Math.sin(ang) * d}px) scale(1) rotate(80deg)`, opacity: 0 },
+      ], { duration: 600, easing: "cubic-bezier(.2,.7,.3,1)", fill: "forwards" });
+    }
+  },
+};
+
+/* ---------- 絵（SVG） ---------- */
+const ART = {
+  bag(){
+    return '<svg viewBox="0 0 100 120">' +
+      '<path d="M14 30 L86 30 L92 116 L8 116 Z" fill="#FFF8EC" stroke="#CDB894" stroke-width="3" stroke-linejoin="round"/>' +
+      '<path class="bag-open" d="M14 30 Q50 42 86 30 Q50 22 14 30Z" fill="#DCCBAF"/>' +
+      '<g class="bag-flap"><path d="M13 22 L87 22 L87 40 L13 40Z" fill="#EBDCC1" stroke="#CDB894" stroke-width="3" stroke-linejoin="round"/><rect x="42" y="17" width="16" height="28" rx="3" fill="#F2B8B0"/></g>' +
+      '<circle cx="50" cy="60" r="13" fill="#9FD3B5"/><rect x="46" y="51" width="8" height="18" rx="2" fill="#FFF8EC"/><rect x="41" y="56" width="18" height="8" rx="2" fill="#FFF8EC"/>' +
+      '<rect x="18" y="82" width="64" height="26" rx="4" fill="#FFFDF6" stroke="#E2D5BE" stroke-width="2"/>' +
+      "</svg>";
+  },
+  pillRound(c, d){
+    return `<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="${c}" stroke="${d}" stroke-width="3"/><line x1="17" y1="30" x2="43" y2="30" stroke="${d}" stroke-width="3" stroke-linecap="round"/><ellipse cx="22" cy="20" rx="6" ry="4" fill="#FFFDF6" opacity=".6"/></svg>`;
+  },
+  capsule(c1, c2, d){
+    return `<svg viewBox="0 0 60 60"><g transform="rotate(-35 30 30)"><rect x="6" y="19" width="48" height="22" rx="11" fill="${c2}" stroke="${d}" stroke-width="3"/><path d="M30 19 H17 A11 11 0 0 0 17 41 H30 Z" fill="${c1}" stroke="${d}" stroke-width="3" stroke-linejoin="round"/><ellipse cx="18" cy="25" rx="5" ry="2.5" fill="#FFFDF6" opacity=".6"/></g></svg>`;
+  },
+  powder(c){
+    return `<svg viewBox="0 0 60 60"><rect x="9" y="7" width="42" height="46" rx="4" fill="#FFFAF0" stroke="#CDB894" stroke-width="3"/><path d="M9 17 H51" stroke="#CDB894" stroke-width="2" stroke-dasharray="3 3"/><circle cx="30" cy="35" r="9" fill="${c}"/><path d="M25 35 h10 M30 30 v10" stroke="#FFFAF0" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+  },
+  box(c, d, l, tape){
+    return `<svg viewBox="0 0 80 70"><path d="M4 12 L14 3 H66 L76 12 Z" fill="${l}" stroke="${d}" stroke-width="3" stroke-linejoin="round"/><rect x="4" y="12" width="72" height="54" rx="3" fill="${c}" stroke="${d}" stroke-width="3"/><rect x="34" y="12" width="12" height="54" fill="${tape}"/><path d="M12 48 h14 M12 55 h9" stroke="${d}" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+  },
+  truck(){
+    const wheel = (x) => `<g class="wheel"><circle cx="${x}" cy="92" r="14" fill="#4E4A47"/><circle cx="${x}" cy="92" r="6" fill="#CFC8BE"/><rect x="${x - 1.5}" y="80" width="3" height="8" rx="1" fill="#CFC8BE"/></g>`;
+    return '<svg viewBox="0 0 200 110">' +
+      '<rect x="6" y="64" width="128" height="16" rx="3" fill="#A9C1D4" stroke="#7F9AB0" stroke-width="3"/>' +
+      '<rect x="128" y="38" width="8" height="42" rx="2" fill="#7F9AB0"/>' +
+      '<path d="M138 34 H170 Q180 34 184 46 L194 62 V82 H138 Z" fill="#F2B87A" stroke="#C98B4C" stroke-width="3" stroke-linejoin="round"/>' +
+      '<path d="M147 42 H168 Q174 42 177 50 L182 60 H147 Z" fill="#D8ECF4" stroke="#C98B4C" stroke-width="2.5" stroke-linejoin="round"/>' +
+      '<rect x="188" y="66" width="7" height="8" rx="2" fill="#F5E6B8"/>' +
+      '<rect x="3" y="80" width="194" height="8" rx="3" fill="#6E6A66"/>' +
+      wheel(40) + wheel(158) + "</svg>";
+  },
+  house(){
+    return '<svg viewBox="0 0 120 126">' +
+      '<path d="M10 56 L60 14 L110 56 Z" fill="#E6A190" stroke="#B9786A" stroke-width="3" stroke-linejoin="round"/>' +
+      '<rect x="20" y="54" width="80" height="66" fill="#F6E7CF" stroke="#C9B08E" stroke-width="3"/>' +
+      '<rect x="30" y="72" width="34" height="48" rx="3" fill="#D9C2A0" stroke="#B49A76" stroke-width="3"/>' +
+      '<rect x="72" y="66" width="20" height="18" rx="2" fill="#D8ECF4" stroke="#C9B08E" stroke-width="2.5"/>' +
+      '<rect x="102" y="88" width="4" height="34" fill="#9B8B75"/><rect x="94" y="76" width="22" height="16" rx="4" fill="#E58C7E" stroke="#B9786A" stroke-width="2.5"/>' +
+      "</svg>";
+  },
+  tree(c){
+    return `<svg viewBox="0 0 40 60" width="${U * 11}" height="${U * 16}"><rect x="17" y="38" width="6" height="22" fill="#B49A76"/><circle cx="20" cy="26" r="16" fill="${c}"/></svg>`;
+  },
+  smallHouse(c){
+    return `<svg viewBox="0 0 50 50" width="${U * 15}" height="${U * 15}"><path d="M5 24 L25 6 L45 24Z" fill="${c}"/><rect x="10" y="23" width="30" height="27" fill="#F3E8D6"/><rect x="21" y="34" width="9" height="16" fill="#D5C2A4"/></svg>`;
+  },
+  hanamaru(){
+    return '<svg viewBox="0 0 100 100"><g fill="none" stroke="#E88A9A" stroke-width="4.5" stroke-linecap="round">' +
+      '<path d="M50 50 m-6 0 a6 6 0 1 1 12 0 a12 12 0 1 1 -24 0 a18 18 0 1 1 36 0 a24 24 0 1 1 -48 0"/>' +
+      '<path d="M50 8 q9 -6 12 4 M84 26 q9 2 4 12 M90 64 q6 8 -4 12 M64 92 q-2 9 -12 4 M26 88 q-9 4 -10 -6 M10 58 q-8 -4 -2 -12 M16 22 q-2 -9 8 -10"/></g></svg>';
+  },
+  moon(){
+    return '<svg viewBox="0 0 100 100"><path d="M62 14 A38 38 0 1 0 86 70 A30 30 0 1 1 62 14Z" fill="#F2DFA6"/><g fill="#CFC3E3"><circle cx="78" cy="22" r="3"/><circle cx="88" cy="40" r="2"/><circle cx="24" cy="18" r="2.5"/></g></svg>';
+  },
+  stampIcon(){
+    return '<svg viewBox="0 0 100 100"><rect x="14" y="22" width="72" height="66" rx="6" fill="#FFFCF5" stroke="#D9CDB8" stroke-width="3"/><path d="M26 38h48M26 50h30" stroke="#E4DACA" stroke-width="4" stroke-linecap="round"/><circle cx="64" cy="66" r="14" fill="none" stroke="#C8564B" stroke-width="4"/><rect x="40" y="6" width="16" height="22" rx="7" fill="#B8936A"/><rect x="34" y="26" width="28" height="10" rx="3" fill="#8F6E4E"/></svg>';
+  },
+  registerIcon(){
+    return '<svg viewBox="0 0 100 100"><rect x="12" y="40" width="76" height="46" rx="6" fill="#E9B9A0" stroke="#C98F76" stroke-width="3"/><rect x="22" y="16" width="56" height="28" rx="4" fill="#4F5E57"/><text x="50" y="37" text-anchor="middle" font-size="16" fill="#E3F0D5" font-family="sans-serif">123</text><g fill="#FFF3EA"><rect x="22" y="52" width="12" height="9" rx="2"/><rect x="40" y="52" width="12" height="9" rx="2"/><rect x="58" y="52" width="20" height="9" rx="2"/><rect x="22" y="67" width="12" height="9" rx="2"/><rect x="40" y="67" width="12" height="9" rx="2"/><rect x="58" y="67" width="20" height="9" rx="2"/></g></svg>';
+  },
+};
+const MED_COLORS = [["#F4B6B0", "#C98A84"], ["#F5D88E", "#C9A85A"], ["#A9D7E8", "#78A8BC"], ["#C9B8E8", "#9A88BC"], ["#B5DDB5", "#80AE80"]];
+function makeMedSVG(){
+  const k = ri(0, 2), c = pick(MED_COLORS), c2 = pick(MED_COLORS);
+  if (k === 0) return ART.pillRound(c[0], c[1]);
+  if (k === 1) return ART.capsule(c[0], "#FFF6E8", c[1]);
+  return ART.powder(c2[0]);
+}
+const BOX_COLORS = [["#E3C193", "#B38E5E", "#EFD3AD", "#D7B07A"], ["#B9D4E6", "#7FA3BC", "#D0E3EF", "#F2E2B4"], ["#F2C4C0", "#C48F8A", "#F7D9D6", "#F5E6B8"], ["#C3DFC0", "#88AE84", "#D8EBD5", "#F2E2B4"]];
+function makeBoxSVG(col){ return ART.box(col[0], col[1], col[2], col[3]); }
+const ANIMALS = ["🐶", "🐱", "🐰", "🐘", "🐼", "🐻", "🐨", "🐸", "🐷", "🐵", "🦁", "🐧"];
+const PRODUCTS = [
+  ["🍎", "りんご"], ["🥛", "ぎゅうにゅう"], ["🍞", "ぱん"], ["🍌", "ばなな"], ["🥕", "にんじん"],
+  ["🍙", "おにぎり"], ["🍓", "いちご"], ["🥚", "たまご"], ["🍊", "みかん"], ["🍇", "ぶどう"], ["🍪", "くっきー"],
+];
+const PRICES = [80, 100, 120, 150, 180, 200, 250, 300];
+
+/* ---------- ドラッグ（タップだけでも必ず届く） ---------- */
+function makeDraggable(el, scope, o){
+  let st = null;
+  el.addEventListener("pointerdown", e => {
+    if (!e.isPrimary || el.dataset.st !== "idle" || !scope.alive) return;
+    e._handled = true;
+    try { el.setPointerCapture(e.pointerId); } catch (_) {}
+    const r = el.getBoundingClientRect(), tr = o.target().getBoundingClientRect();
+    st = { id: e.pointerId, x0: e.clientX, y0: e.clientY, dx: 0, dy: 0, c0: center(r), d0: dist(center(r), center(tr)) };
+    el.dataset.st = "drag"; el.style.zIndex = 30;
+    el.style.transform = "translate(0px,0px) scale(1.12)";
+    Sound.play("pick");
+  });
+  el.addEventListener("pointermove", e => {
+    if (!st || e.pointerId !== st.id) return;
+    st.dx = e.clientX - st.x0; st.dy = e.clientY - st.y0;
+    el.style.transform = `translate(${st.dx}px,${st.dy}px) scale(1.12)`;
+  });
+  const up = e => {
+    if (!st || e.pointerId !== st.id) return;
+    const s = st; st = null;
+    if (!scope.alive) return;
+    const moved = Math.hypot(s.dx, s.dy);
+    const tr = o.target().getBoundingClientRect();
+    const c = { x: s.c0.x + s.dx, y: s.c0.y + s.dy };
+    // 見た目より 1.5 倍広い当たり判定
+    const ex = tr.width * 0.25, ey = tr.height * 0.25;
+    const inside = c.x > tr.left - ex && c.x < tr.right + ex && c.y > tr.top - ey && c.y < tr.bottom + ey;
+    const closer = dist(c, center(tr)) < s.d0 - 4;
+    const from = `translate(${s.dx}px,${s.dy}px) scale(1.12)`;
+    if (moved < 14 || inside || closer || e.type === "pointercancel") {
+      const dest = o.dest();
+      const tx = dest.x - s.c0.x, ty = dest.y - s.c0.y;
+      el.dataset.st = "fly";
+      scope.anim(el, [
+        { transform: from, opacity: 1 },
+        { transform: `translate(${(s.dx + tx) / 2}px,${Math.min(s.dy, ty) - U * 10}px) scale(1)`, opacity: 1, offset: 0.55 },
+        { transform: `translate(${tx}px,${ty}px) scale(${dest.s || 0.4})`, opacity: dest.keep ? 1 : 0.2 },
+      ], { duration: 420, easing: "ease-in" }, () => {
+        el.dataset.st = "done"; el.style.visibility = "hidden";
+        o.onArrive(el);
+      });
+    } else {
+      el.dataset.st = "back";
+      Sound.play("boing");
+      scope.anim(el, [{ transform: from }, { transform: "translate(0px,0px) scale(1)" }],
+        { duration: 320, easing: "cubic-bezier(.3,1.5,.5,1)" }, () => { el.dataset.st = "idle"; el.style.zIndex = ""; });
+    }
+  };
+  el.addEventListener("pointerup", up);
+  el.addEventListener("pointercancel", up);
+}
+function popIn(el, scope, delay, after){
+  el.dataset.st = "enter";
+  scope.anim(el, [{ transform: "scale(0)", opacity: 0 }, { transform: "scale(1.12)", opacity: 1, offset: 0.7 }, { transform: "scale(1)", opacity: 1 }],
+    { duration: 380, delay: delay || 0, easing: "ease-out", fill: "both" }, () => { el.dataset.st = "idle"; el.style.transform = ""; if (after) after(); });
+}
+function bounce(el, scope, k){
+  k = k || 1.1;
+  scope.anim(el, [{ transform: "scale(1)" }, { transform: `scale(${k})` }, { transform: "scale(1)" }], { duration: 260, easing: "ease-out" });
+}
+
+/* =========================================================
+   画面
+   ========================================================= */
+const screens = {};
+let current = null, curScope = null, navBusy = false;
+
+function go(name){
+  if (navBusy || current === name || !screens[name]) return;
+  navBusy = true;
+  const prev = current ? screens[current] : null;
+  if (curScope) curScope.clear();
+  const scope = new Scope();
+  curScope = scope;
+  const next = screens[name];
+  next.el.innerHTML = "";
+  next.el.classList.add("on");
+  const root = document.createElement("div");
+  root.className = "root";
+  next.el.appendChild(root);
+  next.enter(scope, root);
+  current = name;
+  const w = window.innerWidth * M;
+  next.el.animate([{ transform: `translateX(${w}px)`, opacity: REDUCED ? 0 : 1 }, { transform: "translateX(0)", opacity: 1 }], { duration: 400, easing: "ease-in-out" });
+  if (prev) {
+    const pa = prev.el.animate([{ transform: "translateX(0)", opacity: 1 }, { transform: `translateX(${-w}px)`, opacity: REDUCED ? 0 : 1 }], { duration: 400, easing: "ease-in-out", fill: "forwards" });
+    setTimeout(() => {
+      pa.cancel();
+      if (prev !== screens[current]) { prev.el.classList.remove("on"); prev.el.innerHTML = ""; }
+      navBusy = false;
+    }, 420);
+  } else {
+    setTimeout(() => { navBusy = false; }, 420);
+  }
+  if (GAMES.includes(name) && S.autoSwitch > 0) {
+    scope.timeout(() => { const n = nextGame(name); if (n !== name) go(n); }, S.autoSwitch * 60000);
+  }
+}
+function enabledGames(){ const g = GAMES.filter(k => S.games[k]); return g.length ? g : ["stamp"]; }
+function nextGame(cur){ const g = enabledGames(); const i = g.indexOf(cur); return g[(i + 1) % g.length]; }
+
+/* ---------- 起動 ---------- */
+screens.boot = {
+  el: $("#s-boot"),
+  enter(scope, el){
+    el.appendChild(h(`<div class="stage boot">
+      <div class="boot-title">おしごと</div>
+      <div class="boot-icons">
+        <div style="background:#CDE8D8">${ART.bag()}</div>
+        <div style="background:#F3E1B7">${ART.stampIcon()}</div>
+        <div style="background:#F4CFBC">${ART.registerIcon()}</div>
+        <div style="background:#CBE2EC">${ART.truck()}</div>
+      </div>
+      <div class="boot-btn">さわってね</div>
+    </div>`));
+    el.addEventListener("pointerdown", e => { e._handled = true; Sound.unlock(); keepAwake(); Sound.play("pop"); setTimeout(() => go("home"), 120); });
+  },
+};
+
+/* ---------- おしごと えらび ---------- */
+const GAME_INFO = {
+  pharmacy: { label: "おくすりやさん", icon: () => ART.bag() },
+  stamp:    { label: "はんこ", icon: () => ART.stampIcon() },
+  register: { label: "れじ", icon: () => ART.registerIcon() },
+  delivery: { label: "たっきゅうびん", icon: () => ART.truck() },
+};
+screens.home = {
+  el: $("#s-home"),
+  enter(scope, el){
+    const list = enabledGames();
+    const st = h(`<div class="stage"><div class="banner"><span class="t"></span></div><div class="cards"></div></div>`);
+    el.appendChild(st);
+    const cards = $(".cards", st);
+    list.forEach(g => {
+      const c = h(`<div class="card c-${g}${list.length === 1 ? " one" : ""}">${GAME_INFO[g].icon()}<div>${GAME_INFO[g].label}</div></div>`);
+      c.addEventListener("pointerdown", e => {
+        if (!e.isPrimary) return;
+        e._handled = true;
+        if (navBusy) return;
+        Sound.play("pop"); bounce(c, scope, 1.06);
+        const r = c.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top + r.height / 2, 4);
+        scope.timeout(() => go(g), 180);
+      });
+      cards.appendChild(c);
+    });
+    typeText($(".t", st), msg("home"), scope);
+  },
+};
+
+/* ---------- はんこ ---------- */
+const STAMP_FACES = ["かくにん", "すみ", "よく<br>できました", "できた", "ありがとう"];
+const FRAME_SPOTS = [[28, 58], [70, 54], [30, 82], [72, 80], [50, 70]];
+screens.stamp = {
+  el: $("#s-stamp"),
+  enter(scope, el){
+    const st = h(`<div class="stage"><div class="banner"><span class="t"></span></div><div class="desk"></div></div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), desk = $(".desk", st);
+    let paper = null;
+
+    function newPaper(){
+      const p = h(`<div class="paper"><div class="paper-in">
+        <div class="paper-title"></div>
+        <div class="paper-row">おなまえ<b></b></div>
+        <div class="paper-row">ひづけ<b></b></div>
+        <div class="paper-row">おしごと<b></b></div>
+      </div></div>`);
+      p._count = 0; p._out = false; p._marks = [];
+      const inner = $(".paper-in", p);
+      shuffle(FRAME_SPOTS).slice(0, ri(1, 3)).forEach(([x, y]) => {
+        const f = h(`<div class="frame" style="left:${x}%;top:${y}%">ここに<br>はんこ</div>`);
+        f._x = x; f._y = y; inner.appendChild(f);
+      });
+      desk.appendChild(p);
+      scope.anim(p, [{ transform: `translateY(${110 * M}%)`, opacity: REDUCED ? 0 : 1 }, { transform: "translateY(-2%)", opacity: 1, offset: 0.8 }, { transform: "translateY(0)", opacity: 1 }],
+        { duration: 480, easing: "ease-out" });
+      typeText($(".paper-title", p), msg("stamp"), scope);
+      paper = p;
+    }
+
+    function stampAt(x, y){
+      const p = paper; if (!p) return;
+      const inner = $(".paper-in", p);
+      const r = inner.getBoundingClientRect();
+      const m = U * 9;
+      const lx = Math.max(m, Math.min(r.width - m, x - r.left));
+      const ly = Math.max(m, Math.min(r.height - m, y - r.top));
+      const rot = rnd(-14, 14);
+      const s = h(`<div class="stampmark"><div class="ink"></div><div class="face">${pick(STAMP_FACES)}</div></div>`);
+      const base = `translate(${lx}px,${ly}px) translate(-50%,-50%) rotate(${rot}deg)`;
+      s.style.transform = base;
+      inner.appendChild(s);
+      p._marks.push(s);
+      if (p._marks.length > 12) p._marks.shift().remove();
+      scope.anim(s, [{ transform: base + " scale(1.6)", opacity: 0 }, { transform: base + " scale(.92)", opacity: 1, offset: 0.6 }, { transform: base + " scale(1)", opacity: 1 }], { duration: 260, easing: "ease-out" });
+      scope.anim($(".ink", s), [{ transform: "scale(.7)", opacity: 0 }, { transform: "scale(1.12)", opacity: 0.55 }], { duration: 600, easing: "ease-out" });
+      scope.anim(inner, [{ transform: "translate(0,0)" }, { transform: `translate(${U * 0.8}px,${U * 0.6}px)` }, { transform: `translate(${-U * 0.6}px,0)` }, { transform: "translate(0,0)" }], { duration: 220 });
+      Sound.play("don");
+      // 枠の近くなら はなまる（外れても何も否定しない）
+      $$(".frame", inner).forEach(f => {
+        if (f._done) return;
+        const fx = r.width * f._x / 100, fy = r.height * f._y / 100;
+        if (Math.hypot(fx - lx, fy - ly) < U * 11 * 1.5) {
+          f._done = true;
+          scope.anim(f, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+          const hm = h(`<div class="hana" style="left:${f._x}%;top:${f._y}%">${ART.hanamaru()}</div>`);
+          inner.appendChild(hm);
+          scope.anim(hm, [{ transform: "scale(0) rotate(-90deg)", opacity: 0 }, { transform: "scale(1) rotate(0deg)", opacity: 1 }], { duration: 450, easing: "ease-out" });
+          FX.burst(r.left + fx, r.top + fy, 5);
+          scope.timeout(() => Sound.play("chime"), 120);
+        }
+      });
+      if (!p._out) {
+        p._count++;
+        if (p._count >= 3) { p._out = true; scope.timeout(() => finishPaper(p), 380); }
+      }
+    }
+
+    function finishPaper(p){
+      Sound.play("chime");
+      typeText(banner, msg("stampDone"), scope);
+      scope.anim(p, [{ transform: "translateX(0) rotate(0deg)", opacity: 1 }, { transform: `translateX(${130 * M}%) rotate(8deg)`, opacity: REDUCED ? 0 : 1 }],
+        { duration: 450, easing: "ease-in" }, () => p.remove());
+      scope.timeout(() => newPaper(), 280);
+    }
+
+    el.addEventListener("pointerdown", e => {
+      if (!e.isPrimary) return;
+      e._handled = true;
+      stampAt(e.clientX, e.clientY);
+    });
+    typeText(banner, msg("stampStart"), scope);
+    newPaper();
+  },
+};
+
+/* ---------- レジ ---------- */
+screens.register = {
+  el: $("#s-register"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="reg">
+        <div class="reg-screen"><div class="reg-label">ごうけい</div><div class="reg-num"><span class="num">0</span><small>えん</small></div></div>
+        <div class="tray"></div>
+        <div class="slot"></div>
+      </div>
+      <div class="payrow"><div class="pay">おかいけい</div></div>
+      <div class="belt"><div class="belt-base"><div class="belt-stripes"></div></div></div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), num = $(".num", st), tray = $(".tray", st), pay = $(".pay", st), belt = $(".belt", st), reg = $(".reg", st);
+    let cart = [], receipt = null, rollId = 0;
+
+    function showTotal(v){
+      if (rollId) scope.stopInterval(rollId);
+      const len = String(v).length; let n = 0;
+      rollId = scope.interval(() => {
+        n++;
+        if (n >= 9) {
+          scope.stopInterval(rollId); rollId = 0; num.textContent = v;
+          bounce(num, scope, 1.12);
+        } else {
+          let s = ""; for (let i = 0; i < len; i++) s += ri(i === 0 && len > 1 ? 1 : 0, 9);
+          num.textContent = s;
+        }
+      }, 50);
+    }
+    const sum = list => list.reduce((a, p) => a + p.price, 0);
+
+    // ベルトコンベア
+    const items = [];
+    const N = 4;
+    for (let i = 0; i < N; i++) {
+      const it = h(`<div class="prod"><span class="em"></span><div class="scanline"></div></div>`);
+      it._ready = true; setProduct(it);
+      belt.appendChild(it); items.push(it);
+      it.addEventListener("pointerdown", e => { if (!e.isPrimary || !it._ready) return; e._handled = true; scan(it); });
+    }
+    function setProduct(it){ const p = pick(PRODUCTS); it._p = { em: p[0], name: p[1], price: pick(PRICES) }; $(".em", it).textContent = p[0]; }
+    const stripes = $(".belt-stripes", st);
+    const t0 = performance.now();
+    function loop(ts){
+      const W = belt.clientWidth, iw = U * 22, span = W + iw, speed = span / 8000;
+      const off = (ts - t0) * speed;
+      items.forEach((it, i) => {
+        const x = W - ((off + i * span / N) % span);
+        it.style.transform = `translateX(${x}px)`;
+        it._x = x;
+      });
+      const per = U * 10;
+      stripes.style.transform = `translateX(${-(off % per)}px)`;
+      scope.raf(loop);
+    }
+    scope.raf(loop);
+
+    function scan(it){
+      it._ready = false;
+      Sound.play("pi");
+      const p = it._p;
+      scope.anim($(".scanline", it), [{ transform: "translateY(0)", opacity: 0 }, { transform: `translateY(${U * 10}px)`, opacity: 1, offset: 0.5 }, { transform: `translateY(${U * 20}px)`, opacity: 0 }], { duration: 300 });
+      scope.timeout(() => {
+        const sr = st.getBoundingClientRect(), r = it.getBoundingClientRect(), tr = tray.getBoundingClientRect();
+        const fl = h(`<div class="flyer">${p.em}</div>`);
+        st.appendChild(fl);
+        const x0 = r.left - sr.left + r.width / 2, y0 = r.top - sr.top + r.height / 2;
+        const slots = tray.children.length;
+        const x1 = tr.left - sr.left + U * 7 + Math.min(slots, 6) * U * 9.5, y1 = tr.top - sr.top + tr.height / 2;
+        fl.style.left = x0 + "px"; fl.style.top = y0 + "px";
+        it.classList.add("gone");
+        scope.anim(fl, [
+          { transform: "translate(0px,0px) scale(1)" },
+          { transform: `translate(${(x1 - x0) / 2}px,${(y1 - y0) / 2 - U * 8}px) scale(.9)`, offset: 0.5 },
+          { transform: `translate(${x1 - x0}px,${y1 - y0}px) scale(.6)` },
+        ], { duration: 500, easing: "ease-in-out" }, () => {
+          fl.remove();
+          const ic = h(`<span>${p.em}</span>`); tray.appendChild(ic);
+          while (tray.children.length > 6) tray.firstElementChild.remove();
+          popIn(ic, scope);
+          cart.push(p);
+          showTotal(sum(cart));
+          Sound.play("pop");
+          if (cart.length >= 3) pay.classList.add("ready");
+        });
+        scope.timeout(() => { setProduct(it); it.classList.remove("gone"); it._ready = true; }, 1600);
+      }, 200);
+    }
+
+    pay.addEventListener("pointerdown", e => {
+      if (!e.isPrimary) return;
+      e._handled = true;
+      bounce(pay, scope, 1.06);
+      if (receipt) { if (receipt._printed && performance.now() - receipt._printed > 250) cutReceipt("down"); else Sound.play("tap"); return; }
+      checkout();
+    });
+
+    function checkout(){
+      Sound.play("chime");
+      pay.classList.remove("ready");
+      const list = cart; cart = [];
+      showTotal(sum(list));
+      $$("span", tray).forEach(ic => scope.anim(ic, [{ opacity: 1 }, { opacity: 0 }], { duration: 350 }, () => ic.remove()));
+      const lines = [["おしごと すーぱー", "", "center"]];
+      list.slice(0, 6).forEach(p => lines.push([p.name, String(p.price), ""]));
+      if (list.length > 6) lines.push([`ほか ${list.length - 6}こ`, String(sum(list.slice(6))), ""]);
+      lines.push(["ごうけい", sum(list) + "えん", "total"]);
+      lines.push(["ありがとう", "", "center"]);
+
+      const sr = st.getBoundingClientRect(), rr = reg.getBoundingClientRect();
+      const clip = h(`<div class="receipt-clip"><div class="receipt"></div><div class="cut-hint">したへ ひっぱって きってね</div></div>`);
+      clip.style.top = (rr.bottom - sr.top) + "px";
+      st.appendChild(clip);
+      const rc = $(".receipt", clip);
+      const rows = lines.map(([a, b, cls]) => {
+        const row = h(`<div class="rline ${cls}"><span class="a"></span><span class="b"></span></div>`);
+        row.style.visibility = "hidden"; rc.appendChild(row); return { row, a, b };
+      });
+      const H = rc.offsetHeight;
+      const rowH = (H - U * 10) / rows.length;
+      rc.style.transform = `translateY(${-H}px)`;
+      receipt = clip; clip._printed = 0;
+      let shown = U * 4;
+      let k = 0;
+      function nextLine(){
+        if (k >= rows.length) {
+          scope.anim(rc, [{ transform: `translateY(${-H + shown}px)` }, { transform: "translateY(0)" }], { duration: 200 });
+          clip._printed = performance.now();
+          scope.anim($(".cut-hint", clip), [{ opacity: 0 }, { opacity: 1 }], { duration: 400 });
+          return;
+        }
+        const { row, a, b } = rows[k++];
+        const prev = shown; shown += rowH;
+        scope.anim(rc, [{ transform: `translateY(${-H + prev}px)` }, { transform: `translateY(${-H + shown}px)` }], { duration: 160, easing: "ease-out" });
+        row.style.visibility = "visible";
+        $(".b", row).textContent = b;
+        typeText($(".a", row), a, scope, nextLine);
+      }
+      nextLine();
+
+      let sy = null;
+      clip.addEventListener("pointerdown", e => {
+        if (!e.isPrimary) return;
+        e._handled = true; sy = e.clientY;
+        try { clip.setPointerCapture(e.pointerId); } catch (_) {}
+      });
+      clip.addEventListener("pointermove", e => {
+        if (sy === null || clip._cut) return;
+        if (e.clientY - sy > U * 6 && clip._printed) { sy = null; cutReceipt("down"); }
+      });
+      clip.addEventListener("pointerup", () => {
+        if (sy === null) return; sy = null;
+        if (clip._printed && performance.now() - clip._printed > 250) cutReceipt("down");
+      });
+    }
+
+    function cutReceipt(){
+      const clip = receipt; if (!clip || clip._cut) return;
+      clip._cut = true; receipt = null;
+      Sound.play("cut");
+      scope.timeout(() => Sound.play("chime"), 150);
+      const r = clip.getBoundingClientRect();
+      FX.burst(r.left + r.width / 2, r.top + U * 4, 5);
+      scope.anim(clip, [{ transform: "translateY(0) rotate(0deg)", opacity: 1 }, { transform: `translateY(${U * 60 * M}px) rotate(10deg)`, opacity: 0 }], { duration: 650, easing: "ease-in" }, () => clip.remove());
+      typeText(banner, msg("registerDone"), scope);
+      showTotal(sum(cart));
+      if (cart.length >= 3) pay.classList.add("ready");
+      scope.timeout(() => { if (!receipt) typeText(banner, msg("register"), scope); }, 2600);
+    }
+
+    typeText(banner, msg("register"), scope);
+  },
+};
+
+/* ---------- おくすりやさん ---------- */
+screens.pharmacy = {
+  el: $("#s-pharmacy"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="rx"><div class="rx-title">しょほうせん</div><div class="rx-text"><span class="t"></span></div></div>
+      <div class="counter">
+        <div class="bag"><div class="bag-in">${ART.bag()}<div class="bag-label"></div></div></div>
+        <div class="cust"><div class="bubble"><span class="t"></span></div><div class="cust-face"></div></div>
+      </div>
+      <div class="medtray"></div>
+    </div>`);
+    el.appendChild(st);
+    const rxText = $(".rx-text .t", st), bag = $(".bag", st), bagIn = $(".bag-in", st), label = $(".bag-label", st);
+    const cust = $(".cust", st), face = $(".cust-face", st), bubble = $(".bubble", st), bubbleT = $(".bubble .t", st), tray = $(".medtray", st);
+    let total = 0, inBag = 0, phase = "fill";
+
+    function cycle(){
+      phase = "fill"; inBag = 0;
+      bag.classList.remove("closed"); label.textContent = "";
+      bag.style.opacity = ""; bag.style.transform = "";
+      popIn(bag, scope);
+      typeText(rxText, msg("pharmacy"), scope);
+      tray.innerHTML = "";
+      total = ri(3, 5);
+      for (let i = 0; i < total; i++) {
+        const m = h(`<div class="med">${makeMedSVG()}</div>`);
+        tray.appendChild(m);
+        popIn(m, scope, 120 + i * 90);
+        makeDraggable(m, scope, {
+          target: () => bag,
+          dest: () => { const r = bag.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height * 0.32, s: 0.35 }; },
+          onArrive: arrive,
+        });
+      }
+    }
+    function arrive(){
+      if (!scope.alive) return;
+      inBag++;
+      Sound.play("shara");
+      scope.anim(bagIn, [{ transform: "scale(1)" }, { transform: "scale(1.12,1.08)" }, { transform: "scale(1)" }], { duration: 280, easing: "ease-out" });
+      const r = bag.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top + r.height * 0.25, 4);
+      if (inBag >= total && phase === "fill") { phase = "close"; scope.timeout(closeBag, 350); }
+    }
+    function closeBag(){
+      bag.classList.add("closed");
+      Sound.play("pop");
+      scope.anim(bagIn, [{ transform: "scaleY(1)" }, { transform: "scaleY(.92)" }, { transform: "scaleY(1)" }], { duration: 300 });
+      typeText(label, msg("pharmacyLabel"), scope, () => scope.timeout(serve, 300));
+    }
+    function serve(){
+      if (phase !== "close") return;
+      phase = "serve";
+      face.textContent = pick(ANIMALS);
+      bubble.style.opacity = 0; bubbleT.textContent = "";
+      scope.anim(cust, [{ transform: `translateX(${160 * M}%)` }, { transform: "translateX(0)" }], { duration: 550, easing: "cubic-bezier(.2,.8,.3,1.1)" }, () => {
+        const br = bag.getBoundingClientRect(), fr = face.getBoundingClientRect();
+        const dx = (fr.left + fr.width / 2) - (br.left + br.width / 2) - U * 6, dy = (fr.top + fr.height * 0.6) - (br.top + br.height / 2);
+        scope.anim(bag, [{ transform: "translate(0,0) scale(1)" }, { transform: `translate(${dx}px,${dy}px) scale(.5)` }], { duration: 500, easing: "ease-in-out" }, () => {
+          Sound.play("chime");
+          scope.anim(face, [{ transform: "translateY(0) scale(1)" }, { transform: `translateY(${-U * 4}px) scale(1.12)` }, { transform: "translateY(0) scale(1)" }, { transform: `translateY(${-U * 2}px) scale(1.06)` }, { transform: "translateY(0) scale(1)" }], { duration: 700, easing: "ease-out" });
+          scope.anim(bubble, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], { duration: 300 });
+          const fr2 = face.getBoundingClientRect(); FX.burst(fr2.left + fr2.width / 2, fr2.top + fr2.height / 2, 6);
+          typeText(bubbleT, msg("pharmacyThanks"), scope, () => scope.timeout(leave, 1500));
+        });
+      });
+    }
+    function leave(){
+      scope.anim(bag, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+      scope.anim(bubble, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+      scope.anim(cust, [{ transform: "translateX(0)" }, { transform: `translateX(${160 * M}%)` }], { duration: 550, easing: "ease-in" }, cycle);
+    }
+    cust.addEventListener("pointerdown", e => { if (!e.isPrimary || phase !== "serve") return; e._handled = true; Sound.play("pop"); bounce(face, scope, 1.12); });
+    bag.addEventListener("pointerdown", e => { if (!e.isPrimary || phase !== "fill") return; e._handled = true; Sound.play("pop"); bounce(bagIn, scope, 1.06); });
+    cycle();
+  },
+};
+
+/* ---------- たっきゅうびん ---------- */
+screens.delivery = {
+  el: $("#s-delivery"),
+  enter(scope, el){
+    const tile = () => `<div class="tile">
+      <div style="position:absolute;left:4%;bottom:0">${ART.tree("#B5D9B0")}</div>
+      <div style="position:absolute;left:24%;bottom:0">${ART.smallHouse("#E8B7A8")}</div>
+      <div style="position:absolute;left:52%;bottom:0">${ART.tree("#A8CFA3")}</div>
+      <div style="position:absolute;left:70%;bottom:0">${ART.smallHouse("#B7CBE6")}</div>
+    </div>`;
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="scene">
+        <div class="sun"></div>
+        <div class="cloud" style="left:40%;top:14%;width:calc(var(--u)*22)"></div>
+        <div class="cloud" style="left:68%;top:28%;width:calc(var(--u)*16)"></div>
+        <div class="hills">${tile()}${tile()}</div>
+        <div class="road"></div>
+        <div class="dest">${ART.house()}<div class="resident"></div><div class="hand">👋</div></div>
+        <div class="truck"><div class="truck-in">${ART.truck()}<div class="bed"><div></div><div></div><div></div></div></div></div>
+      </div>
+      <div class="boxes"></div>
+      <div class="gorow"><div class="go">しゅっぱつ</div></div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), truck = $(".truck", st), truckIn = $(".truck-in", st), bedSlots = $$(".bed div", st);
+    const boxes = $(".boxes", st), go_ = $(".go", st), dest = $(".dest", st), resident = $(".resident", st), hand = $(".hand", st), hills = $(".hills", st), scene = $(".scene", st);
+    let loaded = 0, phase = "load";
+
+    function cycle(){
+      phase = "load"; loaded = 0;
+      go_.classList.remove("ready");
+      bedSlots.forEach(s => { s.innerHTML = ""; s.style.opacity = 0; s.style.transform = ""; });
+      typeText(banner, msg("delivery"), scope);
+      boxes.innerHTML = "";
+      shuffle(BOX_COLORS).slice(0, 3).forEach((col, i) => {
+        const size = rnd(0.78, 1.08);
+        const b = h(`<div class="box" style="width:${U * 24 * size}px">${makeBoxSVG(col)}</div>`);
+        b._col = col;
+        boxes.appendChild(b);
+        popIn(b, scope, 100 + i * 100);
+        makeDraggable(b, scope, {
+          target: () => truck,
+          dest: () => { const slot = bedSlots[Math.min(loaded, 2)].getBoundingClientRect(); return { x: slot.left + slot.width / 2, y: slot.top + slot.height * 0.55, s: 0.6 }; },
+          onArrive: () => load(b),
+        });
+      });
+    }
+    function load(b){
+      if (!scope.alive) return;
+      const slot = bedSlots[Math.min(loaded, 2)];
+      if (loaded < 3) { slot.innerHTML = makeBoxSVG(b._col); slot.style.opacity = 1; }
+      loaded++;
+      Sound.play("dosun");
+      scope.anim(truckIn, [{ transform: "translateY(0)" }, { transform: `translateY(${U * 1.2}px)` }, { transform: "translateY(0)" }], { duration: 300, easing: "ease-out" });
+      const r = slot.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top, 3);
+      if (loaded >= 3 && phase === "load") go_.classList.add("ready");
+    }
+
+    go_.addEventListener("pointerdown", e => {
+      if (!e.isPrimary) return;
+      e._handled = true;
+      bounce(go_, scope, 1.05);
+      if (phase !== "load") { Sound.play("tap"); return; }   // 走っている間の連打は何も起こさない
+      depart();
+    });
+    truck.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || phase !== "load") return;
+      e._handled = true; Sound.play("pop"); bounce(truckIn, scope, 1.04);
+    });
+
+    function depart(){
+      phase = "drive";
+      go_.classList.remove("ready");
+      // 積まれていない荷物は おるすばん（消える）
+      $$(".box", boxes).forEach(b => { if (b.dataset.st === "idle" || b.dataset.st === "enter") { b.dataset.st = "done"; scope.anim(b, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 }); } });
+      Sound.play("broro");
+      truck.classList.add("spin");
+      const W = scene.clientWidth, baseLeft = truck.offsetLeft, tw = truck.offsetWidth;
+      scope.anim(truck, [{ transform: "translateX(0px)" }, { transform: `translateX(${(W - baseLeft) * 1.05}px)` }], { duration: 1200, easing: "ease-in" });
+      scope.anim(hills, [{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }], { duration: 2000, easing: "ease-in-out" }, () => { hills.style.transform = ""; });
+      scope.timeout(() => arriveScene(baseLeft, tw), 2000);
+    }
+    function arriveScene(baseLeft, tw){
+      scope.anim(dest, [{ transform: `translateX(${170 * M}%)`, opacity: REDUCED ? 0 : 1 }, { transform: "translateX(0)", opacity: 1 }], { duration: 600, easing: "ease-out" });
+      const destLeft = dest.offsetLeft;
+      const stopX = destLeft - tw * 0.9 - baseLeft;   // 家の手前で止まる（左が少しはみ出してもよい）
+      scope.anim(truck, [{ transform: `translateX(${-baseLeft - tw}px)` }, { transform: `translateX(${stopX}px)` }], { duration: 900, easing: "ease-out", delay: 250 }, () => {
+        truck.classList.remove("spin");
+        unload();
+      });
+    }
+    function unload(){
+      const n = Math.min(loaded, 3);
+      const door = (() => { const r = dest.getBoundingClientRect(); return { x: r.left + r.width * 0.39, y: r.top + r.height * 0.75 }; })();
+      for (let i = 0; i < n; i++) {
+        const s = bedSlots[i];
+        scope.timeout(() => {
+          const r = s.getBoundingClientRect(); const c = center(r);
+          scope.anim(s, [{ transform: "translate(0,0) scale(1)", opacity: 1 }, { transform: `translate(${(door.x - c.x) / 2}px,${(door.y - c.y) / 2 - U * 8}px) scale(.8)`, opacity: 1, offset: 0.5 }, { transform: `translate(${door.x - c.x}px,${door.y - c.y}px) scale(.4)`, opacity: 0 }],
+            { duration: 450, easing: "ease-in-out" }, () => Sound.play("post"));
+        }, i * 260);
+      }
+      scope.timeout(() => {
+        resident.textContent = pick(ANIMALS);
+        scope.anim(resident, [{ transform: "scale(0)", opacity: 0 }, { transform: "scale(1.15)", opacity: 1, offset: 0.7 }, { transform: "scale(1)", opacity: 1 }], { duration: 400, easing: "ease-out" });
+        scope.anim(hand, [{ opacity: 0 }, { opacity: 1 }], { duration: 200 });
+        scope.anim(hand, [{ transform: "rotate(-18deg)" }, { transform: "rotate(18deg)" }, { transform: "rotate(-18deg)" }], { duration: 700, iterations: 3, easing: "ease-in-out", fill: "none" });
+        Sound.play("chime");
+        const r = resident.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top + r.height / 2, 6);
+        typeText(banner, msg("deliveryDone"), scope, () => scope.timeout(reset, 1800));
+      }, n * 260 + 350);
+    }
+    function reset(){
+      scope.anim(resident, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+      scope.anim(hand, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+      scope.anim(dest, [{ transform: "translateX(0)", opacity: 1 }, { transform: `translateX(${170 * M}%)`, opacity: 1 }], { duration: 600, easing: "ease-in" });
+      truck.classList.add("spin");
+      const cur = truck.style.transform || "translateX(0)";
+      scope.anim(truck, [{ transform: cur }, { transform: "translateX(0px)" }], { duration: 900, easing: "ease-in-out" }, () => { truck.classList.remove("spin"); cycle(); });
+    }
+    cycle();
+  },
+};
+
+/* ---------- おしまい ---------- */
+screens.end = {
+  el: $("#s-end"),
+  enter(scope, el){
+    el.appendChild(h(`<div class="stage endbox">${ART.moon()}<div>おしまい</div><div style="font-size:calc(var(--u)*5.5)">また あそぼうね</div></div>`));
+    releaseAwake();
+  },
+};
+
+/* ---------- 保護者せってい ---------- */
+screens.parent = {
+  el: $("#s-parent"),
+  enter(scope, el){
+    const seg = (name, opts, val) => `<div class="seg" data-k="${name}">${opts.map(([v, l]) => `<button data-v="${v}" class="${v === val ? "on" : ""}">${l}</button>`).join("")}</div>`;
+    const tg = (key, on) => `<button class="tg ${on ? "on" : ""}" data-t="${key}" aria-label="${key}"></button>`;
+    const w = h(`<div class="scroll"><div class="pwrap">
+      <h1>ほごしゃ せってい</h1>
+      <div class="pcard"><h2>こどもの なまえ</h2>
+        <input class="txt" id="pName" maxlength="12" autocomplete="off">
+        <p>ひらがなで入れると、画面に「（なまえ）くん」と出ます。</p></div>
+      <div class="pcard"><h2>かぞくの ことば</h2>
+        <div class="chips" id="pChips"></div>
+        <div class="addrow"><input class="txt" id="pFam" maxlength="10" placeholder="れい：ねえね" autocomplete="off"><button class="pbtn" id="pFamAdd">ついか</button></div></div>
+      <div class="pcard">
+        <div class="prow"><h2 style="margin:0">おと</h2>${tg("sound", S.sound)}</div>
+        <div class="prow"><span>おとの おおきさ</span>${seg("volume", [[0, "小"], [1, "中"], [2, "大"]], S.volume)}</div>
+        <div class="prow"><span>もじの はやさ</span>${seg("typeSpeed", [[100, "ゆっくり"], [50, "ふつう"], [30, "はやい"]], S.typeSpeed)}</div>
+        <div class="prow"><span>よるモード（くらめ）</span>${tg("night", S.night)}</div>
+      </div>
+      <div class="pcard"><h2>あそぶ おしごと</h2>
+        ${GAMES.map(g => `<div class="prow"><span>${GAME_INFO[g].label}</span>${tg("game:" + g, S.games[g])}</div>`).join("")}
+        <p>全部をオフにはできません（1つは残ります）。</p></div>
+      <div class="pcard"><h2>じどう きりかえ</h2>
+        <div class="prow"><span>おなじ あそびを</span>${seg("autoSwitch", [[0, "OFF"], [3, "3分"], [5, "5分"], [10, "10分"]], S.autoSwitch)}</div>
+        <p>決めた時間がたつと、つぎの あそびに自動で切りかわります。</p></div>
+      <div class="pcard"><h2>PIN へんこう（あんしょうばんごう）</h2>
+        <div class="addrow" style="margin-bottom:8px"><input class="txt pin-in" id="pPin1" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="あたらしい 4けた" autocomplete="off"></div>
+        <div class="addrow"><input class="txt pin-in" id="pPin2" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="もういちど" autocomplete="off"><button class="pbtn" id="pPinSet">かえる</button></div>
+        <div class="pmsg" id="pPinMsg"></div>
+        <p>わからなくなったときは、Safari の「履歴と Web サイトデータを消去」をすると 0000 にもどります（名前などの設定も消えます）。</p></div>
+      <div class="pcard"><h2>アクセスガイドの つかいかた（たいせつ）</h2>
+        <p>iPhone の「設定 → アクセシビリティ → アクセスガイド」をオンにし、アプリを開いたあとにサイドボタン（またはホームボタン）を3回押すと、アプリが固定されます。子どもはほかのアプリに移れなくなります。</p>
+        <p>解除するときも、同じように3回押してパスコードを入れます。</p>
+        <p>アプリの中の対策だけでは、Safari の画面から抜けられることがあります。アクセスガイドがいちばん確実な守りです。</p></div>
+      <div class="pcard"><h2>ホーム画面に追加する</h2>
+        <ol><li>Safari でこのページを開く</li><li>下の「共有」ボタン（四角から矢印）を押す</li><li>「ホーム画面に追加」を選び、名前を「おしごと」にして追加</li><li>ホーム画面の「おしごと」アイコンから開く</li></ol></div>
+      <div class="pcard"><h2>音が出ないとき</h2>
+        <p>iPhone の横にあるスイッチ（消音モード）がオンだと音が出ません。消音モードを切るか、音量ボタンで音を上げてください。</p></div>
+      <div class="pbig">
+        <button class="pbtn main" id="pBack">あそびに もどる</button>
+        <button class="pbtn end" id="pEnd">おしまいにする</button>
+      </div>
+    </div></div>`);
+    el.appendChild(w);
+    const name = $("#pName", w), chips = $("#pChips", w), fam = $("#pFam", w);
+    name.value = S.childName === "◯◯" ? "" : S.childName;
+    name.addEventListener("input", () => { S.childName = name.value.trim() || "◯◯"; saveSettings(); });
+    function drawChips(){
+      chips.innerHTML = "";
+      S.familyWords.forEach((wd, i) => {
+        const c = h(`<span class="chip"><span></span><button aria-label="けす">×</button></span>`);
+        c.firstElementChild.textContent = wd;
+        $("button", c).addEventListener("click", () => { S.familyWords.splice(i, 1); saveSettings(); drawChips(); });
+        chips.appendChild(c);
+      });
+      if (!S.familyWords.length) chips.appendChild(h(`<p style="margin:0">（からっぽのときは「とうちゃん」などが使われます）</p>`));
+    }
+    drawChips();
+    function addFam(){ const v = fam.value.trim(); if (v && S.familyWords.length < 12) { S.familyWords.push(v.slice(0, 10)); saveSettings(); drawChips(); } fam.value = ""; }
+    $("#pFamAdd", w).addEventListener("click", addFam);
+    fam.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); addFam(); } });
+
+    $$(".tg", w).forEach(b => b.addEventListener("click", () => {
+      const k = b.dataset.t;
+      if (k.startsWith("game:")) {
+        const g = k.slice(5);
+        if (S.games[g] && GAMES.filter(x => S.games[x]).length <= 1) return;
+        S.games[g] = !S.games[g];
+        b.classList.toggle("on", S.games[g]);
+      } else {
+        S[k] = !S[k];
+        b.classList.toggle("on", S[k]);
+        if (k === "sound") Sound.applyVolume();
+        if (k === "night") applyNight();
+      }
+      saveSettings();
+    }));
+    $$(".seg", w).forEach(sg => $$("button", sg).forEach(b => b.addEventListener("click", () => {
+      S[sg.dataset.k] = Number(b.dataset.v);
+      $$("button", sg).forEach(x => x.classList.toggle("on", x === b));
+      if (sg.dataset.k === "volume") { Sound.applyVolume(); Sound.play("chime"); }
+      saveSettings();
+    })));
+    $("#pPinSet", w).addEventListener("click", () => {
+      const a = $("#pPin1", w).value.trim(), b = $("#pPin2", w).value.trim(), m = $("#pPinMsg", w);
+      if (!/^\d{4}$/.test(a)) { m.textContent = "4けたの すうじを いれてください"; return; }
+      if (a !== b) { m.textContent = "2かいの すうじが ちがいます。もういちど いれてください"; return; }
+      S.pin = a; saveSettings();
+      $("#pPin1", w).value = ""; $("#pPin2", w).value = "";
+      m.textContent = "かえました";
+    });
+    $("#pBack", w).addEventListener("click", () => { document.activeElement && document.activeElement.blur && document.activeElement.blur(); keepAwake(); go("home"); });
+    $("#pEnd", w).addEventListener("click", () => { document.activeElement && document.activeElement.blur && document.activeElement.blur(); go("end"); });
+  },
+};
+
+/* =========================================================
+   親ロック（右上の すみ を 3びょう ながおし → PIN）
+   ========================================================= */
+const Lock = {
+  hold: null, tries: 0, entry: "",
+  init(){
+    const spot = $("#lock"), ring = $("#lockRing"), circ = $("circle", ring);
+    const cancel = () => {
+      if (!this.hold) return;
+      clearTimeout(this.hold.t1); clearTimeout(this.hold.t2);
+      if (this.hold.a) this.hold.a.cancel();
+      ring.style.opacity = 0; this.hold = null;
+    };
+    spot.addEventListener("pointerdown", e => {
+      e._handled = true;
+      if (this.hold) return;
+      try { spot.setPointerCapture(e.pointerId); } catch (_) {}
+      const hd = { id: e.pointerId, x: e.clientX, y: e.clientY };
+      hd.t1 = setTimeout(() => {
+        ring.style.opacity = 0.3;
+        hd.a = circ.animate([{ strokeDashoffset: 62.84 }, { strokeDashoffset: 0 }], { duration: 2000, fill: "forwards" });
+      }, 1000);
+      hd.t2 = setTimeout(() => { cancel(); this.open(); }, 3000);
+      this.hold = hd;
+    });
+    spot.addEventListener("pointermove", e => {
+      if (this.hold && e.pointerId === this.hold.id && Math.hypot(e.clientX - this.hold.x, e.clientY - this.hold.y) > 10) cancel();
+    });
+    spot.addEventListener("pointerup", cancel);
+    spot.addEventListener("pointercancel", cancel);
+
+    const pad = $("#pin .pinpad");
+    ["1", "2", "3", "4", "5", "6", "7", "8", "9", "とじる", "0", "けす"].forEach(k => {
+      const b = h(`<button class="${k.length > 1 ? "sm" : ""}">${k}</button>`);
+      b.addEventListener("pointerdown", e => { e._handled = true; e.preventDefault(); this.key(k); });
+      pad.appendChild(b);
+    });
+  },
+  open(){
+    this.tries = 0; this.entry = "";
+    $("#pin .pin-msg").textContent = "";
+    this.draw();
+    $("#pin").hidden = false;
+  },
+  close(){ $("#pin").hidden = true; this.entry = ""; },
+  draw(){ $$("#pin .pin-dots i").forEach((d, i) => d.classList.toggle("f", i < this.entry.length)); },
+  key(k){
+    Sound.play("tap");
+    if (k === "とじる") { this.close(); return; }
+    if (k === "けす") { this.entry = this.entry.slice(0, -1); this.draw(); return; }
+    if (this.entry.length >= 4) return;
+    this.entry += k; this.draw();
+    if (this.entry.length === 4) {
+      const pin = /^\d{4}$/.test(S.pin) ? S.pin : "0000";
+      if (this.entry === pin) {
+        setTimeout(() => { this.close(); go("parent"); }, 150);
+      } else {
+        this.tries++;
+        const dots = $("#pin .pin-dots");
+        dots.animate([{ transform: "translateX(0)" }, { transform: "translateX(-8px)" }, { transform: "translateX(8px)" }, { transform: "translateX(0)" }], { duration: 300 });
+        setTimeout(() => {
+          this.entry = ""; this.draw();
+          if (this.tries >= 3) this.close();
+          else $("#pin .pin-msg").textContent = "もういちど どうぞ";
+        }, 320);
+      }
+    }
+  },
+};
+
+/* =========================================================
+   全体のしかけ
+   ========================================================= */
+// ピンチズーム・ダブルタップズーム・長押しメニューを止める
+["gesturestart", "gesturechange", "gestureend"].forEach(n => document.addEventListener(n, ev => ev.preventDefault(), { passive: false }));
+document.addEventListener("contextmenu", e => e.preventDefault());
+document.addEventListener("dblclick", e => e.preventDefault(), { passive: false });
+document.addEventListener("selectstart", e => { if (!(e.target.closest && e.target.closest("input,textarea"))) e.preventDefault(); });
+document.addEventListener("touchmove", e => {
+  if (e.touches && e.touches.length > 1) { e.preventDefault(); return; }
+  if (!(e.target.closest && e.target.closest(".scroll"))) e.preventDefault();
+}, { passive: false });
+document.addEventListener("touchend", () => Sound.unlock(), true);
+
+// どこを触っても、すぐに反応する
+document.addEventListener("pointerdown", () => { Sound.unlock(); finishAllTyping(); }, true);
+document.addEventListener("pointerdown", e => {
+  FX.ripple(e.clientX, e.clientY);
+  if (!e._handled && e.isPrimary && current !== "parent") Sound.play("tap");
+});
+
+// 画面スリープ抑止（できる端末だけ）
+let wake = null;
+function keepAwake(){
+  if (current === "end") return;
+  try {
+    if ("wakeLock" in navigator && !wake && document.visibilityState === "visible") {
+      navigator.wakeLock.request("screen").then(w => { wake = w; w.addEventListener("release", () => { wake = null; }); }).catch(() => {});
+    }
+  } catch (e) {}
+}
+function releaseAwake(){ try { if (wake) wake.release(); } catch (e) {} wake = null; }
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    try { if (Sound.ctx && Sound.ctx.state !== "running") Sound.ctx.resume().catch(() => {}); } catch (e) {}
+    keepAwake();
+  }
+});
+
+function applyNight(){ document.documentElement.classList.toggle("night", !!S.night); }
+function layout(){
+  const r = $("#app").getBoundingClientRect();
+  const sw = Math.max(200, Math.min(r.width, r.height * 0.62));
+  U = sw / 100;
+  document.documentElement.style.setProperty("--sw", sw + "px");
+  document.documentElement.style.setProperty("--u", U + "px");
+}
+let resizeT = 0;
+window.addEventListener("resize", () => { clearTimeout(resizeT); resizeT = setTimeout(layout, 120); layout(); });
+window.addEventListener("orientationchange", () => setTimeout(layout, 300));
+
+layout();
+applyNight();
+FX.init();
+Lock.init();
+go("boot");
+</script>
+</body>
+</html>
