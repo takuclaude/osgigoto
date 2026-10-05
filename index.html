@@ -296,6 +296,7 @@ const DEFAULTS = {
   night: false,
   games: { pharmacy: true, stamp: true, register: true, delivery: true },
   autoSwitch: 0,
+  bgm: true,
   pin: "0000",
 };
 function cloneDefaults(){ return JSON.parse(JSON.stringify(DEFAULTS)); }
@@ -311,6 +312,7 @@ function sanitize(o){
   if (o.games && typeof o.games === "object") GAMES.forEach(g => { if (typeof o.games[g] === "boolean") s.games[g] = o.games[g]; });
   if (!GAMES.some(g => s.games[g])) s.games.stamp = true;
   if ([0, 3, 5, 10].includes(o.autoSwitch)) s.autoSwitch = o.autoSwitch;
+  if (typeof o.bgm === "boolean") s.bgm = o.bgm;
   if (typeof o.pin === "string" && /^\d{4}$/.test(o.pin)) s.pin = o.pin;
   return s;
 }
@@ -467,6 +469,109 @@ const SFX = {
   broro: t => ({ nodes: [Sound.noise(t, { t: 1.9, g: 0.5, filter: "lowpass", fq: 220, q: 2, attack: 0.35, hold: 0.6 }), Sound.tone(t, { type: "triangle", f: 55, f2: 75, t: 1.9, g: 0.25, attack: 0.3 })], dur: 1.95 }),
   post:  t => ({ nodes: [Sound.tone(t, { f: 660, t: 0.12, g: 0.3 }), Sound.tone(t, { f: 880, t: 0.16, g: 0.3, delay: 0.1 })], dur: 0.28 }),
   cut:   t => ({ nodes: [Sound.noise(t, { t: 0.12, g: 0.25, filter: "bandpass", fq: 3500, q: 1.2 })], dur: 0.13 }),
+};
+
+/* ---------- BGM（元気なマーチ。遊びごとにちがう曲） ----------
+   曲は 2/4拍子・8小節のくり返し。[音, 長さ(8分音符いくつ分)]、null は休み。
+   chords は1小節ごとの和音の根音（ベースが「ズン・チャッ」と鳴らす）。 */
+const SONGS = {
+  home: { bpm: 116, chords: ["C", "C", "F", "C", "G", "G", "G", "C"], mel: [
+    ["C5", 1], ["E5", 1], ["G5", 2], ["E5", 1], ["G5", 1], ["C6", 2], ["A5", 1], ["A5", 1], ["F5", 2], ["G5", 2], ["E5", 2],
+    ["F5", 1], ["F5", 1], ["D5", 2], ["G5", 1], ["F5", 1], ["E5", 1], ["D5", 1], ["C5", 1], ["E5", 1], ["D5", 2], ["C5", 4]] },
+  pharmacy: { bpm: 108, chords: ["F", "Bb", "C", "F", "F", "C", "C", "F"], mel: [
+    ["F5", 1], ["A5", 1], ["C6", 1], ["A5", 1], ["Bb5", 2], ["G5", 2], ["A5", 1], ["F5", 1], ["G5", 1], ["E5", 1], ["F5", 4],
+    ["C5", 1], ["F5", 1], ["A5", 1], ["F5", 1], ["G5", 1], ["A5", 1], ["Bb5", 2], ["A5", 1], ["G5", 1], ["F5", 1], ["E5", 1], ["F5", 4]] },
+  stamp: { bpm: 120, chords: ["G", "G", "C", "G", "D", "G", "D", "G"], mel: [
+    ["G5", 1], ["G5", 1], ["D5", 2], ["G5", 1], ["A5", 1], ["B5", 2], ["C6", 1], ["B5", 1], ["A5", 2], ["B5", 1], ["A5", 1], ["G5", 2],
+    ["A5", 1], ["A5", 1], ["F#5", 2], ["G5", 1], ["B5", 1], ["D6", 2], ["A5", 1], ["F#5", 1], ["A5", 1], ["D6", 1], ["G5", 4]] },
+  register: { bpm: 124, chords: ["C", "A", "F", "G", "C", "F", "G", "C"], mel: [
+    ["E5", 1], [null, 1], ["E5", 1], ["G5", 1], ["A5", 1], ["G5", 1], ["E5", 2], ["F5", 1], [null, 1], ["F5", 1], ["A5", 1], ["G5", 4],
+    ["E5", 1], ["G5", 1], ["C6", 1], ["G5", 1], ["A5", 1], ["F5", 1], ["D5", 2], ["G5", 1], ["F5", 1], ["E5", 1], ["D5", 1], ["C5", 2], [null, 2]] },
+  delivery: { bpm: 128, chords: ["D", "D", "G", "A", "A", "D", "A", "D"], mel: [
+    ["D5", 1], ["F#5", 1], ["A5", 1], ["F#5", 1], ["D5", 1], ["F#5", 1], ["A5", 2], ["B5", 1], ["A5", 1], ["G5", 1], ["B5", 1], ["A5", 4],
+    ["A5", 1], ["G5", 1], ["F#5", 1], ["E5", 1], ["F#5", 1], ["A5", 1], ["D6", 2], ["E5", 1], ["F#5", 1], ["G5", 1], ["E5", 1], ["D5", 4]] },
+};
+const NOTE_IDX = { C: 0, "C#": 1, Db: 1, D: 2, "D#": 3, Eb: 3, E: 4, F: 5, "F#": 6, Gb: 6, G: 7, "G#": 8, Ab: 8, A: 9, "A#": 10, Bb: 10, B: 11 };
+function midiOf(n){ const m = /^([A-G][#b]?)(\d)$/.exec(n); return 12 * (Number(m[2]) + 1) + NOTE_IDX[m[1]]; }
+const hz = m => 440 * Math.pow(2, (m - 69) / 12);
+function compileSong(sg){
+  const steps = sg.chords.length * 4, ev = Array.from({ length: steps }, () => []);
+  let t = 0;
+  sg.mel.forEach(([n, len]) => { if (n && t < steps) ev[t].push({ k: "mel", f: hz(midiOf(n)), len }); t += len; });
+  sg.chords.forEach((c, bar) => {
+    const root = 12 * 3 + NOTE_IDX[c];           // オクターブ2あたりの低い音
+    ev[bar * 4].push({ k: "bass", f: hz(root), len: 1 });
+    ev[bar * 4 + 2].push({ k: "bass", f: hz(root + 7), len: 1 });
+    ev[bar * 4 + 1].push({ k: "tick" }); ev[bar * 4 + 3].push({ k: "tick" });
+  });
+  return { ev, steps, eighth: 60 / sg.bpm / 2 };
+}
+const BGM = {
+  cur: null, out: null, timer: 0, next: 0, step: 0,
+  play(name){
+    if (!S.bgm || !SONGS[name] || !Sound.ctx) { this.stop(); return; }
+    if (this.cur === name && this.timer) return;
+    this.stop();
+    const c = Sound.ctx;
+    if (!SONGS[name]._c) SONGS[name]._c = compileSong(SONGS[name]);
+    this.cur = name; this.step = 0;
+    this.out = c.createGain();
+    this.out.gain.setValueAtTime(0.0001, c.currentTime);
+    this.out.gain.exponentialRampToValueAtTime(1, c.currentTime + 0.8);
+    this.out.connect(Sound.master);
+    this.next = c.currentTime + 0.2;
+    this.timer = setInterval(() => this.tick(), 90);
+    this.tick();
+  },
+  stop(){
+    if (this.timer) clearInterval(this.timer);
+    this.timer = 0; this.cur = null;
+    const o = this.out; this.out = null;
+    if (o && Sound.ctx) {
+      try {
+        const t = Sound.ctx.currentTime;
+        o.gain.cancelScheduledValues(t); o.gain.setValueAtTime(o.gain.value || 0.0001, t);
+        o.gain.exponentialRampToValueAtTime(0.0001, t + 0.35);
+      } catch (e) {}
+      setTimeout(() => { try { o.disconnect(); } catch (e) {} }, 900);
+    }
+  },
+  tick(){
+    const c = Sound.ctx; if (!c || !this.out) return;
+    if (c.state !== "running") { this.next = c.currentTime + 0.1; return; }
+    if (this.next < c.currentTime) this.next = c.currentTime + 0.05;
+    const sg = SONGS[this.cur]._c;
+    while (this.next < c.currentTime + 0.4) {
+      sg.ev[this.step].forEach(e => this.note(e, this.next, sg.eighth));
+      this.next += sg.eighth;
+      this.step = (this.step + 1) % sg.steps;
+    }
+  },
+  note(e, t, eighth){
+    const c = Sound.ctx, g = c.createGain();
+    g.connect(this.out);
+    if (e.k === "tick") {   // 小太鼓のような小さな「チャッ」
+      const src = c.createBufferSource(), f = c.createBiquadFilter();
+      src.buffer = Sound.noiseBuf; f.type = "highpass"; f.frequency.value = 5000;
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.035, t + 0.003); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.05);
+      src.connect(f); f.connect(g); src.start(t); src.stop(t + 0.06);
+      return;
+    }
+    const o = c.createOscillator(), len = eighth * e.len;
+    const peak = e.k === "mel" ? 0.12 : 0.16;
+    o.type = e.k === "mel" ? "square" : "triangle";
+    o.frequency.setValueAtTime(e.f, t);
+    let tone = o;
+    if (e.k === "mel") {    // 四角い波を少しまるくして、耳にやさしく
+      const f = c.createBiquadFilter(); f.type = "lowpass"; f.frequency.value = 2200;
+      o.connect(f); tone = f;
+    }
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(peak, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(peak * 0.5, t + Math.min(len * 0.5, 0.15));
+    g.gain.exponentialRampToValueAtTime(0.0001, t + len * 0.9);
+    tone.connect(g); o.start(t); o.stop(t + len);
+  },
 };
 
 /* ---------- タイピング表示 ---------- */
@@ -698,6 +803,7 @@ function go(name){
   next.el.appendChild(root);
   next.enter(scope, root);
   current = name;
+  BGM.play(name);   // 遊びの画面とえらぶ画面だけ流す（設定・おしまいでは止まる）
   const w = window.innerWidth * M;
   next.el.animate([{ transform: `translateX(${w}px)`, opacity: REDUCED ? 0 : 1 }, { transform: "translateX(0)", opacity: 1 }], { duration: 400, easing: "ease-in-out" });
   if (prev) {
@@ -1257,6 +1363,7 @@ screens.parent = {
         <div class="addrow"><input class="txt" id="pFam" maxlength="10" placeholder="れい：ねえね" autocomplete="off"><button class="pbtn" id="pFamAdd">ついか</button></div></div>
       <div class="pcard">
         <div class="prow"><h2 style="margin:0">おと</h2>${tg("sound", S.sound)}</div>
+        <div class="prow"><span>おんがく（BGM）</span>${tg("bgm", S.bgm)}</div>
         <div class="prow"><span>おとの おおきさ</span>${seg("volume", [[0, "小"], [1, "中"], [2, "大"]], S.volume)}</div>
         <div class="prow"><span>もじの はやさ</span>${seg("typeSpeed", [[100, "ゆっくり"], [50, "ふつう"], [30, "はやい"]], S.typeSpeed)}</div>
         <div class="prow"><span>よるモード（くらめ）</span>${tg("night", S.night)}</div>
@@ -1315,6 +1422,7 @@ screens.parent = {
         S[k] = !S[k];
         b.classList.toggle("on", S[k]);
         if (k === "sound") Sound.applyVolume();
+        if (k === "bgm" && !S.bgm) BGM.stop();
         if (k === "night") applyNight();
       }
       saveSettings();
@@ -1441,7 +1549,9 @@ function keepAwake(){
 }
 function releaseAwake(){ try { if (wake) wake.release(); } catch (e) {} wake = null; }
 document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState !== "visible") BGM.stop();
   if (document.visibilityState === "visible") {
+    BGM.play(current);
     try { if (Sound.ctx && Sound.ctx.state !== "running") Sound.ctx.resume().catch(() => {}); } catch (e) {}
     keepAwake();
   }
