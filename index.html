@@ -64,16 +64,19 @@ button{font-family:inherit;color:inherit}
 /* ---------- 起動画面 ---------- */
 .boot{align-items:center;justify-content:center;gap:calc(var(--u)*8)}
 .boot-title{font-size:calc(var(--u)*15);letter-spacing:.1em;color:var(--ink)}
-.boot-icons{display:flex;gap:calc(var(--u)*3)}
+.boot-icons{display:grid;grid-template-columns:repeat(4,auto);gap:calc(var(--u)*3)}
 .boot-icons div{width:calc(var(--u)*18);height:calc(var(--u)*18);border-radius:calc(var(--u)*5);display:flex;align-items:center;justify-content:center}
 .boot-icons svg{width:80%;height:80%}
 .boot-btn{width:calc(var(--u)*46);height:calc(var(--u)*46);border-radius:50%;background:#F4C99B;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*7);color:var(--ink);box-shadow:0 calc(var(--u)*1.5) 0 #DDA874;animation:breathe 2.4s ease-in-out infinite}
 @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 
 /* ---------- おしごと えらび ---------- */
-.cards{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:calc(var(--u)*4);padding:calc(var(--u)*5) calc(var(--u)*5) calc(var(--u)*7);align-content:stretch}
-.card{border-radius:calc(var(--u)*7);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--u)*2);box-shadow:0 calc(var(--u)*1.4) 0 rgba(58,50,38,.12);font-size:calc(var(--u)*5);max-height:calc(var(--u)*80)}
+.cards{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:calc(var(--u)*4);padding:calc(var(--u)*5) calc(var(--u)*5) calc(var(--u)*7);align-content:stretch}
+.card{min-height:0;overflow:hidden;border-radius:calc(var(--u)*7);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--u)*2);box-shadow:0 calc(var(--u)*1.4) 0 rgba(58,50,38,.12);font-size:calc(var(--u)*5);max-height:calc(var(--u)*80)}
 .card svg{width:70%;max-height:65%}
+.cards.many{gap:calc(var(--u)*3);padding:calc(var(--u)*4) calc(var(--u)*5) calc(var(--u)*6)}
+.cards.many .card{border-radius:calc(var(--u)*5);font-size:calc(var(--u)*4.4);gap:calc(var(--u)*1)}
+.cards.many .card svg{width:60%;max-height:58%}
 .card.one{grid-column:1 / span 2}
 .c-pharmacy{background:#CDE8D8}.c-stamp{background:#F3E1B7}.c-register{background:#F4CFBC}.c-delivery{background:#CBE2EC}
 
@@ -230,6 +233,67 @@ button{font-family:inherit;color:inherit}
 .pbig{display:flex;flex-direction:column;gap:10px;margin-top:18px}
 .pbig .pbtn{font-size:17px;min-height:54px}
 
+/* ---------- パンやさん ---------- */
+.s-bakery{background:#F8EEDF}
+.c-bakery{background:#F1DDBF}.c-train{background:#CFE0EE}.c-cake{background:#F6D9D3}.c-dentist{background:#D3ECE4}
+.bk-shelf{flex:none;height:calc(var(--u)*20);margin:calc(var(--u)*3) calc(var(--u)*5) 0;border-bottom:calc(var(--u)*2) solid #C9A983;display:flex;align-items:flex-end;justify-content:center;gap:calc(var(--u)*2);padding-bottom:calc(var(--u)*1)}
+.bk-shelf div{width:calc(var(--u)*18);height:calc(var(--u)*13)}
+.bk-shelf svg,.bread svg{width:100%;height:100%;display:block}
+.bk-area{position:relative;flex:1}
+.oven{position:absolute;left:50%;top:4%;width:calc(var(--u)*64);height:calc(var(--u)*53);margin-left:calc(var(--u)*-32)}
+.oven svg{width:100%;height:100%;display:block}
+.oven-glow{position:absolute;left:16%;top:36%;width:68%;height:44%;border-radius:calc(var(--u)*2);background:radial-gradient(ellipse at center,rgba(246,176,98,.85),rgba(240,150,80,.35) 70%,rgba(240,150,80,0));opacity:0;pointer-events:none}
+.oven .dial{transform-box:fill-box;transform-origin:center}
+.board{position:absolute;left:12%;right:12%;bottom:6%;height:calc(var(--u)*30);background:#E3C394;border-radius:calc(var(--u)*5);box-shadow:0 calc(var(--u)*1.4) 0 #C9A270;display:flex;align-items:center;justify-content:center}
+.dough{width:calc(var(--u)*36);height:calc(var(--u)*24)}
+.dough svg{width:100%;height:100%;display:block;overflow:visible}
+.bread{position:absolute;width:calc(var(--u)*30);height:calc(var(--u)*21);z-index:5;pointer-events:none}
+
+/* ---------- でんしゃ ---------- */
+.s-train{background:#E3EEF4}
+.tr-scene{position:relative;flex:1.6;margin-top:calc(var(--u)*3);overflow:hidden;background:#DDEDF4}
+.tr-bg{position:absolute;left:0;bottom:calc(var(--u)*30);width:200%;height:calc(var(--u)*24);display:flex}
+.tr-bg .tile{position:relative;width:50%;height:100%}
+.tr-bg svg{position:absolute;bottom:0}
+.rail{position:absolute;left:0;right:0;bottom:calc(var(--u)*24);height:calc(var(--u)*6);background:repeating-linear-gradient(90deg,#B49A76 0 calc(var(--u)*3),transparent calc(var(--u)*3) calc(var(--u)*8));border-bottom:calc(var(--u)*1.2) solid #8F877D}
+.train{position:absolute;left:50%;bottom:calc(var(--u)*29);width:calc(var(--u)*86);height:calc(var(--u)*35);margin-left:calc(var(--u)*-43)}
+.train-in{position:absolute;inset:0}
+.train svg{width:100%;height:100%;display:block;overflow:visible}
+.train.spin .wheel{animation:spin .6s linear infinite}
+.win{position:absolute;top:22%;width:17.3%;height:31%;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*9);line-height:1}
+.plat{position:absolute;left:0;right:0;bottom:0;height:calc(var(--u)*24);background:#D9D2C6;border-top:calc(var(--u)*1.6) solid #F2E2B4}
+.sign{position:absolute;left:3%;bottom:calc(var(--u)*3);background:#FFFCF5;border:calc(var(--u)*.8) solid #6F9DB5;border-radius:calc(var(--u)*2);padding:calc(var(--u)*1) calc(var(--u)*3);font-size:calc(var(--u)*4.4);white-space:nowrap}
+.riders{position:absolute;left:32%;right:2%;top:calc(var(--u)*3);height:calc(var(--u)*17);display:flex;align-items:center;justify-content:space-evenly}
+.rider{font-size:calc(var(--u)*12);line-height:1;width:calc(var(--u)*16);height:calc(var(--u)*16);display:flex;align-items:center;justify-content:center}
+
+/* ---------- ケーキやさん ---------- */
+.s-cake{background:#FAEDEA}
+.ck-area{position:relative;flex:1}
+.cake{position:absolute;left:50%;top:10%;width:calc(var(--u)*70);height:calc(var(--u)*56);margin-left:calc(var(--u)*-35)}
+.cake-in{position:absolute;inset:0}
+.cake svg{width:100%;height:100%;display:block;overflow:visible}
+.cream{transform-box:fill-box;transform-origin:50% 0;opacity:0}
+.tops{position:absolute;left:14%;right:14%;top:12%;height:30%}
+.top{position:absolute;font-size:calc(var(--u)*9);line-height:1;margin:calc(var(--u)*-5) 0 0 calc(var(--u)*-4.5)}
+.ckbox{position:absolute;inset:-6% -4% 6%;opacity:0;pointer-events:none}
+.ckbox svg{width:100%;height:100%;display:block}
+.cktray{flex:none;margin:0 calc(var(--u)*4) calc(var(--u)*7);height:calc(var(--u)*24);background:#F4D9D2;border-radius:calc(var(--u)*6);display:flex;align-items:center;justify-content:space-evenly}
+.ti{font-size:calc(var(--u)*11);line-height:1;width:calc(var(--u)*15);height:calc(var(--u)*15);display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,252,245,.7)}
+.ck-cust{position:absolute;right:3%;bottom:4%;width:calc(var(--u)*34);display:flex;flex-direction:column;align-items:center;transform:translateX(170%)}
+.ck-cust .cust-face{width:calc(var(--u)*26);height:calc(var(--u)*26);font-size:calc(var(--u)*17)}
+
+/* ---------- はいしゃさん ---------- */
+.s-dentist{background:#E7F3F0}
+.dn-area{position:relative;flex:1}
+.head{position:absolute;left:50%;top:4%;width:calc(var(--u)*80);height:calc(var(--u)*80);margin-left:calc(var(--u)*-40)}
+.head svg{width:100%;height:100%;display:block;overflow:visible}
+.brush{position:absolute;width:calc(var(--u)*36);height:calc(var(--u)*12);left:0;top:0;pointer-events:none;opacity:0;z-index:5}
+.brush svg{width:100%;height:100%;display:block}
+.dn-bubble{position:absolute;left:50%;bottom:6%;transform:translateX(-50%);background:var(--paper);border-radius:calc(var(--u)*4);padding:calc(var(--u)*2) calc(var(--u)*4);font-size:calc(var(--u)*5);white-space:nowrap;opacity:0}
+html.girl .s-bakery{background:#FBEDEF}html.girl .s-train{background:#F8EAF0}html.girl .s-cake{background:#FCEDF0}html.girl .s-dentist{background:#FAEEF2}
+html.girl .c-bakery{background:#F7D8DE}html.girl .c-train{background:#F3D5E2}html.girl .c-cake{background:#F9D3DC}html.girl .c-dentist{background:#F6DCE6}
+html.girl .tr-scene{background:#F6E6EE}html.girl .cktray{background:#F7D8E0}html.girl .board{background:#EBC9A8}
+
 /* ---------- おんなのこ（ピンク）のいろ ---------- */
 html.girl{--mint:#FBEAEE;--butter:#FCEFF0;--peach:#F9E6EB;--sky:#F7EAF0}
 html.girl .boot-btn{background:#F6C3CF;box-shadow:0 calc(var(--u)*1.5) 0 #DEA3B2}
@@ -261,6 +325,10 @@ html.girl .cust-face{background:#FDEBEF}
   <section class="screen s-register" id="s-register"></section>
   <section class="screen s-delivery" id="s-delivery"></section>
   <section class="screen s-parent" id="s-parent"></section>
+  <section class="screen s-bakery" id="s-bakery"></section>
+  <section class="screen s-train" id="s-train"></section>
+  <section class="screen s-cake" id="s-cake"></section>
+  <section class="screen s-dentist" id="s-dentist"></section>
   <section class="screen s-end" id="s-end"></section>
 </div>
 <div id="fx"></div>
@@ -306,11 +374,19 @@ const MESSAGES = {
   registerDone: [ "ありがとうございました" ],
   delivery: [ "{family}の おうち へ", "{name}{kun} はいたつ ちゅう", "にもつ を つもう" ],
   deliveryDone: [ "はいたつ かんりょう！", "とどけました" ],
+  bakery:   [ "{name}{kun} の ぱんやさん", "{family}の ぱん を やこう", "こねこね しよう" ],
+  bakeryDone: [ "やけたよ！", "おいしそう！" ],
+  train:    [ "おきゃくさん のってね", "{name}{kun} うんてんし", "{family}も のるよ" ],
+  trainDone: [ "つきました！", "とうちゃく！" ],
+  cake:     [ "けーき を かざろう", "{family}の けーき", "{name}{kun} の けーき" ],
+  cakeDone: [ "できあがり！", "かわいい けーき！" ],
+  dentist:  [ "おくち あーん", "はみがき しようね", "{name}{kun} はいしゃさん" ],
+  dentistDone: [ "ぴかぴか！", "きれいに なったね" ],
 };
 
 /* ---------- 設定の保存（失敗しても止まらない） ---------- */
 const STORE_KEY = "oshigoto.settings.v1";
-const GAMES = ["pharmacy", "stamp", "register", "delivery"];
+const GAMES = ["pharmacy", "stamp", "register", "delivery", "bakery", "train", "cake", "dentist"];
 const DEFAULTS = {
   childName: CONFIG.childName,
   familyWords: CONFIG.familyWords.slice(),
@@ -318,7 +394,7 @@ const DEFAULTS = {
   volume: 1,
   typeSpeed: 50,
   night: false,
-  games: { pharmacy: true, stamp: true, register: true, delivery: true },
+  games: { pharmacy: true, stamp: true, register: true, delivery: true, bakery: true, train: true, cake: true, dentist: true },
   autoSwitch: 0,
   bgm: true,
   mode: "boy",
@@ -495,6 +571,13 @@ const SFX = {
   broro: t => ({ nodes: [Sound.noise(t, { t: 1.9, g: 0.5, filter: "lowpass", fq: 220, q: 2, attack: 0.35, hold: 0.6 }), Sound.tone(t, { type: "triangle", f: 55, f2: 75, t: 1.9, g: 0.25, attack: 0.3 })], dur: 1.95 }),
   post:  t => ({ nodes: [Sound.tone(t, { f: 660, t: 0.12, g: 0.3 }), Sound.tone(t, { f: 880, t: 0.16, g: 0.3, delay: 0.1 })], dur: 0.28 }),
   cut:   t => ({ nodes: [Sound.noise(t, { t: 0.12, g: 0.25, filter: "bandpass", fq: 3500, q: 1.2 })], dur: 0.13 }),
+  ding:  t => ({ nodes: [Sound.tone(t, { f: 2093, t: 0.7, g: 0.3 }), Sound.tone(t, { f: 3136, t: 0.4, g: 0.08 })], dur: 0.72 }),
+  squish:t => ({ nodes: [Sound.tone(t, { f: 220, f2: 140, t: 0.13, g: 0.45 })], dur: 0.15 }),
+  sizzle:t => ({ nodes: [Sound.noise(t, { t: 0.9, g: 0.06, filter: "highpass", fq: 5000, attack: 0.15, hold: 0.4 })], dur: 0.92 }),
+  brush: t => ({ nodes: [Sound.noise(t, { t: 0.09, g: 0.16, filter: "bandpass", fq: 4200, q: 1.5 }), Sound.noise(t, { t: 0.09, g: 0.16, filter: "bandpass", fq: 3600, q: 1.5, delay: 0.12 })], dur: 0.22 }),
+  horn:  t => ({ nodes: [Sound.tone(t, { type: "triangle", f: 587, t: 0.22, g: 0.35 }), Sound.tone(t, { type: "triangle", f: 494, t: 0.36, g: 0.35, delay: 0.22 })], dur: 0.6 }),
+  gatan: t => ({ nodes: [Sound.tone(t, { f: 110, f2: 70, t: 0.08, g: 0.4 }), Sound.tone(t, { f: 100, f2: 65, t: 0.08, g: 0.4, delay: 0.14 })], dur: 0.24 }),
+  sparkle: t => ({ nodes: [Sound.tone(t, { f: 1568, t: 0.12, g: 0.18 }), Sound.tone(t, { f: 2093, t: 0.12, g: 0.18, delay: 0.08 }), Sound.tone(t, { f: 2637, t: 0.2, g: 0.16, delay: 0.16 })], dur: 0.38 }),
 };
 
 /* ---------- BGM（元気なマーチ。遊びごとにちがう曲） ----------
@@ -516,6 +599,18 @@ const SONGS = {
   delivery: { bpm: 128, chords: ["D", "D", "G", "A", "A", "D", "A", "D"], mel: [
     ["D5", 1], ["F#5", 1], ["A5", 1], ["F#5", 1], ["D5", 1], ["F#5", 1], ["A5", 2], ["B5", 1], ["A5", 1], ["G5", 1], ["B5", 1], ["A5", 4],
     ["A5", 1], ["G5", 1], ["F#5", 1], ["E5", 1], ["F#5", 1], ["A5", 1], ["D6", 2], ["E5", 1], ["F#5", 1], ["G5", 1], ["E5", 1], ["D5", 4]] },
+  bakery: { bpm: 112, chords: ["F", "F", "Bb", "F", "C", "C", "C", "F"], mel: [
+    ["F5", 1], ["G5", 1], ["A5", 1], ["F5", 1], ["C6", 2], ["A5", 2], ["Bb5", 1], ["A5", 1], ["G5", 1], ["Bb5", 1], ["A5", 4],
+    ["G5", 1], ["G5", 1], ["E5", 1], ["G5", 1], ["C6", 1], ["Bb5", 1], ["A5", 1], ["G5", 1], ["E5", 1], ["G5", 1], ["Bb5", 1], ["G5", 1], ["F5", 4]] },
+  train: { bpm: 132, chords: ["C", "C", "G", "G", "F", "C", "G", "C"], mel: [
+    ["C5", 1], ["C5", 1], ["E5", 1], ["G5", 1], ["C6", 2], ["G5", 2], ["B5", 1], ["A5", 1], ["G5", 1], ["F5", 1], ["D5", 2], ["G5", 2],
+    ["A5", 1], ["A5", 1], ["F5", 1], ["A5", 1], ["G5", 1], ["E5", 1], ["C5", 2], ["D5", 1], ["E5", 1], ["F5", 1], ["D5", 1], ["C5", 2], [null, 2]] },
+  cake: { bpm: 116, chords: ["G", "C", "D", "G", "C", "G", "D", "G"], mel: [
+    ["B5", 1], ["D6", 1], ["B5", 1], ["G5", 1], ["C6", 1], ["E5", 1], ["G5", 2], ["F#5", 1], ["A5", 1], ["D6", 2], ["B5", 2], ["G5", 2],
+    ["E5", 1], ["G5", 1], ["C6", 1], ["G5", 1], ["D5", 1], ["G5", 1], ["B5", 2], ["A5", 1], ["F#5", 1], ["D5", 1], ["F#5", 1], ["G5", 4]] },
+  dentist: { bpm: 120, chords: ["D", "G", "A", "D", "G", "D", "A", "D"], mel: [
+    ["D5", 1], ["F#5", 1], ["D5", 1], ["A5", 1], ["B5", 1], ["G5", 1], ["D5", 2], ["C#5", 1], ["E5", 1], ["A5", 2], ["F#5", 2], ["D5", 2],
+    ["G5", 1], ["B5", 1], ["D6", 1], ["B5", 1], ["A5", 1], ["F#5", 1], ["D5", 2], ["E5", 1], ["A5", 1], ["C#5", 1], ["E5", 1], ["D5", 4]] },
 };
 const NOTE_IDX = { C: 0, "C#": 1, Db: 1, D: 2, "D#": 3, Eb: 3, E: 4, F: 5, "F#": 6, Gb: 6, G: 7, "G#": 8, Ab: 8, A: 9, "A#": 10, Bb: 10, B: 11 };
 function midiOf(n){ const m = /^([A-G][#b]?)(\d)$/.exec(n); return 12 * (Number(m[2]) + 1) + NOTE_IDX[m[1]]; }
@@ -725,6 +820,105 @@ const ART = {
       '<path d="M50 50 m-6 0 a6 6 0 1 1 12 0 a12 12 0 1 1 -24 0 a18 18 0 1 1 36 0 a24 24 0 1 1 -48 0"/>' +
       '<path d="M50 8 q9 -6 12 4 M84 26 q9 2 4 12 M90 64 q6 8 -4 12 M64 92 q-2 9 -12 4 M26 88 q-9 4 -10 -6 M10 58 q-8 -4 -2 -12 M16 22 q-2 -9 8 -10"/></g></svg>';
   },
+  oven(){
+    return '<svg viewBox="0 0 120 100">' +
+      '<rect x="6" y="8" width="108" height="86" rx="10" fill="#E8D8C6" stroke="#B9A089" stroke-width="3"/>' +
+      '<rect x="6" y="8" width="108" height="20" rx="10" fill="#DCC7B1" stroke="#B9A089" stroke-width="3"/>' +
+      '<g class="dial"><circle cx="86" cy="18" r="6" fill="#FFFCF5" stroke="#9B8670" stroke-width="2.5"/><rect x="85" y="12" width="2" height="6" fill="#9B8670"/></g>' +
+      '<circle cx="102" cy="18" r="4" fill="#E58C7E"/>' +
+      '<rect x="18" y="36" width="84" height="46" rx="6" fill="#6E5E55" stroke="#9B8670" stroke-width="3"/>' +
+      '<rect x="40" y="31" width="40" height="5" rx="2.5" fill="#9B8670"/>' +
+      '<rect x="16" y="94" width="12" height="5" rx="2" fill="#9B8670"/><rect x="92" y="94" width="12" height="5" rx="2" fill="#9B8670"/>' +
+      "</svg>";
+  },
+  dough(k){
+    const d = [
+      "M14 40 Q6 22 24 16 Q36 4 52 12 Q70 6 82 18 Q96 28 88 42 Q86 56 66 56 Q50 62 34 56 Q12 56 14 40Z",
+      "M12 38 Q8 20 28 14 Q46 6 64 12 Q88 16 90 34 Q92 52 70 56 Q50 60 30 56 Q12 52 12 38Z",
+      "M10 36 Q10 16 34 13 Q50 10 66 13 Q90 16 90 36 Q90 54 66 57 Q50 59 34 57 Q10 54 10 36Z",
+      "M10 35 Q10 12 50 12 Q90 12 90 35 Q90 58 50 58 Q10 58 10 35Z",
+    ][Math.min(k, 3)];
+    return `<svg viewBox="0 0 100 70"><path d="${d}" fill="#F6E7CC" stroke="#D8BE93" stroke-width="3"/><ellipse cx="38" cy="26" rx="10" ry="4" fill="#FFFAEE" opacity=".7"/></svg>`;
+  },
+  bread(kind){
+    const S2 = (b) => '<svg viewBox="0 0 100 70">' + b + "</svg>";
+    if (kind === 0) return S2('<ellipse cx="50" cy="40" rx="40" ry="25" fill="#E3A866" stroke="#B97B3E" stroke-width="3"/><path d="M32 22 q7 18 0 36 M50 16 q7 24 0 48 M68 22 q7 18 0 36" stroke="#C98B4C" stroke-width="3" fill="none" stroke-linecap="round"/>');
+    if (kind === 1) return S2('<circle cx="50" cy="37" r="29" fill="#F2D48A" stroke="#C9A85A" stroke-width="3"/><path d="M30 22 L66 58 M42 12 L76 46 M24 34 L54 64 M70 22 L34 58 M58 12 L24 46 M76 34 L46 64" stroke="#D9B867" stroke-width="2.5" stroke-linecap="round"/>');
+    if (kind === 2) return S2('<path d="M8 52 Q50 -6 92 52 Q72 42 50 46 Q28 42 8 52Z" fill="#E9B26A" stroke="#B97B3E" stroke-width="3" stroke-linejoin="round"/><path d="M30 26 q6 10 4 20 M50 18 q2 12 0 26 M70 26 q-6 10 -4 20" stroke="#C98B4C" stroke-width="2.5" fill="none" stroke-linecap="round"/>');
+    if (kind === 3) return S2('<path d="M20 64 V30 Q20 10 38 12 Q50 2 62 12 Q80 10 80 30 V64 Z" fill="#E6BE80" stroke="#B98B4E" stroke-width="3" stroke-linejoin="round"/><path d="M27 64 V32 Q27 18 40 19 Q50 11 60 19 Q73 18 73 32 V64 Z" fill="#F7E6C4"/>');
+    return S2('<path d="M50 64C26 48 12 38 12 24 12 13 21 6 31 6c8 0 14 4 19 11 5-7 11-11 19-11 10 0 19 7 19 18 0 14-14 24-38 40z" fill="#EDB27A" stroke="#B97B3E" stroke-width="3" stroke-linejoin="round"/><ellipse cx="34" cy="20" rx="8" ry="4" fill="#F8D9B0" opacity=".8"/>');
+  },
+  breadIcon(){ return ART.bread(0); },
+  train(){
+    const c = S.mode === "girl" ? ["#F2B7C7", "#C98696"] : ["#9CC8DD", "#6F9DB5"];
+    const wheel = x => `<g class="wheel"><circle cx="${x}" cy="80" r="9" fill="#4E4A47"/><circle cx="${x}" cy="80" r="3.5" fill="#CFC8BE"/><rect x="${x - 1}" y="72" width="2" height="5" fill="#CFC8BE"/></g>`;
+    return '<svg viewBox="0 0 220 90">' +
+      `<path d="M60 10 L70 2 M80 10 L70 2" stroke="#8F877D" stroke-width="2.5" fill="none"/>` +
+      `<path d="M6 16 Q6 10 14 10 H196 Q214 10 216 30 V70 Q216 74 212 74 H10 Q6 74 6 70 Z" fill="${c[0]}" stroke="${c[1]}" stroke-width="3" stroke-linejoin="round"/>` +
+      '<rect x="6" y="56" width="210" height="6" fill="#F5E6B8"/>' +
+      '<path d="M184 18 H200 Q210 20 211 34 V40 H184 Z" fill="#E8F4F8" stroke="' + c[1] + '" stroke-width="2.5" stroke-linejoin="round"/>' +
+      [22, 72, 122].map(x => `<rect x="${x}" y="20" width="38" height="28" rx="5" fill="#EEF7FA" stroke="${c[1]}" stroke-width="2.5"/>`).join("") +
+      '<rect x="164" y="20" width="14" height="36" rx="3" fill="#E8F4F8" stroke="' + c[1] + '" stroke-width="2.5"/>' +
+      '<circle cx="212" cy="64" r="3" fill="#F5E6B8"/>' +
+      wheel(34) + wheel(60) + wheel(160) + wheel(186) + "</svg>";
+  },
+  cake(){
+    return '<svg viewBox="0 0 140 112">' +
+      '<ellipse cx="70" cy="100" rx="66" ry="11" fill="#E7DCCD" stroke="#CDBFA9" stroke-width="2.5"/>' +
+      '<path d="M18 40 V88 Q18 100 70 100 Q122 100 122 88 V40 Z" fill="#F3D9A7" stroke="#D2B47C" stroke-width="3"/>' +
+      '<path d="M18 66 Q70 78 122 66" stroke="#E8A4A4" stroke-width="5" fill="none"/>' +
+      '<ellipse cx="70" cy="40" rx="52" ry="16" fill="#F7E3B9" stroke="#D2B47C" stroke-width="3"/>' +
+      '<g class="cream"><ellipse cx="70" cy="40" rx="54" ry="17" fill="#FFF8F0" stroke="#EADBC8" stroke-width="2.5"/>' +
+      '<path d="M17 42 Q17 56 24 56 Q30 56 30 48 Q32 60 40 60 Q48 60 48 52 Q52 62 62 62 Q72 62 72 54 Q76 62 86 60 Q94 58 94 50 Q98 60 106 58 Q114 56 114 48 Q118 56 123 50 V42 Q70 66 17 42Z" fill="#FFF8F0" stroke="#EADBC8" stroke-width="2"/></g>' +
+      "</svg>";
+  },
+  cakeBox(){
+    const c = S.mode === "girl" ? ["#F6CBD6", "#D79AAB"] : ["#F3E1C9", "#C9AE8A"];
+    return `<svg viewBox="0 0 140 112"><rect x="10" y="20" width="120" height="86" rx="6" fill="${c[0]}" stroke="${c[1]}" stroke-width="3"/>` +
+      `<rect x="6" y="12" width="128" height="18" rx="5" fill="${c[0]}" stroke="${c[1]}" stroke-width="3"/>` +
+      '<rect x="64" y="12" width="12" height="94" fill="#E88A9A"/><rect x="10" y="54" width="120" height="10" fill="#E88A9A"/>' +
+      '<path d="M70 12 C56 -6 44 6 62 12 M70 12 C84 -6 96 6 78 12" stroke="#E88A9A" stroke-width="6" fill="none" stroke-linecap="round"/></svg>';
+  },
+  cakeIcon(){
+    return '<svg viewBox="0 0 140 112"><ellipse cx="70" cy="100" rx="66" ry="11" fill="#E7DCCD"/><path d="M18 40 V88 Q18 100 70 100 Q122 100 122 88 V40 Z" fill="#F3D9A7" stroke="#D2B47C" stroke-width="3"/>' +
+      '<ellipse cx="70" cy="40" rx="54" ry="17" fill="#FFF8F0" stroke="#EADBC8" stroke-width="2.5"/><circle cx="50" cy="36" r="8" fill="#E8636B"/><circle cx="74" cy="32" r="8" fill="#E8636B"/><circle cx="92" cy="40" r="8" fill="#E8636B"/></svg>';
+  },
+  head(sp, color, dirty){
+    const ears = {
+      cat: '<path d="M38 64 L46 10 L86 44Z M162 64 L154 10 L114 44Z" fill="C" stroke="D" stroke-width="3" stroke-linejoin="round"/>',
+      bear: '<circle cx="46" cy="44" r="22" fill="C" stroke="D" stroke-width="3"/><circle cx="154" cy="44" r="22" fill="C" stroke="D" stroke-width="3"/>',
+      rabbit: '<ellipse cx="72" cy="22" rx="14" ry="38" fill="C" stroke="D" stroke-width="3"/><ellipse cx="128" cy="22" rx="14" ry="38" fill="C" stroke="D" stroke-width="3"/>',
+      dog: '<ellipse cx="30" cy="96" rx="18" ry="34" fill="D" transform="rotate(14 30 96)"/><ellipse cx="170" cy="96" rx="18" ry="34" fill="D" transform="rotate(-14 170 96)"/>',
+    }[sp].replace(/C/g, color[0]).replace(/D/g, color[1]);
+    const teeth = [];
+    [62, 81, 100, 119].forEach((x, i) => teeth.push([x, 128, 17, 16, i]));
+    [66, 84, 102, 120].forEach((x, i) => teeth.push([x, 164, 15, 13, i + 4]));
+    return '<svg viewBox="0 0 200 200">' + ears +
+      `<circle cx="100" cy="112" r="80" fill="${color[0]}" stroke="${color[1]}" stroke-width="3"/>` +
+      '<g class="eyes-open"><circle cx="70" cy="84" r="7" fill="#3A3226"/><circle cx="130" cy="84" r="7" fill="#3A3226"/></g>' +
+      '<g class="eyes-happy" opacity="0"><path d="M60 88 Q70 76 80 88 M120 88 Q130 76 140 88" stroke="#3A3226" stroke-width="5" fill="none" stroke-linecap="round"/></g>' +
+      '<ellipse cx="100" cy="106" rx="9" ry="6" fill="#6E5E55"/>' +
+      '<g class="mouth"><rect x="56" y="122" width="88" height="60" rx="26" fill="#A8606A"/><ellipse cx="100" cy="166" rx="30" ry="10" fill="#E99AA3"/>' +
+      teeth.map(([x, y, w, hh, i]) => `<rect class="tooth" data-i="${i}" x="${x}" y="${y}" width="${w}" height="${hh}" rx="4" fill="#FFFCF5"/>` +
+        (dirty.includes(i) ? `<g class="dirt" data-i="${i}"><circle cx="${x + w / 2}" cy="${y + hh / 2}" r="5" fill="#B08D6A"/><circle cx="${x + w / 2 + 4}" cy="${y + hh / 2 - 4}" r="2.5" fill="#B08D6A"/></g>` : "")).join("") +
+      "</g>" +
+      '<g class="smile" opacity="0"><path d="M68 136 Q100 170 132 136" stroke="#3A3226" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="52" cy="122" r="10" fill="#F2A0A8" opacity=".55"/><circle cx="148" cy="122" r="10" fill="#F2A0A8" opacity=".55"/></g>' +
+      "</svg>";
+  },
+  toothIcon(){
+    return '<svg viewBox="0 0 100 100"><path d="M24 18 Q36 8 50 16 Q64 8 76 18 Q88 30 80 52 Q76 64 72 84 Q70 92 64 88 Q60 74 50 72 Q40 74 36 88 Q30 92 28 84 Q24 64 20 52 Q12 30 24 18Z" fill="#FFFCF5" stroke="#B9C9C4" stroke-width="3" stroke-linejoin="round"/><path d="M76 10 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#F2C46D"/></svg>';
+  },
+  toothbrush(){
+    const c = S.mode === "girl" ? "#F2B7C7" : "#9CC8DD";
+    return `<svg viewBox="0 0 120 40"><rect x="0" y="15" width="80" height="11" rx="5.5" fill="${c}"/><rect x="78" y="10" width="38" height="18" rx="5" fill="#FFFCF5" stroke="${c}" stroke-width="3"/>` +
+      '<path d="M84 10 V2 M92 10 V2 M100 10 V2 M108 10 V2" stroke="#BFE3D0" stroke-width="4" stroke-linecap="round"/></svg>';
+  },
+  trainBgTile(){
+    const pole = x => `<div style="position:absolute;left:${x}%;bottom:0"><svg viewBox="0 0 10 60" width="${U * 3}" height="${U * 20}"><rect x="3" y="0" width="4" height="60" fill="#A99C8A"/><rect x="0" y="4" width="10" height="3" fill="#A99C8A"/></svg></div>`;
+    return `<div class="tile">${pole(2)}<div style="position:absolute;left:12%;bottom:0">${ART.tree("#B5D9B0")}</div>` +
+      `<div style="position:absolute;left:34%;bottom:0">${ART.smallHouse("#E8B7A8")}</div>${pole(52)}` +
+      `<div style="position:absolute;left:62%;bottom:0">${ART.tree("#A8CFA3")}</div><div style="position:absolute;left:80%;bottom:0">${ART.smallHouse("#B7CBE6")}</div></div>`;
+  },
   moon(){
     return '<svg viewBox="0 0 100 100"><path d="M62 14 A38 38 0 1 0 86 70 A30 30 0 1 1 62 14Z" fill="#F2DFA6"/><g fill="#CFC3E3"><circle cx="78" cy="22" r="3"/><circle cx="88" cy="40" r="2"/><circle cx="24" cy="18" r="2.5"/></g></svg>';
   },
@@ -870,6 +1064,10 @@ screens.boot = {
         <div class="c-stamp">${ART.stampIcon()}</div>
         <div class="c-register">${ART.registerIcon()}</div>
         <div class="c-delivery">${ART.truck()}</div>
+        <div class="c-bakery">${ART.breadIcon()}</div>
+        <div class="c-train">${ART.train()}</div>
+        <div class="c-cake">${ART.cakeIcon()}</div>
+        <div class="c-dentist">${ART.toothIcon()}</div>
       </div>
       <div class="boot-btn">さわってね</div>
     </div>`));
@@ -883,6 +1081,10 @@ const GAME_INFO = {
   stamp:    { label: "はんこ", icon: () => ART.stampIcon() },
   register: { label: "れじ", icon: () => ART.registerIcon() },
   delivery: { label: "たっきゅうびん", icon: () => ART.truck() },
+  bakery:   { label: "ぱんやさん", icon: () => ART.breadIcon() },
+  train:    { label: "でんしゃ", icon: () => ART.train() },
+  cake:     { label: "けーきやさん", icon: () => ART.cakeIcon() },
+  dentist:  { label: "はいしゃさん", icon: () => ART.toothIcon() },
 };
 screens.home = {
   el: $("#s-home"),
@@ -891,6 +1093,8 @@ screens.home = {
     const st = h(`<div class="stage"><div class="banner"><span class="t"></span></div><div class="cards"></div></div>`);
     el.appendChild(st);
     const cards = $(".cards", st);
+    if (list.length > 4) cards.classList.add("many");
+    cards.style.gridTemplateRows = `repeat(${Math.ceil(list.length / 2)}, minmax(0, 1fr))`;
     list.forEach(g => {
       const c = h(`<div class="card c-${g}${list.length === 1 ? " one" : ""}">${GAME_INFO[g].icon()}<div>${GAME_INFO[g].label}</div></div>`);
       c.addEventListener("pointerdown", e => {
@@ -1383,6 +1587,402 @@ screens.delivery = {
       scope.anim(truck, [{ transform: cur }, { transform: "translateX(0px)" }], { duration: 900, easing: "ease-in-out" }, () => { truck.classList.remove("spin"); cycle(); });
     }
     cycle();
+  },
+};
+
+/* ---------- パンやさん ---------- */
+screens.bakery = {
+  el: $("#s-bakery"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="bk-shelf"></div>
+      <div class="bk-area">
+        <div class="oven">${ART.oven()}<div class="oven-glow"></div></div>
+        <div class="board"><div class="dough"></div></div>
+      </div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), shelf = $(".bk-shelf", st), oven = $(".oven", st), glow = $(".oven-glow", st), dial = $(".dial", st);
+    const dough = $(".dough", st), board = $(".board", st), area = $(".bk-area", st);
+    let phase = "knead", k = 0, bakeLeft = 0;
+
+    function newDough(){
+      phase = "knead"; k = 0;
+      dough.innerHTML = ART.dough(0); dough.style.opacity = ""; dough.style.transform = "";
+      popIn(dough, scope);
+      typeText(banner, msg("bakery"), scope);
+    }
+    function knead(x, y){
+      k++;
+      Sound.play("squish");
+      dough.innerHTML = ART.dough(k);
+      scope.anim(dough, [{ transform: "scale(1,1)" }, { transform: "scale(1.16,.8)" }, { transform: "scale(.95,1.06)" }, { transform: "scale(1,1)" }], { duration: 320, easing: "ease-out" });
+      FX.burst(x, y, 3);
+      if (k >= 4) { phase = "move"; scope.timeout(toOven, 380); }
+    }
+    function toOven(){
+      const dr = dough.getBoundingClientRect(), gr = glow.getBoundingClientRect();
+      const dx = (gr.left + gr.width / 2) - (dr.left + dr.width / 2), dy = (gr.top + gr.height / 2) - (dr.top + dr.height / 2);
+      Sound.play("pick");
+      scope.anim(dough, [
+        { transform: "translate(0px,0px) scale(1)", opacity: 1 },
+        { transform: `translate(${dx / 2}px,${dy / 2 - U * 10}px) scale(.8)`, opacity: 1, offset: 0.5 },
+        { transform: `translate(${dx}px,${dy}px) scale(.45)`, opacity: 0 },
+      ], { duration: 650, easing: "ease-in-out" }, bake);
+    }
+    function bake(){
+      phase = "bake"; bakeLeft = 2000;
+      Sound.play("sizzle");
+      scope.anim(glow, [{ opacity: 0 }, { opacity: 1 }], { duration: 600, easing: "ease-in-out" });
+      const spin = scope.anim(dial, [{ transform: "rotate(0deg)" }, { transform: "rotate(360deg)" }], { duration: 2000, iterations: Infinity });
+      let last = performance.now();
+      const id = scope.interval(() => {
+        const now = performance.now(); bakeLeft -= now - last; last = now;
+        if (bakeLeft <= 0) { scope.stopInterval(id); if (spin) spin.cancel(); done(); }
+      }, 100);
+    }
+    function done(){
+      phase = "done";
+      Sound.play("ding");
+      scope.anim(glow, [{ opacity: 1 }, { opacity: 0 }], { duration: 700, easing: "ease-in-out" });
+      const kind = S.mode === "girl" && Math.random() < 0.4 ? 4 : ri(0, 3);
+      const b = h(`<div class="bread">${ART.bread(kind)}</div>`);
+      area.appendChild(b);
+      const ar = area.getBoundingClientRect(), gr = glow.getBoundingClientRect(), br = board.getBoundingClientRect();
+      const x0 = gr.left - ar.left + gr.width / 2, y0 = gr.top - ar.top + gr.height / 2;
+      b.style.left = (x0 - U * 15) + "px"; b.style.top = (y0 - U * 10.5) + "px";
+      const yd = (br.top - ar.top + br.height / 2) - y0;
+      scope.anim(b, [
+        { transform: "translate(0px,0px) scale(.4)", opacity: 0 },
+        { transform: `translate(0px,${yd}px) scale(1.2)`, opacity: 1, offset: 0.7 },
+        { transform: `translate(0px,${yd}px) scale(1)`, opacity: 1 },
+      ], { duration: 650, easing: "ease-out" }, () => {
+        Sound.play("chime");
+        const r = b.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top + r.height / 2, 6);
+        typeText(banner, msg("bakeryDone"), scope, () => scope.timeout(() => toShelf(b, kind, yd), 900));
+      });
+    }
+    function toShelf(b, kind, yd){
+      const slot = h(`<div style="opacity:0">${ART.bread(kind)}</div>`);
+      shelf.appendChild(slot);
+      while (shelf.children.length > 4) shelf.firstElementChild.remove();
+      const sr = slot.getBoundingClientRect(), r = b.getBoundingClientRect();
+      const dx = (sr.left + sr.width / 2) - (r.left + r.width / 2), dy = (sr.top + sr.height / 2) - (r.top + r.height / 2);
+      Sound.play("pick");
+      scope.anim(b, [{ transform: `translate(0px,${yd}px) scale(1)` }, { transform: `translate(${dx}px,${yd + dy}px) scale(${sr.width / r.width})` }], { duration: 600, easing: "ease-in-out" }, () => {
+        b.remove(); slot.style.opacity = 1; Sound.play("pop");
+        newDough();
+      });
+    }
+    el.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e._handled) return;
+      e._handled = true;
+      if (phase === "knead") knead(e.clientX, e.clientY);
+      else if (phase === "bake") {
+        bakeLeft -= 350;   // さわると はやく やける
+        Sound.play("pop");
+        scope.anim(oven, [{ transform: "rotate(0deg)" }, { transform: "rotate(-2deg)" }, { transform: "rotate(2deg)" }, { transform: "rotate(0deg)" }], { duration: 260 });
+        FX.burst(e.clientX, e.clientY, 3);
+      } else { Sound.play("pop"); FX.burst(e.clientX, e.clientY, 3); }
+    });
+    newDough();
+  },
+};
+
+/* ---------- でんしゃの うんてんし ---------- */
+const STATIONS = ["どうぶつえん", "うみ", "やま", "こうえん", "おもちゃや", "おかしや"];
+screens.train = {
+  el: $("#s-train"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="tr-scene">
+        <div class="tr-bg">${ART.trainBgTile()}${ART.trainBgTile()}</div>
+        <div class="rail"></div>
+        <div class="train"><div class="train-in">${ART.train()}<div class="win" style="left:10%"></div><div class="win" style="left:32.7%"></div><div class="win" style="left:55.5%"></div></div></div>
+      </div>
+      <div class="gorow"><div class="go">しゅっぱつ</div></div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), scene = $(".tr-scene", st), bg = $(".tr-bg", st), train = $(".train", st), trainIn = $(".train-in", st);
+    const wins = $$(".win", st), go_ = $(".go", st);
+    let plat = null, phase = "board", onboard = 0, lastHorn = 0;
+
+    function makePlat(name){
+      const p = h(`<div class="plat"><div class="sign"></div><div class="riders"></div></div>`);
+      $(".sign", p).textContent = name + " えき";
+      scene.appendChild(p);
+      return p;
+    }
+    function waiters(){
+      const box = $(".riders", plat); box.innerHTML = "";
+      shuffle(ANIMALS).slice(0, 3).forEach((a, i) => {
+        const r = h(`<div class="rider">${a}</div>`);
+        r._a = a; box.appendChild(r);
+        popIn(r, scope, 100 + i * 120);
+        r.addEventListener("pointerdown", e => { if (!e.isPrimary || phase !== "board" || r.dataset.st !== "idle") return; e._handled = true; board(r); });
+      });
+    }
+    function board(r){
+      if (onboard >= 3) return;
+      const w = wins[onboard++]; r.dataset.st = "done";
+      const rr = r.getBoundingClientRect(), wr = w.getBoundingClientRect();
+      const dx = wr.left + wr.width / 2 - (rr.left + rr.width / 2), dy = wr.top + wr.height / 2 - (rr.top + rr.height / 2);
+      Sound.play("pop");
+      scope.anim(r, [
+        { transform: "translate(0px,0px) scale(1)", opacity: 1 },
+        { transform: `translate(${dx / 2}px,${dy / 2 - U * 10}px) scale(1)`, opacity: 1, offset: 0.5 },
+        { transform: `translate(${dx}px,${dy}px) scale(.7)`, opacity: 0 },
+      ], { duration: 450, easing: "ease-in-out" }, () => {
+        w.textContent = r._a; popIn(w, scope); Sound.play("shara");
+        if (onboard >= 3 && phase === "board") go_.classList.add("ready");
+      });
+    }
+    function depart(){
+      phase = "drive"; go_.classList.remove("ready");
+      $$(".rider", plat).forEach(r => { if (r.dataset.st !== "done") { r.dataset.st = "done"; scope.anim(r, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 }); } });
+      Sound.play("horn");
+      train.classList.add("spin");
+      const W = scene.clientWidth, old = plat;
+      scope.anim(old, [{ transform: "translateX(0px)" }, { transform: `translateX(${-W * 1.1}px)` }], { duration: 1200, easing: "ease-in" }, () => old.remove());
+      scope.anim(bg, [{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }], { duration: 1100, iterations: 2, easing: "linear", fill: "none" });
+      scope.anim(trainIn, [{ transform: "translateY(0px)" }, { transform: `translateY(${U * 0.6}px)` }, { transform: "translateY(0px)" }], { duration: 220, iterations: 10, fill: "none" });
+      let n = 0;
+      const gid = scope.interval(() => { Sound.play("gatan"); if (++n >= 5) scope.stopInterval(gid); }, 440);
+      scope.timeout(arrive, 2300);
+    }
+    function arrive(){
+      const W = scene.clientWidth;
+      plat = makePlat(pick(STATIONS));
+      scope.anim(plat, [{ transform: `translateX(${W}px)` }, { transform: "translateX(0px)" }], { duration: 700, easing: "ease-out" }, () => {
+        train.classList.remove("spin");
+        Sound.play("chime");
+        typeText(banner, msg("trainDone"), scope);
+        const box = $(".riders", plat);
+        const off = [];
+        for (let i = 0; i < onboard; i++) {
+          const w = wins[i], r = h(`<div class="rider">${w.textContent}</div>`);
+          box.appendChild(r); off.push(r);
+          const rr = r.getBoundingClientRect(), wr = w.getBoundingClientRect();
+          const dx = wr.left + wr.width / 2 - (rr.left + rr.width / 2), dy = wr.top + wr.height / 2 - (rr.top + rr.height / 2);
+          w.textContent = "";
+          scope.anim(r, [
+            { transform: `translate(${dx}px,${dy}px) scale(.7)`, opacity: 0 },
+            { transform: `translate(${dx / 2}px,${dy / 2 - U * 8}px) scale(1)`, opacity: 1, offset: 0.5 },
+            { transform: "translate(0px,0px) scale(1)", opacity: 1 },
+          ], { duration: 500, delay: i * 180, easing: "ease-in-out", fill: "both" }, () => {
+            const b = r.getBoundingClientRect(); FX.burst(b.left + b.width / 2, b.top + b.height / 2, 3);
+            scope.anim(r, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 4}px)` }, { transform: "translateY(0px)" }], { duration: 400, iterations: 2, fill: "none" });
+          });
+        }
+        onboard = 0;
+        scope.timeout(() => {
+          off.forEach(r => scope.anim(r, [{ transform: "translateX(0px)", opacity: 1 }, { transform: `translateX(${-U * 30}px)`, opacity: 0 }], { duration: 600, easing: "ease-in" }, () => r.remove()));
+          scope.timeout(() => { phase = "board"; waiters(); typeText(banner, msg("train"), scope); }, off.length ? 650 : 0);
+        }, off.length ? 1900 : 600);
+      });
+    }
+    go_.addEventListener("pointerdown", e => {
+      if (!e.isPrimary) return;
+      e._handled = true;
+      bounce(go_, scope, 1.05);
+      if (phase !== "board") { Sound.play("tap"); return; }
+      depart();
+    });
+    train.addEventListener("pointerdown", e => {
+      if (!e.isPrimary) return;
+      e._handled = true;
+      bounce(trainIn, scope, 1.03);
+      if (performance.now() - lastHorn > 600) { lastHorn = performance.now(); Sound.play("horn"); }
+    });
+    el.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e._handled) return;
+      if (phase === "board") {
+        const r = $$(".rider", plat).find(x => x.dataset.st === "idle");
+        if (r) { e._handled = true; board(r); }
+      }
+    });
+    plat = makePlat(pick(STATIONS));
+    waiters();
+    typeText(banner, msg("train"), scope);
+  },
+};
+
+/* ---------- ケーキやさん ---------- */
+const TOPPINGS = ["🍓", "🍒", "🍫", "🍪", "🍊"];
+const GIRL_TOPPINGS = ["🍓", "🍒", "🌸", "💗", "🍫"];
+screens.cake = {
+  el: $("#s-cake"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="ck-area">
+        <div class="cake"><div class="cake-in">${ART.cake()}<div class="tops"></div></div><div class="ckbox">${ART.cakeBox()}</div></div>
+        <div class="ck-cust"><div class="bubble"><span class="t2"></span></div><div class="cust-face"></div></div>
+      </div>
+      <div class="cktray"></div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), cake = $(".cake", st), cream = $(".cream", st), tops = $(".tops", st), box = $(".ckbox", st);
+    const cust = $(".ck-cust", st), face = $(".cust-face", st), bubble = $(".bubble", st), bubbleT = $(".t2", st), tray = $(".cktray", st);
+    const list = S.mode === "girl" ? GIRL_TOPPINGS : TOPPINGS;
+    let phase = "deco", count = 0, creamed = false;
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+    list.forEach(em => {
+      const t = h(`<div class="ti">${em}</div>`);
+      t.addEventListener("pointerdown", e => { if (!e.isPrimary) return; e._handled = true; bounce(t, scope, 1.15); decorate(em, null, null); });
+      tray.appendChild(t);
+    });
+    function newCake(){
+      phase = "deco"; count = 0; creamed = false;
+      tops.innerHTML = "";
+      cream.style.opacity = ""; cream.style.transform = "";
+      box.style.opacity = ""; box.style.transform = "";
+      cake.style.opacity = ""; cake.style.transform = "";
+      scope.anim(cake, [{ transform: `translateX(${-150 * M}%)`, opacity: REDUCED ? 0 : 1 }, { transform: "translateX(0%)", opacity: 1 }], { duration: 550, easing: "cubic-bezier(.2,.8,.3,1.1)" });
+      typeText(banner, msg("cake"), scope);
+    }
+    function decorate(em, x, y){
+      if (phase !== "deco") { Sound.play("pop"); return; }
+      if (!creamed) {
+        creamed = true;
+        Sound.play("squish");
+        scope.anim(cream, [{ transform: "scaleY(0)", opacity: 0 }, { transform: "scaleY(1)", opacity: 1 }], { duration: 500, easing: "ease-out" });
+        const r = cake.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top + r.height * 0.35, 4);
+      } else {
+        const r = tops.getBoundingClientRect();
+        const lx = x == null ? rnd(0.1, 0.9) * r.width : clamp(x - r.left, r.width * 0.06, r.width * 0.94);
+        const ly = y == null ? rnd(0.2, 0.8) * r.height : clamp(y - r.top, r.height * 0.15, r.height * 0.85);
+        const t = h(`<div class="top">${em || pick(list)}</div>`);
+        t.style.left = lx + "px"; t.style.top = ly + "px";
+        tops.appendChild(t);
+        while (tops.children.length > 12) tops.firstElementChild.remove();
+        scope.anim(t, [{ transform: `translateY(${-U * 14}px) scale(1.3)`, opacity: 0 }, { transform: "translateY(0px) scale(.9)", opacity: 1, offset: 0.7 }, { transform: "translateY(0px) scale(1)", opacity: 1 }], { duration: 380, easing: "ease-in" });
+        Sound.play("pop");
+        FX.burst(r.left + lx, r.top + ly, 3);
+      }
+      count++;
+      if (count >= 6) { phase = "box"; scope.timeout(boxUp, 600); }
+    }
+    function boxUp(){
+      Sound.play("dosun");
+      scope.anim(box, [{ transform: `translateY(${-U * 40}px)`, opacity: 0 }, { transform: "translateY(0px)", opacity: 1 }], { duration: 500, easing: "ease-in" }, () => {
+        Sound.play("chime");
+        const r = cake.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top + r.height / 2, 6);
+        typeText(banner, msg("cakeDone"), scope, () => scope.timeout(serve, 700));
+      });
+    }
+    function serve(){
+      phase = "serve";
+      face.textContent = pick(ANIMALS);
+      bubble.style.opacity = 0; bubbleT.textContent = "";
+      scope.anim(cust, [{ transform: `translateX(${170 * M}%)` }, { transform: "translateX(0%)" }], { duration: 550, easing: "cubic-bezier(.2,.8,.3,1.1)" }, () => {
+        const cr = cake.getBoundingClientRect(), fr = face.getBoundingClientRect();
+        const dx = (fr.left + fr.width / 2) - (cr.left + cr.width / 2) - U * 14, dy = (fr.top + fr.height / 2) - (cr.top + cr.height / 2);
+        scope.anim(cake, [{ transform: "translate(0px,0px) scale(1)" }, { transform: `translate(${dx}px,${dy}px) scale(.45)` }], { duration: 550, easing: "ease-in-out" }, () => {
+          Sound.play("chime");
+          bounce(face, scope, 1.15);
+          scope.anim(bubble, [{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
+          typeText(bubbleT, msg("pharmacyThanks"), scope, () => scope.timeout(leave, 1300));
+        });
+      });
+    }
+    function leave(){
+      scope.anim(cake, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+      scope.anim(bubble, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+      scope.anim(cust, [{ transform: "translateX(0%)" }, { transform: `translateX(${170 * M}%)` }], { duration: 550, easing: "ease-in" }, newCake);
+    }
+    el.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e._handled) return;
+      e._handled = true;
+      if (phase === "deco") decorate(null, e.clientX, e.clientY);
+      else { Sound.play("pop"); FX.burst(e.clientX, e.clientY, 3); }
+    });
+    newCake();
+  },
+};
+
+/* ---------- はいしゃさん ---------- */
+const PATIENTS = [["cat", ["#F2D9B6", "#C9A27E"]], ["bear", ["#D9B48E", "#A9845E"]], ["rabbit", ["#F4E8EB", "#D3B6BE"]], ["dog", ["#EBCFA6", "#B98F5E"]]];
+screens.dentist = {
+  el: $("#s-dentist"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="dn-area"><div class="head"></div><div class="brush">${ART.toothbrush()}</div><div class="dn-bubble"><span class="t2"></span></div></div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), area = $(".dn-area", st), head = $(".head", st), brush = $(".brush", st), bubble = $(".dn-bubble", st), bubbleT = $(".t2", st);
+    let phase = "brush", left = {};
+
+    function newPatient(){
+      phase = "brush"; left = {};
+      const [sp, col] = pick(PATIENTS);
+      const dirty = shuffle([0, 1, 2, 3, 4, 5, 6, 7]).slice(0, ri(3, 4));
+      dirty.forEach(i => { left[i] = 2; });   // 1本につき 2かい みがくと ぴかぴか
+      head.innerHTML = ART.head(sp, col, dirty);
+      head.style.transform = ""; head.style.opacity = "";
+      bubble.style.opacity = 0;
+      scope.anim(head, [{ transform: `translateX(${-150 * M}%)`, opacity: REDUCED ? 0 : 1 }, { transform: "translateX(0%)", opacity: 1 }], { duration: 550, easing: "cubic-bezier(.2,.8,.3,1.1)" });
+      typeText(banner, msg("dentist"), scope);
+    }
+    function brushAt(x, y){
+      const todo = Object.keys(left).map(Number).filter(i => left[i] > 0);
+      if (!todo.length) return;
+      let best = null, bd = 1e9;
+      todo.forEach(i => {
+        const t = $(`.tooth[data-i="${i}"]`, head).getBoundingClientRect();
+        const d = Math.hypot(t.left + t.width / 2 - x, t.top + t.height / 2 - y);
+        if (d < bd) { bd = d; best = [i, t]; }
+      });
+      const [i, t] = best;
+      left[i]--;
+      const ar = area.getBoundingClientRect();
+      const cx = t.left - ar.left + t.width / 2, cy = t.top - ar.top + t.height / 2;
+      brush.style.left = (cx - brush.offsetWidth * 0.81) + "px";
+      brush.style.top = (cy - brush.offsetHeight * 0.48) + "px";
+      scope.anim(brush, [
+        { transform: "translateX(0px)", opacity: 1 }, { transform: `translateX(${-U * 3}px)`, opacity: 1 },
+        { transform: `translateX(${U * 3}px)`, opacity: 1 }, { transform: `translateX(${-U * 3}px)`, opacity: 1 },
+        { transform: "translateX(0px)", opacity: 0 },
+      ], { duration: 450 });
+      Sound.play("brush");
+      const d = $(`.dirt[data-i="${i}"]`, head);
+      if (d) scope.anim(d, [{ opacity: left[i] === 1 ? 1 : 0.45 }, { opacity: left[i] === 1 ? 0.45 : 0 }], { duration: 320 });
+      FX.burst(t.left + t.width / 2, t.top + t.height / 2, 3);
+      if (left[i] === 0) scope.timeout(() => Sound.play("sparkle"), 220);
+      if (Object.values(left).every(v => v <= 0)) { phase = "done"; scope.timeout(finish, 600); }
+    }
+    function finish(){
+      $$(".tooth", head).forEach((t, n) => {
+        if (n % 2) return;
+        const r = t.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top + r.height / 2, 2);
+      });
+      scope.anim($(".mouth", head), [{ opacity: 1 }, { opacity: 0 }], { duration: 400 });
+      scope.anim($(".eyes-open", head), [{ opacity: 1 }, { opacity: 0 }], { duration: 400 });
+      scope.anim($(".smile", head), [{ opacity: 0 }, { opacity: 1 }], { duration: 400 });
+      scope.anim($(".eyes-happy", head), [{ opacity: 0 }, { opacity: 1 }], { duration: 400 });
+      Sound.play("chime");
+      bounce(head, scope, 1.06);
+      typeText(banner, msg("dentistDone"), scope);
+      scope.timeout(() => {
+        scope.anim(bubble, [{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
+        typeText(bubbleT, msg("pharmacyThanks"), scope, () => scope.timeout(leave, 1300));
+      }, 500);
+    }
+    function leave(){
+      scope.anim(bubble, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+      scope.anim(head, [{ transform: "translateX(0%)", opacity: 1 }, { transform: `translateX(${150 * M}%)`, opacity: REDUCED ? 0 : 1 }], { duration: 550, easing: "ease-in" }, newPatient);
+    }
+    el.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e._handled) return;
+      e._handled = true;
+      if (phase === "brush") brushAt(e.clientX, e.clientY);
+      else { Sound.play("pop"); FX.burst(e.clientX, e.clientY, 3); }
+    });
+    newPatient();
   },
 };
 
