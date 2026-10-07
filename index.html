@@ -215,6 +215,7 @@ button{font-family:inherit;color:inherit}
 .seg{display:flex;border-radius:10px;overflow:hidden;border:1.5px solid #D8CDBB}
 .seg button{border:0;background:#FFFDF8;padding:8px 12px;font-size:14px;min-width:52px;min-height:40px}
 .seg button.on{background:#9CC8DD}
+.seg.wide button{flex:1;padding:10px 6px}
 .tg{position:relative;width:58px;height:34px;border-radius:17px;border:0;background:#D8CDBB;flex:none;transition:background .25s ease}
 .tg::after{content:"";position:absolute;left:3px;top:3px;width:28px;height:28px;border-radius:50%;background:#FFFDF8;transition:transform .25s ease}
 .tg.on{background:#8CC7A1}
@@ -222,6 +223,22 @@ button{font-family:inherit;color:inherit}
 .pmsg{font-size:13px;color:#6F8F5E;min-height:18px}
 .pbig{display:flex;flex-direction:column;gap:10px;margin-top:18px}
 .pbig .pbtn{font-size:17px;min-height:54px}
+
+/* ---------- おんなのこ（ピンク）のいろ ---------- */
+html.girl{--mint:#FBEAEE;--butter:#FCEFF0;--peach:#F9E6EB;--sky:#F7EAF0}
+html.girl .boot-btn{background:#F6C3CF;box-shadow:0 calc(var(--u)*1.5) 0 #DEA3B2}
+html.girl .c-pharmacy{background:#F7D4DD}html.girl .c-stamp{background:#F9DDE2}html.girl .c-register{background:#F4CAD5}html.girl .c-delivery{background:#F5D6E3}
+html.girl .reg{background:#F0C2CD;box-shadow:0 calc(var(--u)*1.4) 0 #D7A2B0}
+html.girl .tray{background:#F9DEE5}
+html.girl .pay{background:#F2AABC;box-shadow:0 calc(var(--u)*1.6) 0 #D38C9F}
+html.girl .go{background:#F2B7C7;box-shadow:0 calc(var(--u)*1.6) 0 #D598AA}
+html.girl .medtray{background:#F6DAE2}
+html.girl .rx{border-left-color:#F2B7C7}
+html.girl .scene{background:#F6E6EE}
+html.girl .cust-face{background:#FDEBEF}
+.stampmark .face.shape{border:0;background:none}
+.stampmark .face svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.stampmark .face span{position:relative}
 
 @media (prefers-reduced-motion: reduce){
   .ready{animation-duration:1.6s}
@@ -257,7 +274,7 @@ button{font-family:inherit;color:inherit}
 /* =========================================================
    ここを編集すると、表示されることばを変えられます
    ・すべてひらがなで、1つ12文字くらいまで
-   ・{name} は こどもの なまえ、{family} は かぞくの ことば に置きかわります
+   ・{name} は こどもの なまえ、{kun} は「くん」か「ちゃん」、{family} は かぞくの ことば に置きかわります
    ========================================================= */
 const CONFIG = {
   childName: "◯◯",
@@ -266,21 +283,21 @@ const CONFIG = {
 
 const MESSAGES = {
   pharmacy: [
-    "{name}くん の おしごと",
+    "{name}{kun} の おしごと",
     "{family}の おくすり です",
     "きょうも ありがとう",
-    "{name}くん じょうずだね",
+    "{name}{kun} じょうずだね",
     "せんせいの おくすり",
   ],
-  pharmacyLabel: [ "{name}くん の おくすり", "{family}の おくすり", "げんきに なあれ" ],
+  pharmacyLabel: [ "{name}{kun} の おくすり", "{family}の おくすり", "げんきに なあれ" ],
   pharmacyThanks: [ "ありがとう", "ありがとう！", "たすかったよ" ],
   home:     [ "おしごと えらび" ],
-  stamp:    [ "{name}くん かくにん ずみ", "{family}へ の しょるい", "できました" ],
-  stampStart:[ "{name}くん はんこ ください" ],
+  stamp:    [ "{name}{kun} かくにん ずみ", "{family}へ の しょるい", "できました" ],
+  stampStart:[ "{name}{kun} はんこ ください" ],
   stampDone:[ "できた！", "できました！" ],
   register: [ "{family} の おかいけい", "いらっしゃいませ", "また きてね" ],
   registerDone: [ "ありがとうございました" ],
-  delivery: [ "{family}の おうち へ", "{name}くん はいたつ ちゅう", "にもつ を つもう" ],
+  delivery: [ "{family}の おうち へ", "{name}{kun} はいたつ ちゅう", "にもつ を つもう" ],
   deliveryDone: [ "はいたつ かんりょう！", "とどけました" ],
 };
 
@@ -297,6 +314,7 @@ const DEFAULTS = {
   games: { pharmacy: true, stamp: true, register: true, delivery: true },
   autoSwitch: 0,
   bgm: true,
+  mode: "boy",
   pin: "0000",
 };
 function cloneDefaults(){ return JSON.parse(JSON.stringify(DEFAULTS)); }
@@ -313,6 +331,7 @@ function sanitize(o){
   if (!GAMES.some(g => s.games[g])) s.games.stamp = true;
   if ([0, 3, 5, 10].includes(o.autoSwitch)) s.autoSwitch = o.autoSwitch;
   if (typeof o.bgm === "boolean") s.bgm = o.bgm;
+  if (o.mode === "boy" || o.mode === "girl") s.mode = o.mode;
   if (typeof o.pin === "string" && /^\d{4}$/.test(o.pin)) s.pin = o.pin;
   return s;
 }
@@ -337,7 +356,7 @@ const center = r => ({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
 const dist = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 function fillText(t){
   const fam = S.familyWords.length ? S.familyWords : DEFAULTS.familyWords;
-  return t.replace(/\{name\}/g, S.childName || "◯◯").replace(/\{family\}/g, () => pick(fam));
+  return t.replace(/\{kun\}/g, S.mode === "girl" ? "ちゃん" : "くん").replace(/\{name\}/g, S.childName || "◯◯").replace(/\{family\}/g, () => pick(fam));
 }
 const msg = key => fillText(pick(MESSAGES[key]));
 const REDUCED = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -608,14 +627,18 @@ function finishAllTyping(){ Array.from(typers).forEach(T => { if (T.scope.alive)
 
 /* ---------- 触った反応（波紋と星。数に上限あり） ---------- */
 const STAR = '<svg viewBox="0 0 24 24"><path d="M12 1.5l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 8.8l7.1-.7z" fill="currentColor"/></svg>';
+const HEART = '<svg viewBox="0 0 24 24"><path d="M12 21.5C6 17 2 13.4 2 8.6 2 5.5 4.4 3 7.4 3c2 0 3.6 1.1 4.6 2.7C13 4.1 14.6 3 16.6 3 19.6 3 22 5.5 22 8.6c0 4.8-4 8.4-10 12.9z" fill="currentColor"/></svg>';
 const SPARK_COLORS = ["#F2C46D", "#F2A0A8", "#9FD3B5", "#9CC8DD", "#C9B3E6"];
+const GIRL_SPARK_COLORS = ["#F2A0B4", "#F5B8C6", "#E99AAE", "#F6C9A8", "#DDB3E0"];
 const FX = {
   layer: null, ripples: [], sparks: [], ri: 0, si: 0,
   init(){
     this.layer = $("#fx");
     for (let i = 0; i < 3; i++) { const r = h('<div class="ripple"></div>'); this.layer.appendChild(r); this.ripples.push(r); }
-    for (let i = 0; i < 7; i++) { const s = h('<div class="spark">' + STAR + "</div>"); this.layer.appendChild(s); this.sparks.push(s); }
+    for (let i = 0; i < 7; i++) { const s = h('<div class="spark"></div>'); this.layer.appendChild(s); this.sparks.push(s); }
+    this.setShape();
   },
+  setShape(){ this.sparks.forEach(s => { s.innerHTML = S.mode === "girl" ? HEART : STAR; }); },
   ripple(x, y){
     const r = this.ripples[this.ri++ % this.ripples.length];
     if (r._a) r._a.cancel();
@@ -630,7 +653,7 @@ const FX = {
     for (let k = 0; k < n; k++) {
       const s = this.sparks[this.si++ % this.sparks.length];
       if (s._a) s._a.cancel();
-      s.style.left = x + "px"; s.style.top = y + "px"; s.style.color = pick(SPARK_COLORS);
+      s.style.left = x + "px"; s.style.top = y + "px"; s.style.color = pick(S.mode === "girl" ? GIRL_SPARK_COLORS : SPARK_COLORS);
       const ang = (k / n) * Math.PI * 2 + rnd(-0.3, 0.3), d = U * rnd(10, 17) * (REDUCED ? 0.6 : 1);
       s._a = s.animate([
         { transform: "translate(0px,0px) scale(.4) rotate(0deg)", opacity: 1 },
@@ -664,12 +687,13 @@ const ART = {
     return `<svg viewBox="0 0 80 70"><path d="M4 12 L14 3 H66 L76 12 Z" fill="${l}" stroke="${d}" stroke-width="3" stroke-linejoin="round"/><rect x="4" y="12" width="72" height="54" rx="3" fill="${c}" stroke="${d}" stroke-width="3"/><rect x="34" y="12" width="12" height="54" fill="${tape}"/><path d="M12 48 h14 M12 55 h9" stroke="${d}" stroke-width="2.5" stroke-linecap="round"/></svg>`;
   },
   truck(){
+    const cab = S.mode === "girl" ? ["#F4B6C4", "#C98696"] : ["#F2B87A", "#C98B4C"];
     const wheel = (x) => `<g class="wheel"><circle cx="${x}" cy="92" r="14" fill="#4E4A47"/><circle cx="${x}" cy="92" r="6" fill="#CFC8BE"/><rect x="${x - 1.5}" y="80" width="3" height="8" rx="1" fill="#CFC8BE"/></g>`;
     return '<svg viewBox="0 0 200 110">' +
       '<rect x="6" y="64" width="128" height="16" rx="3" fill="#A9C1D4" stroke="#7F9AB0" stroke-width="3"/>' +
       '<rect x="128" y="38" width="8" height="42" rx="2" fill="#7F9AB0"/>' +
-      '<path d="M138 34 H170 Q180 34 184 46 L194 62 V82 H138 Z" fill="#F2B87A" stroke="#C98B4C" stroke-width="3" stroke-linejoin="round"/>' +
-      '<path d="M147 42 H168 Q174 42 177 50 L182 60 H147 Z" fill="#D8ECF4" stroke="#C98B4C" stroke-width="2.5" stroke-linejoin="round"/>' +
+      '<path d="M138 34 H170 Q180 34 184 46 L194 62 V82 H138 Z" fill="' + cab[0] + '" stroke="' + cab[1] + '" stroke-width="3" stroke-linejoin="round"/>' +
+      '<path d="M147 42 H168 Q174 42 177 50 L182 60 H147 Z" fill="#D8ECF4" stroke="' + cab[1] + '" stroke-width="2.5" stroke-linejoin="round"/>' +
       '<rect x="188" y="66" width="7" height="8" rx="2" fill="#F5E6B8"/>' +
       '<rect x="3" y="80" width="194" height="8" rx="3" fill="#6E6A66"/>' +
       wheel(40) + wheel(158) + "</svg>";
@@ -718,6 +742,10 @@ const PRODUCTS = [
   ["🍎", "りんご"], ["🥛", "ぎゅうにゅう"], ["🍞", "ぱん"], ["🍌", "ばなな"], ["🥕", "にんじん"],
   ["🍙", "おにぎり"], ["🍓", "いちご"], ["🥚", "たまご"], ["🍊", "みかん"], ["🍇", "ぶどう"], ["🍪", "くっきー"],
 ];
+const GIRL_PRODUCTS = [
+  ["🍰", "けーき"], ["🧁", "かっぷけーき"], ["🌷", "ちゅーりっぷ"], ["🌸", "おはな"], ["🍬", "あめ"], ["🍩", "どーなつ"],
+];
+const shopItems = () => S.mode === "girl" ? PRODUCTS.concat(GIRL_PRODUCTS, GIRL_PRODUCTS) : PRODUCTS;
 const PRICES = [80, 100, 120, 150, 180, 200, 250, 300];
 
 /* ---------- ドラッグ（タップだけでも必ず届く） ---------- */
@@ -830,10 +858,10 @@ screens.boot = {
     el.appendChild(h(`<div class="stage boot">
       <div class="boot-title">おしごと</div>
       <div class="boot-icons">
-        <div style="background:#CDE8D8">${ART.bag()}</div>
-        <div style="background:#F3E1B7">${ART.stampIcon()}</div>
-        <div style="background:#F4CFBC">${ART.registerIcon()}</div>
-        <div style="background:#CBE2EC">${ART.truck()}</div>
+        <div class="c-pharmacy">${ART.bag()}</div>
+        <div class="c-stamp">${ART.stampIcon()}</div>
+        <div class="c-register">${ART.registerIcon()}</div>
+        <div class="c-delivery">${ART.truck()}</div>
       </div>
       <div class="boot-btn">さわってね</div>
     </div>`));
@@ -873,6 +901,18 @@ screens.home = {
 
 /* ---------- はんこ ---------- */
 const STAMP_FACES = ["かくにん", "すみ", "よく<br>できました", "できた", "ありがとう"];
+const STAMP_HEART = '<svg viewBox="0 0 100 100"><path d="M50 90C22 70 6 54 6 34 6 19 17 8 31 8c9 0 15 5 19 12 4-7 10-12 19-12 14 0 25 11 25 26 0 20-16 36-44 56z" fill="rgba(200,86,75,.08)" stroke="#C8564B" stroke-width="7" stroke-linejoin="round"/></svg>';
+const STAMP_FLOWER = '<svg viewBox="0 0 100 100"><g fill="rgba(200,86,75,.08)" stroke="#C8564B" stroke-width="5">' +
+  [0, 72, 144, 216, 288].map(a => `<circle cx="${50 + 27 * Math.sin(a * Math.PI / 180)}" cy="${50 - 27 * Math.cos(a * Math.PI / 180)}" r="20"/>`).join("") +
+  '<circle cx="50" cy="50" r="22" fill="#FFFCF5"/></g></svg>';
+function stampFace(){
+  if (S.mode === "girl") {
+    const k = ri(0, 3);
+    if (k === 0) return `<div class="face shape">${STAMP_HEART}<span>だいすき</span></div>`;
+    if (k === 1) return `<div class="face shape">${STAMP_FLOWER}<span>できた</span></div>`;
+  }
+  return `<div class="face">${pick(STAMP_FACES)}</div>`;
+}
 const FRAME_SPOTS = [[28, 58], [70, 54], [30, 82], [72, 80], [50, 70]];
 screens.stamp = {
   el: $("#s-stamp"),
@@ -910,7 +950,7 @@ screens.stamp = {
       const lx = Math.max(m, Math.min(r.width - m, x - r.left));
       const ly = Math.max(m, Math.min(r.height - m, y - r.top));
       const rot = rnd(-14, 14);
-      const s = h(`<div class="stampmark"><div class="ink"></div><div class="face">${pick(STAMP_FACES)}</div></div>`);
+      const s = h(`<div class="stampmark"><div class="ink"></div>${stampFace()}</div>`);
       const base = `translate(${lx}px,${ly}px) translate(-50%,-50%) rotate(${rot}deg)`;
       s.style.transform = base;
       inner.appendChild(s);
@@ -1001,7 +1041,7 @@ screens.register = {
       belt.appendChild(it); items.push(it);
       it.addEventListener("pointerdown", e => { if (!e.isPrimary || !it._ready) return; e._handled = true; scan(it); });
     }
-    function setProduct(it){ const p = pick(PRODUCTS); it._p = { em: p[0], name: p[1], price: pick(PRICES) }; $(".em", it).textContent = p[0]; }
+    function setProduct(it){ const p = pick(shopItems()); it._p = { em: p[0], name: p[1], price: pick(PRICES) }; $(".em", it).textContent = p[0]; }
     const stripes = $(".belt-stripes", st);
     const t0 = performance.now();
     function loop(ts){
@@ -1357,7 +1397,9 @@ screens.parent = {
       <h1>ほごしゃ せってい</h1>
       <div class="pcard"><h2>こどもの なまえ</h2>
         <input class="txt" id="pName" maxlength="12" autocomplete="off">
-        <p>ひらがなで入れると、画面に「（なまえ）くん」と出ます。</p></div>
+        <h2 style="margin:14px 0 8px">よびかた・いろ</h2>
+        ${seg("mode", [["boy", "おとこのこ（くん）"], ["girl", "おんなのこ（ちゃん）"]], S.mode).replace('class="seg"', 'class="seg wide"')}
+        <p>ひらがなで入れると、画面に「（なまえ）くん」「（なまえ）ちゃん」のように出ます。「おんなのこ」にすると、ピンク色になり、はんこ・れじの しょうひん・トラックの色なども かわります。</p></div>
       <div class="pcard"><h2>かぞくの ことば</h2>
         <div class="chips" id="pChips"></div>
         <div class="addrow"><input class="txt" id="pFam" maxlength="10" placeholder="れい：ねえね" autocomplete="off"><button class="pbtn" id="pFamAdd">ついか</button></div></div>
@@ -1428,7 +1470,9 @@ screens.parent = {
       saveSettings();
     }));
     $$(".seg", w).forEach(sg => $$("button", sg).forEach(b => b.addEventListener("click", () => {
-      S[sg.dataset.k] = Number(b.dataset.v);
+      const v = b.dataset.v;
+      S[sg.dataset.k] = isNaN(Number(v)) ? v : Number(v);
+      if (sg.dataset.k === "mode") { applyTheme(); FX.setShape(); }
       $$("button", sg).forEach(x => x.classList.toggle("on", x === b));
       if (sg.dataset.k === "volume") { Sound.applyVolume(); Sound.play("chime"); }
       saveSettings();
@@ -1558,6 +1602,7 @@ document.addEventListener("visibilitychange", () => {
 });
 
 function applyNight(){ document.documentElement.classList.toggle("night", !!S.night); }
+function applyTheme(){ document.documentElement.classList.toggle("girl", S.mode === "girl"); }
 function layout(){
   const r = $("#app").getBoundingClientRect();
   const sw = Math.max(200, Math.min(r.width, r.height * 0.62));
@@ -1571,6 +1616,7 @@ window.addEventListener("orientationchange", () => setTimeout(layout, 300));
 
 layout();
 applyNight();
+applyTheme();
 FX.init();
 Lock.init();
 go("boot");
