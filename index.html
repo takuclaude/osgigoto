@@ -178,6 +178,12 @@ button{font-family:inherit;color:inherit}
 .endbox svg{width:calc(var(--u)*46);height:calc(var(--u)*46)}
 .endbox div{font-size:calc(var(--u)*8);letter-spacing:.1em}
 
+/* ---------- 🏠 もどる（2びょう ながおし） ---------- */
+#homeBtn{position:fixed;left:calc(env(safe-area-inset-left) + 12px);bottom:calc(env(safe-area-inset-bottom) + 12px);width:56px;height:56px;z-index:55;touch-action:none;display:none}
+#homeBtn.show{display:block}
+#homeBtn .hb{position:absolute;inset:6px;border-radius:50%;background:rgba(255,252,245,.92);box-shadow:0 2px 0 rgba(58,50,38,.15);display:flex;align-items:center;justify-content:center}
+#homeBtn .hb svg{width:26px;height:26px}
+#homeBtn .hr{position:absolute;inset:0;width:56px;height:56px;pointer-events:none}
 /* ---------- 親ロック ---------- */
 #lock{position:fixed;top:env(safe-area-inset-top);right:env(safe-area-inset-right);width:44px;height:44px;z-index:60;background:transparent;touch-action:none}
 #lockRing{position:absolute;right:10px;top:10px;width:24px;height:24px;opacity:0;pointer-events:none}
@@ -259,6 +265,7 @@ html.girl .cust-face{background:#FDEBEF}
 </div>
 <div id="fx"></div>
 <div id="lock"><svg id="lockRing" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#3A3226" stroke-width="3" stroke-dasharray="62.84" stroke-dashoffset="62.84" transform="rotate(-90 12 12)" stroke-linecap="round"/></svg></div>
+<div id="homeBtn"><div class="hb"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5" fill="none" stroke="#857761" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 10v9.5h13V10" fill="none" stroke="#857761" stroke-width="2.4" stroke-linejoin="round"/><rect x="10" y="14" width="4" height="5.5" rx="1" fill="#857761"/></svg></div><svg class="hr" viewBox="0 0 56 56"><circle cx="28" cy="28" r="25" fill="none" stroke="#E7A86F" stroke-width="5" stroke-dasharray="157.08" stroke-dashoffset="157.08" stroke-linecap="round" transform="rotate(-90 28 28)"/></svg></div>
 <div id="pin" hidden>
   <div class="pinbox">
     <div class="pin-title">あんしょうばんごう（4けた）</div>
@@ -831,6 +838,7 @@ function go(name){
   next.el.appendChild(root);
   next.enter(scope, root);
   current = name;
+  HomeBtn.show(GAMES.includes(name));
   BGM.play(name);   // 遊びの画面とえらぶ画面だけ流す（設定・おしまいでは止まる）
   const w = window.innerWidth * M;
   next.el.animate([{ transform: `translateX(${w}px)`, opacity: REDUCED ? 0 : 1 }, { transform: "translateX(0)", opacity: 1 }], { duration: 400, easing: "ease-in-out" });
@@ -1561,6 +1569,42 @@ const Lock = {
 };
 
 /* =========================================================
+   🏠 もどる：2びょう おしつづけると「おしごと えらび」へ
+   （子どもの トントン では もどらない）
+   ========================================================= */
+const HomeBtn = {
+  hold: null,
+  init(){
+    const el = $("#homeBtn"), hb = $(".hb", el), circ = $(".hr circle", el);
+    this.el = el;
+    const cancel = (wiggle) => {
+      const hd = this.hold; if (!hd) return;
+      clearTimeout(hd.t); if (hd.a) hd.a.cancel();
+      circ.style.strokeDashoffset = 157.08;
+      this.hold = null;
+      if (wiggle) hb.animate([{ transform: "rotate(0)" }, { transform: "rotate(-10deg)" }, { transform: "rotate(10deg)" }, { transform: "rotate(0)" }], { duration: 300 });
+    };
+    el.addEventListener("pointerdown", e => {
+      e._handled = true;
+      if (this.hold || !e.isPrimary) return;
+      try { el.setPointerCapture(e.pointerId); } catch (_) {}
+      Sound.play("pick");
+      const hd = { id: e.pointerId, x: e.clientX, y: e.clientY };
+      hd.a = circ.animate([{ strokeDashoffset: 157.08 }, { strokeDashoffset: 0 }], { duration: 2000, fill: "forwards" });
+      hd.t = setTimeout(() => { cancel(false); Sound.play("chime"); go("home"); }, 2000);
+      this.hold = hd;
+    });
+    el.addEventListener("pointermove", e => {
+      if (this.hold && e.pointerId === this.hold.id && Math.hypot(e.clientX - this.hold.x, e.clientY - this.hold.y) > 20) cancel(true);
+    });
+    el.addEventListener("pointerup", () => cancel(true));
+    el.addEventListener("pointercancel", () => cancel(false));
+    this.cancel = cancel;
+  },
+  show(on){ if (!on && this.cancel) this.cancel(false); this.el.classList.toggle("show", !!on); },
+};
+
+/* =========================================================
    全体のしかけ
    ========================================================= */
 // ピンチズーム・ダブルタップズーム・長押しメニューを止める
@@ -1619,6 +1663,7 @@ applyNight();
 applyTheme();
 FX.init();
 Lock.init();
+HomeBtn.init();
 go("boot");
 </script>
 </body>
