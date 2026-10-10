@@ -317,6 +317,7 @@ html.girl .scene2{background:#F6E6EE}
 .cust2{position:absolute;right:3%;bottom:4%;width:calc(var(--u)*34);display:flex;flex-direction:column;align-items:center;transform:translateX(170%);z-index:4}
 .cust2 .cust-face{width:calc(var(--u)*26);height:calc(var(--u)*26);font-size:calc(var(--u)*17)}
 .tray2{flex:none;margin:0 calc(var(--u)*4) calc(var(--u)*7) 70px;height:calc(var(--u)*24);border-radius:calc(var(--u)*6);display:flex;align-items:center;justify-content:space-evenly;background:rgba(255,252,245,.55)}
+.s-post .tray2{background:rgba(185,143,94,.22)}
 .ti2{font-size:calc(var(--u)*10);line-height:1;width:calc(var(--u)*15);height:calc(var(--u)*15);display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,252,245,.85)}
 .ti2 svg{width:85%;height:85%;display:block}
 /* しょうぼうし */
@@ -1117,8 +1118,8 @@ const ART = {
       '<path d="M30 52 h20 M30 60 h20 M40 60 v14" stroke="#FFFCF5" stroke-width="4" stroke-linecap="round"/></svg>';
   },
   letter(c){
-    return `<svg viewBox="0 0 80 56"><rect x="3" y="3" width="74" height="50" rx="4" fill="${c}" stroke="#C9B08E" stroke-width="2.5"/>` +
-      '<path d="M3 6 L40 32 L77 6" fill="none" stroke="#C9B08E" stroke-width="2.5" stroke-linejoin="round"/>' +
+    return `<svg viewBox="0 0 80 56"><rect x="3" y="3" width="74" height="50" rx="4" fill="${c}" stroke="#A9845E" stroke-width="3.5"/>` +
+      '<path d="M3 6 L40 32 L77 6" fill="none" stroke="#A9845E" stroke-width="3" stroke-linejoin="round"/>' +
       '<rect x="58" y="34" width="13" height="13" rx="2" fill="#F2A0A8"/><path d="M64.5 44c-3-2-5-3.5-5-5.5 0-1.4 1-2.3 2.3-2.3 1.1 0 2 .8 2.7 1.6.7-.8 1.6-1.6 2.7-1.6 1.3 0 2.3.9 2.3 2.3 0 2-2 3.5-5 5.5z" fill="#FFFCF5"/></svg>';
   },
   bike(){
@@ -2502,7 +2503,7 @@ screens.doctor = {
 };
 
 /* ---------- ゆうびんやさん ---------- */
-const LETTER_COLORS = ["#FFFCF5", "#FBE9EC", "#E8F3F7", "#FBF1D6", "#ECF5E6"];
+const LETTER_COLORS = ["#F9DCE2", "#D9EBF3", "#F8E7BC", "#DCEED3", "#E6DCF2"];
 screens.post = {
   el: $("#s-post"),
   enter(scope, el){
