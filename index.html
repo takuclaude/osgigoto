@@ -603,7 +603,11 @@ class Scope {
       a.onfinish = () => {
         this.a.delete(a);
         if (o.fill === "forwards" || o.fill === "both") {
-          try { a.commitStyles(); a.cancel(); } catch (e) {}
+          // 最後の形を じぶんで書きこんでから アニメを片づける
+          // （iPhone の Safari では commitStyles が「出てくる前の見えない形」を残すことがあるため）
+          const last = Array.isArray(kf) ? kf[kf.length - 1] : null;
+          if (last) for (const k in last) if (k !== "offset" && k !== "easing" && k !== "composite") { try { el.style[k] = last[k]; } catch (e) {} }
+          try { a.cancel(); } catch (e) {}
         }
         if (this.alive && done) done();
       };
