@@ -188,8 +188,10 @@ button{font-family:inherit;color:inherit}
 #homeBtn .hb svg{width:26px;height:26px}
 #homeBtn .hr{position:absolute;inset:0;width:56px;height:56px;pointer-events:none}
 /* ---------- 親ロック ---------- */
-#lock{position:fixed;top:env(safe-area-inset-top);right:env(safe-area-inset-right);width:44px;height:44px;z-index:60;background:transparent;touch-action:none}
-#lockRing{position:absolute;right:10px;top:10px;width:24px;height:24px;opacity:0;pointer-events:none}
+#lock{position:fixed;top:calc(env(safe-area-inset-top) + 4px);right:calc(env(safe-area-inset-right) + 4px);width:52px;height:52px;z-index:60;background:transparent;touch-action:none}
+#lock .gb{position:absolute;inset:6px;border-radius:50%;background:rgba(255,252,245,.85);box-shadow:0 2px 0 rgba(58,50,38,.12);display:flex;align-items:center;justify-content:center}
+#lock .gb svg{width:24px;height:24px}
+#lockRing{position:absolute;inset:0;width:52px;height:52px;pointer-events:none}
 #pin{position:fixed;inset:0;z-index:80;background:rgba(58,50,38,.45);display:flex;align-items:center;justify-content:center}
 #pin[hidden]{display:none}
 .pinbox{background:var(--paper);border-radius:20px;padding:22px 20px;width:min(86vw,320px);text-align:center}
@@ -277,7 +279,7 @@ button{font-family:inherit;color:inherit}
 .top{position:absolute;font-size:calc(var(--u)*9);line-height:1;margin:calc(var(--u)*-5) 0 0 calc(var(--u)*-4.5)}
 .ckbox{position:absolute;inset:-6% -4% 6%;opacity:0;pointer-events:none}
 .ckbox svg{width:100%;height:100%;display:block}
-.cktray{flex:none;margin:0 calc(var(--u)*4) calc(var(--u)*7);height:calc(var(--u)*24);background:#F4D9D2;border-radius:calc(var(--u)*6);display:flex;align-items:center;justify-content:space-evenly}
+.cktray{flex:none;margin:0 calc(var(--u)*4) calc(var(--u)*7) 70px;height:calc(var(--u)*24);background:#F4D9D2;border-radius:calc(var(--u)*6);display:flex;align-items:center;justify-content:space-evenly}
 .ti{font-size:calc(var(--u)*11);line-height:1;width:calc(var(--u)*15);height:calc(var(--u)*15);display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,252,245,.7)}
 .ck-cust{position:absolute;right:3%;bottom:4%;width:calc(var(--u)*34);display:flex;flex-direction:column;align-items:center;transform:translateX(170%)}
 .ck-cust .cust-face{width:calc(var(--u)*26);height:calc(var(--u)*26);font-size:calc(var(--u)*17)}
@@ -332,7 +334,7 @@ html.girl .cust-face{background:#FDEBEF}
   <section class="screen s-end" id="s-end"></section>
 </div>
 <div id="fx"></div>
-<div id="lock"><svg id="lockRing" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#3A3226" stroke-width="3" stroke-dasharray="62.84" stroke-dashoffset="62.84" transform="rotate(-90 12 12)" stroke-linecap="round"/></svg></div>
+<div id="lock"><div class="gb"><svg viewBox="0 0 24 24"><path d="M12 2.8l1.6 2.3 2.7-.7.5 2.8 2.6 1-1 2.6 1.9 2.1-2.2 1.7.4 2.8-2.8.2-1.1 2.6-2.6-1.2-2.6 1.2-1.1-2.6-2.8-.2.4-2.8L3.4 12l1.9-2.1-1-2.6 2.6-1 .5-2.8 2.7.7z" fill="none" stroke="#857761" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="3.2" fill="none" stroke="#857761" stroke-width="1.8"/></svg></div><svg id="lockRing" viewBox="0 0 52 52"><circle cx="26" cy="26" r="23" fill="none" stroke="#9CC8DD" stroke-width="5" stroke-dasharray="144.51" stroke-dashoffset="144.51" transform="rotate(-90 26 26)" stroke-linecap="round"/></svg></div>
 <div id="homeBtn"><div class="hb"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5" fill="none" stroke="#857761" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 10v9.5h13V10" fill="none" stroke="#857761" stroke-width="2.4" stroke-linejoin="round"/><rect x="10" y="14" width="4" height="5.5" rx="1" fill="#857761"/></svg></div><svg class="hr" viewBox="0 0 56 56"><circle cx="28" cy="28" r="25" fill="none" stroke="#E7A86F" stroke-width="5" stroke-dasharray="157.08" stroke-dashoffset="157.08" stroke-linecap="round" transform="rotate(-90 28 28)"/></svg></div>
 <div id="pin" hidden>
   <div class="pinbox">
@@ -398,6 +400,7 @@ const DEFAULTS = {
   autoSwitch: 0,
   bgm: true,
   mode: "boy",
+  usePin: false,
   pin: "0000",
 };
 function cloneDefaults(){ return JSON.parse(JSON.stringify(DEFAULTS)); }
@@ -415,6 +418,7 @@ function sanitize(o){
   if ([0, 3, 5, 10].includes(o.autoSwitch)) s.autoSwitch = o.autoSwitch;
   if (typeof o.bgm === "boolean") s.bgm = o.bgm;
   if (o.mode === "boy" || o.mode === "girl") s.mode = o.mode;
+  if (typeof o.usePin === "boolean") s.usePin = o.usePin;
   if (typeof o.pin === "string" && /^\d{4}$/.test(o.pin)) s.pin = o.pin;
   return s;
 }
@@ -2024,7 +2028,9 @@ screens.parent = {
       <div class="pcard"><h2>じどう きりかえ</h2>
         <div class="prow"><span>おなじ あそびを</span>${seg("autoSwitch", [[0, "OFF"], [3, "3分"], [5, "5分"], [10, "10分"]], S.autoSwitch)}</div>
         <p>決めた時間がたつと、つぎの あそびに自動で切りかわります。</p></div>
-      <div class="pcard"><h2>PIN へんこう（あんしょうばんごう）</h2>
+      <div class="pcard"><h2>あんしょうばんごう（PIN）</h2>
+        <div class="prow"><span>あんしょうばんごうを つかう</span>${tg("usePin", S.usePin)}</div>
+        <p>オフ：右上の ⚙️ を3秒おしつづけると、すぐ この画面が開きます。<br>オン：⚙️ を3秒おしたあと、4けたの番号（はじめは 0000）を入れると開きます。子どもが この画面を開けるようになったら オンにしてください。</p>
         <div class="addrow" style="margin-bottom:8px"><input class="txt pin-in" id="pPin1" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="あたらしい 4けた" autocomplete="off"></div>
         <div class="addrow"><input class="txt pin-in" id="pPin2" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="もういちど" autocomplete="off"><button class="pbtn" id="pPinSet">かえる</button></div>
         <div class="pmsg" id="pPinMsg"></div>
@@ -2104,30 +2110,28 @@ screens.parent = {
 const Lock = {
   hold: null, tries: 0, entry: "",
   init(){
-    const spot = $("#lock"), ring = $("#lockRing"), circ = $("circle", ring);
-    const cancel = () => {
+    const spot = $("#lock"), gb = $(".gb", spot), circ = $("#lockRing circle");
+    const cancel = (wiggle) => {
       if (!this.hold) return;
-      clearTimeout(this.hold.t1); clearTimeout(this.hold.t2);
+      clearTimeout(this.hold.t2);
       if (this.hold.a) this.hold.a.cancel();
-      ring.style.opacity = 0; this.hold = null;
+      circ.style.strokeDashoffset = 144.51; this.hold = null;
+      if (wiggle === true) gb.animate([{ transform: "rotate(0)" }, { transform: "rotate(-25deg)" }, { transform: "rotate(25deg)" }, { transform: "rotate(0)" }], { duration: 300 });
     };
     spot.addEventListener("pointerdown", e => {
       e._handled = true;
       if (this.hold) return;
       try { spot.setPointerCapture(e.pointerId); } catch (_) {}
       const hd = { id: e.pointerId, x: e.clientX, y: e.clientY };
-      hd.t1 = setTimeout(() => {
-        ring.style.opacity = 0.3;
-        hd.a = circ.animate([{ strokeDashoffset: 62.84 }, { strokeDashoffset: 0 }], { duration: 2000, fill: "forwards" });
-      }, 1000);
-      hd.t2 = setTimeout(() => { cancel(); this.open(); }, 3000);
+      hd.a = circ.animate([{ strokeDashoffset: 144.51 }, { strokeDashoffset: 0 }], { duration: 3000, fill: "forwards" });
+      hd.t2 = setTimeout(() => { cancel(); Sound.play("chime"); this.open(); }, 3000);
       this.hold = hd;
     });
     spot.addEventListener("pointermove", e => {
       if (this.hold && e.pointerId === this.hold.id && Math.hypot(e.clientX - this.hold.x, e.clientY - this.hold.y) > 10) cancel();
     });
-    spot.addEventListener("pointerup", cancel);
-    spot.addEventListener("pointercancel", cancel);
+    spot.addEventListener("pointerup", () => cancel(true));
+    spot.addEventListener("pointercancel", () => cancel(false));
 
     const pad = $("#pin .pinpad");
     ["1", "2", "3", "4", "5", "6", "7", "8", "9", "とじる", "0", "けす"].forEach(k => {
@@ -2137,6 +2141,7 @@ const Lock = {
     });
   },
   open(){
+    if (!S.usePin) { if (current !== "parent") { navBusy = false; go("parent"); } return; }
     this.tries = 0; this.entry = "";
     $("#pin .pin-msg").textContent = "";
     this.draw();
