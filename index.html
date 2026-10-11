@@ -394,6 +394,69 @@ html.girl .scene2{background:#F6E6EE}
 .cards.paged{padding-bottom:calc(var(--u)*4)}
 .tuft{transform-box:fill-box;transform-origin:center}
 
+/* ---------- 7この あたらしい あそび（24こ） ---------- */
+.s-zoo{background:#EEF3E2}.s-lab{background:#ECEFF6}.s-paint{background:#F6F0E6}.s-photo{background:#F1EDF6}.s-soccer{background:#E8F2E4}.s-police{background:#E8EEF5}.s-pilot{background:#E4EFF6}
+.c-zoo{background:#DCE8C6}.c-lab{background:#D6DCEE}.c-paint{background:#F3DEC4}.c-photo{background:#E1D8EE}.c-soccer{background:#CDE6C6}.c-police{background:#D3DFEE}.c-pilot{background:#CFE3EF}
+html.girl .s-zoo,html.girl .s-lab,html.girl .s-paint,html.girl .s-photo,html.girl .s-soccer,html.girl .s-police,html.girl .s-pilot{background:#FBEDF0}
+html.girl .c-zoo,html.girl .c-paint,html.girl .c-soccer{background:#F7D3DC}html.girl .c-lab,html.girl .c-photo,html.girl .c-pilot{background:#F3D7E3}html.girl .c-police{background:#F9DDE2}
+.eicon{font-size:calc(var(--u)*13);line-height:1}
+.cards.many .eicon{font-size:calc(var(--u)*11)}
+.boot-icons .eicon{font-size:calc(var(--u)*11)}
+/* どうぶつえん */
+.pen{position:absolute;left:4%;right:4%;top:6%;bottom:4%;border-radius:calc(var(--u)*6);background:#DCEBC8;overflow:hidden}
+.pen::after{content:"";position:absolute;left:0;right:0;bottom:0;height:calc(var(--u)*14);background:repeating-linear-gradient(90deg,#C9A27E 0 calc(var(--u)*2.4),transparent calc(var(--u)*2.4) calc(var(--u)*9)),linear-gradient(180deg,transparent 30%,#C9A27E 30%,#C9A27E 42%,transparent 42%,transparent 66%,#C9A27E 66%,#C9A27E 78%,transparent 78%)}
+.zanimal{position:absolute;left:50%;top:44%;width:calc(var(--u)*56);height:calc(var(--u)*56);margin:calc(var(--u)*-28) 0 0 calc(var(--u)*-28);font-size:calc(var(--u)*44);line-height:1;display:flex;align-items:center;justify-content:center}
+.soap{position:absolute;width:calc(var(--u)*9);height:calc(var(--u)*9);border-radius:50%;background:radial-gradient(circle at 35% 35%,#FFFDF8,#E3F0F6);border:1px solid #C6DCE6;pointer-events:none}
+/* はかせ */
+.beaker{position:absolute;left:50%;top:6%;width:calc(var(--u)*50);height:calc(var(--u)*58);margin-left:calc(var(--u)*-25)}
+.beaker svg,.flask svg{width:100%;height:100%;display:block;overflow:visible}
+.liq{transform-box:fill-box;transform-origin:50% 100%;transition:fill .5s ease}
+.flask{width:calc(var(--u)*18);height:calc(var(--u)*22);position:relative}
+.labbub{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none}
+/* ペンキやさん */
+.phouse{position:absolute;left:50%;top:4%;width:calc(var(--u)*80);height:calc(var(--u)*80);margin-left:calc(var(--u)*-40)}
+.phouse svg{width:100%;height:100%;display:block;overflow:visible}
+.rg{transition:fill .35s ease}
+.sw{width:70%;height:70%;border-radius:50%}
+.ti2.sel{box-shadow:0 0 0 calc(var(--u)*1.2) #857761}
+.p-res{position:absolute;left:50%;top:80%;font-size:calc(var(--u)*11);line-height:1;margin:calc(var(--u)*-5.5) 0 0 calc(var(--u)*-5.5);opacity:0}
+/* カメラマン */
+.posers{position:absolute;left:4%;right:4%;top:14%;height:calc(var(--u)*34);display:flex;justify-content:space-evenly;align-items:center}
+.poser{font-size:calc(var(--u)*20);line-height:1;width:calc(var(--u)*24);height:calc(var(--u)*24);display:flex;align-items:center;justify-content:center;position:relative}
+.poser span{display:block;animation:bob 1.6s ease-in-out infinite alternate}
+.poser:nth-child(2) span{animation-delay:.5s}.poser:nth-child(3) span{animation-delay:1s}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(calc(var(--u)*-2))}}
+.vf{position:absolute;left:8%;right:8%;top:8%;height:calc(var(--u)*46);pointer-events:none;border:calc(var(--u)*1) dashed rgba(133,119,97,.35);border-radius:calc(var(--u)*4)}
+.shade{position:absolute;inset:0;background:rgba(58,50,38,.16);opacity:0;pointer-events:none;z-index:6}
+.photo{width:calc(var(--u)*15);height:calc(var(--u)*17);background:#FFFCF5;border-radius:calc(var(--u)*1);box-shadow:0 calc(var(--u)*.6) calc(var(--u)*1.2) rgba(58,50,38,.18);display:flex;align-items:flex-start;justify-content:center;padding-top:calc(var(--u)*1.2);font-size:calc(var(--u)*10);line-height:1}
+.album{justify-content:center;gap:calc(var(--u)*2)}
+.bigphoto{position:absolute;left:50%;top:48%;width:calc(var(--u)*34);height:calc(var(--u)*40);margin:calc(var(--u)*-20) 0 0 calc(var(--u)*-17);background:#FFFCF5;border-radius:calc(var(--u)*2);box-shadow:0 calc(var(--u)*1) calc(var(--u)*3) rgba(58,50,38,.2);display:flex;align-items:flex-start;justify-content:center;padding-top:calc(var(--u)*3);font-size:calc(var(--u)*24);line-height:1;z-index:7}
+/* サッカー */
+.pitch{position:absolute;left:3%;right:3%;top:3%;bottom:4%;border-radius:calc(var(--u)*5);background:repeating-linear-gradient(180deg,#BFDFAF 0 calc(var(--u)*12),#B3D8A2 calc(var(--u)*12) calc(var(--u)*24));overflow:hidden}
+.goal{position:absolute;left:50%;top:5%;width:calc(var(--u)*70);height:calc(var(--u)*30);margin-left:calc(var(--u)*-35)}
+.goal svg{width:100%;height:100%;display:block}
+.keeper{position:absolute;left:50%;top:15%;width:calc(var(--u)*16);margin-left:calc(var(--u)*-8);font-size:calc(var(--u)*14);line-height:1;text-align:center}
+.keeper span{display:block;animation:keep 2.4s ease-in-out infinite alternate}
+@keyframes keep{from{transform:translateX(calc(var(--u)*-14))}to{transform:translateX(calc(var(--u)*14))}}
+.ball{position:absolute;left:50%;bottom:12%;width:calc(var(--u)*16);height:calc(var(--u)*16);margin-left:calc(var(--u)*-8)}
+.ball svg{width:100%;height:100%;display:block}
+.medal{position:absolute;left:50%;top:40%;font-size:calc(var(--u)*30);line-height:1;transform:translateX(-50%);opacity:0;pointer-events:none}
+/* おまわりさん・パイロット */
+.pcar{position:absolute;left:3%;bottom:calc(var(--u)*4);width:calc(var(--u)*58);height:calc(var(--u)*31.5)}
+.pcar svg,.plane svg{width:100%;height:100%;display:block;overflow:visible}
+.pcar.spin .wheel,.plane.spin .wheel{animation:spin .6s linear infinite}
+.kid{position:absolute;right:10%;bottom:calc(var(--u)*13);font-size:calc(var(--u)*18);line-height:1}
+.tear{position:absolute;right:-30%;top:-10%;font-size:calc(var(--u)*5)}
+.sky2{position:relative;flex:1.6;margin-top:calc(var(--u)*3);overflow:hidden;background:#D6EBF5}
+html.girl .sky2{background:#F6E6EE}
+.clouds{position:absolute;left:0;top:8%;width:200%;height:40%;display:flex}
+.clouds .tile{position:relative;width:50%;height:100%}
+.runway{position:absolute;left:0;right:0;bottom:calc(var(--u)*24);height:calc(var(--u)*6);background:#A99C8A;border-top:calc(var(--u)*1) solid #8F877D}
+.runway::after{content:"";position:absolute;left:0;right:0;top:40%;height:calc(var(--u)*1);background:repeating-linear-gradient(90deg,#F4EEE2 0 calc(var(--u)*6),transparent calc(var(--u)*6) calc(var(--u)*12))}
+.plane{position:absolute;left:50%;bottom:calc(var(--u)*29);width:calc(var(--u)*80);height:calc(var(--u)*32);margin-left:calc(var(--u)*-40);transform-origin:30% 80%}
+.win2{position:absolute;top:34%;width:9%;height:22%;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*6.5);line-height:1}
+.land{position:absolute;right:8%;top:6%;font-size:calc(var(--u)*24);line-height:1;opacity:0}
+
 /* ---------- おんなのこ（ピンク）のいろ ---------- */
 html.girl{--mint:#FBEAEE;--butter:#FCEFF0;--peach:#F9E6EB;--sky:#F7EAF0}
 html.girl .boot-btn{background:#F6C3CF;box-shadow:0 calc(var(--u)*1.5) 0 #DEA3B2}
@@ -438,6 +501,13 @@ html.girl .cust-face{background:#FDEBEF}
   <section class="screen s-flower" id="s-flower"></section>
   <section class="screen s-carpenter" id="s-carpenter"></section>
   <section class="screen s-sushi" id="s-sushi"></section>
+  <section class="screen s-zoo" id="s-zoo"></section>
+  <section class="screen s-lab" id="s-lab"></section>
+  <section class="screen s-paint" id="s-paint"></section>
+  <section class="screen s-photo" id="s-photo"></section>
+  <section class="screen s-soccer" id="s-soccer"></section>
+  <section class="screen s-police" id="s-police"></section>
+  <section class="screen s-pilot" id="s-pilot"></section>
   <section class="screen s-end" id="s-end"></section>
 </div>
 <div id="fx"></div>
@@ -509,11 +579,26 @@ const MESSAGES = {
   carpenterDone: [ "かんせい！", "おうち が できた" ],
   sushi:    [ "おすし を にぎろう", "へい いらっしゃい", "{family}の おすし" ],
   sushiDone:[ "へい おまち！", "おいしい おすし" ],
+  zoo:      [ "ごはん だよ", "{name}{kun} しいくいん", "{family}と どうぶつえん" ],
+  zooWash:  [ "あらって あげよう", "あわあわ しよう" ],
+  zooDone:  [ "ぴかぴか！", "おいしかったね" ],
+  lab:      [ "まぜて みよう", "{name}{kun} はかせ", "ふしぎな じっけん" ],
+  labDone:  [ "せいこう！", "いろが かわった！" ],
+  paint:    [ "いろを ぬろう", "{family}の おうち", "{name}{kun} ぺんきやさん" ],
+  paintDone:[ "できあがり！", "かわいい おうち" ],
+  photo:    [ "はい ちーず！", "{name}{kun} かめらまん", "しゃしん とろう" ],
+  photoDone:[ "いい しゃしん！", "すてきな あるばむ" ],
+  soccer:   [ "しゅーと しよう", "{name}{kun} せんしゅ", "{family}も おうえん" ],
+  soccerGoal:[ "ごーる！", "やったね！", "ないす しゅーと！" ],
+  police:   [ "まいごの こが いるよ", "{name}{kun} おまわりさん", "たすけに いこう" ],
+  policeDone:[ "おうちに ついたよ", "よかったね！" ],
+  pilot:    [ "おきゃくさん のってね", "{name}{kun} ぱいろっと", "{family}も のるよ" ],
+  pilotDone:[ "とうちゃく！", "ついたよ！" ],
 };
 
 /* ---------- 設定の保存（失敗しても止まらない） ---------- */
 const STORE_KEY = "oshigoto.settings.v1";
-const GAMES = ["pharmacy", "stamp", "register", "delivery", "bakery", "train", "cake", "dentist", "fire", "doctor", "post", "chef", "salon", "farm", "flower", "carpenter", "sushi"];
+const GAMES = ["pharmacy", "stamp", "register", "delivery", "bakery", "train", "cake", "dentist", "fire", "doctor", "post", "chef", "salon", "farm", "flower", "carpenter", "sushi", "zoo", "lab", "paint", "photo", "soccer", "police", "pilot"];
 const DEFAULTS = {
   childName: CONFIG.childName,
   familyWords: CONFIG.familyWords.slice(),
@@ -521,7 +606,7 @@ const DEFAULTS = {
   volume: 1,
   typeSpeed: 50,
   night: false,
-  games: { pharmacy: true, stamp: true, register: true, delivery: true, bakery: true, train: true, cake: true, dentist: true, fire: true, doctor: true, post: true, chef: true, salon: true, farm: true, flower: true, carpenter: true, sushi: true },
+  games: { pharmacy: true, stamp: true, register: true, delivery: true, bakery: true, train: true, cake: true, dentist: true, fire: true, doctor: true, post: true, chef: true, salon: true, farm: true, flower: true, carpenter: true, sushi: true, zoo: true, lab: true, paint: true, photo: true, soccer: true, police: true, pilot: true },
   autoSwitch: 0,
   bgm: true,
   mode: "boy",
@@ -711,6 +796,11 @@ const SFX = {
   horn:  t => ({ nodes: [Sound.tone(t, { type: "triangle", f: 587, t: 0.22, g: 0.35 }), Sound.tone(t, { type: "triangle", f: 494, t: 0.36, g: 0.35, delay: 0.22 })], dur: 0.6 }),
   gatan: t => ({ nodes: [Sound.tone(t, { f: 110, f2: 70, t: 0.08, g: 0.4 }), Sound.tone(t, { f: 100, f2: 65, t: 0.08, g: 0.4, delay: 0.14 })], dur: 0.24 }),
   sparkle: t => ({ nodes: [Sound.tone(t, { f: 1568, t: 0.12, g: 0.18 }), Sound.tone(t, { f: 2093, t: 0.12, g: 0.18, delay: 0.08 }), Sound.tone(t, { f: 2637, t: 0.2, g: 0.16, delay: 0.16 })], dur: 0.38 }),
+  shutter: t => ({ nodes: [Sound.noise(t, { t: 0.04, g: 0.35, filter: "highpass", fq: 2500 }), Sound.noise(t, { t: 0.05, g: 0.3, filter: "bandpass", fq: 1800, delay: 0.07 })], dur: 0.13 }),
+  kick:  t => ({ nodes: [Sound.tone(t, { f: 180, f2: 90, t: 0.1, g: 0.6 }), Sound.noise(t, { t: 0.05, g: 0.3, filter: "lowpass", fq: 900 })], dur: 0.12 }),
+  goal:  t => ({ nodes: [523, 659, 784, 1047].map((f, i) => Sound.tone(t, { type: "triangle", f, t: 0.22, g: 0.25, delay: i * 0.1 })), dur: 0.55 }),
+  glug:  t => ({ nodes: [Sound.tone(t, { f: 420, f2: 220, t: 0.1, g: 0.35 }), Sound.tone(t, { f: 380, f2: 200, t: 0.1, g: 0.3, delay: 0.14 })], dur: 0.26 }),
+  jet:   t => ({ nodes: [Sound.noise(t, { t: 1.6, g: 0.4, filter: "bandpass", fq: 700, q: 0.6, attack: 0.5, hold: 0.5 })], dur: 1.62 }),
   spray: t => ({ nodes: [Sound.noise(t, { t: 0.35, g: 0.22, filter: "bandpass", fq: 1600, q: 0.7, attack: 0.03 })], dur: 0.37 }),
   siren: t => ({ nodes: [0, 1, 2, 3].map(i => Sound.tone(t, { type: "triangle", f: i % 2 ? 520 : 660, t: 0.3, g: 0.16, attack: 0.04, delay: i * 0.32 })), dur: 1.3 }),
   chop:  t => ({ nodes: [Sound.tone(t, { f: 260, f2: 140, t: 0.06, g: 0.5 }), Sound.noise(t, { t: 0.04, g: 0.25, filter: "lowpass", fq: 1200 })], dur: 0.08 }),
@@ -779,6 +869,27 @@ const SONGS = {
   sushi: { bpm: 122, chords: ["D", "G", "D", "A", "D", "G", "A", "D"], mel: [
     ["A5", 1], ["A5", 1], ["F#5", 1], ["D5", 1], ["G5", 1], ["B5", 1], ["D6", 2], ["A5", 1], ["F#5", 1], ["A5", 2], ["E5", 1], ["C#5", 1], ["E5", 2],
     ["F#5", 1], ["A5", 1], ["D6", 1], ["A5", 1], ["B5", 1], ["G5", 1], ["D5", 2], ["C#5", 1], ["E5", 1], ["G5", 1], ["E5", 1], ["D5", 4]] },
+  zoo: { bpm: 116, chords: ["G", "G", "C", "G", "D", "G", "D", "G"], mel: [
+    ["G5", 1], ["B5", 1], ["D6", 1], ["B5", 1], ["G5", 2], ["D5", 2], ["E5", 1], ["G5", 1], ["C6", 2], ["B5", 2], ["G5", 2],
+    ["A5", 1], ["A5", 1], ["F#5", 1], ["D5", 1], ["G5", 1], ["B5", 1], ["D6", 2], ["C6", 1], ["A5", 1], ["F#5", 1], ["A5", 1], ["G5", 4]] },
+  lab: { bpm: 112, chords: ["A", "A", "D", "A", "E", "A", "E", "A"], mel: [
+    ["A5", 1], ["C#6", 1], ["E5", 1], ["A5", 1], ["C#6", 2], ["E6", 2], ["D6", 1], ["B5", 1], ["F#5", 2], ["E5", 2], ["C#5", 2],
+    ["B5", 1], ["G#5", 1], ["E5", 2], ["A5", 1], ["C#6", 1], ["A5", 2], ["G#5", 1], ["B5", 1], ["E6", 1], ["D6", 1], ["C#6", 2], ["A5", 2]] },
+  paint: { bpm: 120, chords: ["F", "C", "F", "Bb", "F", "C", "C", "F"], mel: [
+    ["F5", 1], ["F5", 1], ["A5", 1], ["C6", 1], ["G5", 2], ["E5", 2], ["A5", 1], ["C6", 1], ["F5", 2], ["D6", 2], ["Bb5", 2],
+    ["A5", 1], ["G5", 1], ["F5", 2], ["E5", 1], ["G5", 1], ["C6", 2], ["Bb5", 1], ["G5", 1], ["E5", 1], ["G5", 1], ["F5", 4]] },
+  photo: { bpm: 118, chords: ["C", "G", "A", "F", "C", "G", "G", "C"], mel: [
+    ["E5", 1], ["G5", 1], ["C6", 2], ["D6", 1], ["B5", 1], ["G5", 2], ["C6", 1], ["A5", 1], ["E5", 2], ["F5", 1], ["A5", 1], ["C6", 2],
+    ["G5", 1], ["E5", 1], ["C5", 2], ["D5", 1], ["G5", 1], ["B5", 2], ["D6", 1], ["B5", 1], ["G5", 1], ["F5", 1], ["E5", 2], ["C5", 2]] },
+  soccer: { bpm: 136, chords: ["D", "D", "G", "A", "D", "G", "A", "D"], mel: [
+    ["D5", 1], ["D5", 1], ["A5", 2], ["F#5", 1], ["A5", 1], ["D6", 2], ["B5", 1], ["G5", 1], ["B5", 1], ["D6", 1], ["C#6", 2], ["A5", 2],
+    ["F#5", 1], ["A5", 1], ["D6", 1], ["A5", 1], ["G5", 1], ["B5", 1], ["D6", 2], ["E6", 1], ["C#6", 1], ["A5", 1], ["E5", 1], ["D5", 2], [null, 2]] },
+  police: { bpm: 126, chords: ["Bb", "Bb", "F", "F", "Bb", "Eb", "F", "Bb"], mel: [
+    ["F5", 1], ["Bb5", 1], ["D6", 1], ["Bb5", 1], ["F5", 2], ["D5", 2], ["C5", 1], ["F5", 1], ["A5", 1], ["C6", 1], ["A5", 2], ["F5", 2],
+    ["D5", 1], ["F5", 1], ["Bb5", 2], ["G5", 1], ["Bb5", 1], ["Eb5", 2], ["C5", 1], ["F5", 1], ["A5", 1], ["C6", 1], ["Bb5", 2], [null, 2]] },
+  pilot: { bpm: 114, chords: ["C", "F", "C", "G", "C", "F", "G", "C"], mel: [
+    ["G5", 2], ["C6", 2], ["A5", 1], ["F5", 1], ["C6", 2], ["G5", 1], ["E5", 1], ["C5", 2], ["D5", 1], ["G5", 1], ["B5", 2],
+    ["C6", 1], ["E6", 1], ["G5", 2], ["F5", 1], ["A5", 1], ["C6", 2], ["B5", 1], ["D6", 1], ["G5", 1], ["B5", 1], ["C6", 4]] },
 };
 const NOTE_IDX = { C: 0, "C#": 1, Db: 1, D: 2, "D#": 3, Eb: 3, E: 4, F: 5, "F#": 6, Gb: 6, G: 7, "G#": 8, Ab: 8, A: 9, "A#": 10, Bb: 10, B: 11 };
 function midiOf(n){ const m = /^([A-G][#b]?)(\d)$/.exec(n); return 12 * (Number(m[2]) + 1) + NOTE_IDX[m[1]]; }
@@ -1214,6 +1325,68 @@ const ART = {
     return '<svg viewBox="0 0 80 70"><ellipse cx="40" cy="50" rx="34" ry="16" fill="#FFFCF5" stroke="#E2D7C6" stroke-width="2.5"/>' +
       `<g transform="translate(0,6)">${ART.neta(k).replace(/^<svg[^>]*>|<\/svg>$/g, "")}</g></svg>`;
   },
+  flask(c){
+    return `<svg viewBox="0 0 60 80"><path d="M22 4 H38 V28 L56 70 Q58 76 52 76 H8 Q2 76 4 70 L22 28 Z" fill="#F4F8FA" stroke="#9FB3BE" stroke-width="3" stroke-linejoin="round"/>` +
+      `<path d="M15 46 H45 L54 70 Q55 73 51 73 H9 Q5 73 6 70 Z" fill="${c}"/><rect x="19" y="1" width="22" height="6" rx="3" fill="#9FB3BE"/></svg>`;
+  },
+  beaker(){
+    return '<svg viewBox="0 0 100 116"><path d="M14 6 H86 V100 Q86 112 74 112 H26 Q14 112 14 100 Z" fill="#F4F8FA" stroke="#9FB3BE" stroke-width="3.5" stroke-linejoin="round"/>' +
+      '<rect class="liq" x="17" y="22" width="66" height="87" rx="9" fill="#E6EEF2" style="transform:scaleY(0)"/>' +
+      '<path d="M24 30 v60" stroke="#FFFDF8" stroke-width="5" stroke-linecap="round" opacity=".7"/><path d="M86 30 h-10 M86 50 h-10 M86 70 h-10" stroke="#9FB3BE" stroke-width="2.5"/></svg>';
+  },
+  paintHouse(){
+    const u = 'fill="#F2EEE8" stroke="#A99C8A" stroke-width="2.5" stroke-dasharray="5 4"';
+    return '<svg viewBox="0 0 120 120"><rect x="4" y="110" width="112" height="5" rx="2.5" fill="#C9B08E"/>' +
+      `<rect class="rg" data-i="0" x="78" y="20" width="14" height="24" ${u}/>` +
+      `<rect class="rg" data-i="1" x="20" y="52" width="80" height="58" ${u}/>` +
+      `<path class="rg" data-i="2" d="M10 56 L60 16 L110 56 Z" ${u} stroke-linejoin="round"/>` +
+      `<rect class="rg" data-i="3" x="49" y="78" width="22" height="32" rx="2" ${u}/>` +
+      `<rect class="rg" data-i="4" x="26" y="64" width="18" height="16" rx="2" ${u}/>` +
+      `<rect class="rg" data-i="5" x="76" y="64" width="18" height="16" rx="2" ${u}/>` +
+      '</svg>';
+  },
+  paintIcon(){
+    return '<svg viewBox="0 0 100 100"><rect x="22" y="40" width="56" height="50" fill="#F2A0A8" stroke="#C98696" stroke-width="3"/><path d="M14 44 L50 14 L86 44Z" fill="#9CC8DD" stroke="#6F9DB5" stroke-width="3" stroke-linejoin="round"/><rect x="42" y="62" width="16" height="28" fill="#F5D88E"/></svg>';
+  },
+  camera(){
+    return '<svg viewBox="0 0 100 80"><rect x="6" y="18" width="88" height="56" rx="10" fill="#8F959A" stroke="#6E747A" stroke-width="3"/><rect x="32" y="8" width="30" height="14" rx="4" fill="#8F959A"/>' +
+      '<circle cx="50" cy="46" r="18" fill="#D8ECF4" stroke="#6E747A" stroke-width="4"/><circle cx="50" cy="46" r="8" fill="#9CC8DD"/><circle cx="80" cy="30" r="4" fill="#F5D88E"/></svg>';
+  },
+  goal(){
+    const net = [];
+    for (let x = 14; x < 186; x += 12) net.push(`M${x} 10 V78`);
+    for (let y = 18; y < 78; y += 10) net.push(`M8 ${y} H192`);
+    return '<svg viewBox="0 0 200 84"><path d="' + net.join(" ") + '" stroke="#E6EFE2" stroke-width="1.6"/>' +
+      '<path d="M6 82 V6 H194 V82" fill="none" stroke="#FFFCF5" stroke-width="6" stroke-linejoin="round"/></svg>';
+  },
+  ball(){
+    return '<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="#FFFCF5" stroke="#6E6A66" stroke-width="3"/>' +
+      '<path d="M30 19 L40 26 L36 38 H24 L20 26 Z" fill="#4E4A47"/><path d="M30 19 V5 M40 26 L54 21 M36 38 L44 51 M24 38 L16 51 M20 26 L6 21" stroke="#6E6A66" stroke-width="2.5"/></svg>';
+  },
+  policeCar(){
+    const wheel = x => `<g class="wheel"><circle cx="${x}" cy="62" r="10" fill="#4E4A47"/><circle cx="${x}" cy="62" r="4" fill="#CFC8BE"/><rect x="${x - 1}" y="53" width="2" height="5" fill="#CFC8BE"/></g>`;
+    return '<svg viewBox="0 0 140 76"><rect x="58" y="6" width="22" height="9" rx="3" fill="#E98A7E"/><rect x="69" y="6" width="11" height="9" rx="3" fill="#9CC8DD"/>' +
+      '<path d="M30 30 L44 14 H96 L112 30 Z" fill="#FFFCF5" stroke="#6E6A66" stroke-width="3" stroke-linejoin="round"/>' +
+      '<path d="M50 18 H70 V30 H40 Z M76 18 H92 L104 30 H76 Z" fill="#D8ECF4"/>' +
+      '<rect x="6" y="30" width="128" height="26" rx="8" fill="#FFFCF5" stroke="#6E6A66" stroke-width="3"/><rect x="6" y="40" width="128" height="8" fill="#6F8FB0"/>' +
+      '<circle cx="132" cy="36" r="3" fill="#F5E6B8"/>' + wheel(34) + wheel(106) + "</svg>";
+  },
+  plane(){
+    const c = S.mode === "girl" ? ["#F7D3DC", "#D79AAB", "#F2A0B4"] : ["#F4F8FA", "#8FA6B4", "#9CC8DD"];
+    const wheel = x => `<g class="wheel"><circle cx="${x}" cy="74" r="5" fill="#4E4A47"/></g>`;
+    return '<svg viewBox="0 0 200 80">' +
+      `<path d="M22 20 L8 4 H24 L52 30 Z" fill="${c[2]}" stroke="${c[1]}" stroke-width="2.5" stroke-linejoin="round"/>` +
+      `<path d="M12 34 Q12 24 30 24 H160 Q194 24 196 44 Q194 60 160 60 H30 Q12 60 12 50 Z" fill="${c[0]}" stroke="${c[1]}" stroke-width="3"/>` +
+      `<path d="M176 32 Q188 34 190 42 H170 Z" fill="#D8ECF4" stroke="${c[1]}" stroke-width="2"/>` +
+      `<path d="M80 50 L120 50 L96 76 H84 Z" fill="${c[2]}" stroke="${c[1]}" stroke-width="2.5" stroke-linejoin="round"/>` +
+      `<rect x="12" y="44" width="184" height="4" fill="${c[2]}"/>` +
+      [52, 78, 104].map(x => `<rect x="${x}" y="28" width="18" height="16" rx="7" fill="#EEF7FA" stroke="${c[1]}" stroke-width="2"/>`).join("") +
+      '<path d="M60 60 V70 M150 60 V70" stroke="#6E6A66" stroke-width="3"/>' + wheel(60) + wheel(150) + "</svg>";
+  },
+  cloudTile(){
+    const cl = (x, y, w) => `<div style="position:absolute;left:${x}%;top:${y}%;width:${w}u;height:${w * 0.42}u;border-radius:999px;background:#F4F9FA"></div>`.replace(/(\d+(\.\d+)?)u/g, (m, n) => (Number(n) * U) + "px");
+    return `<div class="tile">${cl(6, 20, 22)}${cl(40, 50, 16)}${cl(64, 10, 26)}</div>`;
+  },
   toothIcon(){
     return '<svg viewBox="0 0 100 100"><path d="M24 18 Q36 8 50 16 Q64 8 76 18 Q88 30 80 52 Q76 64 72 84 Q70 92 64 88 Q60 74 50 72 Q40 74 36 88 Q30 92 28 84 Q24 64 20 52 Q12 30 24 18Z" fill="#FFFCF5" stroke="#B9C9C4" stroke-width="3" stroke-linejoin="round"/><path d="M76 10 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z" fill="#F2C46D"/></svg>';
   },
@@ -1403,6 +1576,13 @@ const GAME_INFO = {
   flower:   { label: "おはなやさん", icon: () => ART.wrapIcon() },
   carpenter:{ label: "だいくさん", icon: () => ART.hammer() },
   sushi:    { label: "おすしやさん", icon: () => ART.sushi(0) },
+  zoo:      { label: "どうぶつえん", icon: () => '<div class="eicon">🐘</div>' },
+  lab:      { label: "はかせ", icon: () => ART.flask("#C9B3E6") },
+  paint:    { label: "ぺんきやさん", icon: () => ART.paintIcon() },
+  photo:    { label: "かめらまん", icon: () => ART.camera() },
+  soccer:   { label: "さっかー", icon: () => ART.ball() },
+  police:   { label: "おまわりさん", icon: () => ART.policeCar() },
+  pilot:    { label: "ぱいろっと", icon: () => ART.plane() },
 };
 let homePage = 0;
 const ARROW = d => `<svg viewBox="0 0 20 30"><path d="${d > 0 ? "M5 4 L15 15 L5 26" : "M15 4 L5 15 L15 26"}" fill="none" stroke="#857761" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -2973,6 +3153,494 @@ screens.sushi = {
     });
     typeText(banner, msg("sushi"), scope);
     newShari();
+  },
+};
+
+/* ---------- どうぶつえんの しいくいんさん ---------- */
+const ZOO_ANIMALS = ["🐘", "🦒", "🦁", "🦓", "🐼", "🦛", "🐨"];
+const ZOO_FOODS = ["🍎", "🍌", "🥕", "🍖", "🌿"];
+screens.zoo = {
+  el: $("#s-zoo"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="area"><div class="pen"></div><div class="zanimal"></div></div>
+      <div class="tray2"></div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), area = $(".area", st), ani = $(".zanimal", st), tray = $(".tray2", st);
+    let phase = "feed", n = 0;
+    ZOO_FOODS.forEach(f => {
+      const b = h(`<div class="ti2">${f}</div>`);
+      b.addEventListener("pointerdown", e => { if (!e.isPrimary) return; e._handled = true; bounce(b, scope, 1.15); act(cpt(b), f); });
+      tray.appendChild(b);
+    });
+    function newAnimal(){
+      phase = "feed"; n = 0;
+      $$(".soap", area).forEach(s => s.remove());
+      ani.textContent = pick(ZOO_ANIMALS); ani.style.transform = ""; ani.style.opacity = "";
+      slideIn(scope, ani, -200);
+      typeText(banner, msg("zoo"), scope);
+    }
+    function act(from, food){
+      if (phase === "feed") {
+        phase = "eating";
+        const r = ani.getBoundingClientRect();
+        flyEl(scope, st, food || pick(ZOO_FOODS), from, { x: r.left + r.width / 2, y: r.top + r.height * 0.45 }, { size: U * 12, font: U * 10, dur: 450, scale: 0.5, fade: true }, () => {
+          Sound.play("munch"); bounce(ani, scope, 1.12);
+          FX.burst(r.left + r.width / 2, r.top + r.height * 0.4, 5);
+          n++;
+          if (n >= 3) { phase = "wash"; n = 0; scope.timeout(() => { Sound.play("chime"); typeText(banner, msg("zooWash"), scope); }, 300); }
+          else phase = "feed";
+        });
+      } else if (phase === "wash") {
+        const r = ani.getBoundingClientRect(), ar = area.getBoundingClientRect();
+        for (let i = 0; i < 3; i++) {
+          const s = h('<div class="soap"></div>');
+          s.style.left = (r.left - ar.left + rnd(0.15, 0.85) * r.width - U * 4.5) + "px";
+          s.style.top = (r.top - ar.top + rnd(0.15, 0.85) * r.height - U * 4.5) + "px";
+          area.appendChild(s); popIn(s, scope, i * 60);
+        }
+        Sound.play("shara"); bounce(ani, scope, 1.05);
+        n++;
+        if (n >= 3) { phase = "rinse"; scope.timeout(rinse, 400); }
+      } else { Sound.play("pop"); FX.burst(from.x, from.y, 3); }
+    }
+    function rinse(){
+      const r = ani.getBoundingClientRect();
+      Sound.play("spray");
+      for (let i = 0; i < 10; i++) scope.timeout(() => {
+        const x = r.left + rnd(0.1, 0.9) * r.width;
+        flyEl(scope, st, '<div class="drop"></div>', { x, y: r.top - U * 12 }, { x, y: r.top + r.height * rnd(0.4, 0.9) }, { size: U * 3.5, dur: 420, arc: 0, fade: true });
+      }, i * 70);
+      scope.timeout(() => {
+        $$(".soap", area).forEach(s => scope.anim(s, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 }, () => s.remove()));
+        Sound.play("sparkle"); scope.timeout(() => Sound.play("chime"), 250);
+        FX.burst(r.left + r.width / 2, r.top + r.height / 2, 7);
+        scope.anim(ani, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 8}px)` }, { transform: "translateY(0px)" }], { duration: 450, iterations: 2, fill: "none" });
+        typeText(banner, msg("zooDone"), scope, () => scope.timeout(() => slideOut(scope, ani, 200, newAnimal), 1300));
+      }, 800);
+    }
+    el.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e._handled) return;
+      e._handled = true;
+      act({ x: e.clientX, y: e.clientY }, null);
+    });
+    newAnimal();
+  },
+};
+
+/* ---------- はかせ ---------- */
+const LAB_COLORS = ["#F2A0A8", "#9CC8DD", "#F5D88E", "#B5DDB5", "#C9B3E6"];
+function mixColors(list){
+  const c = list.map(x => [1, 3, 5].map(i => parseInt(x.slice(i, i + 2), 16)));
+  const avg = [0, 1, 2].map(k => Math.round(c.reduce((a, v) => a + v[k], 0) / c.length));
+  return "#" + avg.map(v => v.toString(16).padStart(2, "0")).join("");
+}
+screens.lab = {
+  el: $("#s-lab"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="area"><div class="beaker">${ART.beaker()}<div class="labbub"></div></div></div>
+      <div class="tray2"></div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), beaker = $(".beaker", st), liq = $(".liq", st), bubs = $(".labbub", st), tray = $(".tray2", st);
+    let phase = "pour", poured = [];
+    function setup(){
+      phase = "pour"; poured = [];
+      liq.style.transform = "scaleY(0)"; liq.setAttribute("fill", "#E6EEF2");
+      tray.innerHTML = "";
+      shuffle(LAB_COLORS).slice(0, 3).forEach((c, i) => {
+        const f = h(`<div class="flask">${ART.flask(c)}</div>`);
+        f._c = c; tray.appendChild(f); popIn(f, scope, 100 + i * 100);
+        f.addEventListener("pointerdown", e => { if (!e.isPrimary) return; e._handled = true; pour(f); });
+      });
+      typeText(banner, msg("lab"), scope);
+    }
+    function pour(f){
+      if (phase !== "pour" || f.dataset.st !== "idle") { Sound.play("pop"); return; }
+      phase = "pouring"; f.dataset.st = "busy";
+      const br = beaker.getBoundingClientRect(), fr = f.getBoundingClientRect();
+      const dx = (br.left + br.width * 0.72) - (fr.left + fr.width / 2), dy = (br.top - U * 4) - (fr.top + fr.height / 2);
+      scope.anim(f, [{ transform: "translate(0px,0px) rotate(0deg)" }, { transform: `translate(${dx}px,${dy}px) rotate(-70deg)` }], { duration: 450, easing: "ease-in-out" }, () => {
+        Sound.play("glug");
+        const from = { x: br.left + br.width * 0.6, y: br.top + U * 2 };
+        for (let i = 0; i < 5; i++) scope.timeout(() => flyEl(scope, st, `<div class="drop" style="background:${f._c}"></div>`, from, { x: from.x + rnd(-U * 3, U * 3), y: br.top + br.height * 0.6 }, { size: U * 3.5, dur: 380, arc: 0, fade: true }), i * 70);
+        scope.timeout(() => {
+          poured.push(f._c);
+          liq.setAttribute("fill", mixColors(poured));
+          const lv = Math.min(1, poured.length / 3);
+          scope.anim(liq, [{ transform: `scaleY(${(poured.length - 1) / 3})` }, { transform: `scaleY(${lv})` }], { duration: 400, easing: "ease-out" });
+          FX.burst(br.left + br.width / 2, br.top + br.height * 0.5, 3);
+          scope.anim(f, [{ transform: `translate(${dx}px,${dy}px) rotate(-70deg)` }, { transform: "translate(0px,0px) rotate(0deg)" }], { duration: 450, easing: "ease-in-out" }, () => {
+            f.dataset.st = "idle";
+            if (poured.length >= 3) react(); else phase = "pour";
+          });
+        }, 450);
+      });
+    }
+    function react(){
+      phase = "react";
+      Sound.play("boil");
+      const col = mixColors(poured);
+      const bid = scope.interval(() => {
+        const b = h(`<div class="bub" style="left:${ri(22, 70)}%;bottom:${ri(10, 30)}%;background:${col}"></div>`); bubs.appendChild(b);
+        scope.anim(b, [{ transform: "translateY(0px) scale(.6)", opacity: 0.9 }, { transform: `translateY(${-U * 30}px) scale(1.4)`, opacity: 0 }], { duration: 900 }, () => b.remove());
+      }, 140);
+      scope.anim(beaker, [{ transform: "rotate(0deg)" }, { transform: "rotate(-3deg)" }, { transform: "rotate(3deg)" }, { transform: "rotate(0deg)" }], { duration: 400, iterations: 3, fill: "none" });
+      scope.timeout(() => Sound.play("boil"), 600);
+      scope.timeout(() => {
+        scope.stopInterval(bid);
+        liq.setAttribute("fill", pick(LAB_COLORS.filter(c => !poured.includes(c))) || col);
+        Sound.play("sparkle"); scope.timeout(() => Sound.play("chime"), 250);
+        const c = cpt(beaker); FX.burst(c.x, c.y - U * 10, 8);
+        typeText(banner, msg("labDone"), scope, () => scope.timeout(() => {
+          scope.anim(liq, [{ transform: "scaleY(1)" }, { transform: "scaleY(0)" }], { duration: 600, easing: "ease-in" }, setup);
+        }, 1400));
+      }, 1600);
+    }
+    el.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e._handled) return;
+      e._handled = true;
+      if (phase === "pour") { const f = $$(".flask", tray).find(z => z.dataset.st === "idle"); if (f) { pour(f); return; } }
+      if (phase === "react") { Sound.play("pop"); bounce(beaker, scope, 1.04); }
+      tapOther(e);
+    });
+    setup();
+  },
+};
+
+/* ---------- ペンキやさん ---------- */
+const PAINTS = ["#F2A0A8", "#F5D88E", "#9CC8DD", "#A8D8A8", "#C9B3E6"];
+screens.paint = {
+  el: $("#s-paint"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="area"><div class="phouse">${ART.paintHouse()}<div class="p-res"></div></div><div class="tool" style="width:calc(var(--u)*14);height:calc(var(--u)*14)">${'<svg viewBox="0 0 60 60"><rect x="8" y="8" width="36" height="16" rx="6" fill="#F4F1EC" stroke="#A99C8A" stroke-width="3"/><path d="M44 16 H52 V30 H30 V40" stroke="#A99C8A" stroke-width="4" fill="none"/><rect x="26" y="38" width="8" height="18" rx="3" fill="#B8936A"/></svg>'}</div></div>
+      <div class="tray2"></div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), area = $(".area", st), house = $(".phouse", st), res = $(".p-res", st), roller = $(".tool", st), tray = $(".tray2", st);
+    let phase = "paint", sel = 0;
+    PAINTS.forEach((c, i) => {
+      const b = h(`<div class="ti2"><div class="sw" style="background:${c}"></div></div>`);
+      b.addEventListener("pointerdown", e => { if (!e.isPrimary) return; e._handled = true; sel = i; mark(); Sound.play("pick"); bounce(b, scope, 1.15); });
+      tray.appendChild(b);
+    });
+    const mark = () => $$(".ti2", tray).forEach((b, i) => b.classList.toggle("sel", i === sel));
+    function reset(){
+      phase = "paint";
+      $$(".rg", house).forEach(r => { r.setAttribute("fill", "#F2EEE8"); r.setAttribute("stroke-dasharray", "5 4"); r._done = false; });
+      res.style.opacity = 0; house.style.opacity = ""; mark();
+      typeText(banner, msg("paint"), scope);
+    }
+    function paintAt(x, y){
+      const left = $$(".rg", house).filter(r => !r._done);
+      if (!left.length) return;
+      const r = nearest(left, x, y);
+      r._done = true;
+      r.setAttribute("fill", PAINTS[sel]); r.setAttribute("stroke-dasharray", "none");
+      const c = cpt(r), ar = area.getBoundingClientRect();
+      roller.style.left = (c.x - ar.left - roller.offsetWidth * 0.45) + "px"; roller.style.top = (c.y - ar.top - roller.offsetHeight * 0.3) + "px";
+      scope.anim(roller, [{ transform: "translate(0px,0px)", opacity: 1 }, { transform: `translate(${-U * 4}px,${U * 2}px)`, opacity: 1 }, { transform: `translate(${U * 4}px,${-U * 2}px)`, opacity: 1 }, { transform: "translate(0px,0px)", opacity: 0 }], { duration: 450 });
+      Sound.play("squish"); FX.burst(c.x, c.y, 4);
+      sel = (sel + 1) % PAINTS.length; mark();
+      if ($$(".rg", house).every(z => z._done)) { phase = "done"; scope.timeout(done, 500); }
+    }
+    function done(){
+      Sound.play("sparkle"); scope.timeout(() => Sound.play("chime"), 250);
+      const c = cpt(house); FX.burst(c.x, c.y, 8);
+      res.textContent = pick(ANIMALS);
+      scope.anim(res, [{ transform: "scale(0)", opacity: 0 }, { transform: "scale(1.2)", opacity: 1, offset: 0.7 }, { transform: "scale(1)", opacity: 1 }], { duration: 450 });
+      bounce(house, scope, 1.04);
+      typeText(banner, msg("paintDone"), scope, () => scope.timeout(() => {
+        scope.anim(house, [{ opacity: 1 }, { opacity: 0 }], { duration: 450 }, () => { reset(); scope.anim(house, [{ opacity: 0 }, { opacity: 1 }], { duration: 450 }); });
+      }, 1600));
+    }
+    el.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e._handled) return;
+      e._handled = true;
+      if (phase === "paint") paintAt(e.clientX, e.clientY); else tapOther(e);
+    });
+    reset();
+  },
+};
+
+/* ---------- カメラマン ---------- */
+screens.photo = {
+  el: $("#s-photo"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="area"><div class="vf"></div><div class="posers"></div><div class="shade"></div></div>
+      <div class="tray2 album"></div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), area = $(".area", st), posers = $(".posers", st), shade = $(".shade", st), vf = $(".vf", st), album = $(".album", st);
+    let phase = "shoot";
+    function newSet(){
+      phase = "shoot"; posers.innerHTML = "";
+      shuffle(ANIMALS).slice(0, 3).forEach((a, i) => {
+        const p = h(`<div class="poser"><span>${a}</span></div>`);
+        p._a = a; p._shot = false; posers.appendChild(p); popIn(p, scope, 100 + i * 120);
+      });
+      typeText(banner, msg("photo"), scope);
+    }
+    function shoot(x, y){
+      const left = $$(".poser", posers).filter(p => !p._shot);
+      if (!left.length) return;
+      const p = nearest(left, x, y);
+      p._shot = true; phase = "busy";
+      Sound.play("shutter");
+      scope.anim(shade, [{ opacity: 0 }, { opacity: 1 }, { opacity: 0 }], { duration: 350 });
+      scope.anim(vf, [{ transform: "scale(1)" }, { transform: "scale(.95)" }, { transform: "scale(1)" }], { duration: 300 });
+      bounce(p, scope, 1.25);
+      const big = h(`<div class="bigphoto">${p._a}</div>`); area.appendChild(big);
+      scope.anim(big, [{ transform: "scale(.3) rotate(-10deg)", opacity: 0 }, { transform: "scale(1.05) rotate(3deg)", opacity: 1, offset: 0.7 }, { transform: "scale(1) rotate(0deg)", opacity: 1 }], { duration: 450, easing: "ease-out" }, () => {
+        Sound.play("shara"); const c = cpt(big); FX.burst(c.x, c.y, 5);
+        scope.timeout(() => {
+          const slot = h(`<div class="photo" style="opacity:0">${p._a}</div>`); album.appendChild(slot);
+          while (album.children.length > 4) album.firstElementChild.remove();
+          const to = cpt(slot), from = cpt(big); big.remove();
+          flyEl(scope, st, `<div class="photo" style="width:100%;height:100%;font-size:${U * 18}px">${p._a}</div>`, from, to, { size: U * 30, dur: 500, scale: 0.5 }, () => {
+            slot.style.opacity = 1; Sound.play("pop");
+            if ($$(".poser", posers).every(z => z._shot)) { phase = "done"; scope.timeout(done, 300); } else phase = "shoot";
+          });
+        }, 600);
+      });
+    }
+    function done(){
+      Sound.play("chime"); const c = cpt(posers); FX.burst(c.x, c.y, 7);
+      $$(".poser", posers).forEach(p => scope.anim(p, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 5}px)` }, { transform: "translateY(0px)" }], { duration: 400, iterations: 2, fill: "none" }));
+      typeText(banner, msg("photoDone"), scope, () => scope.timeout(() => {
+        $$(".poser", posers).forEach(p => scope.anim(p, [{ opacity: 1 }, { opacity: 0 }], { duration: 350 }));
+        scope.timeout(newSet, 400);
+      }, 1200));
+    }
+    el.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e._handled) return;
+      e._handled = true;
+      if (phase === "shoot") shoot(e.clientX, e.clientY); else tapOther(e);
+    });
+    newSet();
+  },
+};
+
+/* ---------- サッカーせんしゅ ---------- */
+screens.soccer = {
+  el: $("#s-soccer"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="area"><div class="pitch"><div class="goal">${ART.goal()}</div><div class="keeper"><span></span></div><div class="ball">${ART.ball()}</div><div class="medal">🏅</div></div></div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), goal = $(".goal", st), keeper = $(".keeper", st), kspan = $(".keeper span", st), ball = $(".ball", st), medal = $(".medal", st);
+    let phase = "ready", goals = 0;
+    kspan.textContent = pick(ANIMALS);
+    function shoot(x){
+      phase = "kick";
+      const gr = goal.getBoundingClientRect(), br = ball.getBoundingClientRect(), b0 = center(br);
+      const tx = Math.max(gr.left + gr.width * 0.15, Math.min(gr.right - gr.width * 0.15, x)), ty = gr.top + gr.height * 0.55;
+      const kc = cpt(keeper), away = tx < kc.x ? 1 : -1;
+      Sound.play("kick");
+      scope.anim(ball, [{ transform: "translate(0px,0px) scale(1) rotate(0deg)" }, { transform: `translate(${tx - b0.x}px,${ty - b0.y}px) scale(.6) rotate(540deg)` }], { duration: 550, easing: "cubic-bezier(.2,.7,.4,1)" }, () => {
+        Sound.play("goal");
+        scope.anim(goal, [{ transform: "scaleY(1)" }, { transform: "scaleY(1.08)" }, { transform: "scaleY(1)" }], { duration: 300 });
+        FX.burst(tx, ty, 8);
+        goals++;
+        typeText(banner, msg("soccerGoal"), scope);
+        if (goals % 3 === 0) {
+          scope.timeout(() => { Sound.play("sparkle"); scope.anim(medal, [{ transform: "translateX(-50%) scale(0)", opacity: 0 }, { transform: "translateX(-50%) scale(1.2)", opacity: 1, offset: 0.6 }, { transform: "translateX(-50%) scale(1)", opacity: 1 }], { duration: 500 }); }, 300);
+          scope.timeout(() => scope.anim(medal, [{ opacity: 1 }, { opacity: 0 }], { duration: 400 }), 1800);
+        }
+        scope.timeout(() => {
+          scope.anim(ball, [{ transform: "translate(0px,0px) scale(.4)", opacity: 0 }, { transform: "translate(0px,0px) scale(1)", opacity: 1 }], { duration: 350, easing: "ease-out" }, () => { phase = "ready"; });
+          if (goals % 3 === 0) kspan.textContent = pick(ANIMALS);
+        }, goals % 3 === 0 ? 2300 : 900);
+      });
+      scope.anim(keeper, [{ transform: "translateX(0px) rotate(0deg)" }, { transform: `translateX(${away * U * 18}px) rotate(${away * 30}deg)` }, { transform: "translateX(0px) rotate(0deg)" }], { duration: 900, easing: "ease-out", fill: "none" });
+    }
+    el.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e._handled) return;
+      e._handled = true;
+      if (phase === "ready") shoot(e.clientX); else tapOther(e);
+    });
+    typeText(banner, msg("soccer"), scope);
+  },
+};
+
+/* ---------- おまわりさん ---------- */
+const FAMILIES = [["🐥", "🐔"], ["🐶", "🐕"], ["🐱", "🐈"], ["🐰", "🐇"], ["🐷", "🐖"], ["🐻", "🐻"]];
+screens.police = {
+  el: $("#s-police"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="scene2">
+        <div class="hills">${ART.trainBgTile()}${ART.trainBgTile()}</div>
+        <div class="road"></div>
+        <div class="dest">${ART.house()}<div class="resident"></div></div>
+        <div class="kid"><span class="em"></span><span class="tear">💧</span></div>
+        <div class="pcar">${ART.policeCar()}</div>
+      </div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), scene = $(".scene2", st), hills = $(".hills", st), dest = $(".dest", st), resident = $(".resident", st);
+    const kid = $(".kid", st), kidEm = $(".em", kid), car = $(".pcar", st);
+    let phase = "find", fam = null;
+    function newKid(){
+      phase = "find"; fam = pick(FAMILIES);
+      kidEm.textContent = fam[0]; kid.style.opacity = ""; kid.style.transform = "";
+      popIn(kid, scope, 200);
+      scope.anim(kid, [{ transform: "rotate(-6deg)" }, { transform: "rotate(6deg)" }], { duration: 600, iterations: 4, direction: "alternate", fill: "none", delay: 600 });
+      typeText(banner, msg("police"), scope);
+    }
+    function rescue(){
+      phase = "drive";
+      Sound.play("siren");
+      car.classList.add("spin");
+      const kr = kid.getBoundingClientRect(), cr = car.getBoundingClientRect();
+      const dx = kr.left - cr.right - U * 2;
+      scope.anim(car, [{ transform: "translateX(0px)" }, { transform: `translateX(${dx}px)` }], { duration: 900, easing: "ease-in-out" }, () => {
+        car.classList.remove("spin");
+        const cr2 = car.getBoundingClientRect();
+        kid.style.opacity = 0;
+        flyEl(scope, st, fam[0], cpt(kid), { x: cr2.left + cr2.width * 0.5, y: cr2.top + cr2.height * 0.35 }, { size: U * 14, font: U * 12, dur: 450, scale: 0.6, fade: true }, () => {
+          Sound.play("pop");
+          scope.timeout(() => goHome(dx), 300);
+        });
+      });
+    }
+    function goHome(dx){
+      const W = scene.clientWidth, base = car.offsetLeft, cw = car.offsetWidth;
+      car.classList.add("spin"); Sound.play("broro");
+      scope.anim(car, [{ transform: `translateX(${dx}px)` }, { transform: `translateX(${W - base + 10}px)` }], { duration: 900, easing: "ease-in" });
+      scope.anim(hills, [{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }], { duration: 1600, easing: "ease-in-out" }, () => { hills.style.transform = ""; });
+      scope.timeout(() => {
+        slideIn(scope, dest, 170);
+        const stopX = dest.offsetLeft - cw * 0.95 - base;
+        scope.anim(car, [{ transform: `translateX(${-base - cw}px)` }, { transform: `translateX(${stopX}px)` }], { duration: 900, easing: "ease-out", delay: 200 }, () => {
+          car.classList.remove("spin");
+          const cr = car.getBoundingClientRect(), dr = dest.getBoundingClientRect();
+          resident.textContent = fam[1];
+          scope.anim(resident, [{ transform: "scale(0)", opacity: 0 }, { transform: "scale(1.15)", opacity: 1, offset: 0.7 }, { transform: "scale(1)", opacity: 1 }], { duration: 400 });
+          flyEl(scope, st, fam[0], { x: cr.left + cr.width * 0.5, y: cr.top + cr.height * 0.35 }, { x: dr.left + dr.width * 0.55, y: dr.top + dr.height * 0.82 }, { size: U * 12, font: U * 10, dur: 500 }, () => {
+            Sound.play("chime"); const c = cpt(resident); FX.burst(c.x, c.y, 8);
+            typeText(banner, msg("policeDone"), scope, () => scope.timeout(() => {
+              scope.anim(resident, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+              slideOut(scope, dest, 170);
+              car.classList.add("spin");
+              scope.anim(car, [{ transform: `translateX(${stopX}px)` }, { transform: "translateX(0px)" }], { duration: 800, easing: "ease-in-out" }, () => { car.classList.remove("spin"); newKid(); });
+            }, 1400));
+          });
+        });
+      }, 1100);
+    }
+    el.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e._handled) return;
+      e._handled = true;
+      if (phase === "find" && kid.dataset.st === "idle") rescue(); else tapOther(e);
+    });
+    newKid();
+  },
+};
+
+/* ---------- パイロット ---------- */
+const LANDS = [["🏝️", "うみの くに"], ["🏰", "おしろの くに"], ["⛄", "ゆきの くに"], ["🍭", "おかしの くに"], ["🐘", "ぞうの くに"], ["🌋", "やまの くに"]];
+screens.pilot = {
+  el: $("#s-pilot"),
+  enter(scope, el){
+    const st = h(`<div class="stage">
+      <div class="banner"><span class="t"></span></div>
+      <div class="sky2">
+        <div class="clouds">${ART.cloudTile()}${ART.cloudTile()}</div>
+        <div class="land"></div>
+        <div class="runway"></div>
+        <div class="plane">${ART.plane()}<div class="win2" style="left:26%"></div><div class="win2" style="left:39%"></div><div class="win2" style="left:52%"></div></div>
+      </div>
+      <div class="gorow"><div class="go">とびたつ</div></div>
+    </div>`);
+    el.appendChild(st);
+    const banner = $(".t", st), sky = $(".sky2", st), clouds = $(".clouds", st), land = $(".land", st), plane = $(".plane", st), wins = $$(".win2", st), go_ = $(".go", st);
+    let plat = null, phase = "board", onboard = 0;
+    function makePlat(name){
+      const p = h(`<div class="plat"><div class="sign"></div><div class="riders"></div></div>`);
+      $(".sign", p).textContent = name; sky.appendChild(p); return p;
+    }
+    function waiters(){
+      const box = $(".riders", plat); box.innerHTML = "";
+      shuffle(ANIMALS).slice(0, 3).forEach((a, i) => {
+        const r = h(`<div class="rider">${a}</div>`); r._a = a; box.appendChild(r); popIn(r, scope, 100 + i * 120);
+        r.addEventListener("pointerdown", e => { if (!e.isPrimary || phase !== "board" || r.dataset.st !== "idle") return; e._handled = true; board(r); });
+      });
+    }
+    function board(r){
+      if (onboard >= 3) return;
+      const w = wins[onboard++]; r.dataset.st = "done";
+      Sound.play("pop");
+      const from = cpt(r); r.style.opacity = 0;
+      flyEl(scope, st, r._a, from, cpt(w), { size: U * 14, font: U * 12, dur: 450, scale: 0.5, fade: true }, () => {
+        w.textContent = r._a; popIn(w, scope); Sound.play("shara");
+        if (onboard >= 3 && phase === "board") go_.classList.add("ready");
+      });
+    }
+    function takeoff(){
+      phase = "fly"; go_.classList.remove("ready");
+      $$(".rider", plat).forEach(r => { if (r.dataset.st !== "done") { r.dataset.st = "done"; scope.anim(r, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 }); } });
+      Sound.play("jet"); plane.classList.add("spin");
+      const W = sky.clientWidth, H = sky.clientHeight, old = plat;
+      scope.anim(old, [{ transform: "translateX(0px)" }, { transform: `translateX(${-W * 1.1}px)` }], { duration: 1500, easing: "ease-in" }, () => old.remove());
+      scope.anim(land, [{ opacity: Number(getComputedStyle(land).opacity) }, { opacity: 0 }], { duration: 400 });
+      scope.anim(plane, [
+        { transform: "translate(0px,0px) rotate(0deg)" },
+        { transform: `translate(${W * 0.15}px,0px) rotate(0deg)`, offset: 0.4 },
+        { transform: `translate(${W * 0.9}px,${-H * 0.7}px) rotate(-16deg)` },
+      ], { duration: 1600, easing: "ease-in" });
+      scope.anim(clouds, [{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }], { duration: 1300, iterations: 2, easing: "linear", fill: "none" });
+      scope.timeout(arrive, 2600);
+    }
+    function arrive(){
+      const W = sky.clientWidth, H = sky.clientHeight, L = pick(LANDS);
+      land.textContent = L[0];
+      scope.anim(land, [{ transform: "scale(.4)", opacity: 0 }, { transform: "scale(1)", opacity: 1 }], { duration: 500 });
+      plat = makePlat(L[1]);
+      scope.anim(plat, [{ transform: `translateX(${W}px)` }, { transform: "translateX(0px)" }], { duration: 700, easing: "ease-out" });
+      scope.anim(plane, [{ transform: `translate(${-W * 0.9}px,${-H * 0.6}px) rotate(12deg)` }, { transform: "translate(0px,0px) rotate(0deg)" }], { duration: 1300, easing: "ease-out" }, () => {
+        plane.classList.remove("spin");
+        Sound.play("chime");
+        typeText(banner, msg("pilotDone"), scope);
+        const box = $(".riders", plat), off = [];
+        for (let i = 0; i < onboard; i++) {
+          const w = wins[i], r = h(`<div class="rider" style="opacity:0">${w.textContent}</div>`);
+          box.appendChild(r); off.push(r);
+          const from = cpt(w), em = w.textContent; w.textContent = "";
+          scope.timeout(() => flyEl(scope, st, em, from, cpt(r), { size: U * 14, font: U * 12, dur: 450 }, () => { r.style.opacity = 1; const c = cpt(r); FX.burst(c.x, c.y, 3); }), i * 180);
+        }
+        onboard = 0;
+        scope.timeout(() => {
+          off.forEach(r => scope.anim(r, [{ transform: "translateX(0px)", opacity: 1 }, { transform: `translateX(${-U * 30}px)`, opacity: 0 }], { duration: 600, easing: "ease-in" }, () => r.remove()));
+          scope.timeout(() => { phase = "board"; waiters(); typeText(banner, msg("pilot"), scope); }, off.length ? 650 : 0);
+        }, off.length ? 1900 : 600);
+      });
+    }
+    go_.addEventListener("pointerdown", e => {
+      if (!e.isPrimary) return;
+      e._handled = true; bounce(go_, scope, 1.05);
+      if (phase !== "board") { Sound.play("tap"); return; }
+      takeoff();
+    });
+    el.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e._handled) return;
+      if (phase === "board") { const r = $$(".rider", plat).find(x => x.dataset.st === "idle"); if (r) { e._handled = true; board(r); return; } }
+      e._handled = true; tapOther(e);
+    });
+    plat = makePlat(pick(LANDS)[1].replace("の くに", " くうこう"));
+    waiters();
+    typeText(banner, msg("pilot"), scope);
   },
 };
 
