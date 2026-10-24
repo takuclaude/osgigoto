@@ -447,6 +447,8 @@ html.girl .c-zoo,html.girl .c-paint,html.girl .c-soccer{background:#F7D3DC}html.
 .pcar.spin .wheel,.plane.spin .wheel{animation:spin .6s linear infinite}
 .kid{position:absolute;right:10%;bottom:calc(var(--u)*13);font-size:calc(var(--u)*18);line-height:1}
 .tear{position:absolute;right:-30%;top:-10%;font-size:calc(var(--u)*5)}
+.kid-say{position:absolute;right:4%;bottom:calc(var(--u)*34);background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.5) calc(var(--u)*3);font-size:calc(var(--u)*4.4);white-space:nowrap;opacity:0;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08)}
+.kid-say::after{content:"";position:absolute;right:30%;bottom:calc(var(--u)*-2.2);border:calc(var(--u)*1.8) solid transparent;border-top-color:var(--paper);border-bottom:0}
 .sky2{position:relative;flex:1.6;margin-top:calc(var(--u)*3);overflow:hidden;background:#D6EBF5}
 html.girl .sky2{background:#F6E6EE}
 .clouds{position:absolute;left:0;top:8%;width:200%;height:40%;display:flex}
@@ -590,7 +592,10 @@ const MESSAGES = {
   photoDone:[ "いい しゃしん！", "すてきな あるばむ" ],
   soccer:   [ "しゅーと しよう", "{name}{kun} せんしゅ", "{family}も おうえん" ],
   soccerGoal:[ "ごーる！", "やったね！", "ないす しゅーと！" ],
-  police:   [ "まいごの こが いるよ", "{name}{kun} おまわりさん", "たすけに いこう" ],
+  police:   [ "みちに まよった みたい" ],
+  policeHelp:[ "たすけて あげよう！", "{name}{kun} たすけて あげて" ],
+  policeSay:[ "おうち どこ？", "えーん まいご" ],
+  policeGo: [ "おうちへ しゅっぱつ！" ],
   policeDone:[ "おうちに ついたよ", "よかったね！" ],
   pilot:    [ "おきゃくさん のってね", "{name}{kun} ぱいろっと", "{family}も のるよ" ],
   pilotDone:[ "とうちゃく！", "ついたよ！" ],
@@ -3485,22 +3490,33 @@ screens.police = {
         <div class="road"></div>
         <div class="dest">${ART.house()}<div class="resident"></div></div>
         <div class="kid"><span class="em"></span><span class="tear">💧</span></div>
+        <div class="kid-say"><span class="t2"></span></div>
         <div class="pcar">${ART.policeCar()}</div>
       </div>
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), scene = $(".scene2", st), hills = $(".hills", st), dest = $(".dest", st), resident = $(".resident", st);
-    const kid = $(".kid", st), kidEm = $(".em", kid), car = $(".pcar", st);
+    const kid = $(".kid", st), kidEm = $(".em", kid), car = $(".pcar", st), say = $(".kid-say", st), sayT = $(".t2", say);
     let phase = "find", fam = null;
     function newKid(){
       phase = "find"; fam = pick(FAMILIES);
       kidEm.textContent = fam[0]; kid.style.opacity = ""; kid.style.transform = "";
       popIn(kid, scope, 200);
       scope.anim(kid, [{ transform: "rotate(-6deg)" }, { transform: "rotate(6deg)" }], { duration: 600, iterations: 4, direction: "alternate", fill: "none", delay: 600 });
-      typeText(banner, msg("police"), scope);
+      // おはなし：まよっている → たすけてあげよう
+      say.style.opacity = 0;
+      typeText(banner, msg("police"), scope, () => scope.timeout(() => {
+        if (phase === "find") typeText(banner, msg("policeHelp"), scope);
+      }, 2000));
+      scope.timeout(() => {
+        if (phase !== "find") return;
+        scope.anim(say, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], { duration: 300 });
+        typeText(sayT, msg("policeSay"), scope);
+      }, 700);
     }
     function rescue(){
       phase = "drive";
+      scope.anim(say, [{ opacity: Number(getComputedStyle(say).opacity) }, { opacity: 0 }], { duration: 250 });
       Sound.play("siren");
       car.classList.add("spin");
       const kr = kid.getBoundingClientRect(), cr = car.getBoundingClientRect();
@@ -3511,6 +3527,7 @@ screens.police = {
         kid.style.opacity = 0;
         flyEl(scope, st, fam[0], cpt(kid), { x: cr2.left + cr2.width * 0.5, y: cr2.top + cr2.height * 0.35 }, { size: U * 14, font: U * 12, dur: 450, scale: 0.6, fade: true }, () => {
           Sound.play("pop");
+          typeText(banner, msg("policeGo"), scope);
           scope.timeout(() => goHome(dx), 300);
         });
       });
