@@ -157,6 +157,7 @@ button{font-family:inherit;color:inherit}
 .road{position:absolute;left:0;right:0;bottom:0;height:calc(var(--u)*13);background:#CFC6B8}
 .road::after{content:"";position:absolute;left:0;right:0;top:45%;height:calc(var(--u)*1);background:repeating-linear-gradient(90deg,#F4EEE2 0 calc(var(--u)*7),transparent calc(var(--u)*7) calc(var(--u)*13))}
 .truck{position:absolute;bottom:calc(var(--u)*4);left:50%;width:calc(var(--u)*74);height:calc(var(--u)*40.7);margin-left:calc(var(--u)*-37)}
+.dman{position:absolute;right:-14%;bottom:-2%;width:calc(var(--u)*17);height:calc(var(--u)*31);opacity:0;z-index:2}.dman svg{width:100%;height:100%;display:block}
 .truck-in{position:absolute;inset:0}
 .truck svg{width:100%;height:100%;display:block;overflow:visible}
 .wheel{transform-box:fill-box;transform-origin:center}
@@ -379,6 +380,10 @@ html.girl .scene2{background:#F6E6EE}
 .bgcook svg{width:100%;height:100%;display:block;overflow:visible;animation:walkbob .45s ease-in-out infinite alternate}
 @keyframes walkbob{from{transform:translateY(0) rotate(-2deg)}to{transform:translateY(calc(var(--u)*-1)) rotate(2deg)}}
 .knife svg{width:100%;height:100%;display:block}
+.eater{position:absolute;right:3%;top:37%;width:calc(var(--u)*34);height:calc(var(--u)*38);transform:translateX(160%);z-index:4}
+.eater svg{width:100%;height:100%;display:block}.eater .mouth{transform-box:fill-box;transform-origin:center}
+.eater .table{position:absolute;left:-30%;right:-10%;bottom:calc(var(--u)*-4);height:calc(var(--u)*7);background:#D9B98C;border-radius:calc(var(--u)*2);box-shadow:0 calc(var(--u)*1) 0 #BF9D6E}
+.ck-say{position:absolute;left:4%;top:33%;background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.5) calc(var(--u)*3);font-size:calc(var(--u)*5);white-space:nowrap;opacity:0;z-index:6;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08)}
 .dish{position:absolute;left:50%;top:40%;width:calc(var(--u)*40);height:calc(var(--u)*26);margin:calc(var(--u)*-13) 0 0 calc(var(--u)*-20);display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*16);background:radial-gradient(ellipse at center,#FFFCF5 55%,#E6DCCB 56%,#FFFCF5 70%);border-radius:50%;opacity:0;z-index:5}
 /* びようしさん */
 .sl-say{position:absolute;right:3%;top:2%;background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.5) calc(var(--u)*3);font-size:calc(var(--u)*4.4);white-space:nowrap;opacity:0;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08);z-index:6}
@@ -625,6 +630,7 @@ const MESSAGES = {
   deliveryReq: [ "にもつを おねがいね！", "これ とどけてね！" ],
   delivery: [ "にもつを とらっくに つもう", "{family}の おうちへ とどけよう" ],
   deliveryDone: [ "はいたつ かんりょう！", "とどけました" ],
+  deliveryKnock: [ "おとどけもの です！", "こんにちは！ おにもつ です！" ],
   bakery:   [ "{name}{kun} の ぱんやさん", "{family}の ぱん を やこう", "こねこね しよう" ],
   bakeryDone: [ "やけたよ！", "おいしそう！" ],
   train:    [ "おきゃくさん のってね", "{name}{kun} うんてんし", "{family}も のるよ" ],
@@ -637,6 +643,7 @@ const MESSAGES = {
   dentist:  [ "むしばきんを やっつけろ！", "はみがきで やっつけよう！" ],
   dentistKill:[ "やっつけた！", "えいっ！ やっつけた！" ],
   dentistDone: [ "ぴかぴか！", "むしばきん ばいばい！" ],
+  dentistTip: [ "はみがき だいじだね！", "まいにち はみがき しようね！" ],
   fire:     [ "みず を かけよう", "{name}{kun} しょうぼうし", "ひ を けそう" ],
   fireDone: [ "けしました！", "もう だいじょうぶ" ],
   doctor:   [ "どこが いたいの？", "{name}{kun} せんせい", "{family}も みてね" ],
@@ -646,6 +653,8 @@ const MESSAGES = {
   postDone: [ "とどいたよ！", "はいたつ したよ" ],
   chef:     [ "やさい を きろう", "{family}の ごはん", "{name}{kun} こっくさん" ],
   chefDone: [ "できあがり！", "おいしそう！" ],
+  chefYum:  [ "おいしい！", "おいしいね！", "うーん おいしい！" ],
+  chefMore: [ "もっと つくって！", "おかわり ちょうだい！" ],
   salonWash:[ "まずは かみを あらおう" ],
   salon:    [ "ちょきちょき きろう", "かみを きって あげよう" ],
   salonReq: [ "かみを きって ほしいな", "かわいく してください", "かっこよく してね", "すっきり したいな" ],
@@ -685,7 +694,6 @@ const MESSAGES = {
   policeSay:[ "おうち どこ？", "えーん まいご" ],
   policeGo: [ "おうちへ しゅっぱつ！" ],
   policeDone:[ "おうちに ついたよ", "よかったね！" ],
-  pilot:    [ "おきゃくさんを のせよう" ],
   pilotLever:[ "ればーを ひいて とぼう！" ],
   pilotFly: [ "そらへ しゅっぱつ！" ],
   pilotLand:[ "ちゃくりく だ！ ればーを おして おりよう" ],
@@ -857,6 +865,27 @@ const Sound = {
     osc.start(st); osc.stop(st + len + 0.03);
     return osc;
   },
+  wail(t0, o){   // 本物っぽい サイレン（音の高さが なめらかに 上がって 下がる）
+    const c = this.ctx, osc = c.createOscillator(), f = c.createBiquadFilter(), g = c.createGain();
+    const st = t0 + (o.delay || 0), lo = o.lo, hi = o.hi, cy = o.cycles || 1;
+    const one = o.up + (o.hold || 0) + o.down, len = one * cy;
+    osc.type = "sawtooth"; f.type = "lowpass"; f.frequency.value = o.fq || 1800; f.Q.value = 0.7;
+    osc.frequency.setValueAtTime(lo, st);
+    for (let i = 0; i < cy; i++) {
+      const b = st + i * one;
+      osc.frequency.setValueAtTime(lo, b);
+      osc.frequency.linearRampToValueAtTime(hi, b + o.up);
+      osc.frequency.setValueAtTime(hi, b + o.up + (o.hold || 0));
+      osc.frequency.linearRampToValueAtTime(lo, b + one);
+    }
+    g.gain.setValueAtTime(0.0001, st);
+    g.gain.exponentialRampToValueAtTime(o.g || 0.15, st + 0.25);
+    g.gain.setValueAtTime(o.g || 0.15, st + len - 0.3);
+    g.gain.exponentialRampToValueAtTime(0.0001, st + len);
+    osc.connect(f); f.connect(g); g.connect(this.master);
+    osc.start(st); osc.stop(st + len + 0.03);
+    return osc;
+  },
   noise(t0, o){
     const c = this.ctx, src = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
     const st = t0 + (o.delay || 0), len = o.t || 0.05;
@@ -892,7 +921,8 @@ const SFX = {
   horn:  t => ({ nodes: [Sound.tone(t, { type: "triangle", f: 587, t: 0.22, g: 0.35 }), Sound.tone(t, { type: "triangle", f: 494, t: 0.36, g: 0.35, delay: 0.22 })], dur: 0.6 }),
   gatan: t => ({ nodes: [Sound.tone(t, { f: 110, f2: 70, t: 0.08, g: 0.4 }), Sound.tone(t, { f: 100, f2: 65, t: 0.08, g: 0.4, delay: 0.14 })], dur: 0.24 }),
   sparkle: t => ({ nodes: [Sound.tone(t, { f: 1568, t: 0.12, g: 0.18 }), Sound.tone(t, { f: 2093, t: 0.12, g: 0.18, delay: 0.08 }), Sound.tone(t, { f: 2637, t: 0.2, g: 0.16, delay: 0.16 })], dur: 0.38 }),
-  sirenLong: t => ({ nodes: [0, 1, 2, 3, 4, 5].map(i => Sound.tone(t, { type: "triangle", f: i % 2 ? 520 : 660, t: 0.3, g: 0.15, attack: 0.04, delay: i * 0.33 })), dur: 2.0 }),
+  sirenLong: t => ({ nodes: [Sound.wail(t, { lo: 420, hi: 880, up: 0.8, hold: 0.35, down: 0.95, g: 0.14 })], dur: 2.1 }),
+  fireSiren: t => ({ nodes: [Sound.wail(t, { lo: 330, hi: 760, up: 0.9, hold: 0.3, down: 0.9, g: 0.12, fq: 1400 })].concat([0.15, 0.45, 0.75, 1.25, 1.55, 1.85].map(d => Sound.tone(t, { type: "triangle", f: 1760, t: 0.22, g: 0.1, delay: d }))), dur: 2.1 }),
   screw: t => ({ nodes: [0, 0.07, 0.14, 0.21, 0.28].map(d => Sound.noise(t, { t: 0.025, g: 0.22, filter: "highpass", fq: 2800, delay: d })), dur: 0.32 }),
   shutter: t => ({ nodes: [Sound.noise(t, { t: 0.04, g: 0.35, filter: "highpass", fq: 2500 }), Sound.noise(t, { t: 0.05, g: 0.3, filter: "bandpass", fq: 1800, delay: 0.07 })], dur: 0.13 }),
   kick:  t => ({ nodes: [Sound.tone(t, { f: 180, f2: 90, t: 0.1, g: 0.6 }), Sound.noise(t, { t: 0.05, g: 0.3, filter: "lowpass", fq: 900 })], dur: 0.12 }),
@@ -900,7 +930,7 @@ const SFX = {
   glug:  t => ({ nodes: [Sound.tone(t, { f: 420, f2: 220, t: 0.1, g: 0.35 }), Sound.tone(t, { f: 380, f2: 200, t: 0.1, g: 0.3, delay: 0.14 })], dur: 0.26 }),
   jet:   t => ({ nodes: [Sound.noise(t, { t: 1.6, g: 0.4, filter: "bandpass", fq: 700, q: 0.6, attack: 0.5, hold: 0.5 })], dur: 1.62 }),
   spray: t => ({ nodes: [Sound.noise(t, { t: 0.35, g: 0.22, filter: "bandpass", fq: 1600, q: 0.7, attack: 0.03 })], dur: 0.37 }),
-  siren: t => ({ nodes: [0, 1, 2, 3].map(i => Sound.tone(t, { type: "triangle", f: i % 2 ? 520 : 660, t: 0.3, g: 0.16, attack: 0.04, delay: i * 0.32 })), dur: 1.3 }),
+  siren: t => ({ nodes: [Sound.wail(t, { lo: 420, hi: 880, up: 0.5, hold: 0.2, down: 0.6, g: 0.14 })], dur: 1.3 }),
   chop:  t => ({ nodes: [Sound.tone(t, { f: 260, f2: 140, t: 0.06, g: 0.5 }), Sound.noise(t, { t: 0.04, g: 0.25, filter: "lowpass", fq: 1200 })], dur: 0.08 }),
   boil:  t => ({ nodes: [0, 0.18, 0.36].map(d => Sound.noise(t, { t: 0.12, g: 0.28, filter: "lowpass", fq: 500, q: 3, delay: d })), dur: 0.5 }),
   snip:  t => ({ nodes: [Sound.noise(t, { t: 0.05, g: 0.28, filter: "highpass", fq: 3000 }), Sound.noise(t, { t: 0.05, g: 0.28, filter: "highpass", fq: 3600, delay: 0.08 })], dur: 0.15 }),
@@ -1165,7 +1195,7 @@ const ART = {
   box(c, d, l, tape){
     return `<svg viewBox="0 0 80 70"><path d="M4 12 L14 3 H66 L76 12 Z" fill="${l}" stroke="${d}" stroke-width="3" stroke-linejoin="round"/><rect x="4" y="12" width="72" height="54" rx="3" fill="${c}" stroke="${d}" stroke-width="3"/><rect x="34" y="12" width="12" height="54" fill="${tape}"/><path d="M12 48 h14 M12 55 h9" stroke="${d}" stroke-width="2.5" stroke-linecap="round"/></svg>`;
   },
-  truck(){
+  truck(driver){
     const cab = S.mode === "girl" ? ["#F4B6C4", "#C98696"] : ["#F2B87A", "#C98B4C"];
     const wheel = (x) => `<g class="wheel"><circle cx="${x}" cy="92" r="14" fill="#4E4A47"/><circle cx="${x}" cy="92" r="6" fill="#CFC8BE"/><rect x="${x - 1.5}" y="80" width="3" height="8" rx="1" fill="#CFC8BE"/></g>`;
     return '<svg viewBox="0 0 200 110">' +
@@ -1173,9 +1203,23 @@ const ART = {
       '<rect x="128" y="38" width="8" height="42" rx="2" fill="#7F9AB0"/>' +
       '<path d="M138 34 H170 Q180 34 184 46 L194 62 V82 H138 Z" fill="' + cab[0] + '" stroke="' + cab[1] + '" stroke-width="3" stroke-linejoin="round"/>' +
       '<path d="M147 42 H168 Q174 42 177 50 L182 60 H147 Z" fill="#D8ECF4" stroke="' + cab[1] + '" stroke-width="2.5" stroke-linejoin="round"/>' +
+      (driver ? '<circle cx="161" cy="53" r="8.5" fill="#F6DCC3"/><path d="M152 50 Q161 38 170 50 Z" fill="#5E8C6A"/><path d="M166 49 H175" stroke="#4A7457" stroke-width="3" stroke-linecap="round"/>' +
+        '<circle cx="158" cy="54" r="1.3" fill="#3A3226"/><circle cx="164.5" cy="54" r="1.3" fill="#3A3226"/><path d="M158 57.5 Q161 59.5 164 57.5" stroke="#3A3226" stroke-width="1.2" fill="none" stroke-linecap="round"/>' +
+        '<path d="M147 60 H182" stroke="' + cab[1] + '" stroke-width="2.5"/>' : "") +
       '<rect x="188" y="66" width="7" height="8" rx="2" fill="#F5E6B8"/>' +
       '<rect x="3" y="80" width="194" height="8" rx="3" fill="#6E6A66"/>' +
       wheel(40) + wheel(158) + "</svg>";
+  },
+  // たっきゅうびんの うんてんしゅさん（にもつを もっている）
+  deliverer(){
+    return '<svg viewBox="0 0 50 92"><path d="M17 62 V88 M33 62 V88" stroke="#4A5A66" stroke-width="9" stroke-linecap="round"/>' +
+      '<rect x="10" y="34" width="30" height="32" rx="10" fill="#7FAF8C"/><path d="M10 48 H40" stroke="#5E8C6A" stroke-width="3"/>' +
+      '<rect x="8" y="44" width="26" height="20" rx="2" fill="#E7C9A0" stroke="#C9A26E" stroke-width="2"/><path d="M8 52 H34 M21 44 V64" stroke="#D8B074" stroke-width="2"/>' +
+      '<circle cx="9" cy="54" r="4" fill="#F6DCC3"/><circle cx="34" cy="54" r="4" fill="#F6DCC3"/>' +
+      '<circle cx="25" cy="22" r="12" fill="#F6DCC3" stroke="#D9B898" stroke-width="1.5"/>' +
+      '<path d="M12 18 Q25 2 38 18 Z" fill="#5E8C6A"/><path d="M32 17 H44" stroke="#4A7457" stroke-width="3.5" stroke-linecap="round"/>' +
+      '<circle cx="21" cy="23" r="1.7" fill="#3A3226"/><circle cx="29" cy="23" r="1.7" fill="#3A3226"/><path d="M21 28 Q25 31 29 28" stroke="#3A3226" stroke-width="1.6" fill="none" stroke-linecap="round"/>' +
+      '<circle cx="18" cy="27" r="2" fill="#F2A0A8" opacity=".6"/><circle cx="32" cy="27" r="2" fill="#F2A0A8" opacity=".6"/></svg>';
   },
   house(){
     return '<svg viewBox="0 0 120 126">' +
@@ -1379,14 +1423,50 @@ const ART = {
       '<path d="M18 26 Q14 10 24 12 Q26 0 36 6 Q46 2 46 14 Q52 14 46 26 Z" fill="#FFFCF5" stroke="#D9D2C6" stroke-width="2"/><rect x="18" y="22" width="27" height="6" rx="2" fill="#FFFCF5" stroke="#D9D2C6" stroke-width="2"/>' +
       '<circle cx="27" cy="35" r="1.8" fill="#3A3226"/><circle cx="36" cy="35" r="1.8" fill="#3A3226"/><path d="M27 40 Q31.5 43.5 36 40" stroke="#3A3226" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="23" cy="39" r="2.2" fill="#F2A0A8" opacity=".6"/><circle cx="40" cy="39" r="2.2" fill="#F2A0A8" opacity=".6"/></svg>';
   },
+  // ごはんを たべる ひと（v: 0=おとこのこ 1=おんなのこ 2=おじいちゃん 3=おばあちゃん）
+  diner(v){
+    const hair = ["#6E5440", "#8F6E4E", "#E6E2DA", "#CFCAC2"][v], shirt = ["#8FB7DA", "#F2A7B8", "#A9C98F", "#C9A9DA"][v];
+    const back = [
+      `<path d="M22 32 Q22 10 40 10 Q58 10 58 32 Q52 20 40 20 Q28 20 22 32 Z" fill="${hair}"/>`,
+      `<circle cx="18" cy="34" r="8" fill="${hair}"/><circle cx="62" cy="34" r="8" fill="${hair}"/><path d="M22 34 Q22 10 40 10 Q58 10 58 34 Q54 20 40 21 Q26 20 22 34 Z" fill="${hair}"/>`,
+      `<path d="M21 34 Q20 24 26 24 M59 34 Q60 24 54 24" stroke="${hair}" stroke-width="6" stroke-linecap="round" fill="none"/>`,
+      `<circle cx="40" cy="9" r="7" fill="${hair}"/><path d="M22 34 Q22 13 40 13 Q58 13 58 34 Q52 22 40 22 Q28 22 22 34 Z" fill="${hair}"/>`,
+    ][v];
+    const glasses = v === 2 ? '<circle cx="33" cy="33" r="5" fill="none" stroke="#6E6A66" stroke-width="1.5"/><circle cx="47" cy="33" r="5" fill="none" stroke="#6E6A66" stroke-width="1.5"/><path d="M38 33 H42" stroke="#6E6A66" stroke-width="1.5"/>' : "";
+    return '<svg viewBox="0 0 80 90">' +
+      `<rect x="16" y="52" width="48" height="36" rx="14" fill="${shirt}"/>` +
+      '<path d="M30 54 L40 70 L50 54 Z" fill="#FFFCF5" stroke="#E3DACB" stroke-width="1.5" stroke-linejoin="round"/>' +
+      `<path d="M62 62 L70 48" stroke="${shirt}" stroke-width="8" stroke-linecap="round"/><circle cx="70" cy="46" r="4.5" fill="#F6DCC3"/>` +
+      '<path d="M70 44 V30" stroke="#B8BEC4" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="70" cy="28" rx="3.5" ry="4.5" fill="#B8BEC4"/>' +
+      '<circle cx="40" cy="34" r="18" fill="#F6DCC3" stroke="#D9B898" stroke-width="1.5"/>' + back + glasses +
+      '<circle cx="33" cy="33" r="2" fill="#3A3226"/><circle cx="47" cy="33" r="2" fill="#3A3226"/>' +
+      '<ellipse class="mouth" cx="40" cy="42" rx="4" ry="2.5" fill="#C9605A"/>' +
+      '<circle cx="28" cy="40" r="3" fill="#F2A0A8" opacity=".6"/><circle cx="52" cy="40" r="3" fill="#F2A0A8" opacity=".6"/></svg>';
+  },
   knife(){
     return '<svg viewBox="0 0 100 30"><path d="M4 22 Q4 6 30 6 H66 V22 Z" fill="#E2E6E9" stroke="#A9B2B8" stroke-width="2.5" stroke-linejoin="round"/><rect x="64" y="9" width="34" height="11" rx="5" fill="#B8936A"/></svg>';
   },
-  salonFace(sp, color, hair, style){
-    const tufts = [];
-    for (let i = 0; i < 8; i++) {
-      const a = (-160 + i * (140 / 7)) * Math.PI / 180;
-      tufts.push(`<circle class="tuft" data-i="${i}" cx="${(100 + Math.cos(a) * 74).toFixed(1)}" cy="${(112 + Math.sin(a) * 74).toFixed(1)}" r="${i % 2 ? 22 : 19}" fill="${hair}"/>`);
+  // pre: きるまえの かみ（0=もじゃもじゃ 1=ながい かみ 2=まえがみ ぼさぼさ 3=つんつん のびのび）
+  salonFace(sp, color, hair, style, pre){
+    const tufts = [], T = (d, extra) => tufts.push(`<path class="tuft" d="${d}" fill="${hair}"${extra || ""}/>`);
+    const capL = "M100 28 Q36 28 22 104 Q44 72 100 66 Z", capR = "M100 28 Q164 28 178 104 Q156 72 100 66 Z";
+    if (pre === 1) {
+      T(capL); T(capR);
+      [14, 27, 40].forEach((x, i) => { const y = 70 + i * 6; T(`M${x} ${y} h14 v${118 - i * 10} a7 7 0 0 1 -14 0 Z`); T(`M${200 - x - 14} ${y} h14 v${118 - i * 10} a7 7 0 0 1 -14 0 Z`); });
+    } else if (pre === 2) {
+      T(capL); T(capR);
+      [58, 76, 94, 112, 130].forEach((x, i) => T(`M${x} 56 h14 v${54 + (i % 2) * 8} a7 7 0 0 1 -14 0 Z`));
+    } else if (pre === 3) {
+      for (let i = 0; i < 9; i++) {
+        const a = (-170 + i * 20) * Math.PI / 180, b = 0.2, R1 = 66, R2 = 104;
+        const p = (r, d) => `${(100 + Math.cos(a + d) * r).toFixed(1)} ${(112 + Math.sin(a + d) * r).toFixed(1)}`;
+        T(`M${p(R1, -b)} L${p(R2, 0)} L${p(R1, b)} Q${p(R1 - 16, 0)} ${p(R1, -b)} Z`);
+      }
+    } else {
+      for (let i = 0; i < 8; i++) {
+        const a = (-160 + i * (140 / 7)) * Math.PI / 180;
+        tufts.push(`<circle class="tuft" data-i="${i}" cx="${(100 + Math.cos(a) * 74).toFixed(1)}" cy="${(112 + Math.sin(a) * 74).toFixed(1)}" r="${i % 2 ? 22 : 19}" fill="${hair}"/>`);
+      }
     }
     return '<svg viewBox="0 0 200 200">' + earsSVG(sp, color) +
       `<circle cx="100" cy="112" r="80" fill="${color[0]}" stroke="${color[1]}" stroke-width="3"/>` +
@@ -2222,7 +2302,7 @@ screens.delivery = {
         <div class="hills">${tile()}${tile()}</div>
         <div class="road"></div>
         <div class="dest">${ART.house()}<div class="resident"></div><div class="hand">👋</div></div>
-        <div class="truck"><div class="truck-in">${ART.truck()}<div class="bed"><div></div><div></div><div></div></div></div></div>
+        <div class="truck"><div class="truck-in">${ART.truck(true)}<div class="bed"><div></div><div></div><div></div></div></div><div class="dman">${ART.deliverer()}</div></div>
       </div>
       <div class="boxes"></div>
       <div class="gorow"><div class="go">しゅっぱつ</div></div>
@@ -2230,7 +2310,7 @@ screens.delivery = {
     el.appendChild(st);
     const banner = $(".t", st), truck = $(".truck", st), truckIn = $(".truck-in", st), bedSlots = $$(".bed div", st);
     const boxes = $(".boxes", st), go_ = $(".go", st), dest = $(".dest", st), resident = $(".resident", st), hand = $(".hand", st), hills = $(".hills", st), scene = $(".scene", st);
-    const req = $(".req", st), reqFace = $(".req-face", st), reqT = $(".req-say .t2", st);
+    const req = $(".req", st), reqFace = $(".req-face", st), reqT = $(".req-say .t2", st), dman = $(".dman", st);
     let loaded = 0, phase = "load";
 
     function cycle(){
@@ -2308,6 +2388,9 @@ screens.delivery = {
     }
     function unload(){
       const n = Math.min(loaded, 3);
+      // うんてんしゅさんが おりてきて「おとどけものです！」
+      scope.anim(dman, [{ transform: `translateY(${-U * 10}px) scale(.6)`, opacity: 0 }, { transform: "translateY(0px) scale(1)", opacity: 1 }], { duration: 350, easing: "ease-out" });
+      typeText(banner, msg("deliveryKnock"), scope);
       const door = (() => { const r = dest.getBoundingClientRect(); return { x: r.left + r.width * 0.39, y: r.top + r.height * 0.75 }; })();
       for (let i = 0; i < n; i++) {
         const s = bedSlots[i];
@@ -2328,6 +2411,7 @@ screens.delivery = {
       }, n * 260 + 350);
     }
     function reset(){
+      scope.anim(dman, [{ opacity: 1 }, { opacity: 0 }], { duration: 250 });
       scope.anim(resident, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
       scope.anim(hand, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
       scope.anim(dest, [{ transform: "translateX(0)", opacity: 1 }, { transform: `translateX(${170 * M}%)`, opacity: 1 }], { duration: 600, easing: "ease-in" });
@@ -2804,7 +2888,10 @@ screens.dentist = {
       typeText(banner, msg("dentistDone"), scope);
       scope.timeout(() => {
         scope.anim(bubble, [{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
-        typeText(bubbleT, msg("pharmacyThanks"), scope, () => scope.timeout(leave, 1300));
+        typeText(bubbleT, msg("pharmacyThanks"), scope, () => scope.timeout(() => {
+          Sound.play("sparkle");
+          typeText(banner, msg("dentistTip"), scope, () => scope.timeout(leave, 1800));
+        }, 600));
       }, 500);
     }
     function leave(){
@@ -2900,7 +2987,7 @@ screens.fire = {
       if (first) {   // はじめは サイレンを ならして かけつける
         first = false;
         const base = truck.offsetLeft, tw = truck.offsetWidth;
-        truck.classList.add("spin"); Sound.play("sirenLong");
+        truck.classList.add("spin"); Sound.play("fireSiren");
         scope.anim(truck, [{ transform: `translateX(${-base - tw}px)` }, { transform: "translateX(0px)" }], { duration: 1300, easing: "ease-out" }, () => truck.classList.remove("spin"));
       }
       shuffle(FIRE_SPOTS).slice(0, ri(3, 4)).forEach(([x, y], i) => {
@@ -2930,7 +3017,7 @@ screens.fire = {
       const rs = $(".rp-say .t2", bldg), pal = $(".roofpal", bldg);
       if (rs) typeText(rs, "ありがとう！", scope);
       if (pal) scope.anim(pal, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 5}px)` }, { transform: "translateY(0px)" }], { duration: 400, iterations: 3, fill: "none" });
-      scope.timeout(() => Sound.play("sirenLong"), 900);
+      scope.timeout(() => Sound.play("fireSiren"), 900);
       const r = bldg.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top + r.height / 2, 6);
       truck.classList.add("spin");
       const W = scene.clientWidth, base = truck.offsetLeft, tw = truck.offsetWidth;
@@ -3100,13 +3187,14 @@ screens.chef = {
       <div class="area">
         <div class="kitchen"></div><div class="bgcook"><div>${ART.cook()}</div></div>
         <div class="pot">${ART.pot(SOUPS[0])}<div class="steam"></div></div>
-        <div class="dish"></div>
+        <div class="dish"></div><div class="eater"><div class="table"></div><div class="ein"></div></div><div class="ck-say"><span class="t2"></span></div>
         <div class="cboard"><div class="veg"><span class="veg-in"></span></div><div class="pieces"></div><div class="knife">${ART.knifeV()}</div></div>
       </div>
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), pot = $(".pot", st), soup = $(".soup", st), steam = $(".steam", st), dish = $(".dish", st);
     const veg = $(".veg-in", st), pieces = $(".pieces", st), knife = $(".knife", st), board = $(".cboard", st), cooker = $(".bgcook", st);
+    const eater = $(".eater", st), ein = $(".ein", eater), say = $(".ck-say", st), sayT = $(".t2", say);
     let phase = "chop", cuts = 0, vegs = 0, em = "";
     // うしろで コックさんが せっせと はこんでいる
     const walkW = () => Math.max(0, $(".area", st).clientWidth - cooker.offsetWidth);
@@ -3167,19 +3255,46 @@ screens.chef = {
         dish.textContent = pick(DISHES);
         scope.anim(dish, [{ transform: "scale(0)", opacity: 0 }, { transform: "scale(1.15)", opacity: 1, offset: 0.7 }, { transform: "scale(1)", opacity: 1 }], { duration: 450, easing: "ease-out" });
         Sound.play("chime"); const c = cpt(dish); FX.burst(c.x, c.y, 7);
-        typeText(banner, msg("chefDone"), scope, () => scope.timeout(() => {
-          scope.anim(dish, [{ transform: "translateY(0px) scale(1)", opacity: 1 }, { transform: `translateY(${-U * 30}px) scale(.6)`, opacity: 0 }], { duration: 600, easing: "ease-in" }, () => {
-            vegs = 0; soup.setAttribute("fill", SOUPS[0]);
-            typeText(banner, msg("chef"), scope); newVeg();
-          });
-        }, 1500));
+        typeText(banner, msg("chefDone"), scope, () => scope.timeout(serve, 700));
       }, 1600);
+    }
+    // たべる ひとが きて「おいしい！ もっと つくって！」
+    function serve(){
+      phase = "eat";
+      ein.innerHTML = ART.diner(ri(0, 3));
+      const speak = key => { scope.anim(say, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], { duration: 250 }); typeText(sayT, msg(key), scope); };
+      slideIn(scope, eater, 200, () => {
+        const dr = dish.getBoundingClientRect(), er = eater.getBoundingClientRect();
+        const dx = er.left - dr.left - dr.width * 0.55, dy = er.bottom - dr.bottom;
+        scope.anim(dish, [{ transform: "translate(0px,0px) scale(1)" }, { transform: `translate(${dx}px,${dy}px) scale(.7)` }], { duration: 500, easing: "ease-in-out" }, () => {
+          const mouth = $(".mouth", eater);
+          [0, 1, 2].forEach(i => scope.timeout(() => {
+            Sound.play("munch"); bounce(ein, scope, 1.08);
+            if (mouth) scope.anim(mouth, [{ transform: "scaleY(1)" }, { transform: "scaleY(2.2)" }, { transform: "scaleY(1)" }], { duration: 300, fill: "none" });
+          }, i * 380));
+          scope.timeout(() => {
+            scope.anim(dish, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+            speak("chefYum"); Sound.play("chime");
+            const c = cpt(eater); FX.burst(c.x, c.y, 7);
+            scope.timeout(() => speak("chefMore"), 1500);
+            scope.timeout(() => {
+              scope.anim(say, [{ opacity: 1 }, { opacity: 0 }], { duration: 250 });
+              slideOut(scope, eater, 200, () => {
+                dish.style.transform = ""; dish.style.opacity = 0;
+                vegs = 0; soup.setAttribute("fill", SOUPS[0]);
+                typeText(banner, msg("chef"), scope); newVeg();
+              });
+            }, 3200);
+          }, 1200);
+        });
+      });
     }
     el.addEventListener("pointerdown", e => {
       if (!e.isPrimary || e._handled) return;
       e._handled = true;
       if (phase === "chop") chop();
       else if (phase === "cook") { Sound.play("pop"); bounce(pot, scope, 1.04); FX.burst(e.clientX, e.clientY, 3); }
+      else if (phase === "eat") { Sound.play("pop"); FX.burst(e.clientX, e.clientY, 3); }
       else tapOther(e);
     });
     typeText(banner, msg("chef"), scope);
@@ -3212,14 +3327,15 @@ screens.salon = {
     el.appendChild(st);
     const banner = $(".t", st), area = $(".area", st), face = $(".face2", st), bow = $(".bow", st), sc = $(".tool", st), bubble = $(".bubble2", st), bt = $(".t2", bubble);
     const say = $(".sl-say", st), sayT = $(".t2", say);
-    let phase = "wash", washes = 0, styleNo = 0;
+    let phase = "wash", washes = 0, styleNo = 0, preNo = ri(0, 3);
     const speak = key => { scope.anim(say, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], { duration: 250 }); typeText(sayT, msg(key), scope); };
     function newGuest(){
       phase = "wash"; washes = 0;
       $$(".soap", area).forEach(z => z.remove());
       const [sp, col] = pick(PATIENTS);
       styleNo = (styleNo + ri(1, 4)) % HAIR_STYLES.length;   // まいかい ちがう かみがたに
-      face.innerHTML = ART.salonFace(sp, col, pick(HAIR), styleNo);
+      preNo = (preNo + ri(1, 3)) % 4;   // きるまえの かみも まいかい ちがう
+      face.innerHTML = ART.salonFace(sp, col, pick(HAIR), styleNo, preNo);
       face.style.transform = ""; face.style.opacity = ""; bubble.style.opacity = 0; bow.style.opacity = 0; say.style.opacity = 0;
       slideIn(scope, face, -150, () => speak("salonReq"));
       typeText(banner, msg("salonWash"), scope);
@@ -4105,32 +4221,18 @@ screens.pilot = {
       const p = h(`<div class="plat"><div class="sign"></div><div class="riders"></div></div>`);
       $(".sign", p).textContent = name; ground.appendChild(p); return p;
     }
-    function waiters(){
-      const box = $(".riders", plat); box.innerHTML = "";
-      shuffle(ANIMALS).slice(0, 3).forEach((a, i) => {
-        const r = h(`<div class="rider">${a}</div>`); r._a = a; box.appendChild(r); popIn(r, scope, 100 + i * 120);
-        r.addEventListener("pointerdown", e => { if (!e.isPrimary || phase !== "board" || r.dataset.st !== "idle") return; e._handled = true; board(r); });
-      });
-    }
+    // おきゃくさんは はじめから のっている
     function startBoard(){
-      phase = "board"; ready(lever, false); ready(yoke, false); arL.style.opacity = 0; arR.style.opacity = 0;
-      waiters();
-      typeText(banner, msg("pilot"), scope);
-    }
-    function board(r){
-      if (onboard >= 3) return;
-      const w = wins[onboard++]; r.dataset.st = "done";
-      Sound.play("pop");
-      const from = cpt(r); r.style.opacity = 0;
-      flyEl(scope, st, r._a, from, cpt(w), { size: U * 14, font: U * 12, dur: 450, scale: 0.5, fade: true }, () => {
-        w.textContent = r._a; popIn(w, scope); Sound.play("shara");
-        if (onboard >= 3 && phase === "board") { ready(lever, true); typeText(banner, msg("pilotLever"), scope); }
-      });
+      phase = "board"; ready(yoke, false); arL.style.opacity = 0; arR.style.opacity = 0;
+      shuffle(ANIMALS).slice(0, 3).forEach((a, i) => { wins[i].textContent = a; popIn(wins[i], scope, 100 + i * 120); });
+      onboard = 3;
+      scope.timeout(() => Sound.play("shara"), 300);
+      ready(lever, true);
+      typeText(banner, msg("pilotLever"), scope);
     }
     // 1. レバーを ひいて りりく
     function takeoff(){
       phase = "busy"; ready(lever, false);
-      if (plat) $$(".rider", plat).forEach(r => { if (r.dataset.st !== "done") { r.dataset.st = "done"; scope.anim(r, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 }); } });
       scope.anim(knob, [{ transform: "translateY(0px)" }, { transform: "translateY(34px)" }], { duration: 350, easing: "ease-out" });
       Sound.play("jet"); plane.classList.add("spin");
       typeText(banner, msg("pilotFly"), scope);
@@ -4202,12 +4304,7 @@ screens.pilot = {
       });
     }
     function act(src){
-      if (phase === "board") {
-        if (src === "lever" || onboard >= 3) return takeoff();
-        const r = plat && $$(".rider", plat).find(x => x.dataset.st === "idle");
-        if (r) return board(r);
-        return takeoff();
-      }
+      if (phase === "board") return takeoff();
       if (phase === "turn") return turn();
       if (phase === "land") return land();
       Sound.play("pop");
