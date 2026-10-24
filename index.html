@@ -865,27 +865,6 @@ const Sound = {
     osc.start(st); osc.stop(st + len + 0.03);
     return osc;
   },
-  wail(t0, o){   // 本物っぽい サイレン（音の高さが なめらかに 上がって 下がる）
-    const c = this.ctx, osc = c.createOscillator(), f = c.createBiquadFilter(), g = c.createGain();
-    const st = t0 + (o.delay || 0), lo = o.lo, hi = o.hi, cy = o.cycles || 1;
-    const one = o.up + (o.hold || 0) + o.down, len = one * cy;
-    osc.type = "sawtooth"; f.type = "lowpass"; f.frequency.value = o.fq || 1800; f.Q.value = 0.7;
-    osc.frequency.setValueAtTime(lo, st);
-    for (let i = 0; i < cy; i++) {
-      const b = st + i * one;
-      osc.frequency.setValueAtTime(lo, b);
-      osc.frequency.linearRampToValueAtTime(hi, b + o.up);
-      osc.frequency.setValueAtTime(hi, b + o.up + (o.hold || 0));
-      osc.frequency.linearRampToValueAtTime(lo, b + one);
-    }
-    g.gain.setValueAtTime(0.0001, st);
-    g.gain.exponentialRampToValueAtTime(o.g || 0.15, st + 0.25);
-    g.gain.setValueAtTime(o.g || 0.15, st + len - 0.3);
-    g.gain.exponentialRampToValueAtTime(0.0001, st + len);
-    osc.connect(f); f.connect(g); g.connect(this.master);
-    osc.start(st); osc.stop(st + len + 0.03);
-    return osc;
-  },
   noise(t0, o){
     const c = this.ctx, src = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
     const st = t0 + (o.delay || 0), len = o.t || 0.05;
@@ -921,8 +900,8 @@ const SFX = {
   horn:  t => ({ nodes: [Sound.tone(t, { type: "triangle", f: 587, t: 0.22, g: 0.35 }), Sound.tone(t, { type: "triangle", f: 494, t: 0.36, g: 0.35, delay: 0.22 })], dur: 0.6 }),
   gatan: t => ({ nodes: [Sound.tone(t, { f: 110, f2: 70, t: 0.08, g: 0.4 }), Sound.tone(t, { f: 100, f2: 65, t: 0.08, g: 0.4, delay: 0.14 })], dur: 0.24 }),
   sparkle: t => ({ nodes: [Sound.tone(t, { f: 1568, t: 0.12, g: 0.18 }), Sound.tone(t, { f: 2093, t: 0.12, g: 0.18, delay: 0.08 }), Sound.tone(t, { f: 2637, t: 0.2, g: 0.16, delay: 0.16 })], dur: 0.38 }),
-  sirenLong: t => ({ nodes: [Sound.wail(t, { lo: 420, hi: 880, up: 0.8, hold: 0.35, down: 0.95, g: 0.14 })], dur: 2.1 }),
-  fireSiren: t => ({ nodes: [Sound.wail(t, { lo: 330, hi: 760, up: 0.9, hold: 0.3, down: 0.9, g: 0.12, fq: 1400 })].concat([0.15, 0.45, 0.75, 1.25, 1.55, 1.85].map(d => Sound.tone(t, { type: "triangle", f: 1760, t: 0.22, g: 0.1, delay: d }))), dur: 2.1 }),
+  sirenLong: t => ({ nodes: [...Array(4)].map((_, i) => Sound.tone(t, { type: "triangle", f: i % 2 ? 698 : 880, t: 0.42, g: 0.13, attack: 0.06, delay: i * 0.46 })), dur: 1.9 }),   // やさしい「ピーポー ピーポー」
+  fireSiren: t => ({ nodes: [...Array(4)].map((_, i) => Sound.tone(t, { type: "triangle", f: i % 2 ? 698 : 880, t: 0.42, g: 0.12, attack: 0.06, delay: i * 0.46 })).concat([1.95, 2.2].map(d => Sound.tone(t, { f: 1568, t: 0.3, g: 0.07, delay: d }))), dur: 2.5 }),
   screw: t => ({ nodes: [0, 0.07, 0.14, 0.21, 0.28].map(d => Sound.noise(t, { t: 0.025, g: 0.22, filter: "highpass", fq: 2800, delay: d })), dur: 0.32 }),
   shutter: t => ({ nodes: [Sound.noise(t, { t: 0.04, g: 0.35, filter: "highpass", fq: 2500 }), Sound.noise(t, { t: 0.05, g: 0.3, filter: "bandpass", fq: 1800, delay: 0.07 })], dur: 0.13 }),
   kick:  t => ({ nodes: [Sound.tone(t, { f: 180, f2: 90, t: 0.1, g: 0.6 }), Sound.noise(t, { t: 0.05, g: 0.3, filter: "lowpass", fq: 900 })], dur: 0.12 }),
@@ -930,7 +909,7 @@ const SFX = {
   glug:  t => ({ nodes: [Sound.tone(t, { f: 420, f2: 220, t: 0.1, g: 0.35 }), Sound.tone(t, { f: 380, f2: 200, t: 0.1, g: 0.3, delay: 0.14 })], dur: 0.26 }),
   jet:   t => ({ nodes: [Sound.noise(t, { t: 1.6, g: 0.4, filter: "bandpass", fq: 700, q: 0.6, attack: 0.5, hold: 0.5 })], dur: 1.62 }),
   spray: t => ({ nodes: [Sound.noise(t, { t: 0.35, g: 0.22, filter: "bandpass", fq: 1600, q: 0.7, attack: 0.03 })], dur: 0.37 }),
-  siren: t => ({ nodes: [Sound.wail(t, { lo: 420, hi: 880, up: 0.5, hold: 0.2, down: 0.6, g: 0.14 })], dur: 1.3 }),
+  siren: t => ({ nodes: [...Array(2)].map((_, i) => Sound.tone(t, { type: "triangle", f: i % 2 ? 698 : 880, t: 0.42, g: 0.13, attack: 0.06, delay: i * 0.46 })), dur: 1.0 }),
   chop:  t => ({ nodes: [Sound.tone(t, { f: 260, f2: 140, t: 0.06, g: 0.5 }), Sound.noise(t, { t: 0.04, g: 0.25, filter: "lowpass", fq: 1200 })], dur: 0.08 }),
   boil:  t => ({ nodes: [0, 0.18, 0.36].map(d => Sound.noise(t, { t: 0.12, g: 0.28, filter: "lowpass", fq: 500, q: 3, delay: d })), dur: 0.5 }),
   snip:  t => ({ nodes: [Sound.noise(t, { t: 0.05, g: 0.28, filter: "highpass", fq: 3000 }), Sound.noise(t, { t: 0.05, g: 0.28, filter: "highpass", fq: 3600, delay: 0.08 })], dur: 0.15 }),
