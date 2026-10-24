@@ -338,7 +338,7 @@ html.girl .scene2{background:#F6E6EE}
 /* ゆうびんやさん */
 .pbox{position:absolute;left:8%;bottom:calc(var(--u)*11);width:calc(var(--u)*24);height:calc(var(--u)*38)}
 .pbox svg,.bike svg{width:100%;height:100%;display:block;overflow:visible}
-.bike{position:absolute;left:34%;bottom:calc(var(--u)*5);width:calc(var(--u)*34);height:calc(var(--u)*23);opacity:0}
+.bike{position:absolute;left:34%;bottom:calc(var(--u)*5);width:calc(var(--u)*46);height:calc(var(--u)*31);opacity:0}
 .bike.spin .wheel{animation:spin .6s linear infinite}
 .letter{width:calc(var(--u)*22);height:calc(var(--u)*16);touch-action:none;position:relative}
 .letter svg{width:100%;height:100%;display:block;pointer-events:none}
@@ -358,6 +358,9 @@ html.girl .scene2{background:#F6E6EE}
 .bow{position:absolute;right:16%;top:6%;font-size:calc(var(--u)*14);line-height:1;opacity:0}
 /* のうかさん */
 .field{position:absolute;left:5%;right:5%;top:4%;height:58%;border-radius:calc(var(--u)*5);background:repeating-linear-gradient(180deg,#D9B993 0 calc(var(--u)*9),#CDA97F calc(var(--u)*9) calc(var(--u)*11))}
+.hole{position:absolute;left:50%;bottom:2%;width:calc(var(--u)*12);height:calc(var(--u)*5);margin-left:calc(var(--u)*-6);border-radius:50%;background:#A9845E;display:flex;align-items:center;justify-content:center}
+.seed{width:calc(var(--u)*3);height:calc(var(--u)*3);border-radius:50%;background:#6E4E34}
+.sun{position:absolute;right:6%;top:2%;font-size:calc(var(--u)*14);line-height:1;opacity:0}
 .crop{position:absolute;width:calc(var(--u)*18);height:calc(var(--u)*16);margin:calc(var(--u)*-12) 0 0 calc(var(--u)*-9)}
 .crop svg{width:100%;height:100%;display:block;overflow:visible;transform-origin:50% 100%}
 .basket{position:absolute;right:8%;bottom:6%;width:calc(var(--u)*40);height:calc(var(--u)*28)}
@@ -371,6 +374,11 @@ html.girl .scene2{background:#F6E6EE}
 /* だいくさん */
 .chouse{position:absolute;left:50%;top:4%;width:calc(var(--u)*76);height:calc(var(--u)*76);margin-left:calc(var(--u)*-38)}
 .chouse svg{width:100%;height:100%;display:block;overflow:visible}
+.screw{position:absolute;width:calc(var(--u)*9);height:calc(var(--u)*14.4);margin:calc(var(--u)*-2.7) 0 0 calc(var(--u)*-4.5)}
+.screw svg{width:100%;height:100%;display:block;overflow:visible}
+.screw .shank{transform-box:fill-box;transform-origin:50% 0}
+.screw .cross{transform-box:fill-box;transform-origin:center}
+.driver{width:calc(var(--u)*10);height:calc(var(--u)*20)}
 .nail{position:absolute;width:calc(var(--u)*6);height:calc(var(--u)*6);margin:calc(var(--u)*-3) 0 0 calc(var(--u)*-3);border-radius:50%;background:radial-gradient(circle at 35% 35%,#E8E4DE,#A9A39A);box-shadow:0 0 0 calc(var(--u)*.5) #8F877D}
 .nail.in{background:#8F877D}
 .hammer{width:calc(var(--u)*20);height:calc(var(--u)*20);transform-origin:85% 85%}
@@ -408,6 +416,10 @@ html.girl .c-zoo,html.girl .c-paint,html.girl .c-soccer{background:#F7D3DC}html.
 .zanimal{position:absolute;left:50%;top:44%;width:calc(var(--u)*56);height:calc(var(--u)*56);margin:calc(var(--u)*-28) 0 0 calc(var(--u)*-28);font-size:calc(var(--u)*44);line-height:1;display:flex;align-items:center;justify-content:center}
 .soap{position:absolute;width:calc(var(--u)*9);height:calc(var(--u)*9);border-radius:50%;background:radial-gradient(circle at 35% 35%,#FFFDF8,#E3F0F6);border:1px solid #C6DCE6;pointer-events:none}
 /* はかせ */
+.hakase{position:absolute;left:3%;bottom:2%;width:calc(var(--u)*30);height:calc(var(--u)*38)}
+.hakase svg{width:100%;height:100%;display:block;overflow:visible}
+.hk-say{position:absolute;left:4%;bottom:calc(var(--u)*41);background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.5) calc(var(--u)*3);font-size:calc(var(--u)*4.2);white-space:nowrap;opacity:0;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08)}
+.hk-say::after{content:"";position:absolute;left:30%;bottom:calc(var(--u)*-2.2);border:calc(var(--u)*1.8) solid transparent;border-top-color:var(--paper);border-bottom:0}
 .beaker{position:absolute;left:50%;top:6%;width:calc(var(--u)*50);height:calc(var(--u)*58);margin-left:calc(var(--u)*-25)}
 .beaker svg,.flask svg{width:100%;height:100%;display:block;overflow:visible}
 .liq{transform-box:fill-box;transform-origin:50% 100%;transition:fill .5s ease}
@@ -567,26 +579,33 @@ const MESSAGES = {
   fireDone: [ "けしました！", "もう だいじょうぶ" ],
   doctor:   [ "どこが いたいの？", "{name}{kun} せんせい", "{family}も みてね" ],
   doctorDone: [ "げんきに なった！", "もう いたくない" ],
-  post:     [ "てがみ を いれよう", "{family}への てがみ", "{name}{kun} ゆうびん" ],
+  post:     [ "ぽすとに てがみを いれよう" ],
+  postGo:   [ "てがみを とどけよう！" ],
   postDone: [ "とどいたよ！", "はいたつ したよ" ],
   chef:     [ "やさい を きろう", "{family}の ごはん", "{name}{kun} こっくさん" ],
   chefDone: [ "できあがり！", "おいしそう！" ],
   salon:    [ "ちょきちょき しよう", "{name}{kun} びようしさん", "かみ を きろう" ],
   salonDone:[ "すっきり！", "すてきに なった" ],
-  farm:     [ "やさい を ぬこう", "うんとこしょ", "{name}{kun} のうかさん" ],
+  farmSeed: [ "たねを まこう" ],
+  farmWater:[ "みずを あげよう" ],
+  farmGrow: [ "おおきく なあれ！" ],
+  farm:     [ "そだてた やさいを ほろう", "うんとこしょ！ ほろう" ],
   farmDone: [ "いっぱい とれた！", "しゅうかく！" ],
   flower:   [ "はなたば を つくろう", "{family}に おはな", "{name}{kun} はなやさん" ],
   flowerDone: [ "きれいな はなたば", "できあがり！" ],
-  carpenter:[ "とんとん しよう", "{family}の おうち", "{name}{kun} だいくさん" ],
+  carpenter:[ "ねじを しめて おうちを つくろう", "{family}の おうちを つくろう" ],
   carpenterDone: [ "かんせい！", "おうち が できた" ],
   sushi:    [ "おすし を にぎろう", "へい いらっしゃい", "{family}の おすし" ],
   sushiDone:[ "へい おまち！", "おいしい おすし" ],
-  zoo:      [ "ごはん だよ", "{name}{kun} しいくいん", "{family}と どうぶつえん" ],
-  zooWash:  [ "あらって あげよう", "あわあわ しよう" ],
+  zoo:      [ "おなかが すいてる みたい" ],
+  zooFeed:  [ "ごはんを あげよう！" ],
+  zooWash:  [ "からだを あらって あげよう" ],
   zooDone:  [ "ぴかぴか！", "おいしかったね" ],
-  lab:      [ "まぜて みよう", "{name}{kun} はかせ", "ふしぎな じっけん" ],
+  lab:      [ "おくすりを まぜて みよう" ],
+  labSay:   [ "まぜて みよう！", "なにいろに なるかな？" ],
+  labYay:   [ "すごい！", "だいせいこう！" ],
   labDone:  [ "せいこう！", "いろが かわった！" ],
-  paint:    [ "いろを ぬろう", "{family}の おうち", "{name}{kun} ぺんきやさん" ],
+  paint:    [ "きれいな おうちに ぬろう", "いろを ぬって きれいに しよう" ],
   paintDone:[ "できあがり！", "かわいい おうち" ],
   photo:    [ "はい ちーず！", "{name}{kun} かめらまん", "しゃしん とろう" ],
   photoDone:[ "いい しゃしん！", "すてきな あるばむ" ],
@@ -597,7 +616,9 @@ const MESSAGES = {
   policeSay:[ "おうち どこ？", "えーん まいご" ],
   policeGo: [ "おうちへ しゅっぱつ！" ],
   policeDone:[ "おうちに ついたよ", "よかったね！" ],
-  pilot:    [ "おきゃくさん のってね", "{name}{kun} ぱいろっと", "{family}も のるよ" ],
+  pilot:    [ "おきゃくさんを のせよう" ],
+  pilotReady:[ "しゅっぱつ しよう！" ],
+  pilotFly: [ "そらへ しゅっぱつ！" ],
   pilotDone:[ "とうちゃく！", "ついたよ！" ],
 };
 
@@ -801,6 +822,7 @@ const SFX = {
   horn:  t => ({ nodes: [Sound.tone(t, { type: "triangle", f: 587, t: 0.22, g: 0.35 }), Sound.tone(t, { type: "triangle", f: 494, t: 0.36, g: 0.35, delay: 0.22 })], dur: 0.6 }),
   gatan: t => ({ nodes: [Sound.tone(t, { f: 110, f2: 70, t: 0.08, g: 0.4 }), Sound.tone(t, { f: 100, f2: 65, t: 0.08, g: 0.4, delay: 0.14 })], dur: 0.24 }),
   sparkle: t => ({ nodes: [Sound.tone(t, { f: 1568, t: 0.12, g: 0.18 }), Sound.tone(t, { f: 2093, t: 0.12, g: 0.18, delay: 0.08 }), Sound.tone(t, { f: 2637, t: 0.2, g: 0.16, delay: 0.16 })], dur: 0.38 }),
+  screw: t => ({ nodes: [0, 0.07, 0.14, 0.21, 0.28].map(d => Sound.noise(t, { t: 0.025, g: 0.22, filter: "highpass", fq: 2800, delay: d })), dur: 0.32 }),
   shutter: t => ({ nodes: [Sound.noise(t, { t: 0.04, g: 0.35, filter: "highpass", fq: 2500 }), Sound.noise(t, { t: 0.05, g: 0.3, filter: "bandpass", fq: 1800, delay: 0.07 })], dur: 0.13 }),
   kick:  t => ({ nodes: [Sound.tone(t, { f: 180, f2: 90, t: 0.1, g: 0.6 }), Sound.noise(t, { t: 0.05, g: 0.3, filter: "lowpass", fq: 900 })], dur: 0.12 }),
   goal:  t => ({ nodes: [523, 659, 784, 1047].map((f, i) => Sound.tone(t, { type: "triangle", f, t: 0.22, g: 0.25, delay: i * 0.1 })), dur: 0.55 }),
@@ -1247,6 +1269,13 @@ const ART = {
     return '<svg viewBox="0 0 120 80"><rect x="6" y="20" width="34" height="26" rx="4" fill="#F3E1C9" stroke="#C9B08E" stroke-width="2.5"/>' +
       '<path d="M24 50 H70 L86 26 H98" stroke="#E98A7E" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
       '<path d="M40 44 H66" stroke="#B96257" stroke-width="5" stroke-linecap="round"/><path d="M94 22 v-8" stroke="#6E6A66" stroke-width="5" stroke-linecap="round"/>' +
+      // ゆうびんやさん（ぼうしを かぶった ひと）
+      '<path d="M54 42 L66 48 L72 58" stroke="#5E7E9E" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<rect x="44" y="14" width="20" height="30" rx="9" fill="#6F9DB5"/><path d="M58 24 L92 18" stroke="#6F9DB5" stroke-width="6" stroke-linecap="round"/><circle cx="93" cy="18" r="3.5" fill="#F6DCC3"/>' +
+      '<rect x="46" y="22" width="8" height="10" rx="2" fill="#F5E6B8"/>' +
+      '<circle cx="56" cy="2" r="11" fill="#F6DCC3" stroke="#D9B898" stroke-width="1.5"/>' +
+      '<path d="M44 -2 Q56 -16 68 -2 Z" fill="#E98A7E"/><path d="M60 -2 H74" stroke="#B96257" stroke-width="3.5" stroke-linecap="round"/><circle cx="56" cy="-8" r="2" fill="#F5E6B8"/>' +
+      '<circle cx="60" cy="2" r="1.6" fill="#3A3226"/><circle cx="66" cy="2" r="1.6" fill="#3A3226"/><path d="M60 7 Q63 9.5 66 7" stroke="#3A3226" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="57" cy="6" r="2" fill="#F2A0A8" opacity=".6"/>' +
       wheel(26) + wheel(96) + "</svg>";
   },
   pot(soup){
@@ -1309,6 +1338,32 @@ const ART = {
       '<g class="p2" opacity="0"><rect x="48" y="78" width="22" height="32" rx="2" fill="#C9A27E" stroke="#A9845E" stroke-width="2.5"/><circle cx="65" cy="95" r="2" fill="#6E5E55"/></g>' +
       '<g class="p3" opacity="0"><rect x="76" y="62" width="18" height="16" rx="2" fill="#D8ECF4" stroke="#C9B08E" stroke-width="2.5"/><path d="M85 62 V78 M76 70 H94" stroke="#C9B08E" stroke-width="2"/>' +
       '<rect x="26" y="62" width="18" height="16" rx="2" fill="#D8ECF4" stroke="#C9B08E" stroke-width="2.5"/><path d="M35 62 V78 M26 70 H44" stroke="#C9B08E" stroke-width="2"/></g></svg>';
+  },
+  screw(){
+    return '<svg viewBox="0 0 40 64"><g class="shank"><rect x="14" y="12" width="12" height="40" fill="#C8CDD2" stroke="#8F959A" stroke-width="2"/>' +
+      '<path d="M14 18 L26 22 M14 26 L26 30 M14 34 L26 38 M14 42 L26 46" stroke="#8F959A" stroke-width="2.2"/><path d="M14 52 L20 62 L26 52 Z" fill="#C8CDD2" stroke="#8F959A" stroke-width="2" stroke-linejoin="round"/></g>' +
+      '<ellipse cx="20" cy="12" rx="17" ry="9" fill="#DADFE3" stroke="#7E858B" stroke-width="2.5"/><path class="cross" d="M11 12 H29 M20 6 V18" stroke="#6E747A" stroke-width="3.2" stroke-linecap="round"/></svg>';
+  },
+  driver(){
+    const c = S.mode === "girl" ? ["#F2B7C7", "#C98696"] : ["#9CC8DD", "#6F9DB5"];
+    return `<svg viewBox="0 0 40 80"><rect x="8" y="0" width="24" height="34" rx="9" fill="${c[0]}" stroke="${c[1]}" stroke-width="2.5"/><path d="M15 6 V28 M20 6 V28 M25 6 V28" stroke="${c[1]}" stroke-width="2" opacity=".6"/>` +
+      '<rect x="14" y="33" width="12" height="6" rx="2" fill="#A9A39A"/><rect x="18" y="38" width="4" height="36" fill="#B8BEC4"/><path d="M16 72 H24 L20 80 Z" fill="#8F959A"/></svg>';
+  },
+  can(){
+    return '<svg viewBox="0 0 80 60"><path d="M50 28 L76 12" stroke="#7FA3BC" stroke-width="7" stroke-linecap="round"/><rect x="72" y="6" width="8" height="10" rx="2" fill="#7FA3BC" transform="rotate(-30 76 11)"/>' +
+      '<rect x="14" y="18" width="40" height="36" rx="8" fill="#9CC8DD" stroke="#7FA3BC" stroke-width="3"/><path d="M20 18 Q34 2 48 18" stroke="#7FA3BC" stroke-width="5" fill="none"/></svg>';
+  },
+  hakase(){
+    return '<svg viewBox="0 0 100 126">' +
+      '<path d="M22 126 V92 Q22 72 50 72 Q78 72 78 92 V126 Z" fill="#FFFCF5" stroke="#C9C2B6" stroke-width="3"/>' +
+      '<path d="M50 74 L42 92 L50 100 L58 92 Z" fill="#9CC8DD"/><path d="M50 100 V126" stroke="#C9C2B6" stroke-width="2.5"/>' +
+      '<rect x="60" y="104" width="10" height="8" rx="2" fill="#F2A0A8"/>' +
+      '<circle cx="24" cy="38" r="12" fill="#ECE8E2"/><circle cx="76" cy="38" r="12" fill="#ECE8E2"/>' +
+      '<circle cx="50" cy="42" r="28" fill="#F6DCC3" stroke="#D9B898" stroke-width="2.5"/>' +
+      '<path d="M30 22 Q50 6 70 22" stroke="#ECE8E2" stroke-width="10" fill="none" stroke-linecap="round"/>' +
+      '<circle cx="39" cy="42" r="8" fill="#FFFDF8" stroke="#6E5E55" stroke-width="2.5"/><circle cx="61" cy="42" r="8" fill="#FFFDF8" stroke="#6E5E55" stroke-width="2.5"/><path d="M47 42 H53" stroke="#6E5E55" stroke-width="2.5"/>' +
+      '<circle cx="39" cy="43" r="2.6" fill="#3A3226"/><circle cx="61" cy="43" r="2.6" fill="#3A3226"/>' +
+      '<path d="M41 56 Q50 63 59 56" stroke="#3A3226" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="31" cy="53" r="4" fill="#F2A0A8" opacity=".5"/><circle cx="69" cy="53" r="4" fill="#F2A0A8" opacity=".5"/></svg>';
   },
   hammer(){
     return '<svg viewBox="0 0 60 60"><path d="M22 22 L54 54" stroke="#B8936A" stroke-width="7" stroke-linecap="round"/><rect x="2" y="10" width="30" height="14" rx="3" fill="#8F959A" transform="rotate(45 17 17)"/></svg>';
@@ -1579,7 +1634,7 @@ const GAME_INFO = {
   salon:    { label: "びようしさん", icon: () => ART.scissors() },
   farm:     { label: "のうかさん", icon: () => ART.carrotIcon() },
   flower:   { label: "おはなやさん", icon: () => ART.wrapIcon() },
-  carpenter:{ label: "だいくさん", icon: () => ART.hammer() },
+  carpenter:{ label: "だいくさん", icon: () => ART.driver() },
   sushi:    { label: "おすしやさん", icon: () => ART.sushi(0) },
   zoo:      { label: "どうぶつえん", icon: () => '<div class="eicon">🐘</div>' },
   lab:      { label: "はかせ", icon: () => ART.flask("#C9B3E6") },
@@ -2728,7 +2783,7 @@ screens.post = {
       Sound.play("post");
       scope.anim(pbox, [{ transform: "rotate(0deg)" }, { transform: "rotate(-4deg)" }, { transform: "rotate(4deg)" }, { transform: "rotate(0deg)" }], { duration: 300 });
       const c = cpt(pbox); FX.burst(c.x, c.y - U * 8, 3);
-      if (count >= 3 && phase === "load") { phase = "deliver"; scope.timeout(collect, 500); }
+      if (count >= 3 && phase === "load") { phase = "deliver"; typeText(banner, msg("postGo"), scope); scope.timeout(collect, 500); }
     }
     function collect(){
       const W = scene.clientWidth, base = bike.offsetLeft, bw = bike.offsetWidth;
@@ -2920,18 +2975,59 @@ screens.farm = {
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="area"><div class="field"></div><div class="basket">${ART.basket()}<div class="bk-items"></div></div></div>
+      <div class="area"><div class="field"></div><div class="sun">☀️</div><div class="tool" style="width:calc(var(--u)*20);height:calc(var(--u)*15)">${ART.can()}</div><div class="basket">${ART.basket()}<div class="bk-items"></div></div></div>
     </div>`);
     el.appendChild(st);
-    const banner = $(".t", st), field = $(".field", st), basket = $(".basket", st), items = $(".bk-items", st);
-    let phase = "pull";
-    function sprout(){
-      phase = "pull"; field.innerHTML = ""; items.innerHTML = "";
+    const banner = $(".t", st), area = $(".area", st), field = $(".field", st), basket = $(".basket", st), items = $(".bk-items", st), sun = $(".sun", st), can = $(".tool", st);
+    let phase = "seed";
+    // 1. たねを まく
+    function plant(){
+      phase = "seed"; field.innerHTML = ""; items.innerHTML = ""; sun.style.opacity = 0;
       shuffle(CROP_SPOTS).slice(0, 5).forEach(([x, y], i) => {
-        const c = h(`<div class="crop" style="left:${x}%;top:${y}%">${ART.leaf()}</div>`);
-        c._hp = 2; c._em = pick(CROPS); field.appendChild(c); popIn(c, scope, 100 + i * 100);
+        const c = h(`<div class="crop" style="left:${x}%;top:${y}%"><div class="hole"></div></div>`);
+        c._st = 0; c._hp = 2; c._em = pick(CROPS); field.appendChild(c); popIn(c, scope, 100 + i * 80);
       });
-      typeText(banner, msg("farm"), scope);
+      typeText(banner, msg("farmSeed"), scope);
+    }
+    function seed(x, y){
+      const left = $$(".crop", field).filter(c => c._st === 0);
+      if (!left.length) return;
+      const c = nearest(left, x, y); c._st = 1;
+      const hr = $(".hole", c).getBoundingClientRect(), to = center(hr);
+      Sound.play("pick");
+      flyEl(scope, st, '<div class="seed" style="width:100%;height:100%"></div>', { x: to.x + U * 4, y: to.y - U * 18 }, to, { size: U * 3.5, dur: 380, arc: U * 4 }, () => {
+        const sd = h('<div class="seed"></div>'); $(".hole", c).appendChild(sd); popIn(sd, scope);
+        Sound.play("pop"); FX.burst(to.x, to.y, 2);
+        if (phase === "seed" && $$(".crop", field).every(z => z._st >= 1)) { phase = "wait"; scope.timeout(() => { phase = "water"; typeText(banner, msg("farmWater"), scope); }, 400); }
+      });
+    }
+    // 2. みずを あげる
+    function water(x, y){
+      const left = $$(".crop", field).filter(c => c._st === 1);
+      if (!left.length) return;
+      const c = nearest(left, x, y); c._st = 2;
+      const p = cpt(c), ar = area.getBoundingClientRect();
+      can.style.left = (p.x - ar.left - can.offsetWidth * 0.1) + "px"; can.style.top = (p.y - ar.top - can.offsetHeight * 1.6) + "px";
+      scope.anim(can, [{ transform: "rotate(0deg)", opacity: 0 }, { transform: "rotate(0deg)", opacity: 1, offset: 0.15 }, { transform: "rotate(-25deg)", opacity: 1, offset: 0.4 }, { transform: "rotate(-25deg)", opacity: 1, offset: 0.85 }, { transform: "rotate(0deg)", opacity: 0 }], { duration: 900 });
+      Sound.play("spray");
+      const cr = can.getBoundingClientRect();
+      for (let i = 0; i < 5; i++) scope.timeout(() => flyEl(scope, st, '<div class="drop"></div>', { x: p.x + U * 12, y: p.y - U * 16 }, { x: p.x + rnd(-U * 3, U * 3), y: p.y + U * 2 }, { size: U * 3, dur: 330, arc: 0, fade: true }), 250 + i * 70);
+      scope.timeout(() => {
+        $(".hole", c).innerHTML = "";
+        const lf = h(`<div style="position:absolute;inset:0">${ART.leaf()}</div>`); c.appendChild(lf);
+        const svg = $("svg", lf); svg.style.transform = "scale(.45)";
+        scope.anim(svg, [{ transform: "scale(0)" }, { transform: "scale(.45)" }], { duration: 350, easing: "ease-out" });
+        Sound.play("shara"); FX.burst(p.x, p.y, 3);
+        if (phase === "water" && $$(".crop", field).every(z => z._st >= 2)) { phase = "wait"; scope.timeout(grow, 500); }
+      }, 650);
+    }
+    // 3. おおきく なあれ
+    function grow(){
+      typeText(banner, msg("farmGrow"), scope);
+      scope.anim(sun, [{ transform: "scale(0) rotate(-60deg)", opacity: 0 }, { transform: "scale(1) rotate(0deg)", opacity: 1 }], { duration: 600, easing: "ease-out" });
+      Sound.play("sparkle");
+      $$(".crop svg", field).forEach((svg, i) => scope.anim(svg, [{ transform: "scale(.45)" }, { transform: "scale(1.1)", offset: 0.8 }, { transform: "scale(1)" }], { duration: 900, delay: 300 + i * 120, easing: "ease-out", fill: "both" }));
+      scope.timeout(() => { Sound.play("chime"); phase = "pull"; typeText(banner, msg("farm"), scope); }, 1900);
     }
     function pull(x, y){
       const left = $$(".crop", field).filter(c => c._hp > 0);
@@ -2965,14 +3061,17 @@ screens.farm = {
     function harvest(){
       Sound.play("chime"); const b = cpt(basket); FX.burst(b.x, b.y, 7);
       scope.anim(basket, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 4}px)` }, { transform: "translateY(0px)" }], { duration: 400, iterations: 2, fill: "none" });
-      typeText(banner, msg("farmDone"), scope, () => scope.timeout(sprout, 1500));
+      typeText(banner, msg("farmDone"), scope, () => scope.timeout(plant, 1500));
     }
     el.addEventListener("pointerdown", e => {
       if (!e.isPrimary || e._handled) return;
       e._handled = true;
-      if (phase === "pull") pull(e.clientX, e.clientY); else tapOther(e);
+      if (phase === "seed") seed(e.clientX, e.clientY);
+      else if (phase === "water") water(e.clientX, e.clientY);
+      else if (phase === "pull") pull(e.clientX, e.clientY);
+      else tapOther(e);
     });
-    sprout();
+    plant();
   },
 };
 
@@ -3030,16 +3129,16 @@ screens.flower = {
 };
 
 /* ---------- だいくさん ---------- */
-const NAILS = [[[23, 52], [77, 86]], [[32, 40], [70, 40]], [[44, 70], [55, 88]], [[66, 56], [28, 56]]];
+const NAILS = [[[22, 82], [78, 82]], [[36, 38], [64, 38]], [[45, 70], [55, 86]], [[29, 53], [71, 53]]];
 screens.carpenter = {
   el: $("#s-carpenter"),
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="area"><div class="chouse">${ART.chouse()}<div class="cp-res"></div></div><div class="tool hammer">${ART.hammer()}</div></div>
+      <div class="area"><div class="chouse">${ART.chouse()}<div class="cp-res"></div></div><div class="tool driver">${ART.driver()}</div></div>
     </div>`);
     el.appendChild(st);
-    const banner = $(".t", st), area = $(".area", st), house = $(".chouse", st), hammer = $(".hammer", st), res = $(".cp-res", st);
+    const banner = $(".t", st), area = $(".area", st), house = $(".chouse", st), driver = $(".driver", st), res = $(".cp-res", st);
     let phase = "wait", stage = 0;
     function piece(i){
       phase = "wait";
@@ -3048,7 +3147,7 @@ screens.carpenter = {
       scope.anim(g, [{ transform: "translateY(-40px)", opacity: 0 }, { transform: "translateY(0px)", opacity: 1 }], { duration: 450, easing: "ease-in" }, () => {
         bounce(house, scope, 1.02);
         NAILS[i].forEach(([x, y], k) => {
-          const n = h(`<div class="nail" style="left:${x}%;top:${y}%"></div>`);
+          const n = h(`<div class="screw" style="left:${x}%;top:${y}%">${ART.screw()}</div>`);
           n._done = false; house.appendChild(n); popIn(n, scope, k * 120);
         });
         phase = "nail";
@@ -3056,29 +3155,37 @@ screens.carpenter = {
     }
     function newHouse(){
       stage = 0;
-      $$(".nail", house).forEach(n => n.remove());
+      $$(".screw", house).forEach(n => n.remove());
       [0, 1, 2, 3].forEach(i => { const g = $(".p" + i, house); g.style.opacity = 0; g.style.transform = ""; });
       res.style.opacity = 0; house.style.opacity = ""; house.style.transform = "";
       typeText(banner, msg("carpenter"), scope);
       piece(0);
     }
     function hit(x, y){
-      const left = $$(".nail", house).filter(n => !n._done);
+      const left = $$(".screw", house).filter(n => !n._done);
       if (!left.length) return;
       const n = nearest(left, x, y);
       n._done = true;
-      const c = cpt(n), ar = area.getBoundingClientRect();
-      hammer.style.left = (c.x - ar.left - hammer.offsetWidth * 0.22) + "px"; hammer.style.top = (c.y - ar.top - hammer.offsetHeight * 0.22) + "px";
-      scope.anim(hammer, [{ transform: "rotate(-45deg)", opacity: 1 }, { transform: "rotate(0deg)", opacity: 1, offset: 0.5 }, { transform: "rotate(-20deg)", opacity: 1 }, { transform: "rotate(-25deg)", opacity: 0 }], { duration: 420 });
+      const hr = n.getBoundingClientRect(), c = { x: hr.left + hr.width / 2, y: hr.top + hr.height * 0.19 }, ar = area.getBoundingClientRect();
+      // ドライバーで くるくる しめる
+      driver.style.left = (c.x - ar.left - driver.offsetWidth / 2) + "px"; driver.style.top = (c.y - ar.top - driver.offsetHeight) + "px";
+      scope.anim(driver, [
+        { transform: `translateY(${-U * 6}px) scaleX(1)`, opacity: 0 }, { transform: "translateY(0px) scaleX(1)", opacity: 1, offset: 0.2 },
+        { transform: "translateY(0px) scaleX(.3)", opacity: 1, offset: 0.35 }, { transform: "translateY(0px) scaleX(1)", opacity: 1, offset: 0.5 },
+        { transform: "translateY(0px) scaleX(.3)", opacity: 1, offset: 0.65 }, { transform: "translateY(0px) scaleX(1)", opacity: 1, offset: 0.8 },
+        { transform: `translateY(${-U * 6}px) scaleX(1)`, opacity: 0 },
+      ], { duration: 700 });
+      Sound.play("screw");
+      scope.anim($(".cross", n), [{ transform: "rotate(0deg)" }, { transform: "rotate(270deg)" }], { duration: 450, easing: "ease-in-out" });
+      scope.anim($(".shank", n), [{ transform: "scaleY(1)" }, { transform: "scaleY(0)" }], { duration: 450, easing: "ease-in" });
       scope.timeout(() => {
-        Sound.play("hammer"); n.classList.add("in");
-        scope.anim(n, [{ transform: "scale(1)" }, { transform: "scale(.55)" }], { duration: 150 });
+        Sound.play("hammer");
         FX.burst(c.x, c.y, 3);
-        if ($$(".nail", house).every(z => z._done) && phase === "nail") {
+        if ($$(".screw", house).every(z => z._done) && phase === "nail") {
           phase = "wait"; stage++;
           scope.timeout(() => stage < 4 ? piece(stage) : done(), 450);
         }
-      }, 200);
+      }, 480);
     }
     function done(){
       phase = "done";
@@ -3185,7 +3292,7 @@ screens.zoo = {
       $$(".soap", area).forEach(s => s.remove());
       ani.textContent = pick(ZOO_ANIMALS); ani.style.transform = ""; ani.style.opacity = "";
       slideIn(scope, ani, -200);
-      typeText(banner, msg("zoo"), scope);
+      typeText(banner, msg("zoo"), scope, () => scope.timeout(() => { if (phase === "feed" && n === 0) typeText(banner, msg("zooFeed"), scope); }, 1600));
     }
     function act(from, food){
       if (phase === "feed") {
@@ -3247,11 +3354,13 @@ screens.lab = {
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="area"><div class="beaker">${ART.beaker()}<div class="labbub"></div></div></div>
+      <div class="area"><div class="beaker">${ART.beaker()}<div class="labbub"></div></div><div class="hakase">${ART.hakase()}</div><div class="hk-say"><span class="t2"></span></div></div>
       <div class="tray2"></div>
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), beaker = $(".beaker", st), liq = $(".liq", st), bubs = $(".labbub", st), tray = $(".tray2", st);
+    const hk = $(".hakase", st), say = $(".hk-say", st), sayT = $(".t2", say);
+    const hkSay = key => { scope.anim(say, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], { duration: 300 }); typeText(sayT, msg(key), scope); bounce(hk, scope, 1.06); };
     let phase = "pour", poured = [];
     function setup(){
       phase = "pour"; poured = [];
@@ -3263,6 +3372,7 @@ screens.lab = {
         f.addEventListener("pointerdown", e => { if (!e.isPrimary) return; e._handled = true; pour(f); });
       });
       typeText(banner, msg("lab"), scope);
+      scope.timeout(() => hkSay("labSay"), 600);
     }
     function pour(f){
       if (phase !== "pour" || f.dataset.st !== "idle") { Sound.play("pop"); return; }
@@ -3281,7 +3391,7 @@ screens.lab = {
           FX.burst(br.left + br.width / 2, br.top + br.height * 0.5, 3);
           scope.anim(f, [{ transform: `translate(${dx}px,${dy}px) rotate(-70deg)` }, { transform: "translate(0px,0px) rotate(0deg)" }], { duration: 450, easing: "ease-in-out" }, () => {
             f.dataset.st = "idle";
-            if (poured.length >= 3) react(); else phase = "pour";
+            if (poured.length >= 3) react(); else { phase = "pour"; bounce(hk, scope, 1.05); }
           });
         }, 450);
       });
@@ -3301,6 +3411,8 @@ screens.lab = {
         liq.setAttribute("fill", pick(LAB_COLORS.filter(c => !poured.includes(c))) || col);
         Sound.play("sparkle"); scope.timeout(() => Sound.play("chime"), 250);
         const c = cpt(beaker); FX.burst(c.x, c.y - U * 10, 8);
+        hkSay("labYay");
+        scope.anim(hk, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 5}px)` }, { transform: "translateY(0px)" }], { duration: 400, iterations: 2, fill: "none" });
         typeText(banner, msg("labDone"), scope, () => scope.timeout(() => {
           scope.anim(liq, [{ transform: "scaleY(1)" }, { transform: "scaleY(0)" }], { duration: 600, easing: "ease-in" }, setup);
         }, 1400));
@@ -3602,11 +3714,12 @@ screens.pilot = {
       const from = cpt(r); r.style.opacity = 0;
       flyEl(scope, st, r._a, from, cpt(w), { size: U * 14, font: U * 12, dur: 450, scale: 0.5, fade: true }, () => {
         w.textContent = r._a; popIn(w, scope); Sound.play("shara");
-        if (onboard >= 3 && phase === "board") go_.classList.add("ready");
+        if (onboard >= 3 && phase === "board") { go_.classList.add("ready"); typeText(banner, msg("pilotReady"), scope); }
       });
     }
     function takeoff(){
       phase = "fly"; go_.classList.remove("ready");
+      typeText(banner, msg("pilotFly"), scope);
       $$(".rider", plat).forEach(r => { if (r.dataset.st !== "done") { r.dataset.st = "done"; scope.anim(r, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 }); } });
       Sound.play("jet"); plane.classList.add("spin");
       const W = sky.clientWidth, H = sky.clientHeight, old = plat;
