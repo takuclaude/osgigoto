@@ -400,6 +400,25 @@ html.girl .scene2{background:#F6E6EE}
 .basket svg{width:100%;height:100%;display:block}
 .bk-items{position:absolute;left:12%;right:12%;top:-12%;display:flex;flex-wrap:wrap;justify-content:center;font-size:calc(var(--u)*8);line-height:1}
 /* おはなやさん */
+/* おはなやさんの おみせ（はいけい） */
+.fshop{position:absolute;inset:0;pointer-events:none;overflow:hidden;background:repeating-linear-gradient(90deg,#FFF6F0 0 calc(var(--u)*7),#FCEDE8 calc(var(--u)*7) calc(var(--u)*14))}
+.fs-floor{position:absolute;left:0;right:0;bottom:0;height:22%;background:repeating-linear-gradient(90deg,#E9D3B8 0 calc(var(--u)*16),#E2C9AC calc(var(--u)*16) calc(var(--u)*16.6));border-top:calc(var(--u)*1.2) solid #D9BC98}
+.fs-awn{position:absolute;left:0;right:0;top:0;height:calc(var(--u)*8);background:repeating-linear-gradient(90deg,#F4B9C8 0 calc(var(--u)*8),#FFFAF6 calc(var(--u)*8) calc(var(--u)*16))}
+.fs-awn::after{content:"";position:absolute;left:0;right:0;top:100%;height:calc(var(--u)*4);background:radial-gradient(circle at 50% 0,#F4B9C8 calc(var(--u)*4),transparent calc(var(--u)*4.2)) calc(var(--u)*-4) 0/calc(var(--u)*16) 100% repeat-x,radial-gradient(circle at 50% 0,#FFFAF6 calc(var(--u)*4),transparent calc(var(--u)*4.2)) calc(var(--u)*4) 0/calc(var(--u)*16) 100% repeat-x}
+.fs-flags{position:absolute;left:0;right:0;top:calc(var(--u)*13);height:calc(var(--u)*6);display:flex;justify-content:space-around;border-top:calc(var(--u)*.5) solid #D9BC98}
+.fs-flags i{width:0;height:0;border-left:calc(var(--u)*2.6) solid transparent;border-right:calc(var(--u)*2.6) solid transparent;border-top:calc(var(--u)*5) solid #F6C9A8}
+.fs-flags i:nth-child(3n+1){border-top-color:#F4B9C8}.fs-flags i:nth-child(3n+2){border-top-color:#BFDDB3}
+.fs-sign{position:absolute;right:3%;top:calc(var(--u)*22);padding:calc(var(--u)*1.2) calc(var(--u)*2.6);background:#FFFDF8;border:calc(var(--u)*.8) solid #D9A9B6;border-radius:calc(var(--u)*4);font-size:calc(var(--u)*4.2);color:#B86E82;white-space:nowrap}
+.fs-shelf{position:absolute;right:3%;top:calc(var(--u)*36);width:calc(var(--u)*40);display:flex;justify-content:space-around;align-items:flex-end;font-size:calc(var(--u)*8);line-height:1;padding-bottom:calc(var(--u)*1.4);border-bottom:calc(var(--u)*2) solid #D3B08A}
+.fs-shelf span{display:block;position:relative}
+.fs-shelf span::after{content:"";display:block;width:calc(var(--u)*8);height:calc(var(--u)*5);margin:calc(var(--u)*-1) auto 0;background:#E3A98A;border-radius:0 0 calc(var(--u)*2) calc(var(--u)*2)}
+.fs-buckets{position:absolute;left:3%;bottom:6%;display:flex;gap:calc(var(--u)*2);align-items:flex-end}
+.fs-bk{display:flex;flex-direction:column;align-items:center}
+.fs-bk .fw{font-size:calc(var(--u)*7.5);line-height:.8;letter-spacing:calc(var(--u)*-2.4);white-space:nowrap}
+.fs-bk .pail{width:calc(var(--u)*14);height:calc(var(--u)*11);background:linear-gradient(90deg,#B9C6CF,#DCE4EA 45%,#B9C6CF);clip-path:polygon(0 0,100% 0,86% 100%,14% 100%);border-top:calc(var(--u)*1.2) solid #9FAFBA}
+.fs-tag{font-size:calc(var(--u)*3.2);background:#FFFDF8;border-radius:calc(var(--u)*1);padding:0 calc(var(--u)*1);margin-top:calc(var(--u)*-8);position:relative;color:#8A7A66}
+.s-flower .tray2{background:#E8CFAE;box-shadow:0 calc(var(--u)*1.4) 0 #CDAE86}
+.s-flower .bouquet,.s-flower .cust2{z-index:2}
 .bouquet{position:absolute;left:36%;top:4%;width:calc(var(--u)*50);height:calc(var(--u)*66);margin-left:calc(var(--u)*-25)}
 .bouquet svg{width:100%;height:100%;display:block;overflow:visible}
 .bq-fl{position:absolute;inset:0}
@@ -3504,12 +3523,17 @@ screens.farm = {
 /* ---------- おはなやさん ---------- */
 const FLOWERS = ["🌷", "🌹", "🌻", "🌼", "🌸"];
 const BQ_SLOTS = [[30, 24], [50, 14], [70, 24], [39, 35], [61, 35], [50, 27]];
+// おはなやさんの おみせの はいけい
+const FSHOP_HTML = `<div class="fshop"><div class="fs-floor"></div><div class="fs-awn"></div><div class="fs-flags">${"<i></i>".repeat(9)}</div>
+  <div class="fs-sign">🌷 おはなや</div>
+  <div class="fs-shelf"><span>🪴</span><span>🌼</span><span>🌵</span></div>
+  <div class="fs-buckets">${[["🌹🌹🌹", "ばら"], ["🌻🌻", "ひまわり"], ["🌷🌷🌷", "ちゅーりっぷ"]].map(([f, n]) => `<div class="fs-bk"><div class="fw">${f}</div><div class="pail"></div><div class="fs-tag">${n}</div></div>`).join("")}</div></div>`;
 screens.flower = {
   el: $("#s-flower"),
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="area"><div class="bouquet">${ART.wrap2()}<div class="bq-fl"></div></div>${CUST_HTML}</div>
+      <div class="area">${FSHOP_HTML}<div class="bouquet">${ART.wrap2()}<div class="bq-fl"></div></div>${CUST_HTML}</div>
       <div class="tray2"></div>
     </div>`);
     el.appendChild(st);
