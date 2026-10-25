@@ -233,21 +233,12 @@ html.girl .kb{background:#EED6DE}
 .sp-say{position:absolute;background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.4) calc(var(--u)*3);font-size:calc(var(--u)*4.4);white-space:nowrap;opacity:0;z-index:5;transform:translateX(-50%)}
 
 /* ---------- こうじげんば ---------- */
-.cn-area{position:relative;flex:1;min-height:0;margin-top:calc(var(--u)*3);overflow:hidden;background:linear-gradient(180deg,#CFE6F2 0 60%,#C9A97E 60%)}
-html.girl .cn-area{background:linear-gradient(180deg,#F3E3EC 0 60%,#C9A97E 60%)}
+.cn-area{position:relative;flex:1;min-height:0;margin-top:calc(var(--u)*3);overflow:hidden;background:linear-gradient(180deg,#BFE0F2,#E6F3F8)}
+html.girl .cn-area{background:linear-gradient(180deg,#F1DCE7,#FAF0F4)}
 .cn-sign{position:absolute;left:4%;top:5%;padding:calc(var(--u)*1.4) calc(var(--u)*3);background:#F5D88E;border:calc(var(--u)*.8) solid #3A3226;border-radius:calc(var(--u)*2);font-size:calc(var(--u)*4.2)}
 .cn-cones{position:absolute;right:4%;top:6%;font-size:calc(var(--u)*7);letter-spacing:calc(var(--u)*1)}
-.cn-dirt{position:absolute;left:1%;bottom:40%;width:36%;height:calc(var(--u)*17);border-radius:50% 50% 8% 8% / 90% 90% 10% 10%;background:radial-gradient(circle at 30% 40%,#A7835F 0 6%,transparent 7%),radial-gradient(circle at 65% 60%,#A7835F 0 5%,transparent 6%),#8F6A48}
-.exc{position:absolute;left:30%;bottom:38%;width:calc(var(--u)*34);height:calc(var(--u)*26);z-index:2}
-.exc>svg{width:100%;height:100%;display:block}
-.exc-arm{position:absolute;left:28%;bottom:44%;width:calc(var(--u)*5);height:calc(var(--u)*30);margin-left:calc(var(--u)*-2.5);transform-origin:50% 100%;transform:rotate(-20deg);background:#F2C14E;border:calc(var(--u)*.6) solid #C99A2E;border-radius:calc(var(--u)*2.5);z-index:-1}
-.exc-bkt{position:absolute;left:50%;top:calc(var(--u)*-8);width:calc(var(--u)*13);height:calc(var(--u)*10);margin-left:calc(var(--u)*-6.5)}
-.exc-bkt svg{width:100%;height:100%;display:block;position:relative}
-.exc-load{position:absolute;left:12%;top:-30%;width:76%;height:60%;border-radius:50% 50% 30% 30%;background:#8F6A48;opacity:0}
-.dtruck{position:absolute;right:1%;bottom:36%;width:calc(var(--u)*44);height:calc(var(--u)*26);z-index:1}
-.dtruck svg{width:100%;height:100%;display:block;position:relative}
-.dt-load{position:absolute;left:6%;width:52%;top:17%;height:0;background:#8F6A48;border-radius:50% 50% 0 0 / 70% 70% 0 0;z-index:2;transform:translateY(0)}
-.dtruck.spin .wheel{animation:spin .5s linear infinite}
+.cn-svg{position:absolute;left:0;bottom:0;width:100%;height:100%;overflow:visible}
+.cn-area::after{content:"";position:absolute;left:0;right:0;bottom:0;height:30%;background:#C9A97E;z-index:-1}
 .cn-find{position:absolute;font-size:calc(var(--u)*12);line-height:1;z-index:5;opacity:0;pointer-events:none}
 .dirt-blob{width:100%;height:100%;border-radius:50% 50% 40% 40%;background:#8F6A48}
 
@@ -1912,27 +1903,7 @@ const ART = {
     return `<svg viewBox="0 0 100 100">${ringB}<circle cx="50" cy="50" r="32" fill="${p.c[0]}" stroke="${p.c[1]}" stroke-width="3"/>` +
       `<circle cx="40" cy="42" r="7" fill="${p.c[1]}" opacity=".35"/><circle cx="62" cy="62" r="5" fill="${p.c[1]}" opacity=".35"/><circle cx="58" cy="36" r="3" fill="#fff" opacity=".6"/>${ringF}</svg>`;
   },
-  excavator(){
-    return '<svg viewBox="0 0 100 76"><rect x="6" y="56" width="88" height="18" rx="9" fill="#5E5A56"/>' +
-      [16, 38, 62, 84].map(x => `<circle cx="${x}" cy="65" r="6" fill="#8F8A84"/>`).join("") +
-      '<rect x="12" y="40" width="76" height="18" rx="4" fill="#F2C14E" stroke="#C99A2E" stroke-width="2"/>' +
-      '<path d="M44 8 H72 Q82 8 82 18 V42 H44 Z" fill="#F2C14E" stroke="#C99A2E" stroke-width="2"/>' +
-      '<rect x="50" y="14" width="26" height="17" rx="3" fill="#D8ECF4" stroke="#C99A2E" stroke-width="2"/>' +
-      '<circle cx="62" cy="26" r="5.5" fill="#F6DCC3"/><path d="M55.5 24.5 Q62 15 68.5 24.5Z" fill="#F5D88E" stroke="#D9B45A" stroke-width="1"/>' +
-      '<circle cx="60" cy="27" r=".9" fill="#3A3226"/><circle cx="64" cy="27" r=".9" fill="#3A3226"/>' +
-      '<rect x="18" y="44" width="10" height="5" rx="2" fill="#3A3226" opacity=".25"/></svg>';
-  },
-  bucket(){
-    return '<svg viewBox="0 0 40 32"><path d="M4 4 H36 Q36 26 20 26 Q4 26 4 4Z" fill="#E0A93A" stroke="#B9852A" stroke-width="2.5" stroke-linejoin="round"/>' +
-      '<path d="M9 26 l2 5 l2 -5 M18 26 l2 5 l2 -5 M27 26 l2 5 l2 -5" stroke="#8F8A84" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>';
-  },
-  dumpTruck(c){
-    return `<svg viewBox="0 0 120 72"><path d="M4 12 H72 L68 50 H8 Z" fill="${c[0]}" stroke="${c[1]}" stroke-width="2.5" stroke-linejoin="round"/>` +
-      '<rect x="4" y="48" width="112" height="8" rx="2" fill="#6E6A66"/>' +
-      `<path d="M76 20 H100 Q108 20 112 30 L116 48 H76 Z" fill="${c[0]}" stroke="${c[1]}" stroke-width="2.5" stroke-linejoin="round"/>` +
-      '<path d="M82 26 H98 Q103 26 105 32 L107 38 H82Z" fill="#D8ECF4"/>' +
-      [22, 56, 98].map(x => `<g class="wheel"><circle cx="${x}" cy="60" r="10" fill="#4E4A47"/><circle cx="${x}" cy="60" r="4" fill="#CFC8BE"/><rect x="${x - 1.2}" y="51" width="2.4" height="6" fill="#CFC8BE"/></g>`).join("") + "</svg>";
-  },
+  excavator(){ return excavatorSVG("-6 74 336 136"); },
   shipWheel(){
     let sp = "";
     for (let i = 0; i < 8; i++) {
@@ -4928,44 +4899,142 @@ screens.astronaut = {
   },
 };
 
-/* ---------- こうじげんば（ショベルカー） ---------- */
+/* ---------- こうじげんば（3つの かんせつが うごく ショベルカー） ---------- */
 const TREASURES = [["🦴", "ほね"], ["💎", "ほうせき"], ["🦕", "きょうりゅう"], ["🪙", "こいん"], ["🐛", "いもむしさん"]];
 const DUMP_COLORS = [["#8FB7DA", "#6E93B3"], ["#E98A7E", "#B96257"], ["#9BC48A", "#759E64"], ["#F2C14E", "#C99A2E"]];
+// かんせつ：P1＝ブーム（おおきな うで）の ねもと、P2＝アーム、P3＝バケット
+const EX = { P1: [165, 140], P2: [275, 60], P3: [300, 148] };
+const EX_POSE = {
+  rest:  { b: 0, s: 0, k: 0 },
+  dig:   { b: 12, s: 6, k: -35 },
+  scoop: { b: 10, s: 2, k: 30 },
+  lift:  { b: -22, s: -8, k: 30 },
+  dump:  { b: -6, s: -44, k: 30 },
+  open:  { b: -6, s: -44, k: -85 },
+};
+const exRot = (p, c, a) => { const r = a * Math.PI / 180, x = p[0] - c[0], y = p[1] - c[1]; return [c[0] + x * Math.cos(r) - y * Math.sin(r), c[1] + x * Math.sin(r) + y * Math.cos(r)]; };
+const EXY = ["#E8B83A", "#B88A1E", "#D4A42C"];   // きいろ・ふち・かげ
+function excavatorParts(){
+  const [y, o, d] = EXY;
+  const rollers = [28, 52, 76, 100, 124, 148, 172].map(x => `<circle cx="${x}" cy="190" r="7" fill="#6E6A66" stroke="#4E4A47" stroke-width="2"/>`).join("");
+  const body =
+    // キャタピラ
+    '<path d="M16 176 H186 Q202 176 202 190 Q202 204 186 204 H16 Q0 204 0 190 Q0 176 16 176 Z" fill="#3E3B38"/>' +
+    '<path d="M16 176 H186 Q202 176 202 190 Q202 204 186 204 H16 Q0 204 0 190 Q0 176 16 176 Z" fill="none" stroke="#6E6A66" stroke-width="3" stroke-dasharray="4 5"/>' +
+    rollers + '<circle cx="14" cy="190" r="9" fill="#55504A"/><circle cx="188" cy="190" r="9" fill="#55504A"/>' +
+    `<rect x="40" y="168" width="120" height="9" rx="2" fill="#4E4A47"/>` +
+    // うしろの おもり と エンジン
+    `<path d="M22 168 V124 Q22 104 42 104 H100 V168 Z" fill="${y}" stroke="${o}" stroke-width="2.5" stroke-linejoin="round"/>` +
+    `<path d="M50 106 V166 M76 106 V166" stroke="${o}" stroke-width="1.5" opacity=".6"/><rect x="82" y="140" width="10" height="7" rx="1.5" fill="${o}" opacity=".5"/>` +
+    `<rect x="18" y="156" width="160" height="14" rx="3" fill="${d}" stroke="${o}" stroke-width="2"/>` +
+    '<rect x="60" y="94" width="9" height="10" rx="2" fill="#F29A4A"/><rect x="62" y="92" width="5" height="3" rx="1" fill="#F7C08A"/>' +
+    // うんてんせき
+    '<path d="M100 166 V88 Q100 80 108 80 H146 Q154 80 156 88 L162 140 V166 Z" fill="#4A4F55" stroke="#33373C" stroke-width="2.5" stroke-linejoin="round"/>' +
+    '<path d="M107 88 H144 Q148 88 149 93 L154 136 H107 Z" fill="#BFE0EE" opacity=".9"/>' +
+    '<circle cx="126" cy="112" r="7.5" fill="#F6DCC3"/><path d="M118 110 Q126 98 134 110 Z" fill="#F5D88E" stroke="#D9B45A" stroke-width="1"/>' +
+    '<circle cx="124" cy="113" r="1.1" fill="#3A3226"/><circle cx="129" cy="113" r="1.1" fill="#3A3226"/><rect x="117" y="120" width="18" height="16" rx="4" fill="#8FB7DA"/>' +
+    '<path d="M110 92 L118 92 L110 104Z" fill="#FFFFFF" opacity=".5"/>' +
+    // ブームの ねもと
+    `<path d="M148 168 L156 128 L180 134 L182 168 Z" fill="${y}" stroke="${o}" stroke-width="2.5" stroke-linejoin="round"/>`;
+  const pin = ([x, yy]) => `<circle cx="${x}" cy="${yy}" r="5.5" fill="#8F8A84" stroke="#4E4A47" stroke-width="2"/>`;
+  const bucket = `<g class="ex-bkt">` +
+    '<ellipse class="ex-load" cx="292" cy="170" rx="11" ry="7" fill="#8F6A48" opacity="0"/>' +
+    `<path d="M293 144 L314 150 Q326 172 308 186 L278 189 L283 180 Q293 168 293 144 Z" fill="${y}" stroke="${o}" stroke-width="2.5" stroke-linejoin="round"/>` +
+    '<path d="M279 188 l-5 3 l7 1 M286 188 l-4 4 l7 0 M294 187 l-3 5 l6 -1" stroke="#6E6A66" stroke-width="2.5" fill="none" stroke-linejoin="round"/>' +
+    `<path d="M308 154 Q316 168 306 180" stroke="${d}" stroke-width="3" fill="none"/>` + pin(EX.P3) + "</g>";
+  const stick = `<g class="ex-stick">` +
+    `<path d="M260 44 Q266 32 278 38 L307 145 Q303 155 293 151 Z" fill="${y}" stroke="${o}" stroke-width="2.5" stroke-linejoin="round"/>` +
+    `<path d="M272 52 L298 140" stroke="${d}" stroke-width="3"/>` + bucket + pin(EX.P2) + "</g>";
+  const boom = `<g class="ex-boom">` +
+    `<path d="M154 140 Q172 110 212 70 Q226 54 248 52 L280 52 Q290 60 282 70 L248 70 Q234 72 226 84 Q192 118 178 148 Z" fill="${y}" stroke="${o}" stroke-width="2.5" stroke-linejoin="round"/>` +
+    `<path d="M176 128 Q200 96 226 70 Q236 62 250 61" stroke="${d}" stroke-width="3" fill="none"/>` + stick + pin(EX.P1) + "</g>";
+  const cyl = n => `<line class="cy${n}b" stroke="${o}" stroke-width="8" stroke-linecap="round"/><line class="cy${n}r" stroke="#C9D0D6" stroke-width="3.5" stroke-linecap="round"/>`;
+  return { body, boom, cyl };
+}
+// ポーズに あわせて かんせつと シリンダーを うごかす
+function exApply(root, a){
+  const { P1, P2, P3 } = EX;
+  $(".ex-boom", root).setAttribute("transform", `rotate(${a.b} ${P1[0]} ${P1[1]})`);
+  $(".ex-stick", root).setAttribute("transform", `rotate(${a.s} ${P2[0]} ${P2[1]})`);
+  $(".ex-bkt", root).setAttribute("transform", `rotate(${a.k} ${P3[0]} ${P3[1]})`);
+  const onBoom = p => exRot(p, P1, a.b), onStick = p => onBoom(exRot(p, P2, a.s)), onBkt = p => onStick(exRot(p, P3, a.k));
+  const line = (n, p, q) => {
+    const b = $(`.cy${n}b`, root), r = $(`.cy${n}r`, root), m = [p[0] + (q[0] - p[0]) * 0.58, p[1] + (q[1] - p[1]) * 0.58];
+    r.setAttribute("x1", p[0]); r.setAttribute("y1", p[1]); r.setAttribute("x2", q[0]); r.setAttribute("y2", q[1]);
+    b.setAttribute("x1", p[0]); b.setAttribute("y1", p[1]); b.setAttribute("x2", m[0]); b.setAttribute("y2", m[1]);
+  };
+  line(1, [150, 152], onBoom([206, 100]));
+  line(2, onBoom([214, 70]), onStick([266, 40]));
+  line(3, onStick([284, 78]), onBkt([313, 147]));
+}
+function excavatorSVG(vb){
+  const p = excavatorParts();
+  return `<svg viewBox="${vb}">${p.body}${p.cyl(1)}${p.boom}${p.cyl(2)}${p.cyl(3)}</svg>`;
+}
 screens.construction = {
   el: $("#s-construction"),
   enter(scope, el){
+    const p = excavatorParts();
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
       <div class="cn-area">
         <div class="cn-sign">こうじちゅう</div><div class="cn-cones">🚧🚧</div>
-        <div class="cn-dirt"></div>
-        <div class="exc"><div class="exc-arm"><div class="exc-bkt"><div class="exc-load"></div>${ART.bucket()}</div></div>${ART.excavator()}</div>
-        <div class="dtruck"><div class="dt-in"></div><div class="dt-load"></div></div>
+        <svg class="cn-svg" viewBox="0 -10 470 250" preserveAspectRatio="xMidYMid meet">
+          <path d="M-40 204 Q60 120 150 150 Q230 110 320 150 Q400 120 520 160 V204 Z" fill="#CFE3C4" opacity=".7"/>
+          <g opacity=".55" stroke="#A9B6C0" stroke-width="3" fill="none"><rect x="196" y="70" width="110" height="134"/><path d="M196 115 H306 M196 160 H306 M233 70 V204 M270 70 V204"/></g>
+          <g opacity=".6" stroke="#E0A93A" stroke-width="2.5" fill="none"><path d="M424 -8 V204 M436 -8 V204"/><path d="M424 10 L436 30 M436 30 L424 50 M424 50 L436 70 M436 70 L424 90 M424 90 L436 110 M436 110 L424 130 M424 130 L436 150 M436 150 L424 170 M424 170 L436 190"/>
+            <path d="M330 -2 H480 M330 8 H480"/><path d="M340 -2 L350 8 M360 -2 L370 8 M380 -2 L390 8 M400 -2 L410 8 M450 -2 L460 8"/><path d="M372 8 V60" stroke-width="1.5"/></g>
+          <rect x="365" y="60" width="14" height="10" fill="#E0A93A" opacity=".6"/>
+          <rect x="-200" y="202" width="870" height="400" fill="#C9A97E"/><path d="M-40 204 H520" stroke="#B08F66" stroke-width="3"/>
+          <path class="cn-pile" d="M214 205 Q228 166 262 164 Q302 162 324 205 Z" fill="#8F6A48"/>
+          <circle cx="250" cy="182" r="3" fill="#A7835F"/><circle cx="282" cy="176" r="2.5" fill="#A7835F"/><circle cx="300" cy="192" r="3" fill="#A7835F"/>
+          <g class="cn-truck"></g>
+          ${p.body}${p.cyl(1)}${p.boom}${p.cyl(2)}${p.cyl(3)}
+        </svg>
       </div>
     </div>`);
     el.appendChild(st);
-    const banner = $(".t", st), area = $(".cn-area", st), arm = $(".exc-arm", st), bkt = $(".exc-bkt", st), load = $(".exc-load", st);
-    const truck = $(".dtruck", st), tin = $(".dt-in", st), tload = $(".dt-load", st), dirt = $(".cn-dirt", st);
-    let phase = "dig", fill = 0, ang = -20, digs = 0;
-    const swing = (to, dur, done) => { const from = ang; ang = to; scope.anim(arm, [{ transform: `rotate(${from}deg)` }, { transform: `rotate(${to}deg)` }], { duration: dur, easing: "ease-in-out" }, done); };
-    function newTruck(fromRight){
-      fill = 0; tload.style.height = "0%";
-      tin.innerHTML = ART.dumpTruck(pick(DUMP_COLORS));
-      if (fromRight) {
-        truck.classList.add("spin"); Sound.play("broro");
-        scope.anim(truck, [{ transform: `translateX(${U * 60}px)` }, { transform: "translateX(0px)" }], { duration: 900, easing: "ease-out" }, () => truck.classList.remove("spin"));
-      }
+    const banner = $(".t", st), area = $(".cn-area", st), svg = $(".cn-svg", st), truck = $(".cn-truck", st), pile = $(".cn-pile", st);
+    let phase = "dig", fill = 0, cur = Object.assign({}, EX_POSE.rest), digs = 0, tx = 0;
+    exApply(svg, cur);
+    const ease = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    function tween(dur, step, done){
+      const t0 = performance.now();
+      const loop = now => { const t = Math.min(1, (now - t0) / dur); step(ease(t)); if (t < 1) scope.raf(loop); else if (done) done(); };
+      scope.raf(loop);
     }
-    // ほって → はこぶ → いれる
+    function pose(name, dur, done){
+      const from = Object.assign({}, cur), to = EX_POSE[name];
+      tween(dur, e => { cur = { b: from.b + (to.b - from.b) * e, s: from.s + (to.s - from.s) * e, k: from.k + (to.k - from.k) * e }; exApply(svg, cur); }, done);
+    }
+    function drawTruck(c){
+      truck.innerHTML = '<defs><clipPath id="bedclip"><path d="M333 90 H410 V175 H338 Z"/></clipPath></defs>' +
+        `<g clip-path="url(#bedclip)"><g class="cn-load" transform="translate(0,${46})"><ellipse cx="371" cy="176" rx="40" ry="12" fill="#8F6A48"/><rect x="330" y="176" width="84" height="60" fill="#8F6A48"/></g></g>` +
+        `<path d="M332 132 H410 L404 176 H338 Z" fill="none" stroke="${c[1]}" stroke-width="3" stroke-linejoin="round"/>` +
+        `<path d="M332 132 H410 L404 176 H338 Z" fill="${c[0]}" opacity=".35"/>` +
+        '<rect x="328" y="174" width="140" height="9" rx="2" fill="#6E6A66"/>' +
+        `<path d="M414 144 H444 Q454 144 458 156 L466 176 H414 Z" fill="${c[0]}" stroke="${c[1]}" stroke-width="2.5" stroke-linejoin="round"/>` +
+        '<path d="M421 150 H442 Q448 150 450 156 L453 164 H421 Z" fill="#D8ECF4"/>' +
+        [352, 390, 446].map(x => `<circle cx="${x}" cy="189" r="13" fill="#4E4A47"/><circle cx="${x}" cy="189" r="5" fill="#CFC8BE"/>`).join("");
+    }
+    const setLoad = n => $(".cn-load", truck).setAttribute("transform", `translate(0,${46 - n * 21.5})`);
+    function moveTruck(x0, x1, dur, done){ tween(dur, e => { tx = x0 + (x1 - x0) * e; truck.setAttribute("transform", `translate(${tx},0)`); }, done); }
+    function newTruck(arrive){
+      fill = 0; drawTruck(pick(DUMP_COLORS)); setLoad(0);
+      if (arrive) { Sound.play("broro"); moveTruck(160, 0, 1000); } else truck.setAttribute("transform", "translate(0,0)");
+    }
+    // ほる → すくう → もちあげる → トラックの うえへ → あける
     function dig(){
       phase = "busy";
-      swing(-100, 480, () => {
+      pose("dig", 650, () => {
         Sound.play("zaku");
-        load.style.opacity = 1; bounce(dirt, scope, 1.04);
-        const b = cpt(bkt); FX.burst(b.x, b.y, 4);
-        digs++;
-        if (Math.random() < 0.3 || digs === 2) found(b);
-        scope.timeout(() => swing(48, 650, dump), 150);
+        const b = cpt($(".ex-bkt", svg)); FX.burst(b.x, b.y, 4);
+        pose("scoop", 380, () => {
+          $(".ex-load", svg).setAttribute("opacity", 1);
+          digs++;
+          if (Math.random() < 0.3 || digs === 2) found(cpt($(".ex-bkt", svg)));
+          pose("lift", 600, () => pose("dump", 650, dump));
+        });
       });
     }
     function found(b){
@@ -4977,30 +5046,31 @@ screens.construction = {
       typeText(banner, `${name}を みつけた！`, scope);
     }
     function dump(){
-      const from = cpt(bkt), tr = tin.getBoundingClientRect();
-      load.style.opacity = 0;
-      flyEl(scope, st, '<div class="dirt-blob"></div>', from, { x: tr.left + tr.width * 0.3, y: tr.top + tr.height * 0.25 }, { size: U * 9, dur: 380, arc: U * 2 }, () => {
-        fill++;
-        Sound.play("dosun");
-        tload.style.height = (fill * 9) + "%";
-        scope.anim(truck, [{ transform: "translateY(0px)" }, { transform: `translateY(${U * 1.2}px)` }, { transform: "translateY(0px)" }], { duration: 260 });
-        FX.burst(tr.left + tr.width * 0.3, tr.top + tr.height * 0.2, 3);
-        swing(-20, 420, () => {
-          if (fill >= 4) leave();
-          else { phase = "dig"; if (fill === 1) typeText(banner, msg("constMore"), scope); }
+      pose("open", 380, () => {
+        $(".ex-load", svg).setAttribute("opacity", 0);
+        const from = cpt($(".ex-bkt", svg)), tr = truck.getBoundingClientRect();
+        flyEl(scope, st, '<div class="dirt-blob"></div>', from, { x: tr.left + tr.width * 0.28, y: tr.top + tr.height * 0.35 }, { size: U * 7, dur: 320, arc: 0 }, () => {
+          fill++; setLoad(fill);
+          Sound.play("dosun");
+          scope.anim(truck, [{ transform: `translate(${tx}px,0px)` }, { transform: `translate(${tx}px,3px)` }, { transform: `translate(${tx}px,0px)` }], { duration: 260, fill: "none" });
+          FX.burst(tr.left + tr.width * 0.28, tr.top + tr.height * 0.3, 3);
+          pose("rest", 700, () => {
+            if (fill >= 4) leave();
+            else { phase = "dig"; if (fill === 1) typeText(banner, msg("constMore"), scope); }
+          });
         });
       });
     }
     function leave(){
       phase = "busy";
       typeText(banner, msg("constFull"), scope);
-      Sound.play("horn"); truck.classList.add("spin");
+      Sound.play("horn");
       scope.timeout(() => {
         Sound.play("broro");
-        scope.anim(truck, [{ transform: "translateX(0px)" }, { transform: `translateX(${U * 60}px)` }], { duration: 900, easing: "ease-in" }, () => {
-          truck.classList.remove("spin");
-          scope.timeout(() => { newTruck(true); typeText(banner, msg("construction"), scope); scope.timeout(() => { phase = "dig"; }, 900); }, 400);
-        });
+        moveTruck(0, 170, 1000, () => scope.timeout(() => {
+          newTruck(true); typeText(banner, msg("construction"), scope);
+          scope.timeout(() => { phase = "dig"; }, 1000);
+        }, 300));
       }, 700);
     }
     el.addEventListener("pointerdown", e => {
