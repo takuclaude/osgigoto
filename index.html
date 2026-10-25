@@ -311,7 +311,7 @@ html.girl .tr-scene{background:#F6E6EE}html.girl .cktray{background:#F7D8E0}html
 
 /* ---------- 9この あたらしい あそび ---------- */
 .s-fire{background:#F7E9E4}.s-doctor{background:#E9F2F4}.s-post{background:#F6EEE6}.s-chef{background:#F7EFE2}.s-salon{background:#EFEAF5}
-.s-farm{background:#EEF4E4}.s-flower{background:#F6ECF0}.s-carpenter{background:#F4EEE3}.s-sushi{background:#EEF1EC}
+.s-farm{background:#EEF4E4}.s-flower{background:#EDF6EC}.s-carpenter{background:#F4EEE3}.s-sushi{background:#EEF1EC}
 .c-fire{background:#F4CFC6}.c-doctor{background:#D1E6EC}.c-post{background:#F2D6C8}.c-chef{background:#F0DFC2}.c-salon{background:#DDD4EC}
 .c-farm{background:#D8E8C6}.c-flower{background:#F2D3DE}.c-carpenter{background:#E8D9C2}.c-sushi{background:#D6E4D4}
 html.girl .s-fire,html.girl .s-doctor,html.girl .s-post,html.girl .s-chef,html.girl .s-salon,html.girl .s-farm,html.girl .s-flower,html.girl .s-carpenter,html.girl .s-sushi{background:#FBEDF0}
@@ -401,14 +401,15 @@ html.girl .scene2{background:#F6E6EE}
 .bk-items{position:absolute;left:12%;right:12%;top:-12%;display:flex;flex-wrap:wrap;justify-content:center;font-size:calc(var(--u)*8);line-height:1}
 /* おはなやさん */
 /* おはなやさんの おみせ（はいけい） */
-.fshop{position:absolute;inset:0;pointer-events:none;overflow:hidden;background:repeating-linear-gradient(90deg,#FFF6F0 0 calc(var(--u)*7),#FCEDE8 calc(var(--u)*7) calc(var(--u)*14))}
+.fshop{--aw:#9FD3A8;--w1:#F5FBF3;--w2:#E9F5E6;--sg:#8CC49A;--sgt:#4F8A5E;--f1:#9FD3A8;--f2:#F5DC8C;--f3:#A9D4EC;position:absolute;inset:0;pointer-events:none;overflow:hidden;background:repeating-linear-gradient(90deg,var(--w1) 0 calc(var(--u)*7),var(--w2) calc(var(--u)*7) calc(var(--u)*14))}
+html.girl .fshop{--aw:#F4B9C8;--w1:#FFF6F0;--w2:#FCEDE8;--sg:#D9A9B6;--sgt:#B86E82;--f1:#F4B9C8;--f2:#BFDDB3;--f3:#F6C9A8}
 .fs-floor{position:absolute;left:0;right:0;bottom:0;height:22%;background:repeating-linear-gradient(90deg,#E9D3B8 0 calc(var(--u)*16),#E2C9AC calc(var(--u)*16) calc(var(--u)*16.6));border-top:calc(var(--u)*1.2) solid #D9BC98}
-.fs-awn{position:absolute;left:0;right:0;top:0;height:calc(var(--u)*8);background:repeating-linear-gradient(90deg,#F4B9C8 0 calc(var(--u)*8),#FFFAF6 calc(var(--u)*8) calc(var(--u)*16))}
-.fs-awn::after{content:"";position:absolute;left:0;right:0;top:100%;height:calc(var(--u)*4);background:radial-gradient(circle at 50% 0,#F4B9C8 calc(var(--u)*4),transparent calc(var(--u)*4.2)) calc(var(--u)*-4) 0/calc(var(--u)*16) 100% repeat-x,radial-gradient(circle at 50% 0,#FFFAF6 calc(var(--u)*4),transparent calc(var(--u)*4.2)) calc(var(--u)*4) 0/calc(var(--u)*16) 100% repeat-x}
+.fs-awn{position:absolute;left:0;right:0;top:0;height:calc(var(--u)*8);background:repeating-linear-gradient(90deg,var(--aw) 0 calc(var(--u)*8),#FFFAF6 calc(var(--u)*8) calc(var(--u)*16))}
+.fs-awn::after{content:"";position:absolute;left:0;right:0;top:100%;height:calc(var(--u)*4);background:radial-gradient(circle at 50% 0,var(--aw) calc(var(--u)*4),transparent calc(var(--u)*4.2)) calc(var(--u)*-4) 0/calc(var(--u)*16) 100% repeat-x,radial-gradient(circle at 50% 0,#FFFAF6 calc(var(--u)*4),transparent calc(var(--u)*4.2)) calc(var(--u)*4) 0/calc(var(--u)*16) 100% repeat-x}
 .fs-flags{position:absolute;left:0;right:0;top:calc(var(--u)*13);height:calc(var(--u)*6);display:flex;justify-content:space-around;border-top:calc(var(--u)*.5) solid #D9BC98}
-.fs-flags i{width:0;height:0;border-left:calc(var(--u)*2.6) solid transparent;border-right:calc(var(--u)*2.6) solid transparent;border-top:calc(var(--u)*5) solid #F6C9A8}
-.fs-flags i:nth-child(3n+1){border-top-color:#F4B9C8}.fs-flags i:nth-child(3n+2){border-top-color:#BFDDB3}
-.fs-sign{position:absolute;right:3%;top:calc(var(--u)*22);padding:calc(var(--u)*1.2) calc(var(--u)*2.6);background:#FFFDF8;border:calc(var(--u)*.8) solid #D9A9B6;border-radius:calc(var(--u)*4);font-size:calc(var(--u)*4.2);color:#B86E82;white-space:nowrap}
+.fs-flags i{width:0;height:0;border-left:calc(var(--u)*2.6) solid transparent;border-right:calc(var(--u)*2.6) solid transparent;border-top:calc(var(--u)*5) solid var(--f3)}
+.fs-flags i:nth-child(3n+1){border-top-color:var(--f1)}.fs-flags i:nth-child(3n+2){border-top-color:var(--f2)}
+.fs-sign{position:absolute;right:3%;top:calc(var(--u)*22);padding:calc(var(--u)*1.2) calc(var(--u)*2.6);background:#FFFDF8;border:calc(var(--u)*.8) solid var(--sg);border-radius:calc(var(--u)*4);font-size:calc(var(--u)*4.2);color:var(--sgt);white-space:nowrap}
 .fs-shelf{position:absolute;right:3%;top:calc(var(--u)*36);width:calc(var(--u)*40);display:flex;justify-content:space-around;align-items:flex-end;font-size:calc(var(--u)*8);line-height:1;padding-bottom:calc(var(--u)*1.4);border-bottom:calc(var(--u)*2) solid #D3B08A}
 .fs-shelf span{display:block;position:relative}
 .fs-shelf span::after{content:"";display:block;width:calc(var(--u)*8);height:calc(var(--u)*5);margin:calc(var(--u)*-1) auto 0;background:#E3A98A;border-radius:0 0 calc(var(--u)*2) calc(var(--u)*2)}
