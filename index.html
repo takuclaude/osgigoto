@@ -269,6 +269,15 @@ button{font-family:inherit;color:inherit}
 .train svg{width:100%;height:100%;display:block;overflow:visible}
 .train.spin .wheel{animation:spin .6s linear infinite}
 .win{position:absolute;top:22%;width:17.3%;height:31%;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*9);line-height:1}
+.cockpit.trc{height:calc(var(--u)*34);margin-top:calc(var(--u)*3)}
+.trc .lever{width:calc(var(--u)*10);height:calc(var(--u)*21)}
+.tctl{display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*1.5)}
+.clab{font-size:calc(var(--u)*4);color:#F4F1EA}
+.brake{width:calc(var(--u)*30);height:calc(var(--u)*18);border-radius:calc(var(--u)*5);background:#E98A7E;box-shadow:0 calc(var(--u)*1.6) 0 #B96257;display:flex;align-items:center;justify-content:center}
+.brake-in{font-size:calc(var(--u)*5.4);color:#FFFDF8;letter-spacing:.06em}
+.rider{position:relative}
+.rsay{position:absolute;bottom:92%;left:50%;transform:translateX(-50%);background:var(--paper);border-radius:calc(var(--u)*2.4);padding:calc(var(--u)*.8) calc(var(--u)*2);font-size:calc(var(--u)*3.8);white-space:nowrap;box-shadow:0 calc(var(--u)*.5) 0 rgba(58,50,38,.1);min-height:1.3em}
+.rsay.hi{bottom:128%}
 .plat{position:absolute;left:0;right:0;bottom:0;height:calc(var(--u)*24);background:#D9D2C6;border-top:calc(var(--u)*1.6) solid #F2E2B4}
 .sign{position:absolute;left:3%;bottom:calc(var(--u)*3);background:#FFFCF5;border:calc(var(--u)*.8) solid #6F9DB5;border-radius:calc(var(--u)*2);padding:calc(var(--u)*1) calc(var(--u)*3);font-size:calc(var(--u)*4.4);white-space:nowrap}
 .riders{position:absolute;left:32%;right:2%;top:calc(var(--u)*3);height:calc(var(--u)*17);display:flex;align-items:center;justify-content:space-evenly}
@@ -643,7 +652,10 @@ const MESSAGES = {
   pharmacyLabel: [ "{name}{kun} の おくすり", "{family}の おくすり", "げんきに なあれ" ],
   pharmacyThanks: [ "ありがとう", "ありがとう！", "たすかったよ" ],
   home:     [ "おしごと えらび" ],
-  stamp:    [ "{name}{kun} かくにん ずみ", "{family}へ の しょるい", "できました" ],
+  // はんこの しょるい（おうちの ひとが くすっと わらえるように）
+  stamp:    [ "まま いつも がんばってるで賞", "ぱぱ おしごと えらいね賞", "ばーば おもちゃ かってほしい しょるい", "じーじ おかし かって もうしこみしょ",
+              "まま いつも ありがとう賞", "ぱぱ あしたは いっしょに あそぶ けいやくしょ", "ままの ごはん せかいいち賞", "ぱぱの いびき だいおんりょう賞",
+              "きょうは おふろで あそんでいい きょかしょう", "おやすみまえの ぎゅー けんりしょ", "ばーば じーじ だいすき しょうめいしょ", "ままに ないしょで アイス たべてもいい しょるい" ],
   stampStart:[ "{name}{kun} はんこ ください" ],
   stampDone:[ "できた！", "できました！" ],
   register: [ "{family} の おかいけい", "いらっしゃいませ", "また きてね" ],
@@ -656,6 +668,10 @@ const MESSAGES = {
   bakeryDone: [ "やけたよ！", "おいしそう！" ],
   train:    [ "おきゃくさん のってね", "{name}{kun} うんてんし", "{family}も のるよ" ],
   trainDone: [ "つきました！", "とうちゃく！" ],
+  trainLever: [ "しゅっぱつ だ！ ればーを おして しゅっぱつ しよう" ],
+  trainGo:  [ "がたん ごとん！", "しゅっぱつ しんこう！" ],
+  trainBrake: [ "そろそろ えきだ！ ぶれーきを かけよう" ],
+  trainThanks: [ "ありがとう！", "たのしかった！", "また のるね！", "ありがとう〜！" ],
   cakeMix:  [ "きじを まぜよう" ],
   cakeBake: [ "おーぶんで やこう" ],
   cakeCream:[ "くりーむを ぬろう" ],
@@ -920,6 +936,7 @@ const SFX = {
   sizzle:t => ({ nodes: [Sound.noise(t, { t: 0.9, g: 0.06, filter: "highpass", fq: 5000, attack: 0.15, hold: 0.4 })], dur: 0.92 }),
   brush: t => ({ nodes: [Sound.noise(t, { t: 0.09, g: 0.16, filter: "bandpass", fq: 4200, q: 1.5 }), Sound.noise(t, { t: 0.09, g: 0.16, filter: "bandpass", fq: 3600, q: 1.5, delay: 0.12 })], dur: 0.22 }),
   horn:  t => ({ nodes: [Sound.tone(t, { type: "triangle", f: 587, t: 0.22, g: 0.35 }), Sound.tone(t, { type: "triangle", f: 494, t: 0.36, g: 0.35, delay: 0.22 })], dur: 0.6 }),
+  brake: t => ({ nodes: [Sound.tone(t, { type: "triangle", f: 1400, f2: 1000, t: 0.6, g: 0.06, attack: 0.05 }), Sound.noise(t, { t: 0.7, g: 0.12, filter: "bandpass", fq: 2500, q: 2, attack: 0.05, hold: 0.3 })], dur: 0.72 }),
   gatan: t => ({ nodes: [Sound.tone(t, { f: 110, f2: 70, t: 0.08, g: 0.4 }), Sound.tone(t, { f: 100, f2: 65, t: 0.08, g: 0.4, delay: 0.14 })], dur: 0.24 }),
   sparkle: t => ({ nodes: [Sound.tone(t, { f: 1568, t: 0.12, g: 0.18 }), Sound.tone(t, { f: 2093, t: 0.12, g: 0.18, delay: 0.08 }), Sound.tone(t, { f: 2637, t: 0.2, g: 0.16, delay: 0.16 })], dur: 0.38 }),
   sirenLong: t => ({ nodes: [...Array(4)].map((_, i) => Sound.tone(t, { type: "triangle", f: i % 2 ? 698 : 880, t: 0.42, g: 0.13, attack: 0.06, delay: i * 0.46 })), dur: 1.9 }),   // やさしい「ピーポー ピーポー」
@@ -1949,7 +1966,7 @@ function stampFace(){
   }
   return `<div class="face">${pick(STAMP_FACES)}</div>`;
 }
-const FRAME_SPOTS = [[28, 58], [70, 54], [30, 82], [72, 80], [50, 70]];
+const FRAME_SPOTS = [[27, 60], [73, 60], [27, 84], [73, 84]];
 screens.stamp = {
   el: $("#s-stamp"),
   enter(scope, el){
@@ -1967,7 +1984,7 @@ screens.stamp = {
       </div></div>`);
       p._count = 0; p._out = false; p._marks = [];
       const inner = $(".paper-in", p);
-      shuffle(FRAME_SPOTS).slice(0, ri(1, 3)).forEach(([x, y]) => {
+      FRAME_SPOTS.forEach(([x, y]) => {   // まいかい 4つ
         const f = h(`<div class="frame" style="left:${x}%;top:${y}%">ここに<br>はんこ</div>`);
         f._x = x; f._y = y; inner.appendChild(f);
       });
@@ -1983,8 +2000,14 @@ screens.stamp = {
       const inner = $(".paper-in", p);
       const r = inner.getBoundingClientRect();
       const m = U * 9;
-      const lx = Math.max(m, Math.min(r.width - m, x - r.left));
-      const ly = Math.max(m, Math.min(r.height - m, y - r.top));
+      let lx = Math.max(m, Math.min(r.width - m, x - r.left));
+      let ly = Math.max(m, Math.min(r.height - m, y - r.top));
+      // いちばん ちかい「ここに はんこ」に ぴたっと おす（どこを おしても すすむ）
+      const left = $$(".frame", inner).filter(f => !f._done);
+      if (left.length) {
+        const f = left.reduce((a, b) => Math.hypot(r.width * a._x / 100 - lx, r.height * a._y / 100 - ly) <= Math.hypot(r.width * b._x / 100 - lx, r.height * b._y / 100 - ly) ? a : b);
+        lx = r.width * f._x / 100; ly = r.height * f._y / 100;
+      }
       const rot = rnd(-14, 14);
       const s = h(`<div class="stampmark"><div class="ink"></div>${stampFace()}</div>`);
       const base = `translate(${lx}px,${ly}px) translate(-50%,-50%) rotate(${rot}deg)`;
@@ -2010,10 +2033,7 @@ screens.stamp = {
           scope.timeout(() => Sound.play("chime"), 120);
         }
       });
-      if (!p._out) {
-        p._count++;
-        if (p._count >= 3) { p._out = true; scope.timeout(() => finishPaper(p), 380); }
-      }
+      if (!p._out && $$(".frame", inner).every(f => f._done)) { p._out = true; scope.timeout(() => finishPaper(p), 700); }
     }
 
     function finishPaper(p){
@@ -2542,12 +2562,16 @@ screens.train = {
         <div class="rail"></div>
         <div class="train"><div class="train-in">${ART.train()}<div class="win" style="left:10%"></div><div class="win" style="left:32.7%"></div><div class="win" style="left:55.5%"></div></div></div>
       </div>
-      <div class="gorow"><div class="go">しゅっぱつ</div></div>
+      <div class="cockpit trc">
+        <div class="tctl"><div class="ctl lever">${ART.lever()}</div><div class="clab">しゅっぱつ</div></div>
+        <div class="tctl"><div class="ctl brake"><div class="brake-in">ブレーキ</div></div><div class="clab">とまる</div></div>
+      </div>
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), scene = $(".tr-scene", st), bg = $(".tr-bg", st), train = $(".train", st), trainIn = $(".train-in", st);
-    const wins = $$(".win", st), go_ = $(".go", st);
-    let plat = null, phase = "board", onboard = 0, lastHorn = 0;
+    const wins = $$(".win", st), lever = $(".lever", st), knob = $(".knob", st), brake = $(".brake", st);
+    const ready = (c, on) => c.classList.toggle("ready", !!on);
+    let plat = null, phase = "board", onboard = 0, lastHorn = 0, bgAnim = null, shake = null, gid = 0;
 
     function makePlat(name){
       const p = h(`<div class="plat"><div class="sign"></div><div class="riders"></div></div>`);
@@ -2576,21 +2600,33 @@ screens.train = {
         { transform: `translate(${dx}px,${dy}px) scale(.7)`, opacity: 0 },
       ], { duration: 450, easing: "ease-in-out" }, () => {
         w.textContent = r._a; popIn(w, scope); Sound.play("shara");
-        if (onboard >= 3 && phase === "board") go_.classList.add("ready");
+        if (onboard >= 3 && phase === "board") { phase = "ready"; ready(lever, true); typeText(banner, msg("trainLever"), scope); }
       });
     }
+    // ればーを おして しゅっぱつ
     function depart(){
-      phase = "drive"; go_.classList.remove("ready");
+      phase = "drive"; ready(lever, false);
+      scope.anim(knob, [{ transform: "translateY(0px)" }, { transform: "translateY(34px)" }], { duration: 350, easing: "ease-out" });
       $$(".rider", plat).forEach(r => { if (r.dataset.st !== "done") { r.dataset.st = "done"; scope.anim(r, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 }); } });
       Sound.play("horn");
+      typeText(banner, msg("trainGo"), scope);
       train.classList.add("spin");
       const W = scene.clientWidth, old = plat;
       scope.anim(old, [{ transform: "translateX(0px)" }, { transform: `translateX(${-W * 1.1}px)` }], { duration: 1200, easing: "ease-in" }, () => old.remove());
-      scope.anim(bg, [{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }], { duration: 1100, iterations: 2, easing: "linear", fill: "none" });
-      scope.anim(trainIn, [{ transform: "translateY(0px)" }, { transform: `translateY(${U * 0.6}px)` }, { transform: "translateY(0px)" }], { duration: 220, iterations: 10, fill: "none" });
-      let n = 0;
-      const gid = scope.interval(() => { Sound.play("gatan"); if (++n >= 5) scope.stopInterval(gid); }, 440);
-      scope.timeout(arrive, 2300);
+      bgAnim = scope.anim(bg, [{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }], { duration: 1100, iterations: Infinity, easing: "linear" });
+      shake = scope.anim(trainIn, [{ transform: "translateY(0px)" }, { transform: `translateY(${U * 0.6}px)` }, { transform: "translateY(0px)" }], { duration: 220, iterations: Infinity });
+      gid = scope.interval(() => Sound.play("gatan"), 440);
+      // そろそろ えき
+      scope.timeout(() => { phase = "brake"; ready(brake, true); Sound.play("chime"); typeText(banner, msg("trainBrake"), scope); }, 2600);
+    }
+    // ぶれーきで とまる
+    function stop(){
+      phase = "stopping"; ready(brake, false);
+      scope.anim(knob, [{ transform: "translateY(34px)" }, { transform: "translateY(0px)" }], { duration: 350, easing: "ease-out" });
+      Sound.play("brake"); scope.stopInterval(gid);
+      if (bgAnim) { try { bgAnim.updatePlaybackRate(0.4); } catch (e) { bgAnim.playbackRate = 0.4; } }
+      scope.timeout(() => { if (bgAnim) bgAnim.cancel(); if (shake) shake.cancel(); bgAnim = shake = null; }, 800);
+      arrive();
     }
     function arrive(){
       const W = scene.clientWidth;
@@ -2599,6 +2635,7 @@ screens.train = {
         train.classList.remove("spin");
         Sound.play("chime");
         typeText(banner, msg("trainDone"), scope);
+        const THANKS = shuffle(MESSAGES.trainThanks);
         const box = $(".riders", plat);
         const off = [];
         for (let i = 0; i < onboard; i++) {
@@ -2615,20 +2652,29 @@ screens.train = {
             const b = r.getBoundingClientRect(); FX.burst(b.left + b.width / 2, b.top + b.height / 2, 3);
             scope.anim(r, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 4}px)` }, { transform: "translateY(0px)" }], { duration: 400, iterations: 2, fill: "none" });
           });
+          // ひとりずつ おれいを いう
+          scope.timeout(() => {
+            const say = h(`<div class="rsay${i % 2 ? " hi" : ""}"></div>`); r.appendChild(say);
+            scope.anim(say, [{ opacity: 0 }, { opacity: 1 }], { duration: 200 });
+            typeText(say, THANKS[i % THANKS.length], scope); Sound.play("pop");
+          }, 700 + i * 650);
         }
         onboard = 0;
         scope.timeout(() => {
           off.forEach(r => scope.anim(r, [{ transform: "translateX(0px)", opacity: 1 }, { transform: `translateX(${-U * 30}px)`, opacity: 0 }], { duration: 600, easing: "ease-in" }, () => r.remove()));
           scope.timeout(() => { phase = "board"; waiters(); typeText(banner, msg("train"), scope); }, off.length ? 650 : 0);
-        }, off.length ? 1900 : 600);
+        }, off.length ? 1300 + off.length * 650 + 900 : 600);
       });
     }
-    go_.addEventListener("pointerdown", e => {
+    lever.addEventListener("pointerdown", e => {
       if (!e.isPrimary) return;
-      e._handled = true;
-      bounce(go_, scope, 1.05);
-      if (phase !== "board") { Sound.play("tap"); return; }
-      depart();
+      e._handled = true; bounce(lever, scope, 1.06);
+      if (phase === "ready") depart(); else Sound.play("tap");
+    });
+    brake.addEventListener("pointerdown", e => {
+      if (!e.isPrimary) return;
+      e._handled = true; bounce(brake, scope, 1.06);
+      if (phase === "brake") stop(); else Sound.play("tap");
     });
     train.addEventListener("pointerdown", e => {
       if (!e.isPrimary) return;
@@ -2642,6 +2688,9 @@ screens.train = {
         const r = $$(".rider", plat).find(x => x.dataset.st === "idle");
         if (r) { e._handled = true; board(r); }
       }
+      // つぎに さわる ところを おしえる
+      else if (phase === "ready") { e._handled = true; bounce(lever, scope, 1.12); Sound.play("pop"); }
+      else if (phase === "brake") { e._handled = true; bounce(brake, scope, 1.12); Sound.play("pop"); }
     });
     plat = makePlat(pick(STATIONS));
     waiters();
