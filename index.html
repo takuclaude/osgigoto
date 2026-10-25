@@ -383,7 +383,7 @@ html.girl .scene2{background:#F6E6EE}
 .eater{position:absolute;right:3%;top:37%;width:calc(var(--u)*34);height:calc(var(--u)*38);transform:translateX(160%);z-index:4}
 .eater svg{width:100%;height:100%;display:block}.eater .mouth{transform-box:fill-box;transform-origin:center}
 .eater .table{position:absolute;left:-30%;right:-10%;bottom:calc(var(--u)*-4);height:calc(var(--u)*7);background:#D9B98C;border-radius:calc(var(--u)*2);box-shadow:0 calc(var(--u)*1) 0 #BF9D6E}
-.ck-say{position:absolute;left:4%;top:33%;background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.5) calc(var(--u)*3);font-size:calc(var(--u)*5);white-space:nowrap;opacity:0;z-index:6;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08)}
+.ck-say{position:absolute;right:4%;top:calc(37% - var(--u)*14);background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.5) calc(var(--u)*3);font-size:calc(var(--u)*5);white-space:nowrap;opacity:0;z-index:6;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08)}
 .dish{position:absolute;left:50%;top:40%;width:calc(var(--u)*40);height:calc(var(--u)*26);margin:calc(var(--u)*-13) 0 0 calc(var(--u)*-20);display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*16);background:radial-gradient(ellipse at center,#FFFCF5 55%,#E6DCCB 56%,#FFFCF5 70%);border-radius:50%;opacity:0;z-index:5}
 /* びようしさん */
 .sl-say{position:absolute;right:3%;top:2%;background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.5) calc(var(--u)*3);font-size:calc(var(--u)*4.4);white-space:nowrap;opacity:0;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08);z-index:6}
@@ -396,6 +396,7 @@ html.girl .scene2{background:#F6E6EE}
 .fsun{position:absolute;right:6%;top:2%;font-size:calc(var(--u)*14);line-height:1;opacity:0}
 .crop{position:absolute;width:calc(var(--u)*18);height:calc(var(--u)*16);margin:calc(var(--u)*-12) 0 0 calc(var(--u)*-9)}
 .crop svg{width:100%;height:100%;display:block;overflow:visible;transform-origin:50% 100%}
+.s-farm .cust2{right:auto;left:4%;bottom:calc(var(--u)*22);transform:translateX(-170%)}
 .basket{position:absolute;right:8%;bottom:6%;width:calc(var(--u)*40);height:calc(var(--u)*28)}
 .basket svg{width:100%;height:100%;display:block}
 .bk-items{position:absolute;left:12%;right:12%;top:-12%;display:flex;flex-wrap:wrap;justify-content:center;font-size:calc(var(--u)*8);line-height:1}
@@ -673,8 +674,7 @@ const MESSAGES = {
   postDone: [ "とどいたよ！", "はいたつ したよ" ],
   chef:     [ "やさい を きろう", "{family}の ごはん", "{name}{kun} こっくさん" ],
   chefDone: [ "できあがり！", "おいしそう！" ],
-  chefYum:  [ "おいしい！", "おいしいね！", "うーん おいしい！" ],
-  chefMore: [ "もっと つくって！", "おかわり ちょうだい！" ],
+  chefYum:  [ "おいしい！ もっと つくって！", "おいしい！ おかわり ちょうだい！" ],
   salonWash:[ "まずは かみを あらおう" ],
   salon:    [ "ちょきちょき きろう", "かみを きって あげよう" ],
   salonReq: [ "かみを きって ほしいな", "かわいく してください", "かっこよく してね", "すっきり したいな" ],
@@ -684,6 +684,8 @@ const MESSAGES = {
   farmGrow: [ "おおきく なあれ！" ],
   farm:     [ "そだてた やさいを ほろう", "うんとこしょ！ ほろう" ],
   farmDone: [ "いっぱい とれた！", "しゅうかく！" ],
+  farmCust: [ "すてきな やさいだね！", "わあ！ すてきな やさい！" ],
+  farmThanks: [ "おいしそう！ いつも ありがとう！", "おいしそう！ ありがとう！" ],
   flower:   [ "おはなを えらんで いれよう", "かわいい はなたばを つくろう" ],
   flowerReq:[ "かわいい はなたばを ください", "すてきな はなたばを ください" ],
   flowerThanks: [ "わあ かわいい！ ありがとう", "すてき！ ありがとう" ],
@@ -1438,8 +1440,10 @@ const ART = {
       `<path d="M62 62 L70 48" stroke="${shirt}" stroke-width="8" stroke-linecap="round"/><circle cx="70" cy="46" r="4.5" fill="#F6DCC3"/>` +
       '<path d="M70 44 V30" stroke="#B8BEC4" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="70" cy="28" rx="3.5" ry="4.5" fill="#B8BEC4"/>' +
       '<circle cx="40" cy="34" r="18" fill="#F6DCC3" stroke="#D9B898" stroke-width="1.5"/>' + back + glasses +
-      '<circle cx="33" cy="33" r="2" fill="#3A3226"/><circle cx="47" cy="33" r="2" fill="#3A3226"/>' +
-      '<ellipse class="mouth" cx="40" cy="42" rx="4" ry="2.5" fill="#C9605A"/>' +
+      '<g class="d-eat"><circle cx="33" cy="33" r="2" fill="#3A3226"/><circle cx="47" cy="33" r="2" fill="#3A3226"/>' +
+      '<ellipse class="mouth" cx="40" cy="42" rx="4" ry="2.5" fill="#C9605A"/></g>' +
+      '<g class="d-happy" opacity="0"><path d="M29.5 34 Q33 29.5 36.5 34 M43.5 34 Q47 29.5 50.5 34" stroke="#3A3226" stroke-width="2" fill="none" stroke-linecap="round"/>' +
+      '<path d="M33 40 Q40 49 47 40 Z" fill="#C9605A" stroke="#3A3226" stroke-width="1.4" stroke-linejoin="round"/></g>' +
       '<circle cx="28" cy="40" r="3" fill="#F2A0A8" opacity=".6"/><circle cx="52" cy="40" r="3" fill="#F2A0A8" opacity=".6"/></svg>';
   },
   knife(){
@@ -3277,9 +3281,12 @@ screens.chef = {
           }, i * 380));
           scope.timeout(() => {
             scope.anim(dish, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+            // にっこり えがお
+            scope.anim($(".d-eat", eater), [{ opacity: 1 }, { opacity: 0 }], { duration: 250 });
+            scope.anim($(".d-happy", eater), [{ opacity: 0 }, { opacity: 1 }], { duration: 250 });
+            bounce(ein, scope, 1.12);
             speak("chefYum"); Sound.play("chime");
             const c = cpt(eater); FX.burst(c.x, c.y, 7);
-            scope.timeout(() => speak("chefMore"), 1500);
             scope.timeout(() => {
               scope.anim(say, [{ opacity: 1 }, { opacity: 0 }], { duration: 250 });
               slideOut(scope, eater, 200, () => {
@@ -3420,7 +3427,7 @@ screens.farm = {
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="area"><div class="field"></div><div class="fsun">☀️</div><div class="tool" style="width:calc(var(--u)*20);height:calc(var(--u)*15)"><div style="width:100%;height:100%;transform:scaleX(-1)">${ART.can()}</div></div><div class="basket">${ART.basket()}<div class="bk-items"></div></div></div>
+      <div class="area"><div class="field"></div><div class="fsun">☀️</div><div class="tool" style="width:calc(var(--u)*20);height:calc(var(--u)*15)"><div style="width:100%;height:100%;transform:scaleX(-1)">${ART.can()}</div></div><div class="basket">${ART.basket()}<div class="bk-items"></div></div>${CUST_HTML}</div>
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), area = $(".area", st), field = $(".field", st), basket = $(".basket", st), items = $(".bk-items", st), sun = $(".fsun", st), can = $(".tool", st);
@@ -3507,7 +3514,27 @@ screens.farm = {
     function harvest(){
       Sound.play("chime"); const b = cpt(basket); FX.burst(b.x, b.y, 7);
       scope.anim(basket, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 4}px)` }, { transform: "translateY(0px)" }], { duration: 400, iterations: 2, fill: "none" });
-      typeText(banner, msg("farmDone"), scope, () => scope.timeout(plant, 1500));
+      typeText(banner, msg("farmDone"), scope, () => scope.timeout(visit, 600));
+    }
+    // おきゃくさんが きて「すてきな やさいだね！」
+    function visit(){
+      const cust = $(".cust2", area), face = $(".cust-face", cust), cb = $(".bubble", cust), cbT = $(".t2", cust);
+      face.textContent = pick(ANIMALS); cb.style.opacity = 0; cbT.textContent = "";
+      slideIn(scope, cust, -170, () => {
+        scope.anim(cb, [{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
+        typeText(cbT, msg("farmCust"), scope, () => scope.timeout(() => {
+          // やさいを ひとつ おきゃくさんへ
+          const it = items.lastElementChild;
+          if (it) { const em = it.textContent; scope.anim(it, [{ opacity: 1 }, { opacity: 0 }], { duration: 200 }); flyEl(scope, st, em, cpt(it), cpt(face), { size: U * 14, font: U * 12, dur: 500, scale: 0.6, fade: true }, () => { Sound.play("munch"); bounce(face, scope, 1.2); const c = cpt(face); FX.burst(c.x, c.y, 6); }); }
+          scope.timeout(() => {
+            Sound.play("chime");
+            typeText(cbT, msg("farmThanks"), scope, () => scope.timeout(() => {
+              scope.anim(cb, [{ opacity: 1 }, { opacity: 0 }], { duration: 250 });
+              slideOut(scope, cust, -170, plant);
+            }, 1600));
+          }, 700);
+        }, 900));
+      });
     }
     el.addEventListener("pointerdown", e => {
       if (!e.isPrimary || e._handled) return;
