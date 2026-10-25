@@ -1428,13 +1428,17 @@ const ART = {
   // pre: きるまえの かみ（0=もじゃもじゃ 1=ながい かみ 2=まえがみ ぼさぼさ 3=つんつん のびのび）
   salonFace(sp, color, hair, style, pre){
     const tufts = [], T = (d, extra) => tufts.push(`<path class="tuft" d="${d}" fill="${hair}"${extra || ""}/>`);
-    const capL = "M100 28 Q36 28 22 104 Q44 72 100 66 Z", capR = "M100 28 Q164 28 178 104 Q156 72 100 66 Z";
+    // あたまの うえの かみ（きらない。しあがりの かみがたと いれかわる）
+    const cap = `<path class="base" d="M100 28 Q36 28 22 104 Q44 72 100 66 Q156 72 178 104 Q164 28 100 28 Z" fill="${hair}"/>`;
     if (pre === 1) {
-      T(capL); T(capR);
+      tufts.push(cap);
       [14, 27, 40].forEach((x, i) => { const y = 70 + i * 6; T(`M${x} ${y} h14 v${118 - i * 10} a7 7 0 0 1 -14 0 Z`); T(`M${200 - x - 14} ${y} h14 v${118 - i * 10} a7 7 0 0 1 -14 0 Z`); });
     } else if (pre === 2) {
-      T(capL); T(capR);
-      [58, 76, 94, 112, 130].forEach((x, i) => T(`M${x} 56 h14 v${54 + (i % 2) * 8} a7 7 0 0 1 -14 0 Z`));
+      // めに かかる ながい まえがみ（ふんわり 3つの たば）
+      tufts.push(cap);
+      T("M40 70 Q52 46 82 48 L84 104 Q74 116 62 108 Q52 112 46 100 Q38 88 40 70 Z");
+      T("M76 48 Q100 40 124 48 L122 108 Q112 120 100 112 Q88 120 78 108 Z");
+      T("M118 48 Q148 46 160 70 Q162 88 154 100 Q148 112 138 108 Q126 116 116 104 Z");
     } else if (pre === 3) {
       for (let i = 0; i < 9; i++) {
         const a = (-170 + i * 20) * Math.PI / 180, b = 0.2, R1 = 66, R2 = 104;
@@ -3360,6 +3364,7 @@ screens.salon = {
     }
     function finish(){
       scope.anim($(".neat", face), [{ opacity: 0 }, { opacity: 1 }], { duration: 400 });
+      const base = $(".base", face); if (base) scope.anim(base, [{ opacity: 1 }, { opacity: 0 }], { duration: 400 });
       scope.anim($(".eyes-open", face), [{ opacity: 1 }, { opacity: 0 }], { duration: 400 });
       scope.anim($(".eyes-happy", face), [{ opacity: 0 }, { opacity: 1 }], { duration: 400 });
       if (S.mode === "girl") scope.anim(bow, [{ transform: "scale(0)", opacity: 0 }, { transform: "scale(1.2)", opacity: 1, offset: 0.7 }, { transform: "scale(1)", opacity: 1 }], { duration: 450 });
