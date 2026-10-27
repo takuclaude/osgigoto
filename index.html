@@ -199,6 +199,7 @@ html.girl .s-magic{background:#4E3A5A}
 .wr-wrap{position:relative;flex:1;min-height:0;margin:calc(var(--u)*3) calc(var(--u)*4) calc(var(--u)*2)}
 .wr-paper{position:absolute;inset:0;background:#FFFDF8;border-radius:calc(var(--u)*3);box-shadow:0 calc(var(--u)*1) 0 rgba(58,50,38,.1);overflow:hidden}
 .wr-text{min-height:100%;box-sizing:border-box;padding:calc(var(--u)*3) calc(var(--u)*5);font-size:calc(var(--u)*7);line-height:calc(var(--u)*11);white-space:pre-wrap;word-break:break-all;color:#3A3226;background:repeating-linear-gradient(180deg,transparent 0 calc(var(--u)*10.6),#E6DCCB calc(var(--u)*10.6) calc(var(--u)*11));background-position:0 calc(var(--u)*3)}
+.wr-pend{text-decoration:underline;text-decoration-color:#E98A7E;text-underline-offset:calc(var(--u)*1)}
 .wr-caret{color:#E98A7E;animation:blink 1s ease-in-out infinite}
 .wr-stars{position:absolute;right:calc(var(--u)*2);top:calc(var(--u)*-2);display:flex;font-size:calc(var(--u)*5);line-height:1;pointer-events:none}
 .kb{flex:none;display:flex;flex-direction:column;gap:calc(var(--u)*1.6);padding:calc(var(--u)*2.4) calc(var(--u)*1.6) calc(var(--u)*4);background:#D9D4CB;border-radius:calc(var(--u)*4) calc(var(--u)*4) 0 0}
@@ -900,6 +901,9 @@ const MESSAGES = {
   pilotLand:[ "ちゃくりく だ！ ればーを おして おりよう" ],
   pilotDone:[ "とうちゃく！", "ついたよ！" ],
   writer:   [ "{name}{kun} さっかやさん！ おはなしを かこう", "きーぼーどで もじを うとう" ],
+  writerAbc: [ "えいごの もじで うとう" ],
+  writerRoma:[ "ろーまじで うとう！ H と A で「は」" ],
+  writerKana:[ "ひらがなで うとう" ],
   writerPraise: [ "いっぱい かけたね！", "すごい！ さっかやさん みたい！", "おもしろい おはなし！", "その ちょうし！" ],
   astronaut:[ "はっしゃ ぼたんを おそう！", "{name}{kun} うちゅうへ いこう！" ],
   astroGo:  [ "うちゅうへ しゅっぱつ！" ],
@@ -4706,18 +4710,39 @@ screens.pilot = {
 /* ---------- さっかやさん（キーボードで じゆうに もじを うつ） ---------- */
 const KB_ABC = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
 const KB_KANA = ["あかさたなはまやらわ", "いきしちにひみっりを", "うくすつぬふむゆるん", "えけせてねへめゃれー", "おこそとのほもよろ。"];
+// ろーまじ → ひらがな の ひょう
+const ROMA = (() => {
+  const t = { a: "あ", i: "い", u: "う", e: "え", o: "お", n: "ん", nn: "ん", "n'": "ん", wo: "を", wa: "わ",
+    shi: "し", si: "し", chi: "ち", ti: "ち", tsu: "つ", tu: "つ", fu: "ふ", hu: "ふ", ji: "じ", zi: "じ", di: "ぢ", du: "づ",
+    sha: "しゃ", shu: "しゅ", sho: "しょ", cha: "ちゃ", chu: "ちゅ", cho: "ちょ", ja: "じゃ", ju: "じゅ", jo: "じょ",
+    fa: "ふぁ", fi: "ふぃ", fe: "ふぇ", fo: "ふぉ", ye: "いぇ", she: "しぇ", che: "ちぇ", je: "じぇ", ltu: "っ", xtu: "っ" };
+  const rows = { k: "かきくけこ", s: "さしすせそ", t: "たちつてと", n: "なにぬねの", h: "はひふへほ", m: "まみむめも", y: "や い ゆ いぇ よ", r: "らりるれろ",
+    g: "がぎぐげご", z: "ざじずぜぞ", d: "だぢづでど", b: "ばびぶべぼ", p: "ぱぴぷぺぽ", w: "わ うぃ う うぇ を", v: "ゔぁ ゔぃ ゔ ゔぇ ゔぉ", x: "ぁぃぅぇぉ", l: "ぁぃぅぇぉ" };
+  Object.entries(rows).forEach(([c, ks]) => {
+    const list = ks.includes(" ") ? ks.split(" ") : Array.from(ks);
+    "aiueo".split("").forEach((v, i) => { if (!t[c + v]) t[c + v] = list[i]; });
+  });
+  const small = { a: "ゃ", u: "ゅ", o: "ょ" };
+  [["k", "き"], ["s", "し"], ["t", "ち"], ["n", "に"], ["h", "ひ"], ["m", "み"], ["r", "り"], ["g", "ぎ"], ["z", "じ"], ["j", "じ"], ["d", "ぢ"], ["b", "び"], ["p", "ぴ"], ["c", "ち"]].forEach(([c, k]) => {
+    Object.entries(small).forEach(([v, sm]) => { t[c + "y" + v] = k + sm; });
+  });
+  ["x", "l"].forEach(c => Object.entries(small).forEach(([v, sm]) => { t[c + "y" + v] = sm; }));
+  return t;
+})();
+const ROMA_KEYS = Object.keys(ROMA);
 let writerMode = "abc", writerText = "";
 screens.writer = {
   el: $("#s-writer"),
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="wr-wrap"><div class="wr-paper"><div class="wr-text"><span class="wr-body"></span><span class="wr-caret">▍</span></div></div><div class="wr-stars"></div></div>
+      <div class="wr-wrap"><div class="wr-paper"><div class="wr-text"><span class="wr-body"></span><span class="wr-pend"></span><span class="wr-caret">▍</span></div></div><div class="wr-stars"></div></div>
       <div class="kb"></div>
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), paper = $(".wr-paper", st), body = $(".wr-body", st), kb = $(".kb", st), stars = $(".wr-stars", st);
-    let typed = 0;
+    const pendEl = $(".wr-pend", st);
+    let typed = 0, pend = "";   // pend: まだ ひらがなに なっていない ろーまじ
     body.textContent = writerText;   // まえに かいた つづきから
     const scrollEnd = () => { paper.scrollTop = paper.scrollHeight; };
     function key(label, cls, fn){
@@ -4730,13 +4755,32 @@ screens.writer = {
       });
       return k;
     }
-    function type(ch){
-      writerText += ch;
+    const show = () => { body.textContent = writerText; pendEl.textContent = pend.toUpperCase(); scrollEnd(); };
+    function add(str){
+      writerText += str;
       if (writerText.length > 600) writerText = writerText.slice(-450);   // ながくなりすぎたら ふるい ぶんから けす
-      body.textContent = writerText; scrollEnd();
+    }
+    function type(ch){
+      add(ch); show();
       Sound.play("key");
       if (++typed % 25 === 0) praise();
     }
+    // ろーまじ にゅうりょく（H と A で「は」）
+    function roma(ch){
+      pend += ch.toLowerCase();
+      for (;;) {
+        if (ROMA[pend] && pend !== "n") { add(ROMA[pend]); pend = ""; break; }
+        if (ROMA_KEYS.some(k => k.startsWith(pend) && k !== pend)) break;          // つづきを まつ
+        const a = pend[0], b = pend[1];
+        if (a === "n" && b && !"aiueoy".includes(b)) { add("ん"); pend = pend.slice(1); continue; }
+        if (b && a === b && !"aiueon".includes(a)) { add("っ"); pend = pend.slice(1); continue; }
+        add(a.toUpperCase()); pend = pend.slice(1);                                     // ひらがなに ならない もじは そのまま
+        if (!pend) break;
+      }
+      show(); Sound.play("key");
+      if (++typed % 25 === 0) praise();
+    }
+    function flush(){ if (pend) { add(pend === "n" ? "ん" : pend.toUpperCase()); pend = ""; show(); } }
     function praise(){
       Sound.play("sparkle");
       typeText(banner, msg("writerPraise"), scope);
@@ -4747,16 +4791,23 @@ screens.writer = {
     function build(){
       kb.innerHTML = "";
       kb.className = "kb " + writerMode;
-      (writerMode === "abc" ? KB_ABC : KB_KANA).forEach(r => {
+      (writerMode === "kana" ? KB_KANA : KB_ABC).forEach(r => {
         const row = h('<div class="kr"></div>');
-        Array.from(r).forEach(ch => row.appendChild(key(ch, "", () => type(ch))));
+        Array.from(r).forEach(ch => row.appendChild(key(ch, "", () => writerMode === "roma" ? roma(ch) : type(ch))));
         kb.appendChild(row);
       });
       const last = h('<div class="kr kr-last"></div>');
-      last.appendChild(key(writerMode === "abc" ? "あいう" : "ABC", "k-mode", () => { writerMode = writerMode === "abc" ? "kana" : "abc"; Sound.play("pick"); build(); }));
-      last.appendChild(key("すぺーす", "k-space", () => type(" ")));
-      last.appendChild(key("けす", "k-del", () => { writerText = Array.from(writerText).slice(0, -1).join(""); body.textContent = writerText; Sound.play("tap"); scrollEnd(); }));
-      last.appendChild(key("かいぎょう", "k-ent", () => type("\n")));
+      const NEXT = { abc: "roma", roma: "kana", kana: "abc" }, NAME = { abc: "ABC", roma: "ろーまじ", kana: "あいう" };
+      last.appendChild(key(NAME[writerMode], "k-mode", () => {   // いまの もじ（おすと きりかわる）
+        flush(); writerMode = NEXT[writerMode]; Sound.play("pick"); build();
+        typeText(banner, msg({ abc: "writerAbc", roma: "writerRoma", kana: "writerKana" }[writerMode]), scope);
+      }));
+      last.appendChild(key("すぺーす", "k-space", () => { flush(); type(" "); }));
+      last.appendChild(key("けす", "k-del", () => {
+        if (pend) pend = pend.slice(0, -1); else writerText = Array.from(writerText).slice(0, -1).join("");
+        show(); Sound.play("tap");
+      }));
+      last.appendChild(key("かいぎょう", "k-ent", () => { flush(); type("\n"); }));
       kb.appendChild(last);
     }
     build();
