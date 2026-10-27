@@ -282,6 +282,10 @@ html.girl .sh-sky{background:linear-gradient(180deg,#C9DDF2,#F6E6EE)}
 .pn-mode{flex:none;display:flex;justify-content:center;gap:calc(var(--u)*2);padding:calc(var(--u)*2.4) 0}
 .pn-mode div{padding:calc(var(--u)*1.6) calc(var(--u)*4);border-radius:calc(var(--u)*6);background:#FFFDF8;font-size:calc(var(--u)*4);box-shadow:0 calc(var(--u)*.8) 0 rgba(58,50,38,.12);opacity:.6}
 .pn-mode div.on{opacity:1;background:#F5D88E}
+.pn-mode{gap:calc(var(--u)*1.4);padding-left:calc(var(--u)*2);padding-right:calc(var(--u)*2)}
+.pn-mode .pn-arr{opacity:1;padding:calc(var(--u)*1.6) calc(var(--u)*2.4)}
+.pn-mode .pn-name{font-size:calc(var(--u)*3.3);padding-left:calc(var(--u)*2.4);padding-right:calc(var(--u)*2.4)}
+.pn-mode div{flex:none;white-space:nowrap;font-size:calc(var(--u)*3.6);padding-left:calc(var(--u)*3);padding-right:calc(var(--u)*3)}
 .pn-piano{flex:none;background:#3A3226;padding:calc(var(--u)*3) calc(var(--u)*2.4) calc(var(--u)*19);border-radius:calc(var(--u)*4) calc(var(--u)*4) 0 0}
 .pn-keys{position:relative;display:flex;gap:calc(var(--u)*.8);height:calc(var(--u)*50)}
 .wkey{flex:1;border-radius:0 0 calc(var(--u)*2.4) calc(var(--u)*2.4);display:flex;align-items:flex-end;justify-content:center;padding-bottom:calc(var(--u)*3);font-size:calc(var(--u)*4);color:#3A3226;box-shadow:inset 0 calc(var(--u)*-1.6) 0 rgba(0,0,0,.12)}
@@ -916,7 +920,6 @@ const MESSAGES = {
   shipPort: [ "みなとが みえてきた！" ],
   shipDone: [ "とうちゃく！ おつかれさま せんちょうさん！" ],
   piano:    [ "けんばんを おして ひいてみよう", "{name}{kun} ぴあにすと！" ],
-  pianoSong:[ "どこを おしても きらきらぼし！" ],
   pianoClap:[ "ぱちぱち！ すてきな えんそう！", "じょうずだね！ ぱちぱち！" ],
   cleaning: [ "よごれた ふくを せんたくきに いれよう" ],
   cleanReq: [ "せんたく おねがいします！", "どろんこに なっちゃった" ],
@@ -5239,19 +5242,33 @@ screens.ship = {
 const PIANO_W = [["C5", "ど"], ["D5", "れ"], ["E5", "み"], ["F5", "ふぁ"], ["G5", "そ"], ["A5", "ら"], ["B5", "し"], ["C6", "ど"]];
 const PIANO_B = [["C#5", 1], ["D#5", 2], ["F#5", 4], ["G#5", 5], ["A#5", 6]];   // 2つめの かずは「みぎどなりの しろい けんばん」
 const PIANO_COLORS = ["#F6B7B7", "#F8CFA3", "#F6E3A1", "#C9E4A8", "#A8D8D0", "#A9C8EC", "#C9B7E6", "#F6B7D2"];
-const KIRAKIRA = ["C5", "C5", "G5", "G5", "A5", "A5", "G5", "F5", "F5", "E5", "E5", "D5", "D5", "C5"];
-let pianoMode = "free";
+// ほいくえんで よく うたう きょく（どれも ちょさくけんの きれた むかしの きょく）
+const PIANO_SONGS = [
+  ["きらきらぼし", "C5 C5 G5 G5 A5 A5 G5 F5 F5 E5 E5 D5 D5 C5"],
+  ["かえるのうた", "C5 D5 E5 F5 E5 D5 C5 E5 F5 G5 A5 G5 F5 E5 C5 C5 C5 C5 C5 C5 D5 D5 E5 E5 F5 F5 E5 D5 C5"],
+  ["ちょうちょう", "G5 E5 E5 F5 D5 D5 C5 D5 E5 F5 G5 G5 G5 G5 E5 E5 E5 F5 D5 D5 D5 C5 E5 G5 G5 E5 E5 E5"],
+  ["めりーさんの ひつじ", "E5 D5 C5 D5 E5 E5 E5 D5 D5 D5 E5 G5 G5 E5 D5 C5 D5 E5 E5 E5 E5 D5 D5 E5 D5 C5"],
+  ["ろんどんばし", "G5 A5 G5 F5 E5 F5 G5 D5 E5 F5 E5 F5 G5 G5 A5 G5 F5 E5 F5 G5 D5 G5 E5 C5"],
+  ["はっぴー ばーすでー", "C5 C5 D5 C5 F5 E5 C5 C5 D5 C5 G5 F5 C5 C5 C6 A5 F5 E5 D5 A#5 A#5 A5 F5 G5 F5"],
+  ["ゆかいな まきば", "F5 F5 F5 C5 D5 D5 C5 A5 A5 G5 G5 F5 C5 F5 F5 F5 C5 D5 D5 C5 A5 A5 G5 G5 F5"],
+  ["ぐーちょきぱー", "C5 D5 E5 C5 C5 D5 E5 C5 E5 F5 G5 E5 F5 G5 G5 A5 G5 F5 E5 C5 G5 A5 G5 F5 E5 C5 C5 G4 C5 C5 G4 C5"],
+  ["あるぷすいちまんじゃく", "C5 C5 D5 E5 C5 E5 D5 G4 C5 C5 D5 E5 C5 B4 C5 C5 D5 E5 F5 E5 D5 C5 B4 G4 A4 B4 C5 C5"],
+].map(([name, notes]) => ({ name, notes: notes.split(" ") }));
+let pianoMode = "free", pianoSong = 0;
 screens.piano = {
   el: $("#s-piano"),
   enter(scope, el){
-    if (!SFX["pn:C5"]) PIANO_W.concat(PIANO_B).forEach(([n]) => {
+    const allNotes = new Set(PIANO_W.concat(PIANO_B).map(([n]) => n));
+    PIANO_SONGS.forEach(sg => sg.notes.forEach(n => allNotes.add(n)));
+    allNotes.forEach(n => {
+      if (SFX["pn:" + n]) return;
       const f = hz(midiOf(n));
       SFX["pn:" + n] = t => ({ nodes: [Sound.tone(t, { type: "triangle", f, t: 0.9, g: 0.32 }), Sound.tone(t, { f: f * 2, t: 0.45, g: 0.07 })], dur: 0.92 });
     });
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
       <div class="pn-hall"><div class="pn-val"></div><div class="pn-crowd"></div><div class="pn-notes"></div></div>
-      <div class="pn-mode"><div data-m="free">🎹 じゆうに</div><div data-m="song">⭐ きらきらぼし</div></div>
+      <div class="pn-mode"><div data-m="free">🎹 じゆうに</div><div class="pn-arr" data-d="-1">◀</div><div data-m="song" class="pn-name"></div><div class="pn-arr" data-d="1">▶</div></div>
       <div class="pn-piano"><div class="pn-keys"></div></div>
     </div>`);
     el.appendChild(st);
@@ -5269,31 +5286,43 @@ screens.piano = {
       keyOf[n] = k; keysEl.appendChild(k);
       k.addEventListener("pointerdown", e => { if (!e.isPrimary) return; e._handled = true; press(n); });
     });
+    const nameEl = $(".pn-name", st);
+    const song = () => PIANO_SONGS[pianoSong];
     function setMode(m){
       pianoMode = m; songI = 0; played = 0;
-      $$(".pn-mode div", st).forEach(b => b.classList.toggle("on", b.dataset.m === m));
-      typeText(banner, msg(m === "song" ? "pianoSong" : "piano"), scope);
+      $$(".pn-mode [data-m]", st).forEach(b => b.classList.toggle("on", b.dataset.m === m));
+      nameEl.textContent = "🎵 " + song().name;
+      typeText(banner, m === "song" ? `どこを おしても「${song().name}」！` : msg("piano"), scope);
       guide();
     }
     function guide(){
       Object.values(keyOf).forEach(k => k.classList.remove("next"));
-      if (pianoMode === "song") keyOf[KIRAKIRA[songI]].classList.add("next");
+      const k = pianoMode === "song" && keyOf[song().notes[songI]];
+      if (k) k.classList.add("next");
     }
-    $$(".pn-mode div", st).forEach(b => b.addEventListener("pointerdown", e => {
+    $$(".pn-mode [data-m]", st).forEach(b => b.addEventListener("pointerdown", e => {
       if (!e.isPrimary) return; e._handled = true;
       bounce(b, scope, 1.06); Sound.play("pick"); setMode(b.dataset.m);
+    }));
+    // ◀ ▶ で きょくを かえる
+    $$(".pn-arr", st).forEach(b => b.addEventListener("pointerdown", e => {
+      if (!e.isPrimary) return; e._handled = true;
+      bounce(b, scope, 1.15); Sound.play("pick");
+      pianoSong = (pianoSong + Number(b.dataset.d) + PIANO_SONGS.length) % PIANO_SONGS.length;
+      setMode("song"); bounce(nameEl, scope, 1.08);
     }));
     // どの けんばんを おしても「きらきらぼし」は つぎの おとが なる
     function press(n){
       if (busy) return;
-      if (pianoMode === "song") { n = KIRAKIRA[songI]; songI++; }
-      const k = keyOf[n];
+      const pressed = keyOf[n];
+      if (pianoMode === "song") { n = song().notes[songI]; songI++; }
+      const k = keyOf[n] || pressed;   // けんばんに ない ひくい おとは おした ところから
       Sound.play("pn:" + n);
       k.classList.add("down"); scope.timeout(() => k.classList.remove("down"), 160);
       floatNote(k);
       played++;
       if (pianoMode === "song") {
-        if (songI >= KIRAKIRA.length) { songI = 0; applause(); }
+        if (songI >= song().notes.length) { songI = 0; applause(); }
         guide();
       } else if (played % 16 === 0) applause();
     }
@@ -5316,7 +5345,7 @@ screens.piano = {
         scope.timeout(() => cl.remove(), 1800);
       });
       const c = cpt(hall); FX.burst(c.x, c.y, 8);
-      scope.timeout(() => { busy = false; typeText(banner, msg(pianoMode === "song" ? "pianoSong" : "piano"), scope); }, 1900);
+      scope.timeout(() => { busy = false; setMode(pianoMode); }, 1900);
     }
     el.addEventListener("pointerdown", e => { if (!e.isPrimary || e._handled) return; e._handled = true; tapOther(e); });
     setMode(pianoMode);
