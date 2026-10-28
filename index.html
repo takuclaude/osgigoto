@@ -258,6 +258,8 @@ html.girl .sh-sky{background:linear-gradient(180deg,#C9DDF2,#F6E6EE)}
 .sh-port{position:absolute;left:50%;top:42%;width:calc(var(--u)*90);height:calc(var(--u)*45);margin:calc(var(--u)*-36) 0 0 calc(var(--u)*-45);transform-origin:50% 80%;opacity:0;z-index:2}
 .sh-port svg{width:100%;height:100%;display:block}
 .sh-crowd{position:absolute;left:30%;right:4%;top:46%;display:flex;justify-content:space-around;font-size:calc(var(--u)*8);line-height:1}
+.sh-arrow{position:absolute;left:50%;top:10%;width:calc(var(--u)*34);height:calc(var(--u)*34);margin-left:calc(var(--u)*-17);z-index:3;opacity:0;pointer-events:none;filter:drop-shadow(0 calc(var(--u)*.8) 0 rgba(0,0,0,.15))}
+.sh-arrow svg{width:100%;height:100%;display:block}
 .sh-gulls{position:absolute;inset:0;pointer-events:none;z-index:3}
 .gull{position:absolute;width:calc(var(--u)*16);height:calc(var(--u)*8);pointer-events:auto}
 .gull svg{width:100%;height:100%;display:block;overflow:visible}
@@ -5154,7 +5156,7 @@ screens.ship = {
         <div class="sh-obj"></div>
         <div class="sh-port">${ART.port()}<div class="sh-crowd"></div></div>
       </div></div>
-      <div class="sh-gulls"></div>
+      <div class="sh-gulls"></div><div class="sh-arrow"></div>
       <div class="sh-bow">${ART.bow()}</div>
       <div class="sh-frame"></div></div>
       <div class="sh-helm">
@@ -5165,7 +5167,7 @@ screens.ship = {
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), view = $(".sh-view", st), bob = $(".sh-bob", st), world = $(".sh-world", st), waves = $(".sh-waves", st), clouds = $(".clouds", st);
-    const obj = $(".sh-obj", st), port = $(".sh-port", st), crowd = $(".sh-crowd", st), gulls = $(".sh-gulls", st), bow = $(".sh-bow", st);
+    const arrow = $(".sh-arrow", st), obj = $(".sh-obj", st), port = $(".sh-port", st), crowd = $(".sh-crowd", st), gulls = $(".sh-gulls", st), bow = $(".sh-bow", st);
     const wheel = $(".sh-wheel", st), wsvg = $("svg", wheel), btn = { L: $('.sh-btn[data-d="L"]', st), R: $('.sh-btn[data-d="R"]', st) };
     let phase = "start", step = 0, need = null, wavesAnim = null, gullId = 0, objT = "";
     waves.style.transform = `perspective(${U * 40}px) rotateX(62deg)`;
@@ -5224,15 +5226,29 @@ screens.ship = {
       objT = `translate(${ox}px,${U * 18}px) scale(1)`;
       Sound.play("pi"); scope.timeout(() => Sound.play("pi"), 220);
       typeText(banner, msg(key), scope);
+      showArrow(d);
       scope.anim(obj, [{ transform: `translate(${ox * 0.2}px,0px) scale(.12)`, opacity: 0 }, { transform: `translate(${ox * 0.5}px,${U * 4}px) scale(.4)`, opacity: 1, offset: 0.3 }, { transform: objT, opacity: 1 }], { duration: 2400, easing: "ease-in" }, () => {
         phase = "turn"; glow(btn[d], true);
       });
+    }
+    // きる ほうこうに おおきな きいろい やじるし
+    let arrowAnim = null;
+    function showArrow(d){
+      const s = d === "R" ? 1 : -1;
+      arrow.innerHTML = ART.arrow(s).replace("#F5D88E", "#FFD34D").replace("#C9A85A", "#D9A520");
+      scope.anim(arrow, [{ transform: "scale(.3)", opacity: 0 }, { transform: "scale(1.15)", opacity: 1, offset: 0.7 }, { transform: "scale(1)", opacity: 1 }], { duration: 400, easing: "ease-out" }, () => {
+        arrowAnim = scope.anim(arrow, [{ transform: "translateX(0px)" }, { transform: `translateX(${s * U * 5}px)` }], { duration: 450, iterations: Infinity, direction: "alternate", easing: "ease-in-out" });
+      });
+    }
+    function hideArrow(){
+      if (arrowAnim) { arrowAnim.cancel(); arrowAnim = null; }
+      scope.anim(arrow, [{ opacity: 1 }, { opacity: 0 }], { duration: 250 });
     }
     function hint(){ if (need) { bounce(btn[need], scope, 1.15); Sound.play("pop"); } }
     function turn(d){
       if (phase !== "turn") return hint();
       if (d !== need) return hint();
-      phase = "busy"; glow(btn.L, false); glow(btn.R, false);
+      phase = "busy"; glow(btn.L, false); glow(btn.R, false); hideArrow();
       const s = d === "R" ? 1 : -1;
       Sound.play("pick"); scope.timeout(() => Sound.play("spray"), 200);
       scope.anim(wsvg, [{ transform: "rotate(0deg)" }, { transform: `rotate(${s * 120}deg)`, offset: 0.4 }, { transform: `rotate(${s * 120}deg)`, offset: 0.6 }, { transform: "rotate(0deg)" }], { duration: 1600, easing: "ease-in-out" });
