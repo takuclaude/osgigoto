@@ -674,6 +674,9 @@ html.girl .c-zoo,html.girl .c-paint,html.girl .c-soccer{background:#F7D3DC}html.
 .bunting i:nth-child(3n+2){border-top-color:#9CC8DD}.bunting i:nth-child(3n){border-top-color:#F5D88E}
 @keyframes bob{from{transform:translateY(0)}to{transform:translateY(calc(var(--u)*-2))}}
 .vf{position:absolute;left:8%;right:8%;top:8%;height:calc(var(--u)*46);pointer-events:none;border:calc(var(--u)*1) dashed rgba(133,119,97,.35);border-radius:calc(var(--u)*4)}
+.puff{width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 40% 40%,#FFFFFF,#D9D4CB)}
+.ph-set{position:absolute;left:4%;right:4%;top:calc(var(--u)*64);bottom:calc(var(--u)*2);pointer-events:none}
+.ph-set svg{width:100%;height:100%;display:block}
 .shade{position:absolute;inset:0;background:rgba(58,50,38,.16);opacity:0;pointer-events:none;z-index:6}
 .photo{width:calc(var(--u)*15);height:calc(var(--u)*17);background:#FFFCF5;border-radius:calc(var(--u)*1);box-shadow:0 calc(var(--u)*.6) calc(var(--u)*1.2) rgba(58,50,38,.18);display:flex;align-items:flex-start;justify-content:center;padding-top:calc(var(--u)*1.2);font-size:calc(var(--u)*10);line-height:1}
 .album{justify-content:center;gap:calc(var(--u)*2)}
@@ -4233,7 +4236,58 @@ screens.lab = {
     const banner = $(".t", st), beaker = $(".beaker", st), liq = $(".liq", st), bubs = $(".labbub", st), tray = $(".tray2", st);
     const hk = $(".hakase", st), say = $(".hk-say", st), sayT = $(".t2", say);
     const hkSay = key => { scope.anim(say, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], { duration: 300 }); typeText(sayT, msg(key), scope); bounce(hk, scope, 1.06); };
-    let phase = "pour", poured = [];
+    let phase = "pour", poured = [], lastFx = "";
+    const hkText = t => { scope.anim(say, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], { duration: 300 }); typeText(sayT, t, scope); bounce(hk, scope, 1.06); };
+    const top = () => { const r = beaker.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height * 0.15 }; };
+    // とびだす もの（em を c から ばらばらに）
+    function spray(list, n, o){
+      const c = top();
+      for (let i = 0; i < n; i++) scope.timeout(() => {
+        const a = o.up ? rnd(-Math.PI * 0.85, -Math.PI * 0.15) : rnd(0, Math.PI * 2), d = U * rnd(o.min || 16, o.max || 34);
+        flyEl(scope, st, pick(list), c, { x: c.x + Math.cos(a) * d, y: c.y + Math.sin(a) * d - (o.lift || 0) }, { size: U * (o.size || 10), font: U * (o.size || 10) * 0.8, dur: o.dur || 900, arc: o.arc == null ? U * 6 : o.arc, scale: o.scale || 1.2, fade: true });
+      }, i * (o.gap || 60));
+    }
+    const LAB_FX = [
+      { k: "boom", say: "ぼかーん！ ばくはつ した！", hk: "けほけほ… でも せいこう！", run(){
+        Sound.play("dosun"); scope.timeout(() => Sound.play("pop"), 80);
+        spray(["💥"], 1, { min: 0, max: 1, size: 30, dur: 700, arc: 0, scale: 1.6 });
+        spray(['<div class="puff"></div>'], 10, { size: 14, min: 20, max: 34, dur: 1100, arc: 0, gap: 20, scale: 1.8 });
+        scope.anim(beaker, [{ transform: "translate(0px,0px)" }, { transform: `translate(${-U}px,${-U * 2}px) rotate(-6deg)` }, { transform: `translate(${U}px,0px) rotate(6deg)` }, { transform: "translate(0px,0px)" }], { duration: 150, iterations: 4, fill: "none" });
+        scope.anim(hk, [{ transform: "rotate(0deg)" }, { transform: "rotate(-10deg)" }, { transform: "rotate(10deg)" }, { transform: "rotate(0deg)" }], { duration: 200, iterations: 3, fill: "none" });
+      } },
+      { k: "sparkle", say: "きらきらの おくすりが できた！", hk: "ぴかぴか だね！", run(){
+        Sound.play("sparkle"); scope.timeout(() => Sound.play("sparkle"), 400);
+        liq.setAttribute("fill", "#F5D88E");
+        spray(["✨", "⭐", "🌟"], 14, { up: true, size: 9, min: 18, max: 40, dur: 1200, gap: 70 });
+      } },
+      { k: "rainbow", say: "にじが でてきた！", hk: "きれいだね！", run(){
+        Sound.play("sparkle");
+        spray(["🌈"], 1, { up: true, min: 22, max: 24, size: 30, dur: 1800, arc: U * 10, scale: 1.3 });
+      } },
+      { k: "foam", say: "あわあわ だ！ あふれちゃった！", hk: "あわが いっぱい！", run(){
+        Sound.play("boil"); scope.timeout(() => Sound.play("shara"), 300);
+        spray(['<div class="soap" style="position:static;width:100%;height:100%"></div>'], 16, { up: true, size: 8, min: 10, max: 30, dur: 1000, gap: 40 });
+      } },
+      { k: "flower", say: "おはなが さいた！", hk: "ふしぎな おくすり！", run(){
+        Sound.play("pop"); scope.timeout(() => Sound.play("sparkle"), 200);
+        spray(["🌸", "🌷", "🌼", "🌻"], 8, { up: true, size: 11, min: 16, max: 30, dur: 1300, gap: 110 });
+      } },
+      { k: "baby", say: "なにかが うまれた！", hk: "こんにちは！", run(){
+        Sound.play("boing"); scope.timeout(() => Sound.play("pop"), 300);
+        spray([pick(["🐣", "🦋", "🐸", "🐞", "🐥"])], 1, { up: true, min: 26, max: 28, size: 18, dur: 1600, arc: U * 14, scale: 1.2 });
+      } },
+      { k: "heart", say: "はーとが いっぱい！", hk: "すてきな おくすり！", run(){
+        Sound.play("sparkle");
+        liq.setAttribute("fill", "#F2A7B8");
+        spray(["💖", "💕", "💗"], 10, { up: true, size: 10, min: 18, max: 38, dur: 1300, gap: 90 });
+      } },
+      { k: "glow", say: "おくすりが ひかった！", hk: "まぶしい！", run(){
+        Sound.play("sparkle"); scope.timeout(() => Sound.play("ding"), 300);
+        scope.anim(beaker, [{ filter: "drop-shadow(0 0 0px #FFF3A0)" }, { filter: `drop-shadow(0 0 ${U * 8}px #FFF3A0)` }, { filter: "drop-shadow(0 0 0px #FFF3A0)" }], { duration: 700, iterations: 3, fill: "none" });
+        const cols = ["#F2A7B8", "#9CC8E8", "#A9D49A", "#F5D88E", "#C9B3E6"];
+        cols.forEach((c, i) => scope.timeout(() => liq.setAttribute("fill", c), i * 300));
+      } },
+    ];
     function setup(){
       phase = "pour"; poured = [];
       liq.style.transform = "scaleY(0)"; liq.setAttribute("fill", "#E6EEF2");
@@ -4281,11 +4335,13 @@ screens.lab = {
       scope.timeout(() => {
         scope.stopInterval(bid);
         liq.setAttribute("fill", pick(LAB_COLORS.filter(c => !poured.includes(c))) || col);
-        Sound.play("sparkle"); scope.timeout(() => Sound.play("chime"), 250);
-        const c = cpt(beaker); FX.burst(c.x, c.y - U * 10, 8);
-        hkSay("labYay");
+        // まぜた あとの へんか（まいかい ちがう）
+        let fx = pick(LAB_FX); if (fx.k === lastFx) fx = pick(LAB_FX); lastFx = fx.k;
+        fx.run();
+        scope.timeout(() => Sound.play("chime"), 450);
+        scope.timeout(() => hkText(fx.hk), 500);
         scope.anim(hk, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 5}px)` }, { transform: "translateY(0px)" }], { duration: 400, iterations: 2, fill: "none" });
-        typeText(banner, msg("labDone"), scope, () => scope.timeout(() => {
+        typeText(banner, fx.say, scope, () => scope.timeout(() => {
           scope.anim(liq, [{ transform: "scaleY(1)" }, { transform: "scaleY(0)" }], { duration: 600, easing: "ease-in" }, setup);
         }, 1400));
       }, 1600);
@@ -4359,12 +4415,30 @@ screens.paint = {
 };
 
 /* ---------- カメラマン ---------- */
+// きゃたつ・さんきゃくの カメラ・ライト
+const PHOTO_SET = () => '<svg viewBox="0 0 220 120" preserveAspectRatio="xMidYMax meet">' +
+  '<ellipse cx="110" cy="116" rx="104" ry="5" fill="#000" opacity=".06"/>' +
+  // きゃたつ
+  '<path d="M14 116 L36 12 M58 116 L40 12" stroke="#B9C2C9" stroke-width="5" stroke-linecap="round"/>' +
+  [34, 58, 82].map((y, i) => `<path d="M${19 + i * 4.6} ${116 - (116 - y) * 1 + 0} H${53 - i * 4.6}" stroke="#9AA6AF" stroke-width="4" stroke-linecap="round"/>`).join("") +
+  '<rect x="28" y="6" width="20" height="8" rx="2" fill="#E98A7E"/>' +
+  // さんきゃくと カメラ
+  '<path d="M110 66 L86 116 M110 66 L134 116 M110 66 V116" stroke="#4E4A47" stroke-width="4" stroke-linecap="round"/>' +
+  '<rect x="104" y="58" width="12" height="10" rx="2" fill="#4E4A47"/>' +
+  '<g class="ph-cam"><rect x="82" y="26" width="56" height="34" rx="6" fill="#55504A" stroke="#3A3632" stroke-width="2.5"/>' +
+  '<rect x="94" y="18" width="20" height="10" rx="2" fill="#6E6A66"/><rect x="120" y="20" width="12" height="6" rx="2" fill="#E98A7E"/>' +
+  '<circle cx="110" cy="43" r="12" fill="#2E2A26" stroke="#8F8A84" stroke-width="3"/><circle cx="110" cy="43" r="6" fill="#5E7A90"/><circle cx="107" cy="40" r="2" fill="#E4F2FA"/>' +
+  '<circle class="ph-flash" cx="100" cy="23" r="16" fill="#FFF6C0" opacity="0"/></g>' +
+  // ライト（かさ）
+  '<path d="M190 116 V40 M178 116 L190 96 L202 116" stroke="#8F8A84" stroke-width="3.5" stroke-linecap="round" fill="none"/>' +
+  '<path d="M166 30 Q190 2 214 30 Z" fill="#FFFDF8" stroke="#C9C2B5" stroke-width="2.5" stroke-linejoin="round"/><path d="M190 30 V44" stroke="#8F8A84" stroke-width="2"/>' +
+  '<circle class="ph-bulb" cx="190" cy="36" r="5" fill="#F5D88E"/></svg>';
 screens.photo = {
   el: $("#s-photo"),
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="area"><div class="studio"><div class="bunting">${"<i></i>".repeat(9)}</div></div><div class="vf"></div><div class="posers"></div><div class="shade"></div></div>
+      <div class="area"><div class="studio"><div class="bunting">${"<i></i>".repeat(9)}</div></div><div class="vf"></div><div class="posers"></div><div class="ph-set">${PHOTO_SET()}</div><div class="shade"></div></div>
       <div class="tray2 album"></div>
     </div>`);
     el.appendChild(st);
@@ -4406,6 +4480,8 @@ screens.photo = {
       shots++; phase = "busy";
       const P = POSES[p._k], pic = `<span style="display:inline-block;position:relative;transform:${P.t.replace(/translateY\([^)]*\)/, "")}">${p._a}<span class="pacc">${P.a}</span></span>`;
       Sound.play("shutter");
+      scope.anim($(".ph-flash", st), [{ opacity: 0 }, { opacity: 1 }, { opacity: 0 }], { duration: 300, fill: "none" });
+      bounce($(".ph-set", st), scope, 1.04);
       scope.anim(shade, [{ opacity: 0 }, { opacity: 1 }, { opacity: 0 }], { duration: 350 });
       scope.anim(vf, [{ transform: "scale(1)" }, { transform: "scale(.95)" }, { transform: "scale(1)" }], { duration: 300 });
       const big = h(`<div class="bigphoto">${pic}</div>`); area.appendChild(big);
