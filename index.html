@@ -118,6 +118,17 @@ button{font-family:inherit;color:inherit}
 .prod.gone{opacity:0}
 .scanline{position:absolute;left:0;right:0;top:0;height:calc(var(--u)*2.2);background:rgba(232,110,100,.75);box-shadow:0 0 calc(var(--u)*2) rgba(232,110,100,.8);opacity:0}
 .flyer{position:absolute;width:calc(var(--u)*16);height:calc(var(--u)*16);margin:calc(var(--u)*-8) 0 0 calc(var(--u)*-8);display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*13);line-height:1;z-index:25;pointer-events:none}
+.rg-cust{position:absolute;right:3%;bottom:calc(var(--u)*6);width:calc(var(--u)*52);display:flex;flex-direction:column;align-items:center;z-index:15;opacity:0;pointer-events:auto}
+.rg-say{background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.4) calc(var(--u)*3);font-size:calc(var(--u)*4);white-space:nowrap;margin-bottom:calc(var(--u)*1.5);opacity:0;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08)}
+.rg-face{width:calc(var(--u)*22);height:calc(var(--u)*22);border-radius:50%;background:#FDF0DC;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*15);line-height:1}
+.rg-cash{display:flex;flex-wrap:wrap;justify-content:center;gap:calc(var(--u)*1.4);margin-top:calc(var(--u)*-2);padding:calc(var(--u)*2.4);min-height:calc(var(--u)*12);width:100%;box-sizing:border-box;background:#5E8C6A;border-radius:calc(var(--u)*3);box-shadow:inset 0 calc(var(--u)*-1) 0 rgba(0,0,0,.15)}
+.rg-got{margin-top:calc(var(--u)*1.4);font-size:calc(var(--u)*4);background:var(--paper);border-radius:calc(var(--u)*2);padding:0 calc(var(--u)*2);min-height:1.3em}
+.money{width:calc(var(--u)*10);height:calc(var(--u)*10);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*3.2);font-weight:bold;color:#5A4E3C;box-shadow:inset 0 0 0 calc(var(--u)*.7) rgba(0,0,0,.18)}
+.money.c10{background:#D9955A;color:#5A3518}.money.c50{background:radial-gradient(circle,#5E8C6A 0 18%,#DADFE3 19%)}.money.c100{background:#D3D8DC}.money.c500{background:#E8C66A}
+.money.bill{width:calc(var(--u)*17);height:calc(var(--u)*9);border-radius:calc(var(--u)*1);background:#D7E3C8;color:#4F6B3E;box-shadow:inset 0 0 0 calc(var(--u)*.6) #9FB58A}
+.drawer{position:absolute;left:24%;right:24%;bottom:calc(var(--u)*-1);height:calc(var(--u)*7);background:#D9A68C;border-radius:0 0 calc(var(--u)*2) calc(var(--u)*2);transition:transform .25s ease-out;z-index:2}
+.drawer i{position:absolute;left:40%;right:40%;top:35%;height:30%;background:#B98266;border-radius:calc(var(--u)*1)}
+.drawer.open{transform:translateY(calc(var(--u)*6))}
 .receipt-clip{position:absolute;overflow:hidden;z-index:20;left:50%;width:calc(var(--u)*58);margin-left:calc(var(--u)*-29)}
 .receipt{background:var(--paper);padding:calc(var(--u)*7) calc(var(--u)*4) calc(var(--u)*6);font-size:calc(var(--u)*4.4);box-shadow:0 calc(var(--u)*1) calc(var(--u)*2) rgba(58,50,38,.15);border-top:calc(var(--u)*.6) dashed #C9BCA8}
 .rline{display:flex;justify-content:space-between;min-height:1.6em;align-items:center;white-space:nowrap}
@@ -220,6 +231,12 @@ html.girl .kb{background:#EED6DE}
 .sp-stars{position:absolute;left:0;right:0;top:-280px;height:calc(100% + 280px);opacity:0;transition:opacity 1.2s;background-image:radial-gradient(circle,#FFFFFF 1.3px,transparent 1.8px),radial-gradient(circle,#F5D88E 1.6px,transparent 2.2px);background-size:40px 40px,70px 70px;background-position:0 0,22px 31px}
 .sp-area.space .sp-stars{opacity:1}
 .sp-ground{position:absolute;left:0;right:0;bottom:0;height:20%;background:#A9C98F;border-top:calc(var(--u)*1.4) solid #93B57A}
+.sp-crowd{position:absolute;bottom:100%;display:flex;align-items:flex-end;gap:calc(var(--u)*1)}
+.sp-crowd.l{left:3%}.sp-crowd.r{right:4%}
+.sp-p{width:calc(var(--u)*11);height:calc(var(--u)*19)}
+.sp-p svg{width:100%;height:100%;display:block}
+.sp-a{display:block;font-size:calc(var(--u)*9);line-height:1}
+.sp-cheer{position:absolute;left:3%;bottom:calc(100% + var(--u)*21);transform-origin:20% 100%;background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.4) calc(var(--u)*3);font-size:calc(var(--u)*4.6);white-space:nowrap;opacity:0;z-index:5}
 .sp-pad{position:absolute;left:50%;top:0;width:calc(var(--u)*30);height:calc(var(--u)*4);margin-left:calc(var(--u)*-15);background:#8F8A84;border-radius:0 0 calc(var(--u)*1.5) calc(var(--u)*1.5)}
 .rocket{position:absolute;left:50%;bottom:20%;width:calc(var(--u)*20);height:calc(var(--u)*40);margin-left:calc(var(--u)*-10);z-index:3}
 .rocket svg{width:100%;height:100%;display:block;position:relative}
@@ -299,13 +316,18 @@ html.girl .sh-sky{background:linear-gradient(180deg,#C9DDF2,#F6E6EE)}
 .pnote{position:absolute;font-size:calc(var(--u)*8);line-height:1;pointer-events:none}
 
 /* ---------- くりーにんぐやさん ---------- */
-.cl-area{position:relative;flex:1;min-height:0;margin-top:calc(var(--u)*3);overflow:hidden}
-.cl-rope{position:absolute;left:5%;right:5%;top:calc(var(--u)*8);height:calc(var(--u)*1);background:#B9AD9A;border-radius:calc(var(--u)*1)}
-.cl-pole{position:absolute;top:calc(var(--u)*5);width:calc(var(--u)*1.6);height:calc(var(--u)*30);background:#A88660;border-radius:calc(var(--u)*1)}
-.cl-slots{position:absolute;left:10%;right:10%;top:calc(var(--u)*8);display:flex;justify-content:space-around}
+.cl-area{position:relative;flex:1;min-height:0;margin-top:calc(var(--u)*3);overflow:hidden;background:linear-gradient(180deg,#CFE8F5 0,#E8F1F4 calc(var(--u)*40))}
+html.girl .cl-area{background:linear-gradient(180deg,#F6DCE6 0,#FBEDF0 calc(var(--u)*40))}
+.cl-rope{position:absolute;left:5%;right:5%;top:calc(var(--u)*17);height:calc(var(--u)*1);background:#B9AD9A;border-radius:calc(var(--u)*1)}
+.cl-pole{position:absolute;top:calc(var(--u)*14);width:calc(var(--u)*1.6);height:calc(var(--u)*30);background:#A88660;border-radius:calc(var(--u)*1)}
+.cl-slots{position:absolute;left:10%;right:10%;top:calc(var(--u)*17);display:flex;justify-content:space-around}
 .cl-slots div{position:relative;width:calc(var(--u)*16);height:calc(var(--u)*16);font-size:calc(var(--u)*13);line-height:1;display:flex;justify-content:center;opacity:0}
 .cl-slots div::before{content:"";position:absolute;top:calc(var(--u)*-1.6);left:50%;width:calc(var(--u)*2);height:calc(var(--u)*4);margin-left:calc(var(--u)*-1);background:#E3A98A;border-radius:calc(var(--u)*.6);z-index:2}
-.cl-sun{position:absolute;right:4%;top:calc(var(--u)*24);font-size:calc(var(--u)*12);line-height:1;opacity:0}
+.cl-sun{position:absolute;left:4%;top:calc(var(--u)*1);font-size:calc(var(--u)*12);line-height:1;opacity:.35;filter:grayscale(.6)}
+.cl-sun.on{opacity:1;filter:none}
+.cl-slots div{transition:filter 1s}
+.cl-slots div.wet{filter:brightness(.78) saturate(.75)}
+.cl-tag{position:absolute;left:50%;top:100%;transform:translateX(-50%);font-size:calc(var(--u)*3.4);white-space:nowrap;background:var(--paper);border-radius:calc(var(--u)*2);padding:0 calc(var(--u)*1.4);opacity:0}
 .washer{position:absolute;left:5%;bottom:5%;width:calc(var(--u)*46);height:calc(var(--u)*50)}
 .washer>svg{width:100%;height:100%;display:block}
 .drum{position:absolute;left:23%;top:35.5%;width:54%;height:49%;border-radius:50%;overflow:hidden}
@@ -318,12 +340,24 @@ html.girl .sh-sky{background:linear-gradient(180deg,#C9DDF2,#F6E6EE)}
 .dirty{position:relative}
 .dirty i{position:absolute;width:calc(var(--u)*3);height:calc(var(--u)*2.4);border-radius:50%;background:#8F6A48;opacity:.75}
 .dirty i:nth-of-type(1){left:34%;top:38%}.dirty i:nth-of-type(2){left:56%;top:58%;width:calc(var(--u)*2.2)}
-.s-cleaning .cust2,.s-cafe .cust2{bottom:auto;top:calc(var(--u)*24)}
+.s-cleaning .cust2{bottom:auto;top:calc(var(--u)*38)}
+.s-cafe .cust2{bottom:auto;top:calc(var(--u)*24)}
 
 /* ---------- かふぇやさん ---------- */
-.cf-area{position:relative;flex:1;min-height:0;margin-top:calc(var(--u)*3);overflow:hidden;background:linear-gradient(180deg,transparent 0 62%,#D9B98C 62%,#CDA97A 100%)}
-.cf-menu{position:absolute;left:5%;top:4%;padding:calc(var(--u)*2) calc(var(--u)*3.4);background:#4A3A2E;color:#F4F1EA;border-radius:calc(var(--u)*2);font-size:calc(var(--u)*3.8);line-height:1.5;border:calc(var(--u)*1) solid #8C6A4F}
-.cf-cup{position:absolute;left:8%;bottom:8%;width:calc(var(--u)*62);height:calc(var(--u)*62);z-index:2}
+.cf-area{position:relative;flex:1;min-height:0;margin-top:calc(var(--u)*3);overflow:hidden;background:linear-gradient(180deg,#BFE5F6 0 26%,#79C2E4 26% 34%,#8FD0EA 34% 40%,#F6E7C4 40% 60%)}
+.cf-sea{position:absolute;inset:0;pointer-events:none}
+.cf-sea span{position:absolute;line-height:1}
+.cf-sun{right:6%;top:9%;font-size:calc(var(--u)*11)}.cf-boat{left:44%;top:21%;font-size:calc(var(--u)*7)}
+.cf-palm{right:2%;top:30%;font-size:calc(var(--u)*18)}.cf-para{left:3%;top:38%;font-size:calc(var(--u)*13)}.cf-shell{left:30%;top:52%;font-size:calc(var(--u)*5)}
+.cf-awn{position:absolute;left:0;right:0;top:0;height:calc(var(--u)*7);background:repeating-linear-gradient(90deg,#8FD3C6 0 calc(var(--u)*8),#FFFAF6 calc(var(--u)*8) calc(var(--u)*16))}
+.cf-awn::after{content:"";position:absolute;left:0;right:0;top:100%;height:calc(var(--u)*4);background:radial-gradient(circle at 50% 0,#8FD3C6 calc(var(--u)*4),transparent calc(var(--u)*4.2)) calc(var(--u)*-4) 0/calc(var(--u)*16) 100% repeat-x,radial-gradient(circle at 50% 0,#FFFAF6 calc(var(--u)*4),transparent calc(var(--u)*4.2)) calc(var(--u)*4) 0/calc(var(--u)*16) 100% repeat-x}
+html.girl .cf-awn{background:repeating-linear-gradient(90deg,#F4B9C8 0 calc(var(--u)*8),#FFFAF6 calc(var(--u)*8) calc(var(--u)*16))}
+html.girl .cf-awn::after{background:radial-gradient(circle at 50% 0,#F4B9C8 calc(var(--u)*4),transparent calc(var(--u)*4.2)) calc(var(--u)*-4) 0/calc(var(--u)*16) 100% repeat-x,radial-gradient(circle at 50% 0,#FFFAF6 calc(var(--u)*4),transparent calc(var(--u)*4.2)) calc(var(--u)*4) 0/calc(var(--u)*16) 100% repeat-x}
+.cf-sign{position:absolute;left:50%;top:calc(var(--u)*12);transform:translateX(-50%);padding:calc(var(--u)*1) calc(var(--u)*3);background:#FFFDF8;border:calc(var(--u)*.8) solid #8FD3C6;border-radius:calc(var(--u)*4);font-size:calc(var(--u)*3.8);color:#4F8A80;white-space:nowrap}
+.cf-counter{position:absolute;left:0;right:0;bottom:0;height:40%;background:repeating-linear-gradient(90deg,#D9B98C 0 calc(var(--u)*14),#CFAE80 calc(var(--u)*14) calc(var(--u)*14.6));border-top:calc(var(--u)*1.6) solid #B98A5E}
+.cf-menu{position:absolute;left:4%;top:calc(var(--u)*20);padding:calc(var(--u)*2) calc(var(--u)*3.4);background:#4A3A2E;color:#F4F1EA;border-radius:calc(var(--u)*2);font-size:calc(var(--u)*3.8);line-height:1.5;border:calc(var(--u)*1) solid #8C6A4F}
+.cf-cup{position:absolute;left:6%;bottom:6%;width:calc(var(--u)*64);height:calc(var(--u)*54);z-index:2}
+.cf-cup svg{overflow:visible}
 .cf-cup svg{width:100%;height:100%;display:block}
 .cf-tool{position:absolute;font-size:calc(var(--u)*13);line-height:1;opacity:0;z-index:4;pointer-events:none;transform-origin:30% 70%}
 
@@ -337,7 +371,7 @@ html.girl .mg-area{background:radial-gradient(ellipse at 50% 55%,#8E6E9A 0,#654C
 .mg-stars i{font-style:normal}.mg-stars i.on{color:#F5D88E}
 .mg-table{position:absolute;left:24%;right:24%;bottom:24%;height:calc(var(--u)*6);background:#8C6A4F;border-radius:calc(var(--u)*2);box-shadow:0 calc(var(--u)*1.4) 0 #6B4F3A}
 .mg-table::after{content:"";position:absolute;left:44%;width:12%;top:100%;height:calc(var(--u)*22);background:#6B4F3A}
-.mg-hat{position:absolute;left:50%;bottom:calc(24% + var(--u)*5.4);width:calc(var(--u)*34);height:calc(var(--u)*31);margin-left:calc(var(--u)*-17);z-index:2;transform-origin:50% 100%}
+.mg-hat{position:absolute;left:50%;bottom:calc(24% + var(--u)*5.4);width:calc(var(--u)*34);height:calc(var(--u)*31);margin-left:calc(var(--u)*-17);z-index:2;transform-origin:50% 50%}
 .mg-hat svg{width:100%;height:100%;display:block}
 .mg-pop{position:absolute;left:50%;bottom:calc(24% + var(--u)*28);width:calc(var(--u)*24);height:calc(var(--u)*24);margin-left:calc(var(--u)*-12);display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*20);line-height:1;opacity:0;z-index:1}
 .mg-wand{position:absolute;right:20%;bottom:calc(24% + var(--u)*8);width:calc(var(--u)*7);height:calc(var(--u)*32);transform-origin:50% 100%;transform:rotate(-20deg);z-index:3}
@@ -418,6 +452,12 @@ html.girl .mg-area{background:radial-gradient(ellipse at 50% 55%,#8E6E9A 0,#654C
 /* ---------- でんしゃ ---------- */
 .s-train{background:#E3EEF4}
 .tr-scene{position:relative;flex:1.6;margin-top:calc(var(--u)*3);overflow:hidden;background:#DDEDF4}
+.tr-sky{position:absolute;inset:0;pointer-events:none}
+.tr-sky .clouds{top:4%;height:34%}
+.tr-sun{position:absolute;right:7%;top:5%;font-size:calc(var(--u)*13);line-height:1}
+.tr-sun span{display:block}
+.tr-fly{position:absolute;inset:0;overflow:hidden}
+.trf{position:absolute;left:0;font-size:calc(var(--u)*8);line-height:1}
 .tr-bg{position:absolute;left:0;bottom:calc(var(--u)*30);width:200%;height:calc(var(--u)*24);display:flex}
 .tr-bg .tile{position:relative;width:50%;height:100%}
 .tr-bg svg{position:absolute;bottom:0}
@@ -512,6 +552,11 @@ html.girl .scene2{background:#F6E6EE}
 .roofpal{position:absolute;left:12%;top:-1%;font-size:calc(var(--u)*11);line-height:1;z-index:2}
 .rp-say{position:absolute;left:36%;top:-1%;background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.2) calc(var(--u)*2.6);font-size:calc(var(--u)*4.2);white-space:nowrap;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08);z-index:2}
 .rp-say::after{content:"";position:absolute;left:-2%;top:40%;border:calc(var(--u)*1.6) solid transparent;border-right-color:var(--paper);border-left:0;transform:translateX(-100%)}
+.hoseL{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2;opacity:0}
+.ffighter{position:absolute;left:0;bottom:calc(var(--u)*4);width:calc(var(--u)*15);height:calc(var(--u)*26);z-index:3;opacity:0}
+.ffighter svg{width:100%;height:100%;display:block}
+.nozzle{position:absolute;width:calc(var(--u)*13);height:calc(var(--u)*4);transform-origin:10% 50%;z-index:4;opacity:0;pointer-events:none}
+.nozzle svg{width:100%;height:100%;display:block}
 .ftruck svg{width:100%;height:100%;display:block;overflow:visible}
 .ftruck.spin .wheel{animation:spin .6s linear infinite}
 .lampA,.lampB{transition:fill .2s ease}
@@ -527,6 +572,10 @@ html.girl .scene2{background:#F6E6EE}
 .pbox{position:absolute;left:8%;bottom:calc(var(--u)*11);width:calc(var(--u)*24);height:calc(var(--u)*38)}
 .pbox svg,.bike svg{width:100%;height:100%;display:block;overflow:visible}
 .bike{position:absolute;left:34%;bottom:calc(var(--u)*5);width:calc(var(--u)*46);height:calc(var(--u)*31);opacity:0}
+.sky3{position:absolute;inset:0;pointer-events:none}
+.sky3 .clouds{top:3%;height:30%}
+.carrier{position:absolute;left:0;bottom:calc(var(--u)*5);width:calc(var(--u)*14);height:calc(var(--u)*24);opacity:0;z-index:3}
+.carrier svg{width:100%;height:100%;display:block}
 .bike.spin .wheel{animation:spin .6s linear infinite}
 .letter{width:calc(var(--u)*22);height:calc(var(--u)*16);touch-action:none;position:relative}
 .letter svg{width:100%;height:100%;display:block;pointer-events:none}
@@ -601,6 +650,17 @@ html.girl .fshop{--aw:#F4B9C8;--w1:#FFF6F0;--w2:#FCEDE8;--sg:#D9A9B6;--sgt:#B86E
 .screw svg{width:100%;height:100%;display:block;overflow:visible}
 .screw .shank{transform-box:fill-box;transform-origin:50% 0}
 .screw .cross{transform-box:fill-box;transform-origin:center}
+.hmr{width:calc(var(--u)*16);height:calc(var(--u)*16);transform-origin:90% 90%}
+.nailp{position:absolute;width:calc(var(--u)*5);height:calc(var(--u)*11);margin:calc(var(--u)*-11) 0 0 calc(var(--u)*-2.5);overflow:hidden}
+.nail-in{width:100%;height:100%;transition:transform .15s ease-in}
+.nail-in svg{width:100%;height:100%;display:block}
+.plank{position:absolute;left:50%;top:30%;width:calc(var(--u)*66);height:calc(var(--u)*16);margin-left:calc(var(--u)*-33);display:flex;opacity:0;z-index:5}
+.plank .ph{flex:1;background:repeating-linear-gradient(180deg,#E3C394 0 calc(var(--u)*3),#D9B888 calc(var(--u)*3) calc(var(--u)*3.6));border:calc(var(--u)*.6) solid #C9A270}
+.plank .ph:first-child{border-radius:calc(var(--u)*2) 0 0 calc(var(--u)*2)}.plank .ph:nth-child(2){border-radius:0 calc(var(--u)*2) calc(var(--u)*2) 0}
+.cutl{position:absolute;left:50%;top:-12%;bottom:-12%;width:0;border-left:calc(var(--u)*.7) dashed #8C6A4F}
+.cutl i{position:absolute;left:calc(var(--u)*-.9);top:0;width:calc(var(--u)*1.1);height:0;background:#6B4F3A;transition:height .3s}
+.saw{position:absolute;left:50%;top:-30%;width:calc(var(--u)*26);height:calc(var(--u)*12);margin-left:calc(var(--u)*-4);transform:rotate(-62deg);transform-origin:10% 80%}
+.saw svg{width:100%;height:100%;display:block}
 .driver{width:calc(var(--u)*10);height:calc(var(--u)*20)}
 .nail{position:absolute;width:calc(var(--u)*6);height:calc(var(--u)*6);margin:calc(var(--u)*-3) 0 0 calc(var(--u)*-3);border-radius:50%;background:radial-gradient(circle at 35% 35%,#E8E4DE,#A9A39A);box-shadow:0 0 0 calc(var(--u)*.5) #8F877D}
 .nail.in{background:#8F877D}
@@ -642,6 +702,10 @@ html.girl .c-zoo,html.girl .c-paint,html.girl .c-soccer{background:#F7D3DC}html.
 /* どうぶつえん */
 .pen{position:absolute;left:4%;right:4%;top:6%;bottom:4%;border-radius:calc(var(--u)*6);background:#DCEBC8;overflow:hidden}
 .pen::after{content:"";position:absolute;left:0;right:0;bottom:0;height:calc(var(--u)*14);background:repeating-linear-gradient(90deg,#C9A27E 0 calc(var(--u)*2.4),transparent calc(var(--u)*2.4) calc(var(--u)*9)),linear-gradient(180deg,transparent 30%,#C9A27E 30%,#C9A27E 42%,transparent 42%,transparent 66%,#C9A27E 66%,#C9A27E 78%,transparent 78%)}
+.zkeeper{position:absolute;left:7%;bottom:7%;width:calc(var(--u)*16);height:calc(var(--u)*28);transform-origin:50% 100%}
+.zkeeper svg{width:100%;height:100%;display:block}
+.zbaby{position:absolute;left:27%;bottom:7%;font-size:calc(var(--u)*10);line-height:1}
+.zsponge{position:absolute;width:calc(var(--u)*14);height:calc(var(--u)*14);font-size:calc(var(--u)*12);line-height:1;display:flex;align-items:center;justify-content:center;opacity:0;z-index:4;pointer-events:none}
 .zanimal{position:absolute;left:50%;top:44%;width:calc(var(--u)*56);height:calc(var(--u)*56);margin:calc(var(--u)*-28) 0 0 calc(var(--u)*-28);font-size:calc(var(--u)*44);line-height:1;display:flex;align-items:center;justify-content:center}
 .soap{position:absolute;width:calc(var(--u)*9);height:calc(var(--u)*9);border-radius:50%;background:radial-gradient(circle at 35% 35%,#FFFDF8,#E3F0F6);border:1px solid #C6DCE6;pointer-events:none}
 /* はかせ */
@@ -655,6 +719,14 @@ html.girl .c-zoo,html.girl .c-paint,html.girl .c-soccer{background:#F7D3DC}html.
 .flask{width:calc(var(--u)*18);height:calc(var(--u)*22);position:relative}
 .labbub{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none}
 /* ペンキやさん */
+.pworker{position:absolute;width:calc(var(--u)*14);height:calc(var(--u)*24);z-index:3;pointer-events:none}
+.pworker.l{left:1%;bottom:calc(var(--u)*16)}.pworker.r{right:1%;bottom:calc(var(--u)*2)}
+.pw-fig{width:100%;height:100%}.pw-fig svg{width:100%;height:100%;display:block}
+.pw-prop{position:absolute;font-size:calc(var(--u)*7);line-height:1;transform-origin:50% 90%}
+.pworker.l .pw-prop{left:62%;top:-12%}.pworker.r .pw-prop{left:76%;top:32%}
+.pw-say{position:absolute;bottom:102%;background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.2) calc(var(--u)*2.4);font-size:calc(var(--u)*3.8);white-space:nowrap;opacity:0;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08)}
+.pworker.l .pw-say{left:0;transform-origin:0 100%}.pworker.r .pw-say{right:0;transform-origin:100% 100%}
+.pw-ladder{position:absolute;left:2%;bottom:calc(var(--u)*1);width:calc(var(--u)*12);height:calc(var(--u)*34);z-index:2;pointer-events:none;background:linear-gradient(90deg,#B9C2C9 0 14%,transparent 14% 86%,#B9C2C9 86%),repeating-linear-gradient(180deg,transparent 0 calc(var(--u)*5),#9AA6AF calc(var(--u)*5) calc(var(--u)*6.4))}
 .phouse{position:absolute;left:50%;top:4%;width:calc(var(--u)*80);height:calc(var(--u)*80);margin-left:calc(var(--u)*-40)}
 .phouse svg{width:100%;height:100%;display:block;overflow:visible}
 .rg{transition:fill .35s ease}
@@ -690,6 +762,9 @@ html.girl .c-zoo,html.girl .c-paint,html.girl .c-soccer{background:#F7D3DC}html.
 @keyframes keep{from{transform:translateX(calc(var(--u)*-14))}to{transform:translateX(calc(var(--u)*14))}}
 .ball{position:absolute;left:50%;bottom:12%;width:calc(var(--u)*16);height:calc(var(--u)*16);margin-left:calc(var(--u)*-8)}
 .ball svg{width:100%;height:100%;display:block}
+.balloons{position:absolute;left:50%;top:5%;width:calc(var(--u)*70);height:calc(var(--u)*30);margin-left:calc(var(--u)*-35);pointer-events:none}
+.sballoon{position:absolute;width:calc(var(--u)*11);height:calc(var(--u)*11);margin-left:calc(var(--u)*-5.5);font-size:calc(var(--u)*9);line-height:1;display:flex;align-items:center;justify-content:center}
+.fans{position:absolute;left:58px;right:3%;bottom:2%;display:flex;justify-content:space-around;font-size:calc(var(--u)*8);line-height:1}
 .medal{position:absolute;left:50%;top:40%;font-size:calc(var(--u)*30);line-height:1;transform:translateX(-50%);opacity:0;pointer-events:none}
 /* おまわりさん・パイロット */
 .pcar{position:absolute;left:3%;bottom:calc(var(--u)*4);width:calc(var(--u)*58);height:calc(var(--u)*31.5)}
@@ -721,6 +796,7 @@ html.girl .sky2{background:#F6E6EE}
 .lever{width:calc(var(--u)*12);height:calc(var(--u)*26)}
 .yoke{width:calc(var(--u)*24);height:calc(var(--u)*24)}
 .knob,.wheelg{transform-box:fill-box;transform-origin:center}
+.lstick{transform-box:fill-box;transform-origin:50% 100%}
 .ctl.ready::after{content:"";position:absolute;inset:calc(var(--u)*-2.5);border-radius:calc(var(--u)*5);box-shadow:0 0 calc(var(--u)*4) calc(var(--u)*1.5) rgba(255,214,140,.95);animation:glow 1.8s ease-in-out infinite;pointer-events:none}
 .arrowL,.arrowR{width:calc(var(--u)*10);height:calc(var(--u)*10);opacity:0}
 
@@ -828,6 +904,7 @@ const MESSAGES = {
   stampStart:[ "{name}{kun} はんこ ください" ],
   stampDone:[ "できた！", "できました！" ],
   register: [ "{family} の おかいけい", "いらっしゃいませ", "また きてね" ],
+  registerPay: [ "おかねを もらおう！ さわってね" ],
   registerDone: [ "ありがとうございました" ],
   deliveryReq: [ "にもつを おねがいね！", "これ とどけてね！" ],
   delivery: [ "にもつを とらっくに つもう", "{family}の おうちへ とどけよう" ],
@@ -852,10 +929,12 @@ const MESSAGES = {
   dentistTip: [ "はみがき だいじだね！", "まいにち はみがき しようね！" ],
   fire:     [ "みず を かけよう", "{name}{kun} しょうぼうし", "ひ を けそう" ],
   fireDone: [ "けしました！", "もう だいじょうぶ" ],
-  doctor:   [ "どこが いたいの？", "{name}{kun} せんせい", "{family}も みてね" ],
+  doctor:   [ "すりきずに ばんそうこうを はろう", "{name}{kun} せんせい！ きずを なおしてね" ],
+  doctorOuch:[ "ころんじゃった… いたいよ〜", "すりむいちゃった えーん" ],
   doctorDone: [ "げんきに なった！", "もう いたくない" ],
   post:     [ "ぽすとに てがみを いれよう" ],
   postGo:   [ "てがみを とどけよう！" ],
+  postHand: [ "おてがみ です！ どうぞ", "ゆうびん です！" ],
   postDone: [ "とどいたよ！", "はいたつ したよ" ],
   chef:     [ "やさい を きろう", "{family}の ごはん", "{name}{kun} こっくさん" ],
   chefDone: [ "できあがり！", "おいしそう！" ],
@@ -876,6 +955,9 @@ const MESSAGES = {
   flowerThanks: [ "わあ かわいい！ ありがとう", "すてき！ ありがとう" ],
   flowerDone: [ "かわいい はなたばの できあがり！" ],
   carpenter:[ "ねじを しめて おうちを つくろう", "{family}の おうちを つくろう" ],
+  carpenterSaw:[ "のこぎりで いたを きろう！ ぎこぎこ" ],
+  carpenterCut:[ "きれた！ いたが できたよ" ],
+  carpenterNail:[ "とんかちで くぎを うとう！ とんとん" ],
   carpenterDone: [ "かんせい！", "おうち が できた" ],
   sushi:    [ "おすし を にぎろう", "へい いらっしゃい", "{family}の おすし" ],
   sushiCust:[ "おすし ください！", "おなか すいたな" ],
@@ -891,10 +973,14 @@ const MESSAGES = {
   labYay:   [ "すごい！", "だいせいこう！" ],
   labDone:  [ "せいこう！", "いろが かわった！" ],
   paint:    [ "きれいな おうちに ぬろう", "いろを ぬって きれいに しよう" ],
+  paintStart:[ "おうちを ぬりぬり するぞ！", "さあ おしごと はじめるぞ！" ],
+  paintWork:[ "おしごと がんばるぞ！", "ぬりぬり〜", "きれいに なあれ！", "いい いろだね！", "ここも ぬろう！" ],
+  paintYay:[ "かんせい！ やったね！", "ぴかぴかの おうちだ！" ],
   paintDone:[ "できあがり！", "かわいい おうち" ],
   photo:    [ "すきな ぽーずで ぱしゃ！", "いい ぽーずの ときに とろう" ],
   photoDone:[ "いい しゃしん！", "すてきな あるばむ" ],
-  soccer:   [ "しゅーと しよう", "{name}{kun} せんしゅ", "{family}も おうえん" ],
+  soccer:   [ "ふうせんを ねらって しゅーと！", "{name}{kun} せんしゅ！ まとを ねらえ！", "{family}も おうえん してるよ！" ],
+  soccerAll:[ "ぜんぶ あてた！ きんめだる！", "すごい！ ぜんぶ わったね！" ],
   soccerGoal:[ "ごーる！", "やったね！", "ないす しゅーと！" ],
   police:   [ "みちに まよった みたい" ],
   policeHelp:[ "たすけて あげよう！", "{name}{kun} たすけて あげて" ],
@@ -914,6 +1000,8 @@ const MESSAGES = {
   astroGo:  [ "うちゅうへ しゅっぱつ！" ],
   astroChoose:[ "どの ほしに いく？ さわってね" ],
   astroHello:[ "ようこそ！", "こんにちは！", "あそびに きてくれたの？" ],
+  astroBye: [ "いってらっしゃーい！", "きをつけてね！ いってらっしゃい！" ],
+  astroWelcome:[ "おかえりなさい！", "おかえり！ うちゅうは どうだった？" ],
   astroBack:[ "ちきゅうに かえろう！" ],
   construction:[ "さわって つちを ほろう！", "{name}{kun} しょべるかー うんてん！" ],
   constMore:[ "その ちょうし！ もっと ほろう", "どんどん ほろう！" ],
@@ -935,14 +1023,16 @@ const MESSAGES = {
   cleanStart:[ "すいっちを おそう！" ],
   cleanWash:[ "ぐるぐる あらおう！" ],
   cleanHang:[ "ぴかぴか！ ほそう！ さわってね" ],
-  cleanDry: [ "おひさまで かわかそう" ],
-  cleanGive:[ "かわいた！ おきゃくさんに わたそう" ],
+  cleanDry: [ "おひさまで ぽかぽか かわかそう" ],
+  cleanGive:[ "からっと かわいた！ おきゃくさんに わたそう" ],
   cleanThanks:[ "ふわふわ！ ありがとう！", "いい におい！ ありがとう！" ],
   cafeCoffee:[ "こーひーを いれよう！ さわってね" ],
   cafeMilk: [ "みるくを そそごう！" ],
   cafeDone: [ "かわいい らてが できた！" ],
   cafeYum:  [ "かわいい！ おいしそう！", "すてき！ ありがとう！" ],
   magic:    [ "まほうの ぼうしを 3かい たたこう！", "{name}{kun} まじしゃん！ ぼうしを たたこう" ],
+  magicEmpty:[ "ぼうしの なかには なにも ありません" ],
+  magicEmpty2:[ "ぱたぱた… ほらね、からっぽ！" ],
   magicWow: [ "わあ！ すごい！", "もう いっかい みせて！" ],
 };
 
@@ -1609,13 +1699,16 @@ const ART = {
     return '<svg viewBox="0 0 200 200">' + earsSVG(sp, color) +
       `<circle cx="100" cy="112" r="80" fill="${color[0]}" stroke="${color[1]}" stroke-width="3"/>` +
       '<circle cx="70" cy="90" r="7" fill="#3A3226"/><circle cx="130" cy="90" r="7" fill="#3A3226"/>' +
-      '<g class="sad"><path d="M56 72 L80 66 M144 72 L120 66" stroke="#6E5E55" stroke-width="4" stroke-linecap="round"/><path d="M84 150 Q100 140 116 150" stroke="#3A3226" stroke-width="5" fill="none" stroke-linecap="round"/></g>' +
+      '<g class="sad"><path d="M56 72 L80 66 M144 72 L120 66" stroke="#6E5E55" stroke-width="4" stroke-linecap="round"/><path d="M84 150 Q100 140 116 150" stroke="#3A3226" stroke-width="5" fill="none" stroke-linecap="round"/>' +
+      '<path class="ptear" d="M66 102 Q60 113 66 117 Q72 113 66 102Z" fill="#9CC8E8"/><path class="ptear" d="M134 102 Q128 113 134 117 Q140 113 134 102Z" fill="#9CC8E8"/></g>' +
       '<g class="happy" opacity="0"><path d="M74 140 Q100 166 126 140" stroke="#3A3226" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="50" cy="124" r="10" fill="#F2A0A8" opacity=".55"/><circle cx="150" cy="124" r="10" fill="#F2A0A8" opacity=".55"/></g>' +
       '<ellipse cx="100" cy="112" rx="9" ry="6" fill="#6E5E55"/></svg>';
   },
   ouch(){
-    return '<svg viewBox="0 0 40 40"><g class="pulse"><circle cx="20" cy="20" r="14" fill="#F2A0A8" opacity=".75"/><circle cx="20" cy="20" r="7" fill="#F7C6CB"/></g>' +
-      '<path d="M4 6 l5 4 M36 6 l-5 4 M20 0 v6" stroke="#E88A9A" stroke-width="3" stroke-linecap="round"/></svg>';
+    // すりきず（あかい すじ ＋ ずきずき マーク）
+    return '<svg viewBox="0 0 40 40"><ellipse cx="20" cy="22" rx="14" ry="10" fill="#F4B8AE" opacity=".55"/>' +
+      '<g class="pulse"><path d="M11 17 L27 25 M13 23 L29 30 M15 13 L26 19" stroke="#D9534F" stroke-width="2.6" stroke-linecap="round"/></g>' +
+      '<path d="M3 5 l4 4 M37 5 l-4 4 M20 0 v5" stroke="#E07A7A" stroke-width="2.4" stroke-linecap="round"/></svg>';
   },
   bandage(){
     return '<svg viewBox="0 0 60 26"><rect x="1" y="3" width="58" height="20" rx="10" fill="#F3D9B1" stroke="#D9B98A" stroke-width="2"/><rect x="20" y="5" width="20" height="16" rx="3" fill="#FBEBD2"/>' +
@@ -1641,12 +1734,12 @@ const ART = {
       '<path d="M24 50 H70 L86 26 H98" stroke="#E98A7E" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
       '<path d="M40 44 H66" stroke="#B96257" stroke-width="5" stroke-linecap="round"/><path d="M94 22 v-8" stroke="#6E6A66" stroke-width="5" stroke-linecap="round"/>' +
       // ゆうびんやさん（ぼうしを かぶった ひと）
-      '<path d="M54 42 L66 48 L72 58" stroke="#5E7E9E" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '<g class="brider"><path d="M54 42 L66 48 L72 58" stroke="#5E7E9E" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
       '<rect x="44" y="14" width="20" height="30" rx="9" fill="#6F9DB5"/><path d="M58 24 L92 18" stroke="#6F9DB5" stroke-width="6" stroke-linecap="round"/><circle cx="93" cy="18" r="3.5" fill="#F6DCC3"/>' +
       '<rect x="46" y="22" width="8" height="10" rx="2" fill="#F5E6B8"/>' +
       '<circle cx="56" cy="2" r="11" fill="#F6DCC3" stroke="#D9B898" stroke-width="1.5"/>' +
       '<path d="M44 -2 Q56 -16 68 -2 Z" fill="#E98A7E"/><path d="M60 -2 H74" stroke="#B96257" stroke-width="3.5" stroke-linecap="round"/><circle cx="56" cy="-8" r="2" fill="#F5E6B8"/>' +
-      '<circle cx="60" cy="2" r="1.6" fill="#3A3226"/><circle cx="66" cy="2" r="1.6" fill="#3A3226"/><path d="M60 7 Q63 9.5 66 7" stroke="#3A3226" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="57" cy="6" r="2" fill="#F2A0A8" opacity=".6"/>' +
+      '<circle cx="60" cy="2" r="1.6" fill="#3A3226"/><circle cx="66" cy="2" r="1.6" fill="#3A3226"/><path d="M60 7 Q63 9.5 66 7" stroke="#3A3226" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="57" cy="6" r="2" fill="#F2A0A8" opacity=".6"/></g>' +
       wheel(26) + wheel(96) + "</svg>";
   },
   pot(soup){
@@ -1695,28 +1788,38 @@ const ART = {
   },
   // pre: きるまえの かみ（0=もじゃもじゃ 1=ながい かみ 2=まえがみ ぼさぼさ 3=つんつん のびのび）
   salonFace(sp, color, hair, style, pre){
-    const tufts = [], T = (d, extra) => tufts.push(`<path class="tuft" d="${d}" fill="${hair}"${extra || ""}/>`);
+    // かみの けらしく：こい いろの ふちどりと、けの すじを かく
+    const dark = "#" + [1, 3, 5].map(i => Math.round(parseInt(hair.slice(i, i + 2), 16) * 0.7).toString(16).padStart(2, "0")).join("");
+    const tufts = [], T = (d, lines) => tufts.push(`<g class="tuft"><path d="${d}" fill="${hair}" stroke="${dark}" stroke-width="2.5" stroke-linejoin="round"/>` +
+      (lines || []).map(l => `<path d="${l}" stroke="${dark}" stroke-width="2" fill="none" stroke-linecap="round" opacity=".75"/>`).join("") + "</g>");
     // あたまの うえの かみ（きらない。しあがりの かみがたと いれかわる）
-    const cap = `<path class="base" d="M100 28 Q36 28 22 104 Q44 72 100 66 Q156 72 178 104 Q164 28 100 28 Z" fill="${hair}"/>`;
+    const cap = `<g class="base"><path d="M100 28 Q36 28 22 104 Q44 72 100 66 Q156 72 178 104 Q164 28 100 28 Z" fill="${hair}" stroke="${dark}" stroke-width="2.5"/>` +
+      `<path d="M60 44 Q48 60 40 84 M84 34 Q74 50 70 68 M116 34 Q126 50 130 68 M140 44 Q152 60 160 84" stroke="${dark}" stroke-width="2" fill="none" stroke-linecap="round" opacity=".6"/></g>`;
+    tufts.push(cap);
     if (pre === 1) {
-      tufts.push(cap);
-      [14, 27, 40].forEach((x, i) => { const y = 70 + i * 6; T(`M${x} ${y} h14 v${118 - i * 10} a7 7 0 0 1 -14 0 Z`); T(`M${200 - x - 14} ${y} h14 v${118 - i * 10} a7 7 0 0 1 -14 0 Z`); });
+      // ながい かみ（さきが ほそく なる たば）
+      [14, 27, 40].forEach((x, i) => {
+        const y = 70 + i * 6, L = 118 - i * 10;
+        [x, 200 - x - 14].forEach(X => T(`M${X} ${y} H${X + 14} Q${X + 17} ${y + L * 0.7} ${X + 10} ${y + L} Q${X + 7} ${y + L + 6} ${X + 4} ${y + L} Q${X - 3} ${y + L * 0.7} ${X} ${y} Z`, [`M${X + 7} ${y + 8} Q${X + 9} ${y + L * 0.5} ${X + 7} ${y + L - 6}`]));
+      });
     } else if (pre === 2) {
       // めに かかる ながい まえがみ（ふんわり 3つの たば）
-      tufts.push(cap);
-      T("M40 70 Q52 46 82 48 L84 104 Q74 116 62 108 Q52 112 46 100 Q38 88 40 70 Z");
-      T("M76 48 Q100 40 124 48 L122 108 Q112 120 100 112 Q88 120 78 108 Z");
-      T("M118 48 Q148 46 160 70 Q162 88 154 100 Q148 112 138 108 Q126 116 116 104 Z");
+      T("M40 70 Q52 46 82 48 L84 104 Q74 116 62 108 Q52 112 46 100 Q38 88 40 70 Z", ["M56 58 Q58 80 56 100", "M70 52 Q72 78 72 104"]);
+      T("M76 48 Q100 40 124 48 L122 108 Q112 120 100 112 Q88 120 78 108 Z", ["M92 50 Q94 80 92 108", "M108 50 Q106 80 108 108"]);
+      T("M118 48 Q148 46 160 70 Q162 88 154 100 Q148 112 138 108 Q126 116 116 104 Z", ["M130 52 Q128 78 128 104", "M144 58 Q142 80 144 100"]);
     } else if (pre === 3) {
       for (let i = 0; i < 9; i++) {
         const a = (-170 + i * 20) * Math.PI / 180, b = 0.2, R1 = 66, R2 = 104;
         const p = (r, d) => `${(100 + Math.cos(a + d) * r).toFixed(1)} ${(112 + Math.sin(a + d) * r).toFixed(1)}`;
-        T(`M${p(R1, -b)} L${p(R2, 0)} L${p(R1, b)} Q${p(R1 - 16, 0)} ${p(R1, -b)} Z`);
+        T(`M${p(R1, -b)} L${p(R2, 0)} L${p(R1, b)} Q${p(R1 - 16, 0)} ${p(R1, -b)} Z`, [`M${p(R1 - 4, 0)} L${p(R2 - 12, 0)}`]);
       }
     } else {
+      // もじゃもじゃ（くるくるの まき げ）
       for (let i = 0; i < 8; i++) {
-        const a = (-160 + i * (140 / 7)) * Math.PI / 180;
-        tufts.push(`<circle class="tuft" data-i="${i}" cx="${(100 + Math.cos(a) * 74).toFixed(1)}" cy="${(112 + Math.sin(a) * 74).toFixed(1)}" r="${i % 2 ? 22 : 19}" fill="${hair}"/>`);
+        const a = (-160 + i * (140 / 7)) * Math.PI / 180, r = i % 2 ? 22 : 19;
+        const cx = 100 + Math.cos(a) * 74, cy = 112 + Math.sin(a) * 74;
+        T(`M${(cx - r).toFixed(1)} ${cy.toFixed(1)} a${r} ${r} 0 1 0 ${2 * r} 0 a${r} ${r} 0 1 0 ${-2 * r} 0 Z`,
+          [`M${(cx - r * 0.5).toFixed(1)} ${(cy + r * 0.1).toFixed(1)} q${(r * 0.25).toFixed(1)} ${(-r * 0.6).toFixed(1)} ${(r * 0.55).toFixed(1)} ${(-r * 0.1).toFixed(1)} q${(r * 0.2).toFixed(1)} ${(r * 0.45).toFixed(1)} ${(-r * 0.25).toFixed(1)} ${(r * 0.4).toFixed(1)}`]);
       }
     }
     return '<svg viewBox="0 0 200 200">' + earsSVG(sp, color) +
@@ -1886,6 +1989,27 @@ const ART = {
       '<rect x="6" y="30" width="128" height="26" rx="8" fill="#FFFCF5" stroke="#6E6A66" stroke-width="3"/><rect x="6" y="40" width="128" height="8" fill="#6F8FB0"/>' +
       '<circle cx="132" cy="36" r="3" fill="#F5E6B8"/>' + wheel(34) + wheel(106) + "</svg>";
   },
+  // はたらく ひと（ふく・ぼうし・うでの むきを えらべる）
+  person(o){
+    o = Object.assign({ shirt: "#8FB7DA", pants: "#4E5A66", hat: "cap", hatC: "#E98A7E", arm: "down", skin: "#F6DCC3" }, o);
+    const H = {
+      cap: `<path d="M12 18 Q25 2 38 18 Z" fill="${o.hatC}"/><path d="M33 17 H44" stroke="${o.hatC}" stroke-width="3.5" stroke-linecap="round"/>`,
+      safari: `<ellipse cx="25" cy="16" rx="18" ry="4" fill="${o.hatC}"/><path d="M14 16 Q25 0 36 16 Z" fill="${o.hatC}"/><path d="M14 14 H36" stroke="#8C7A4E" stroke-width="2"/>`,
+      helmet: `<path d="M11 19 Q25 1 39 19 Z" fill="${o.hatC}"/><rect x="9" y="17" width="32" height="4.5" rx="2" fill="${o.hatC}"/><path d="M25 5 V17" stroke="#fff" stroke-width="2" opacity=".5"/>`,
+      fire: `<path d="M11 19 Q25 0 39 19 Z" fill="${o.hatC}"/><path d="M8 19 H42 Q44 22 40 23 H10 Q6 22 8 19Z" fill="${o.hatC}"/><rect x="21" y="6" width="8" height="9" rx="1.5" fill="#F5D88E"/>`,
+      bandana: `<path d="M12 18 Q25 3 38 18 Z" fill="${o.hatC}"/><circle cx="17" cy="11" r="1.5" fill="#fff"/><circle cx="29" cy="9" r="1.5" fill="#fff"/><path d="M38 16 l6 3 l-5 2z" fill="${o.hatC}"/>`,
+      none: '<path d="M13 20 Q14 8 25 8 Q36 8 37 20 Q33 13 25 13 Q17 13 13 20Z" fill="#6E5440"/>',
+    };
+    const ARM = { down: "M38 40 L42 58", up: "M38 40 L46 24", forward: "M38 41 L50 40", fwdUp: "M38 41 L50 32" };
+    const HAND = { down: [42, 60], up: [46, 22], forward: [51, 40], fwdUp: [51, 31] }[o.arm];
+    return `<svg viewBox="0 0 54 92"><path d="M17 62 V88 M33 62 V88" stroke="${o.pants}" stroke-width="9" stroke-linecap="round"/>` +
+      `<rect x="10" y="34" width="30" height="32" rx="10" fill="${o.shirt}"/><path d="M25 36 V64" stroke="rgba(0,0,0,.15)" stroke-width="2"/>` +
+      `<path d="${ARM[o.arm]}" stroke="${o.shirt}" stroke-width="7" stroke-linecap="round"/><circle cx="${HAND[0]}" cy="${HAND[1]}" r="4" fill="${o.skin}"/>` +
+      `<path d="M12 40 L8 58" stroke="${o.shirt}" stroke-width="7" stroke-linecap="round"/><circle cx="8" cy="60" r="4" fill="${o.skin}"/>` +
+      `<circle cx="25" cy="22" r="12" fill="${o.skin}" stroke="#D9B898" stroke-width="1.5"/>` + H[o.hat] +
+      '<circle cx="21" cy="23" r="1.7" fill="#3A3226"/><circle cx="29" cy="23" r="1.7" fill="#3A3226"/><path d="M21 28 Q25 31 29 28" stroke="#3A3226" stroke-width="1.6" fill="none" stroke-linecap="round"/>' +
+      '<circle cx="18" cy="27" r="2" fill="#F2A0A8" opacity=".6"/><circle cx="32" cy="27" r="2" fill="#F2A0A8" opacity=".6"/></svg>';
+  },
   officer(){
     return '<svg viewBox="0 0 50 92"><path d="M17 62 V88 M33 62 V88" stroke="#3F5470" stroke-width="9" stroke-linecap="round"/>' +
       '<rect x="10" y="34" width="30" height="32" rx="10" fill="#6F8FB0"/><path d="M25 36 V64" stroke="#3F5470" stroke-width="2"/><circle cx="18" cy="46" r="3" fill="#F5D88E"/>' +
@@ -1969,7 +2093,7 @@ const ART = {
   },
   lever(){
     return '<svg viewBox="0 0 40 90"><rect x="12" y="8" width="16" height="70" rx="8" fill="#3E4A54" stroke="#2E3840" stroke-width="2"/>' +
-      '<g class="knob"><rect x="17" y="10" width="6" height="34" rx="3" fill="#A9B2B8"/><circle cx="20" cy="12" r="11" fill="#E98A7E" stroke="#B96257" stroke-width="2.5"/><circle cx="16" cy="8" r="3" fill="#F6C3BB"/></g></svg>';
+      '<rect class="lstick" x="17" y="12" width="6" height="64" rx="3" fill="#A9B2B8"/><g class="knob"><circle cx="20" cy="12" r="11" fill="#E98A7E" stroke="#B96257" stroke-width="2.5"/><circle cx="16" cy="8" r="3" fill="#F6C3BB"/></g></svg>';
   },
   yoke(){
     return '<svg viewBox="0 0 80 80"><g class="wheelg"><circle cx="40" cy="40" r="32" fill="none" stroke="#3E4A54" stroke-width="9"/>' +
@@ -2095,6 +2219,13 @@ function popIn(el, scope, delay, after){
   el.dataset.st = "enter";
   scope.anim(el, [{ transform: "scale(0)", opacity: 0 }, { transform: "scale(1.12)", opacity: 1, offset: 0.7 }, { transform: "scale(1)", opacity: 1 }],
     { duration: 380, delay: delay || 0, easing: "ease-out", fill: "both" }, () => { el.dataset.st = "idle"; el.style.transform = ""; if (after) after(); });
+}
+// レバー：あかい たまだけが みぞに そって うごく（ぼうは したから のびちぢみ）
+function moveLever(scope, root, down){
+  const knob = $(".knob", root), stick = $(".lstick", root);
+  const k = down ? [0, 34] : [34, 0], sc = down ? [1, 0.47] : [0.47, 1];
+  scope.anim(knob, [{ transform: `translateY(${k[0]}px)` }, { transform: `translateY(${k[1]}px)` }], { duration: 350, easing: "ease-out" });
+  if (stick) scope.anim(stick, [{ transform: `scaleY(${sc[0]})` }, { transform: `scaleY(${sc[1]})` }], { duration: 350, easing: "ease-out" });
 }
 function bounce(el, scope, k){
   k = k || 1.1;
@@ -2456,16 +2587,75 @@ screens.register = {
       if (!e.isPrimary) return;
       e._handled = true;
       bounce(pay, scope, 1.06);
+      if (paying) { if (cust._next) cust._next(); return; }
       if (receipt) { if (receipt._printed && performance.now() - receipt._printed > 250) cutReceipt("down"); else Sound.play("tap"); return; }
       checkout();
     });
 
     function checkout(){
-      Sound.play("chime");
       pay.classList.remove("ready");
       const list = cart; cart = [];
       showTotal(sum(list));
       $$("span", tray).forEach(ic => scope.anim(ic, [{ opacity: 1 }, { opacity: 0 }], { duration: 350 }, () => ic.remove()));
+      payment(list);
+    }
+    // おきゃくさんから おかねを もらう（おかねの べんきょう）
+    let paying = false;
+    const cust = h(`<div class="rg-cust"><div class="rg-say"><span class="t2"></span></div><div class="rg-face"></div><div class="rg-cash"></div><div class="rg-got"></div></div>`);
+    const drawer = h('<div class="drawer"><i></i></div>');
+    st.appendChild(cust); reg.appendChild(drawer);
+    const cFace = $(".rg-face", cust), cSay = $(".rg-say", cust), cSayT = $(".t2", cSay), cash = $(".rg-cash", cust), got = $(".rg-got", cust);
+    function coins(total){
+      const out = [];
+      [1000, 500, 100, 50, 10].forEach(d => { while (total >= d) { out.push(d); total -= d; } });
+      return out;
+    }
+    function payment(list){
+      paying = true;
+      const total = sum(list), money = coins(total);
+      cFace.textContent = pick(ANIMALS); cash.innerHTML = ""; got.textContent = ""; cSay.style.opacity = 0;
+      cust.style.opacity = 1;
+      slideIn(scope, cust, 120, () => {
+        scope.anim(cSay, [{ opacity: 0 }, { opacity: 1 }], { duration: 250 });
+        typeText(cSayT, `${total}えん です ね。はい どうぞ`, scope);
+        money.forEach((v, i) => {
+          const m = h(`<div class="money ${v >= 1000 ? "bill" : "c" + v}">${v}</div>`); m._v = v;
+          cash.appendChild(m); popIn(m, scope, 300 + i * 120);
+          m.addEventListener("pointerdown", e => { if (!e.isPrimary) return; e._handled = true; take(m, total); });
+        });
+        typeText(banner, msg("registerPay"), scope);
+      });
+      let recv = 0;
+      function take(m, total){
+        if (m._taken) return;
+        m._taken = true;
+        if (!drawer.classList.contains("open")) { drawer.classList.add("open"); Sound.play("pop"); }
+        const to = cpt(drawer);
+        m.style.opacity = 0;
+        flyEl(scope, st, `<div class="money ${m._v >= 1000 ? "bill" : "c" + m._v}" style="position:static">${m._v}</div>`, cpt(m), { x: to.x, y: to.y + U * 2 }, { size: U * 10, dur: 420, scale: 0.7, fade: true }, () => {
+          Sound.play("ding");
+          recv += m._v; got.textContent = `もらった おかね ${recv}えん`;
+          bounce(got, scope, 1.1);
+          if (recv >= total) done(total);
+        });
+      }
+      function done(total){
+        scope.timeout(() => {
+          drawer.classList.remove("open"); Sound.play("dosun");
+          typeText(banner, `${total}えん ちょうど いただきます！`, scope);
+          typeText(cSayT, "ありがとう！", scope);
+          scope.timeout(() => { paying = false; printReceipt(list); }, 1200);
+        }, 400);
+      }
+      // そとを さわっても つぎの おかねを うけとる
+      cust._next = () => { const m = $$(".money", cash).find(x => !x._taken); if (m) take(m, total); };
+    }
+    st.addEventListener("pointerdown", e => {
+      if (!e.isPrimary || e._handled || !paying || !cust._next) return;
+      e._handled = true; cust._next();
+    });
+    function printReceipt(list){
+      Sound.play("chime");
       const lines = [["おしごと すーぱー", "", "center"]];
       list.slice(0, 6).forEach(p => lines.push([p.name, String(p.price), ""]));
       if (list.length > 6) lines.push([`ほか ${list.length - 6}こ`, String(sum(list.slice(6))), ""]);
@@ -2528,6 +2718,7 @@ screens.register = {
       FX.burst(r.left + r.width / 2, r.top + U * 4, 5);
       scope.anim(clip, [{ transform: "translateY(0) rotate(0deg)", opacity: 1 }, { transform: `translateY(${U * 60 * M}px) rotate(10deg)`, opacity: 0 }], { duration: 650, easing: "ease-in" }, () => clip.remove());
       typeText(banner, msg("registerDone"), scope);
+      scope.timeout(() => scope.anim(cust, [{ transform: "translateX(0%)", opacity: 1 }, { transform: `translateX(${120 * M}%)`, opacity: 0 }], { duration: 500, easing: "ease-in" }, () => { cust.style.opacity = 0; }), 600);
       showTotal(sum(cart));
       if (cart.length >= 3) pay.classList.add("ready");
       scope.timeout(() => { if (!receipt) typeText(banner, msg("register"), scope); }, 2600);
@@ -2864,6 +3055,7 @@ screens.train = {
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
       <div class="tr-scene">
+        <div class="tr-sky"><div class="clouds">${ART.cloudTile()}${ART.cloudTile()}</div><div class="tr-sun"><span>☀️</span></div><div class="tr-fly"></div></div>
         <div class="tr-bg">${ART.trainBgTile()}${ART.trainBgTile()}</div>
         <div class="rail"></div>
         <div class="train"><div class="train-in">${ART.train()}<div class="win" style="left:10%"></div><div class="win" style="left:32.7%"></div><div class="win" style="left:55.5%"></div></div></div>
@@ -2875,6 +3067,30 @@ screens.train = {
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), scene = $(".tr-scene", st), bg = $(".tr-bg", st), train = $(".train", st), trainIn = $(".train-in", st);
+    const clouds = $(".tr-sky .clouds", st), sun = $(".tr-sun", st), fly = $(".tr-fly", st);
+    // そらの くもは いつも ゆっくり ながれる
+    let cloudAnim = scope.anim(clouds, [{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }], { duration: 40000, iterations: Infinity, easing: "linear" });
+    scope.anim($("span", sun), [{ transform: "rotate(0deg) scale(1)" }, { transform: "rotate(20deg) scale(1.08)" }], { duration: 2200, iterations: Infinity, direction: "alternate", easing: "ease-in-out" });
+    let flyId = 0;
+    // はしっている あいだ、とりや かぶとむしが とんでくる
+    function flyer(){
+      const W = scene.clientWidth, H = scene.clientHeight;
+      const [em, flip] = pick([["🐦", 1], ["🕊️", 1], ["🪲", 1], ["🦋", 1], ["🐝", 1], ["🎈", 0], ["✈️", 0]]);
+      const f = h(`<div class="trf">${em}</div>`), y = rnd(0.04, 0.32) * H;
+      f.style.top = y + "px"; fly.appendChild(f);
+      scope.anim(f, [{ transform: `translate(${W + U * 4}px,0px) scaleX(${flip ? 1 : 1})` }, { transform: `translate(${W / 2}px,${-U * 6}px)` }, { transform: `translate(${-U * 16}px,${U * 2}px)` }], { duration: 2600, easing: "linear" }, () => f.remove());
+    }
+    function sky(on){
+      if (on) {
+        cloudAnim.updatePlaybackRate ? cloudAnim.updatePlaybackRate(10) : (cloudAnim.playbackRate = 10);
+        scope.anim(sun, [{ transform: "translate(0px,0px)" }, { transform: `translate(${-U * 30}px,${-U * 2}px)` }], { duration: 2600, easing: "ease-in-out" });
+        flyer(); flyId = scope.interval(flyer, 1100);
+      } else {
+        try { cloudAnim.updatePlaybackRate(1); } catch (e) { cloudAnim.playbackRate = 1; }
+        scope.anim(sun, [{ transform: `translate(${-U * 30}px,${-U * 2}px)` }, { transform: "translate(0px,0px)" }], { duration: 1800, easing: "ease-in-out" });
+        scope.stopInterval(flyId);
+      }
+    }
     const wins = $$(".win", st), lever = $(".lever", st), knob = $(".knob", st), brake = $(".brake", st);
     const ready = (c, on) => c.classList.toggle("ready", !!on);
     let plat = null, phase = "board", onboard = 0, lastHorn = 0, bgAnim = null, shake = null, gid = 0;
@@ -2912,7 +3128,7 @@ screens.train = {
     // ればーを おして しゅっぱつ
     function depart(){
       phase = "drive"; ready(lever, false);
-      scope.anim(knob, [{ transform: "translateY(0px)" }, { transform: "translateY(34px)" }], { duration: 350, easing: "ease-out" });
+      moveLever(scope, lever, true);
       $$(".rider", plat).forEach(r => { if (r.dataset.st !== "done") { r.dataset.st = "done"; scope.anim(r, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 }); } });
       Sound.play("horn");
       typeText(banner, msg("trainGo"), scope);
@@ -2922,14 +3138,15 @@ screens.train = {
       bgAnim = scope.anim(bg, [{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }], { duration: 1100, iterations: Infinity, easing: "linear" });
       shake = scope.anim(trainIn, [{ transform: "translateY(0px)" }, { transform: `translateY(${U * 0.6}px)` }, { transform: "translateY(0px)" }], { duration: 220, iterations: Infinity });
       gid = scope.interval(() => Sound.play("gatan"), 440);
+      sky(true);
       // そろそろ えき
       scope.timeout(() => { phase = "brake"; ready(brake, true); Sound.play("chime"); typeText(banner, msg("trainBrake"), scope); }, 2600);
     }
     // ぶれーきで とまる
     function stop(){
       phase = "stopping"; ready(brake, false);
-      scope.anim(knob, [{ transform: "translateY(34px)" }, { transform: "translateY(0px)" }], { duration: 350, easing: "ease-out" });
-      Sound.play("brake"); scope.stopInterval(gid);
+      moveLever(scope, lever, false);
+      Sound.play("brake"); scope.stopInterval(gid); sky(false);
       if (bgAnim) { try { bgAnim.updatePlaybackRate(0.4); } catch (e) { bgAnim.playbackRate = 0.4; } }
       scope.timeout(() => { if (bgAnim) bgAnim.cancel(); if (shake) shake.cancel(); bgAnim = shake = null; }, 800);
       arrive();
@@ -3333,11 +3550,35 @@ screens.fire = {
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="scene2"><div class="bldg"></div><div class="road"></div><div class="ftruck">${ART.fireTruck()}</div></div>
+      <div class="scene2"><div class="bldg"></div><div class="road"></div><div class="ftruck">${ART.fireTruck()}</div>
+        <svg class="hoseL"><path d="" fill="none" stroke="#B9473F" stroke-width="5" stroke-linecap="round"/></svg>
+        <div class="ffighter">${ART.person({ shirt: "#4A5568", pants: "#3A4252", hat: "fire", hatC: "#E0B33C", arm: "forward" })}</div>
+        <div class="nozzle"><svg viewBox="0 0 44 14"><rect x="0" y="3" width="30" height="8" rx="3" fill="#8F959A"/><rect x="28" y="1" width="14" height="12" rx="2" fill="#D3A956"/><rect x="2" y="2" width="8" height="10" rx="2" fill="#B9473F"/></svg></div></div>
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), scene = $(".scene2", st), bldg = $(".bldg", st), truck = $(".ftruck", st);
-    let phase = "spray", first = true;
+    const ff = $(".ffighter", st), noz = $(".nozzle", st), hose = $(".hoseL path", st);
+    let phase = "spray", first = true, ang = -35;
+    // しょうぼうしさんが ホースを もって ひを けす
+    const NZ_LEN = () => noz.offsetWidth * 0.95;
+    function place(){
+      const sr = scene.getBoundingClientRect(), tr = truck.getBoundingClientRect();
+      ff.style.left = (tr.right - sr.left + U * 1) + "px";
+      const fr = ff.getBoundingClientRect(), hand = { x: fr.left - sr.left + fr.width * 0.92, y: fr.top - sr.top + fr.height * 0.44 };
+      noz.style.left = (hand.x - noz.offsetWidth * 0.1) + "px"; noz.style.top = (hand.y - noz.offsetHeight / 2) + "px";
+      noz._hand = hand;
+      setAim(ang);
+    }
+    function setAim(a){
+      ang = a; noz.style.transform = `rotate(${a}deg)`;
+      const sr = scene.getBoundingClientRect(), tr = truck.getBoundingClientRect(), h0 = noz._hand;
+      const reel = { x: tr.left - sr.left + tr.width * 0.55, y: tr.top - sr.top + tr.height * 0.5 };
+      hose.setAttribute("d", `M${reel.x} ${reel.y} Q${(reel.x + h0.x) / 2} ${Math.max(reel.y, h0.y) + U * 14} ${h0.x} ${h0.y}`);
+    }
+    function crew(on){
+      [ff, noz, $(".hoseL", st)].forEach(x => { x.style.opacity = on ? 1 : 0; });
+      if (on) { place(); popIn(ff, scope); }
+    }
     function newFires(){
       phase = "spray";
       bldg.innerHTML = ART.building(pick(BLDG_COLORS));
@@ -3349,9 +3590,9 @@ screens.fire = {
       if (first) {   // はじめは サイレンを ならして かけつける
         first = false;
         const base = truck.offsetLeft, tw = truck.offsetWidth;
-        truck.classList.add("spin"); Sound.play("fireSiren");
-        scope.anim(truck, [{ transform: `translateX(${-base - tw}px)` }, { transform: "translateX(0px)" }], { duration: 1300, easing: "ease-out" }, () => truck.classList.remove("spin"));
-      }
+        truck.classList.add("spin"); Sound.play("fireSiren"); crew(false); phase = "arrive";
+        scope.anim(truck, [{ transform: `translateX(${-base - tw}px)` }, { transform: "translateX(0px)" }], { duration: 1300, easing: "ease-out" }, () => { truck.classList.remove("spin"); crew(true); phase = "spray"; });
+      } else crew(true);
       shuffle(FIRE_SPOTS).slice(0, ri(3, 4)).forEach(([x, y], i) => {
         const f = h(`<div class="flame" style="left:${x}%;top:${y}%"><div class="fl-in">${ART.flame()}</div></div>`);
         f._hp = 2; bldg.appendChild(f); popIn(f, scope, 150 + i * 150);
@@ -3363,9 +3604,16 @@ screens.fire = {
       if (!live.length) return;
       const f = nearest(live, x, y);
       f._hp--;
-      const tr = truck.getBoundingClientRect(), noz = { x: tr.left + tr.width * 0.86, y: tr.top + tr.height * 0.05 }, to = cpt(f);
+      // ホースの さきを ひの ほうへ むける（うえの ひなら うえを むく）
+      if (!noz._hand) place();
+      const sr = scene.getBoundingClientRect(), to = cpt(f), h0 = noz._hand, hx = sr.left + h0.x, hy = sr.top + h0.y;
+      const a = Math.max(-75, Math.min(5, Math.atan2(to.y - hy, to.x - hx) * 180 / Math.PI));
+      const from = ang;
+      scope.anim(noz, [{ transform: `rotate(${from}deg)` }, { transform: `rotate(${a}deg)` }], { duration: 200, easing: "ease-out" });
+      setAim(a);
+      const tip = { x: hx + Math.cos(a * Math.PI / 180) * NZ_LEN(), y: hy + Math.sin(a * Math.PI / 180) * NZ_LEN() };
       Sound.play("spray");
-      for (let i = 0; i < 5; i++) scope.timeout(() => flyEl(scope, st, '<div class="drop"></div>', noz, { x: to.x + rnd(-U * 3, U * 3), y: to.y + rnd(-U * 3, U * 3) }, { size: U * 4, dur: 380, arc: U * 14, scale: 0.8, fade: true }), i * 60);
+      for (let i = 0; i < 6; i++) scope.timeout(() => flyEl(scope, st, '<div class="drop"></div>', tip, { x: to.x + rnd(-U * 3, U * 3), y: to.y + rnd(-U * 3, U * 3) }, { size: U * 4, dur: 360, arc: U * 4, scale: 0.9, fade: true }), 180 + i * 50);
       scope.timeout(() => {
         const inner = $(".fl-in", f);
         if (f._hp > 0) scope.anim(inner, [{ transform: "scale(1)" }, { transform: "scale(.55)" }], { duration: 300 });
@@ -3379,7 +3627,7 @@ screens.fire = {
       const rs = $(".rp-say .t2", bldg), pal = $(".roofpal", bldg);
       if (rs) typeText(rs, "ありがとう！", scope);
       if (pal) scope.anim(pal, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 5}px)` }, { transform: "translateY(0px)" }], { duration: 400, iterations: 3, fill: "none" });
-      scope.timeout(() => Sound.play("fireSiren"), 900);
+      scope.timeout(() => { Sound.play("fireSiren"); crew(false); }, 900);
       const r = bldg.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top + r.height / 2, 6);
       truck.classList.add("spin");
       const W = scene.clientWidth, base = truck.offsetLeft, tw = truck.offsetWidth;
@@ -3417,7 +3665,11 @@ screens.doctor = {
         const o = h(`<div class="ouch" style="left:${x}%;top:${y}%">${ART.ouch()}</div>`);
         o._done = false; face.appendChild(o); popIn(o, scope, 500 + i * 150);
       });
-      slideIn(scope, face, -150);
+      slideIn(scope, face, -150, () => {
+        // 「いたいよ〜」
+        scope.anim(bubble, [{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
+        typeText(bt, msg("doctorOuch"), scope);
+      });
       typeText(banner, msg("doctor"), scope);
     }
     function heal(x, y){
@@ -3425,6 +3677,7 @@ screens.doctor = {
       if (!left.length) return;
       const o = nearest(left, x, y);
       o._done = true;
+      if (left.length === $$(".ouch", face).length) scope.anim(bubble, [{ opacity: 1 }, { opacity: 0 }], { duration: 250 });
       o.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;transform:rotate(${ri(-35, 35)}deg)">${ART.bandage()}</div>`;
       scope.anim(o, [{ transform: "scale(1.5)", opacity: 0 }, { transform: "scale(.95)", opacity: 1, offset: 0.7 }, { transform: "scale(1)", opacity: 1 }], { duration: 320, easing: "ease-out" });
       Sound.play("pop"); scope.timeout(() => Sound.play("shara"), 120);
@@ -3462,16 +3715,28 @@ screens.post = {
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
       <div class="scene2" style="flex:1.4">
+        <div class="sky3"><div class="clouds">${ART.cloudTile()}${ART.cloudTile()}</div><div class="tr-sun"><span>☀️</span></div><div class="tr-fly"></div></div>
         <div class="pbox">${ART.postbox()}</div><div class="road"></div>
         <div class="dest">${ART.house()}<div class="resident"></div><div class="hand">👋</div></div>
         <div class="bike">${ART.bike()}</div>
+        <div class="carrier">${ART.person({ shirt: "#6F9DB5", pants: "#5E7E9E", hat: "cap", hatC: "#E98A7E", arm: "forward" })}</div>
       </div>
       <div class="tray2"></div>
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), scene = $(".scene2", st), pbox = $(".pbox", st), bike = $(".bike", st), dest = $(".dest", st);
-    const resident = $(".resident", st), hand = $(".hand", st), tray = $(".tray2", st);
+    const resident = $(".resident", st), hand = $(".hand", st), tray = $(".tray2", st), carrier = $(".carrier", st);
+    const fly = $(".tr-fly", st);
     let phase = "load", count = 0;
+    // そら：くもが ながれて、ときどき とりや ふうせんが とぶ
+    scope.anim($(".sky3 .clouds", st), [{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }], { duration: 30000, iterations: Infinity, easing: "linear" });
+    scope.anim($(".tr-sun span", st), [{ transform: "rotate(0deg) scale(1)" }, { transform: "rotate(20deg) scale(1.08)" }], { duration: 2200, iterations: Infinity, direction: "alternate", easing: "ease-in-out" });
+    scope.interval(() => {
+      const W = scene.clientWidth, H = scene.clientHeight, f = h(`<div class="trf">${pick(["🐦", "🕊️", "🎈", "🦋", "🪁"])}</div>`);
+      const ltr = Math.random() < 0.5;
+      f.style.top = (rnd(0.05, 0.28) * H) + "px"; fly.appendChild(f);
+      scope.anim(f, [{ transform: `translate(${ltr ? -U * 12 : W + U * 4}px,0px)` }, { transform: `translate(${W / 2}px,${-U * 5}px)` }, { transform: `translate(${ltr ? W + U * 4 : -U * 12}px,${U * 2}px)` }], { duration: 5000, easing: "linear" }, () => f.remove());
+    }, 3800);
     function newLetters(){
       phase = "load"; count = 0; tray.innerHTML = "";
       shuffle(LETTER_COLORS).slice(0, 3).forEach((c, i) => {
@@ -3503,26 +3768,56 @@ screens.post = {
           bike.classList.add("spin");
           scope.anim(bike, [{ transform: "translateX(0px)" }, { transform: `translateX(${W - base + 10}px)` }], { duration: 1000, easing: "ease-in" }, () => {
             bike.classList.remove("spin");
-            slideIn(scope, dest, 170, deliver);
+            slideIn(scope, dest, 170, () => scope.timeout(deliver, 200));
           });
         }, 500);
       });
     }
+    // うんてんしゅさんが いえの ひとに てわたし
     function deliver(){
-      const dr = dest.getBoundingClientRect(), mb = { x: dr.left + dr.width * 0.87, y: dr.top + dr.height * 0.66 }, sr = scene.getBoundingClientRect();
-      for (let i = 0; i < 3; i++) scope.timeout(() => flyEl(scope, st, ART.letter(pick(LETTER_COLORS)), { x: sr.left + U * 4, y: sr.top + sr.height * 0.4 }, mb, { size: U * 14, dur: 550, scale: 0.4, fade: true }, () => Sound.play("post")), i * 250);
-      scope.timeout(() => {
-        resident.textContent = pick(ANIMALS);
-        scope.anim(resident, [{ transform: "scale(0)", opacity: 0 }, { transform: "scale(1.15)", opacity: 1, offset: 0.7 }, { transform: "scale(1)", opacity: 1 }], { duration: 400 });
-        scope.anim(hand, [{ opacity: 0 }, { opacity: 1 }], { duration: 200 });
-        scope.anim(hand, [{ transform: "rotate(-18deg)" }, { transform: "rotate(18deg)" }, { transform: "rotate(-18deg)" }], { duration: 700, iterations: 3, fill: "none" });
-        Sound.play("chime"); const c = cpt(resident); FX.burst(c.x, c.y, 6);
-        typeText(banner, msg("postDone"), scope, () => scope.timeout(() => {
-          scope.anim(resident, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
-          scope.anim(hand, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
-          slideOut(scope, dest, 170, () => { bike.style.opacity = 0; newLetters(); });
-        }, 1600));
-      }, 1200);
+      const base = bike.offsetLeft, bw = bike.offsetWidth;
+      const stopX = dest.offsetLeft - bw * 0.95 - base;
+      bike.classList.add("spin"); Sound.play("broro");
+      scope.anim(bike, [{ transform: `translateX(${-base - bw}px)` }, { transform: `translateX(${stopX}px)` }], { duration: 900, easing: "ease-out" }, () => {
+        bike.classList.remove("spin");
+        // バイクを おりて げんかんまで あるく
+        const cx0 = base + stopX + bw * 0.55, door = dest.offsetLeft + dest.offsetWidth * 0.2 - carrier.offsetWidth * 0.9;
+        carrier.style.left = cx0 + "px"; carrier.style.opacity = 1; $(".brider", bike).style.opacity = 0;
+        popIn(carrier, scope, 0, () => {
+          scope.anim(carrier, [{ transform: "translate(0px,0px)" }, { transform: `translate(${(door - cx0) / 2}px,${-U * 1.2}px)` }, { transform: `translate(${door - cx0}px,0px)` }], { duration: 800, easing: "ease-in-out" }, () => {
+            resident.textContent = pick(ANIMALS);
+            scope.anim(resident, [{ transform: "scale(0)", opacity: 0 }, { transform: "scale(1.15)", opacity: 1, offset: 0.7 }, { transform: "scale(1)", opacity: 1 }], { duration: 400 });
+            Sound.play("ding");
+            typeText(banner, msg("postHand"), scope);
+            scope.timeout(handOver, 600);
+          });
+        });
+        function handOver(){
+          const cr = carrier.getBoundingClientRect(), from = { x: cr.right - cr.width * 0.08, y: cr.top + cr.height * 0.44 };
+          for (let i = 0; i < 3; i++) scope.timeout(() => {
+            scope.anim(carrier, [{ transform: `translate(${door - cx0}px,0px)` }, { transform: `translate(${door - cx0 + U * 2}px,0px)` }, { transform: `translate(${door - cx0}px,0px)` }], { duration: 300, fill: "none" });
+            flyEl(scope, st, ART.letter(pick(LETTER_COLORS)), from, cpt(resident), { size: U * 10, dur: 420, arc: U * 3, scale: 0.6, fade: true }, () => { Sound.play("post"); bounce(resident, scope, 1.12); });
+          }, i * 450);
+          scope.timeout(thanks, 1500);
+        }
+        function thanks(){
+          scope.anim(hand, [{ opacity: 0 }, { opacity: 1 }], { duration: 200 });
+          scope.anim(hand, [{ transform: "rotate(-18deg)" }, { transform: "rotate(18deg)" }, { transform: "rotate(-18deg)" }], { duration: 700, iterations: 3, fill: "none" });
+          Sound.play("chime"); const c = cpt(resident); FX.burst(c.x, c.y, 6);
+          typeText(banner, msg("postDone"), scope, () => scope.timeout(() => {
+            scope.anim(resident, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+            scope.anim(hand, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
+            scope.anim(carrier, [{ transform: `translate(${door - cx0}px,0px)`, opacity: 1 }, { transform: "translate(0px,0px)", opacity: 0 }], { duration: 700, easing: "ease-in-out" }, () => {
+              carrier.style.opacity = 0; $(".brider", bike).style.opacity = 1;
+              bike.classList.add("spin"); Sound.play("broro");
+              scope.anim(bike, [{ transform: `translateX(${stopX}px)` }, { transform: `translateX(${scene.clientWidth - base + 10}px)` }], { duration: 900, easing: "ease-in" }, () => {
+                bike.classList.remove("spin"); bike.style.opacity = 0;
+                slideOut(scope, dest, 170, newLetters);
+              });
+            });
+          }, 1400));
+        }
+      });
     }
     el.addEventListener("pointerdown", e => {
       if (!e.isPrimary || e._handled) return;
@@ -3985,41 +4280,71 @@ screens.flower = {
 
 /* ---------- だいくさん ---------- */
 const NAILS = [[[22, 82], [78, 82]], [[36, 38], [64, 38]], [[45, 70], [55, 86]], [[29, 53], [71, 53]]];
+const PIECE_TOOL = ["nail", "screw", "nail", "screw"];   // くぎ（とんかち）と ねじ（ドライバー）を こうたいで
+const NAIL_SVG = '<svg viewBox="0 0 20 44"><path d="M8 6 H12 V36 L10 43 L8 36 Z" fill="#C8CDD2" stroke="#8F959A" stroke-width="1.6" stroke-linejoin="round"/><rect x="2" y="1" width="16" height="6" rx="2" fill="#AEB5BB" stroke="#7E858B" stroke-width="1.6"/></svg>';
+const SAW_SVG = '<svg viewBox="0 0 64 30"><path d="M4 24 L46 10 L46 26 Z" fill="#DADFE3" stroke="#8F959A" stroke-width="2" stroke-linejoin="round"/>' +
+  '<path d="M6 25 l3 3 l3 -3 l3 3 l3 -3 l3 3 l3 -3 l3 3 l3 -3 l3 3 l3 -3 l3 3 l3 -3" stroke="#8F959A" stroke-width="1.6" fill="none"/>' +
+  '<rect x="44" y="6" width="18" height="22" rx="7" fill="#B8936A"/><rect x="50" y="12" width="7" height="10" rx="3" fill="#F2EEE4"/></svg>';
 screens.carpenter = {
   el: $("#s-carpenter"),
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="area"><div class="chouse">${ART.chouse()}<div class="cp-res"></div></div><div class="tool driver">${ART.driver()}</div></div>
+      <div class="area"><div class="chouse">${ART.chouse()}<div class="cp-res"></div></div><div class="tool driver">${ART.driver()}</div><div class="tool hmr">${ART.hammer()}</div>
+        <div class="plank"><div class="ph"></div><div class="ph"></div><div class="cutl"><i></i></div><div class="saw">${SAW_SVG}</div></div></div>
     </div>`);
     el.appendChild(st);
-    const banner = $(".t", st), area = $(".area", st), house = $(".chouse", st), driver = $(".driver", st), res = $(".cp-res", st);
-    let phase = "wait", stage = 0;
+    const banner = $(".t", st), area = $(".area", st), house = $(".chouse", st), driver = $(".driver", st), hmr = $(".hmr", st), res = $(".cp-res", st);
+    const plank = $(".plank", st), halves = $$(".ph", plank), cutFill = $(".cutl i", plank), saw = $(".saw", plank);
+    let phase = "wait", stage = 0, cuts = 0;
+    // 0. のこぎりで いたを きる
+    function sawStart(){
+      phase = "saw"; cuts = 0;
+      plank.style.opacity = 1; halves.forEach(x => { x.style.transform = ""; }); cutFill.style.height = "0%";
+      popIn(plank, scope);
+      typeText(banner, msg("carpenterSaw"), scope);
+    }
+    function sawCut(){
+      phase = "busy"; cuts++;
+      Sound.play("cut"); scope.timeout(() => Sound.play("cut"), 200);
+      scope.anim(saw, [{ transform: "translate(0px,0px) rotate(-62deg)" }, { transform: `translate(${-U * 3}px,${U * 4}px) rotate(-62deg)` }], { duration: 120, iterations: 4, direction: "alternate", fill: "none" });
+      cutFill.style.height = (cuts * 34) + "%";
+      const r = plank.getBoundingClientRect(); FX.burst(r.left + r.width / 2, r.top + r.height * (0.2 + cuts * 0.25), 4);
+      scope.timeout(() => {
+        if (cuts < 3) { phase = "saw"; return; }
+        Sound.play("dosun");
+        scope.anim(halves[0], [{ transform: "translateX(0px) rotate(0deg)" }, { transform: `translateX(${-U * 6}px) rotate(-6deg)` }], { duration: 400, easing: "ease-out" });
+        scope.anim(halves[1], [{ transform: "translateX(0px) rotate(0deg)" }, { transform: `translateX(${U * 6}px) rotate(6deg)` }], { duration: 400, easing: "ease-out" });
+        typeText(banner, msg("carpenterCut"), scope);
+        scope.timeout(() => scope.anim(plank, [{ opacity: 1 }, { opacity: 0 }], { duration: 400 }, () => { plank.style.opacity = 0; piece(0); }), 900);
+      }, 500);
+    }
     function piece(i){
       phase = "wait";
-      const g = $(".p" + i, house);
+      const g = $(".p" + i, house), tool = PIECE_TOOL[i];
       Sound.play("dosun");
+      typeText(banner, msg(tool === "nail" ? "carpenterNail" : "carpenter"), scope);
       scope.anim(g, [{ transform: "translateY(-40px)", opacity: 0 }, { transform: "translateY(0px)", opacity: 1 }], { duration: 450, easing: "ease-in" }, () => {
         bounce(house, scope, 1.02);
         NAILS[i].forEach(([x, y], k) => {
-          const n = h(`<div class="screw" style="left:${x}%;top:${y}%">${ART.screw()}</div>`);
-          n._done = false; house.appendChild(n); popIn(n, scope, k * 120);
+          const n = tool === "nail" ? h(`<div class="nailp" style="left:${x}%;top:${y}%"><div class="nail-in">${NAIL_SVG}</div></div>`) : h(`<div class="screw" style="left:${x}%;top:${y}%">${ART.screw()}</div>`);
+          n._done = false; n._hits = 0; n._tool = tool; house.appendChild(n); popIn(n, scope, k * 120);
         });
         phase = "nail";
       });
     }
     function newHouse(){
       stage = 0;
-      $$(".screw", house).forEach(n => n.remove());
+      $$(".screw,.nailp", house).forEach(n => n.remove());
       [0, 1, 2, 3].forEach(i => { const g = $(".p" + i, house); g.style.opacity = 0; g.style.transform = ""; });
       res.style.opacity = 0; house.style.opacity = ""; house.style.transform = "";
-      typeText(banner, msg("carpenter"), scope);
-      piece(0);
+      sawStart();
     }
     function hit(x, y){
-      const left = $$(".screw", house).filter(n => !n._done);
+      const left = $$(".screw,.nailp", house).filter(n => !n._done);
       if (!left.length) return;
       const n = nearest(left, x, y);
+      if (n._tool === "nail") return hammer(n);
       n._done = true;
       const hr = n.getBoundingClientRect(), c = { x: hr.left + hr.width / 2, y: hr.top + hr.height * 0.19 }, ar = area.getBoundingClientRect();
       // ドライバーで くるくる しめる
@@ -4033,14 +4358,28 @@ screens.carpenter = {
       Sound.play("screw");
       scope.anim($(".cross", n), [{ transform: "rotate(0deg)" }, { transform: "rotate(270deg)" }], { duration: 450, easing: "ease-in-out" });
       scope.anim($(".shank", n), [{ transform: "scaleY(1)" }, { transform: "scaleY(0)" }], { duration: 450, easing: "ease-in" });
+      scope.timeout(() => { Sound.play("hammer"); FX.burst(c.x, c.y, 3); after(); }, 480);
+    }
+    // とんかちで とんとん（2かいで くぎが はいる）
+    function hammer(n){
+      n._hits++;
+      if (n._hits >= 2) n._done = true;
+      const r = n.getBoundingClientRect(), ar = area.getBoundingClientRect(), w = hmr.offsetWidth;
+      const headY = r.top + r.height * (n._hits === 1 ? 0.05 : 0.45);
+      hmr.style.left = (r.left + r.width / 2 - ar.left - w * 0.22) + "px"; hmr.style.top = (headY - ar.top - w * 0.3) + "px";
+      scope.anim(hmr, [{ transform: "rotate(-45deg)", opacity: 1 }, { transform: "rotate(0deg)", opacity: 1, offset: 0.45 }, { transform: "rotate(-30deg)", opacity: 1, offset: 0.8 }, { transform: "rotate(-30deg)", opacity: 0 }], { duration: 480, easing: "ease-in" });
       scope.timeout(() => {
         Sound.play("hammer");
-        FX.burst(c.x, c.y, 3);
-        if ($$(".screw", house).every(z => z._done) && phase === "nail") {
-          phase = "wait"; stage++;
-          scope.timeout(() => stage < 4 ? piece(stage) : done(), 450);
-        }
-      }, 480);
+        $(".nail-in", n).style.transform = `translateY(${n._hits >= 2 ? 82 : 45}%)`;
+        FX.burst(r.left + r.width / 2, headY, 3);
+        if (n._done) after();
+      }, 220);
+    }
+    function after(){
+      if ($$(".screw,.nailp", house).every(z => z._done) && phase === "nail") {
+        phase = "wait"; stage++;
+        scope.timeout(() => stage < 4 ? piece(stage) : done(), 450);
+      }
     }
     function done(){
       phase = "done";
@@ -4054,7 +4393,7 @@ screens.carpenter = {
     el.addEventListener("pointerdown", e => {
       if (!e.isPrimary || e._handled) return;
       e._handled = true;
-      if (phase === "nail") hit(e.clientX, e.clientY); else tapOther(e);
+      if (phase === "nail") hit(e.clientX, e.clientY); else if (phase === "saw") sawCut(); else tapOther(e);
     });
     newHouse();
   },
@@ -4151,12 +4490,21 @@ screens.zoo = {
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="area"><div class="pen"></div><div class="zanimal"></div></div>
+      <div class="area"><div class="pen"></div><div class="zkeeper">${ART.person({ shirt: "#A9B77A", pants: "#6E6A56", hat: "safari", hatC: "#D9C48A", arm: "forward" })}</div><div class="zbaby"></div><div class="zanimal"></div><div class="zsponge">🧽</div></div>
       <div class="tray2"></div>
     </div>`);
     el.appendChild(st);
-    const banner = $(".t", st), area = $(".area", st), ani = $(".zanimal", st), tray = $(".tray2", st);
+    const banner = $(".t", st), area = $(".area", st), ani = $(".zanimal", st), tray = $(".tray2", st), keeper = $(".zkeeper", st), baby = $(".zbaby", st), sponge = $(".zsponge", st);
     let phase = "feed", n = 0;
+    // うしろで しいくいんさんが ごはんを あげている
+    baby.textContent = pick(["🐐", "🐧", "🐑", "🦘"]);
+    scope.interval(() => {
+      const kr = keeper.getBoundingClientRect();
+      flyEl(scope, st, pick(["🥕", "🍎", "🐟", "🌿"]), { x: kr.right - kr.width * 0.08, y: kr.top + kr.height * 0.44 }, cpt(baby), { size: U * 7, font: U * 6, dur: 600, arc: U * 8, scale: 0.6, fade: true }, () => {
+        scope.anim(baby, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 2}px)` }, { transform: "translateY(0px)" }], { duration: 300, iterations: 2, fill: "none" });
+      });
+      scope.anim(keeper, [{ transform: "rotate(0deg)" }, { transform: "rotate(6deg)" }, { transform: "rotate(0deg)" }], { duration: 400, fill: "none" });
+    }, 3600);
     ZOO_FOODS.forEach(f => {
       const b = h(`<div class="ti2">${f}</div>`);
       b.addEventListener("pointerdown", e => { if (!e.isPrimary) return; e._handled = true; bounce(b, scope, 1.15); act(cpt(b), f); });
@@ -4165,6 +4513,7 @@ screens.zoo = {
     function newAnimal(){
       phase = "feed"; n = 0;
       $$(".soap", area).forEach(s => s.remove());
+      sponge.style.opacity = 0;
       ani.textContent = pick(ZOO_ANIMALS); ani.style.transform = ""; ani.style.opacity = "";
       slideIn(scope, ani, -200);
       typeText(banner, msg("zoo"), scope, () => scope.timeout(() => { if (phase === "feed" && n === 0) typeText(banner, msg("zooFeed"), scope); }, 1600));
@@ -4181,14 +4530,18 @@ screens.zoo = {
           else phase = "feed";
         });
       } else if (phase === "wash") {
+        // スポンジで ごしごし
         const r = ani.getBoundingClientRect(), ar = area.getBoundingClientRect();
-        for (let i = 0; i < 3; i++) {
+        const sx = r.left - ar.left + [0.3, 0.68, 0.48][n % 3] * r.width, sy = r.top - ar.top + [0.35, 0.45, 0.68][n % 3] * r.height;
+        sponge.style.left = (sx - U * 7) + "px"; sponge.style.top = (sy - U * 7) + "px"; sponge.style.opacity = 1;
+        scope.anim(sponge, [{ transform: "translate(0px,0px) rotate(-10deg)" }, { transform: `translate(${U * 4}px,${-U * 1}px) rotate(10deg)` }], { duration: 140, iterations: 6, direction: "alternate", fill: "none" });
+        for (let i = 0; i < 4; i++) {
           const s = h('<div class="soap"></div>');
-          s.style.left = (r.left - ar.left + rnd(0.15, 0.85) * r.width - U * 4.5) + "px";
-          s.style.top = (r.top - ar.top + rnd(0.15, 0.85) * r.height - U * 4.5) + "px";
-          area.appendChild(s); popIn(s, scope, i * 60);
+          s.style.left = (sx + rnd(-U * 9, U * 9) - U * 4.5) + "px";
+          s.style.top = (sy + rnd(-U * 8, U * 8) - U * 4.5) + "px";
+          area.appendChild(s); popIn(s, scope, 150 + i * 120);
         }
-        Sound.play("shara"); bounce(ani, scope, 1.05);
+        Sound.play("brush"); scope.timeout(() => Sound.play("shara"), 300); bounce(ani, scope, 1.05);
         n++;
         if (n >= 3) { phase = "rinse"; scope.timeout(rinse, 400); }
       } else { Sound.play("pop"); FX.burst(from.x, from.y, 3); }
@@ -4202,6 +4555,7 @@ screens.zoo = {
       }, i * 70);
       scope.timeout(() => {
         $$(".soap", area).forEach(s => scope.anim(s, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 }, () => s.remove()));
+        scope.anim(sponge, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 });
         Sound.play("sparkle"); scope.timeout(() => Sound.play("chime"), 250);
         FX.burst(r.left + r.width / 2, r.top + r.height / 2, 7);
         scope.anim(ani, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 8}px)` }, { transform: "translateY(0px)" }], { duration: 450, iterations: 2, fill: "none" });
@@ -4364,12 +4718,28 @@ screens.paint = {
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="area"><div class="phouse">${ART.paintHouse()}<div class="p-res"></div></div><div class="tool" style="width:calc(var(--u)*14);height:calc(var(--u)*14)">${'<svg viewBox="0 0 60 60"><rect x="8" y="8" width="36" height="16" rx="6" fill="#F4F1EC" stroke="#A99C8A" stroke-width="3"/><path d="M44 16 H52 V30 H30 V40" stroke="#A99C8A" stroke-width="4" fill="none"/><rect x="26" y="38" width="8" height="18" rx="3" fill="#B8936A"/></svg>'}</div></div>
+      <div class="area"><div class="phouse">${ART.paintHouse()}<div class="p-res"></div></div>
+        <div class="pw-ladder"></div>
+        <div class="pworker l"><div class="pw-fig">${ART.person({ shirt: "#F2F0EA", pants: "#8FB7DA", hat: "bandana", hatC: "#E98A7E", arm: "up" })}</div><span class="pw-prop">🖌️</span><div class="pw-say"><span class="t2"></span></div></div>
+        <div class="pworker r"><div class="pw-fig">${ART.person({ shirt: "#F2F0EA", pants: "#9BC48A", hat: "cap", hatC: "#F5D88E", arm: "forward" })}</div><span class="pw-prop">🪣</span><div class="pw-say"><span class="t2"></span></div></div>
+        <div class="tool" style="width:calc(var(--u)*14);height:calc(var(--u)*14)">${'<svg viewBox="0 0 60 60"><rect x="8" y="8" width="36" height="16" rx="6" fill="#F4F1EC" stroke="#A99C8A" stroke-width="3"/><path d="M44 16 H52 V30 H30 V40" stroke="#A99C8A" stroke-width="4" fill="none"/><rect x="26" y="38" width="8" height="18" rx="3" fill="#B8936A"/></svg>'}</div></div>
       <div class="tray2"></div>
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), area = $(".area", st), house = $(".phouse", st), res = $(".p-res", st), roller = $(".tool", st), tray = $(".tray2", st);
-    let phase = "paint", sel = 0;
+    let phase = "paint", sel = 0, who = 0;
+    // まわりで しょくにんさんも いっしょに はたらく
+    const workers = $$(".pworker", st);
+    function talk(key){
+      const w = workers[who++ % 2], say = $(".pw-say", w);
+      workers.forEach(x => { if (x !== w) $(".pw-say", x).style.opacity = 0; });
+      scope.anim(say, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], { duration: 250 });
+      typeText($(".t2", say), msg(key), scope);
+      scope.anim($(".pw-fig", w), [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 2}px)` }, { transform: "translateY(0px)" }], { duration: 300, iterations: 2, fill: "none" });
+    }
+    scope.interval(() => { if (phase === "paint") talk("paintWork"); }, 4200);
+    scope.timeout(() => talk("paintStart"), 900);
+    workers.forEach(w => scope.anim($(".pw-prop", w), [{ transform: "rotate(-12deg)" }, { transform: "rotate(12deg)" }], { duration: 500, iterations: Infinity, direction: "alternate", easing: "ease-in-out" }));
     PAINTS.forEach((c, i) => {
       const b = h(`<div class="ti2"><div class="sw" style="background:${c}"></div></div>`);
       b.addEventListener("pointerdown", e => { if (!e.isPrimary) return; e._handled = true; sel = i; mark(); Sound.play("pick"); bounce(b, scope, 1.15); });
@@ -4401,6 +4771,7 @@ screens.paint = {
       res.textContent = pick(ANIMALS);
       scope.anim(res, [{ transform: "scale(0)", opacity: 0 }, { transform: "scale(1.2)", opacity: 1, offset: 0.7 }, { transform: "scale(1)", opacity: 1 }], { duration: 450 });
       bounce(house, scope, 1.04);
+      talk("paintYay");
       typeText(banner, msg("paintDone"), scope, () => scope.timeout(() => {
         scope.anim(house, [{ opacity: 1 }, { opacity: 0 }], { duration: 450 }, () => { reset(); scope.anim(house, [{ opacity: 0 }, { opacity: 1 }], { duration: 450 }); });
       }, 1600));
@@ -4521,41 +4892,68 @@ screens.soccer = {
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="area"><div class="pitch"><div class="goal">${ART.goal()}</div><div class="keeper"><span></span></div><div class="ball">${ART.ball()}</div><div class="medal">🏅</div></div></div>
+      <div class="area"><div class="pitch"><div class="goal">${ART.goal()}</div><div class="balloons"></div><div class="keeper"><span></span></div><div class="ball">${ART.ball()}</div><div class="medal">🏅</div><div class="fans"></div></div></div>
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), goal = $(".goal", st), keeper = $(".keeper", st), kspan = $(".keeper span", st), ball = $(".ball", st), medal = $(".medal", st);
-    let phase = "ready", goals = 0;
+    const balloonsEl = $(".balloons", st), fans = $(".fans", st);
+    let phase = "ready";
     kspan.textContent = pick(ANIMALS);
+    fans.innerHTML = shuffle(ANIMALS).slice(0, 5).map(a => `<span>${a}</span>`).join("");
+    // ゴールの なかの ふうせんを ねらって シュート！
+    function newBalloons(){
+      balloonsEl.innerHTML = "";
+      [18, 50, 82].forEach((x, i) => {
+        const b = h(`<div class="sballoon" style="left:${x}%;top:${[30, 14, 34][i]}%">${pick(["🎈", "🎈", "⭐", "🍎"])}</div>`);
+        balloonsEl.appendChild(b); popIn(b, scope, 100 + i * 120);
+        scope.anim(b, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 2}px)` }], { duration: 900 + i * 150, iterations: Infinity, direction: "alternate", easing: "ease-in-out", delay: 500 });
+      });
+      typeText(banner, msg("soccer"), scope);
+    }
     function shoot(x){
       phase = "kick";
+      const left = $$(".sballoon", balloonsEl).filter(b => !b._hit);
+      const tgt = left.length ? nearest(left, x, cpt(goal).y) : null;
       const gr = goal.getBoundingClientRect(), br = ball.getBoundingClientRect(), b0 = center(br);
-      const tx = Math.max(gr.left + gr.width * 0.15, Math.min(gr.right - gr.width * 0.15, x)), ty = gr.top + gr.height * 0.55;
-      const kc = cpt(keeper), away = tx < kc.x ? 1 : -1;
+      const tc = tgt ? cpt(tgt) : { x: Math.max(gr.left + gr.width * 0.15, Math.min(gr.right - gr.width * 0.15, x)), y: gr.top + gr.height * 0.55 };
+      if (tgt) tgt._hit = true;
+      const kc = cpt(keeper), away = tc.x < kc.x ? 1 : -1;
       Sound.play("kick");
-      scope.anim(ball, [{ transform: "translate(0px,0px) scale(1) rotate(0deg)" }, { transform: `translate(${tx - b0.x}px,${ty - b0.y}px) scale(.6) rotate(540deg)` }], { duration: 550, easing: "cubic-bezier(.2,.7,.4,1)" }, () => {
+      // ボールは すこし カーブして とぶ
+      const curve = (Math.random() < 0.5 ? -1 : 1) * U * 12;
+      scope.anim(ball, [{ transform: "translate(0px,0px) scale(1) rotate(0deg)" }, { transform: `translate(${(tc.x - b0.x) / 2 + curve}px,${(tc.y - b0.y) / 2}px) scale(.8) rotate(270deg)`, offset: 0.5 }, { transform: `translate(${tc.x - b0.x}px,${tc.y - b0.y}px) scale(.55) rotate(540deg)` }], { duration: 620, easing: "cubic-bezier(.2,.7,.4,1)" }, () => {
         Sound.play("goal");
+        if (tgt) {
+          Sound.play("pop");
+          scope.anim(tgt, [{ transform: "scale(1)", opacity: 1 }, { transform: "scale(1.8)", opacity: 0 }], { duration: 300 });
+          FX.burst(tc.x, tc.y, 10);
+        } else FX.burst(tc.x, tc.y, 8);
         scope.anim(goal, [{ transform: "scaleY(1)" }, { transform: "scaleY(1.08)" }, { transform: "scaleY(1)" }], { duration: 300 });
-        FX.burst(tx, ty, 8);
-        goals++;
         typeText(banner, msg("soccerGoal"), scope);
-        if (goals % 3 === 0) {
-          scope.timeout(() => { Sound.play("sparkle"); scope.anim(medal, [{ transform: "translateX(-50%) scale(0)", opacity: 0 }, { transform: "translateX(-50%) scale(1.2)", opacity: 1, offset: 0.6 }, { transform: "translateX(-50%) scale(1)", opacity: 1 }], { duration: 500 }); }, 300);
-          scope.timeout(() => scope.anim(medal, [{ opacity: 1 }, { opacity: 0 }], { duration: 400 }), 1800);
+        cheer();
+        const all = !$$(".sballoon", balloonsEl).some(b => !b._hit);
+        if (all) {
+          scope.timeout(() => { Sound.play("sparkle"); typeText(banner, msg("soccerAll"), scope); scope.anim(medal, [{ transform: "translateX(-50%) scale(0)", opacity: 0 }, { transform: "translateX(-50%) scale(1.2)", opacity: 1, offset: 0.6 }, { transform: "translateX(-50%) scale(1)", opacity: 1 }], { duration: 500 }); }, 500);
+          scope.timeout(() => scope.anim(medal, [{ opacity: 1 }, { opacity: 0 }], { duration: 400 }), 2200);
         }
         scope.timeout(() => {
           scope.anim(ball, [{ transform: "translate(0px,0px) scale(.4)", opacity: 0 }, { transform: "translate(0px,0px) scale(1)", opacity: 1 }], { duration: 350, easing: "ease-out" }, () => { phase = "ready"; });
-          if (goals % 3 === 0) kspan.textContent = pick(ANIMALS);
-        }, goals % 3 === 0 ? 2300 : 900);
+          if (all) { kspan.textContent = pick(ANIMALS); newBalloons(); }
+        }, all ? 2700 : 900);
       });
       scope.anim(keeper, [{ transform: "translateX(0px) rotate(0deg)" }, { transform: `translateX(${away * U * 18}px) rotate(${away * 30}deg)` }, { transform: "translateX(0px) rotate(0deg)" }], { duration: 900, easing: "ease-out", fill: "none" });
+    }
+    // おうえんの みんなが よろこぶ
+    function cheer(){
+      $$("span", fans).forEach((f, i) => scope.anim(f, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 4}px)` }, { transform: "translateY(0px)" }], { duration: 320, delay: i * 70, iterations: 2, fill: "none" }));
+      scope.timeout(() => Sound.play("clap"), 200);
     }
     el.addEventListener("pointerdown", e => {
       if (!e.isPrimary || e._handled) return;
       e._handled = true;
       if (phase === "ready") shoot(e.clientX); else tapOther(e);
     });
-    typeText(banner, msg("soccer"), scope);
+    newBalloons();
   },
 };
 
@@ -4697,7 +5095,7 @@ screens.pilot = {
     // 1. レバーを ひいて りりく
     function takeoff(){
       phase = "busy"; ready(lever, false);
-      scope.anim(knob, [{ transform: "translateY(0px)" }, { transform: "translateY(34px)" }], { duration: 350, easing: "ease-out" });
+      moveLever(scope, lever, true);
       Sound.play("jet"); plane.classList.add("spin");
       typeText(banner, msg("pilotFly"), scope);
       scope.anim(plane, [
@@ -4739,7 +5137,7 @@ screens.pilot = {
     // 3. レバーを おして ちゃくりく
     function land(){
       phase = "busy"; ready(lever, false);
-      scope.anim(knob, [{ transform: "translateY(34px)" }, { transform: "translateY(0px)" }], { duration: 350, easing: "ease-out" });
+      moveLever(scope, lever, false);
       here = K[1];
       plat = makePlat(`${K[1]} おうこく`);
       scope.anim(ground, [{ transform: `translateY(${H() * 0.6}px)` }, { transform: "translateY(0px)" }], { duration: 1300, easing: "ease-out" });
@@ -4910,7 +5308,10 @@ screens.astronaut = {
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
       <div class="sp-area"><div class="sp-stars"></div><div class="sp-planets"></div>
-        <div class="sp-ground"><div class="sp-pad"></div></div>
+        <div class="sp-ground"><div class="sp-pad"></div>
+          <div class="sp-crowd l"><div class="sp-p">${ART.person({ shirt: "#FFFDF8", pants: "#8795A0", hat: "none", arm: "up" })}</div><div class="sp-p">${ART.person({ shirt: "#9BC48A", pants: "#6E6A66", hat: "cap", hatC: "#F5D88E", arm: "up" })}</div></div>
+          <div class="sp-crowd r"><span class="sp-a"></span><span class="sp-a"></span></div>
+          <div class="sp-cheer"><span class="t2"></span></div></div>
         <div class="rocket"><div class="rk-fire"></div>${ART.rocket()}</div>
         <div class="sp-count"></div><div class="sp-say"><span class="t2"></span></div></div>
       <div class="gorow"><div class="go">はっしゃ</div></div>
@@ -4918,7 +5319,17 @@ screens.astronaut = {
     el.appendChild(st);
     const banner = $(".t", st), area = $(".sp-area", st), stars = $(".sp-stars", st), planets = $(".sp-planets", st), ground = $(".sp-ground", st);
     const rocket = $(".rocket", st), fire = $(".rk-fire", st), count = $(".sp-count", st), say = $(".sp-say", st), sayT = $(".t2", say), go_ = $(".go", st);
+    const cheerEl = $(".sp-cheer", st), cheerT = $(".t2", cheerEl);
+    $$(".sp-a", st).forEach(a => { a.textContent = pick(ANIMALS); });
     let phase = "pad", R = { x: 0, y: 0, r: 0, s: 1 }, starAnim = null, fireAnim = null, extras = [];
+    // ちじょうの みんなが「いってらっしゃい！」「おかえりなさい！」
+    function cheer(key){
+      scope.anim(cheerEl, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], { duration: 250 });
+      typeText(cheerT, msg(key), scope);
+      $$(".sp-p, .sp-a", st).forEach((x, i) => scope.anim(x, [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 3}px)` }, { transform: "translateY(0px)" }], { duration: 320, delay: i * 80, iterations: 3, fill: "none" }));
+      Sound.play("clap");
+    }
+    const hideCheer = () => scope.anim(cheerEl, [{ opacity: 1 }, { opacity: 0 }], { duration: 250 });
     const tf = o => `translate(${o.x}px,${o.y}px) rotate(${o.r}deg) scale(${o.s})`;
     function moveRocket(to, dur, ease, done){
       const from = Object.assign({}, R); R = Object.assign({}, R, to);
@@ -4936,6 +5347,7 @@ screens.astronaut = {
     // 3・2・1 はっしゃ！
     function launch(){
       phase = "busy"; go_.classList.remove("ready");
+      cheer("astroBye");
       [3, 2, 1].forEach((n, i) => scope.timeout(() => {
         count.textContent = n; Sound.play("pi");
         scope.anim(count, [{ transform: "scale(1.6)", opacity: 0 }, { transform: "scale(1)", opacity: 1 }], { duration: 300, easing: "ease-out" });
@@ -4943,6 +5355,7 @@ screens.astronaut = {
       scope.timeout(liftoff, 2400);
     }
     function liftoff(){
+      scope.timeout(hideCheer, 600);
       count.textContent = "はっしゃ！"; count.style.fontSize = (U * 12) + "px";
       typeText(banner, msg("astroGo"), scope);
       Sound.play("jet"); flame(true);
@@ -5011,7 +5424,8 @@ screens.astronaut = {
         moveRocket({ y: 0 }, 1500, "ease-out", () => {
           flame(false); Sound.play("dosun");
           const c = cpt(rocket); FX.burst(c.x, c.y + U * 18, 6);
-          scope.timeout(ready, 500);
+          scope.timeout(() => { cheer("astroWelcome"); typeText(banner, msg("astroWelcome"), scope); }, 400);
+          scope.timeout(() => { hideCheer(); ready(); }, 3000);
         });
       });
     }
@@ -5517,8 +5931,8 @@ screens.cleaning = {
     const speak = key => { scope.anim(cb, [{ opacity: 0 }, { opacity: 1 }], { duration: 250 }); typeText(cbT, msg(key), scope); };
     function newCustomer(){
       phase = "load"; inDrum = []; hung = 0; drumIn.innerHTML = ""; tray.innerHTML = "";
-      slots.forEach(s => { s.textContent = ""; s.style.opacity = 0; s.style.transform = ""; });
-      sun.style.opacity = 0;
+      slots.forEach(s => { s.textContent = ""; s.style.opacity = 0; s.style.transform = ""; s.classList.remove("wet"); });
+      sun.classList.remove("on"); sun.style.transform = "";
       items = shuffle(CLOTHES).slice(0, 3);
       items.forEach((c, i) => {
         const b = h(`<div class="ti2 dirty">${c}<i></i><i></i></div>`); b._c = c;
@@ -5569,25 +5983,50 @@ screens.cleaning = {
       const sp = drumIn.children[0], c = sp.textContent, from = cpt(sp), slot = slots[hung];
       sp.remove(); Sound.play("pick");
       flyEl(scope, st, c, from, cpt(slot), { size: U * 14, font: U * 12, dur: 500 }, () => {
-        slot.textContent = c; slot.style.opacity = 1; Sound.play("shara");
+        slot.textContent = c; slot.style.opacity = 1; slot.classList.add("wet"); Sound.play("shara");
+        if (!dripId) dripId = scope.interval(drip, 260);
         scope.anim(slot, [{ transform: "rotate(-8deg)" }, { transform: "rotate(8deg)" }, { transform: "rotate(0deg)" }], { duration: 600 });
         hung++;
         if (hung >= 3) dry(); else phase = "hang";
       });
     }
+    // ぬれている ふくから しずくが ぽたぽた
+    let dripId = 0;
+    function drip(){
+      const wet = slots.filter(s => s.classList.contains("wet"));
+      if (!wet.length) return;
+      const s = pick(wet), r = s.getBoundingClientRect(), x = r.left + rnd(0.3, 0.7) * r.width;
+      flyEl(scope, st, '<div class="drop"></div>', { x, y: r.bottom - U * 2 }, { x, y: r.bottom + U * 12 }, { size: U * 2.6, dur: 450, arc: 0, fade: true });
+    }
+    // おひさまで かわかす
     function dry(){
       typeText(banner, msg("cleanDry"), scope);
-      scope.anim(sun, [{ transform: "scale(0) rotate(-60deg)", opacity: 0 }, { transform: "scale(1) rotate(0deg)", opacity: 1 }], { duration: 600, easing: "ease-out" });
+      sun.classList.add("on");
+      scope.anim(sun, [{ transform: "scale(1) rotate(0deg)" }, { transform: "scale(1.5) rotate(30deg)" }, { transform: "scale(1.2) rotate(0deg)" }], { duration: 900, easing: "ease-out" });
       Sound.play("sparkle");
-      slots.forEach((s, i) => scope.timeout(() => { const c = cpt(s); FX.burst(c.x, c.y, 4); scope.anim(s, [{ transform: "rotate(0deg)" }, { transform: "rotate(10deg)" }, { transform: "rotate(-10deg)" }, { transform: "rotate(0deg)" }], { duration: 700 }); }, 400 + i * 300));
-      scope.timeout(() => { phase = "give"; Sound.play("chime"); typeText(banner, msg("cleanGive"), scope); }, 1900);
+      // ゆげが ふわふわ
+      slots.forEach((s, i) => [0, 1, 2].forEach(k => scope.timeout(() => {
+        const r = s.getBoundingClientRect();
+        flyEl(scope, st, '<span style="color:#fff;font-size:inherit">〰</span>', { x: r.left + r.width / 2, y: r.top + r.height * 0.3 }, { x: r.left + r.width / 2 + rnd(-U * 3, U * 3), y: r.top - U * 10 }, { size: U * 8, font: U * 6, dur: 800, arc: 0, fade: true });
+      }, 300 + i * 150 + k * 350)));
+      scope.timeout(() => {
+        slots.forEach(s => s.classList.remove("wet"));
+        scope.stopInterval(dripId); dripId = 0;
+      }, 1500);
+      slots.forEach((s, i) => scope.timeout(() => {
+        const c = cpt(s); FX.burst(c.x, c.y, 5); Sound.play("pop");
+        const tag = h('<span class="cl-tag">からっ！</span>'); s.appendChild(tag);
+        scope.anim(tag, [{ opacity: 0, transform: "translateX(-50%) scale(.6)" }, { opacity: 1, transform: "translateX(-50%) scale(1)" }], { duration: 250 });
+        scope.anim(s, [{ transform: "rotate(0deg)" }, { transform: "rotate(10deg)" }, { transform: "rotate(-10deg)" }, { transform: "rotate(0deg)" }], { duration: 700 });
+      }, 1800 + i * 300));
+      scope.timeout(() => { phase = "give"; Sound.play("chime"); typeText(banner, msg("cleanGive"), scope); }, 2900);
     }
     // 4. おきゃくさんに わたす
     function give(){
       phase = "busy";
-      scope.anim(sun, [{ opacity: 1 }, { opacity: 0 }], { duration: 400 });
+      sun.classList.remove("on"); sun.style.transform = "";
       slots.forEach((s, i) => scope.timeout(() => {
-        const c = s.textContent; s.style.opacity = 0;
+        const c = s.firstChild ? s.firstChild.textContent : ""; s.style.opacity = 0;
         flyEl(scope, st, c, cpt(s), cpt(face), { size: U * 12, font: U * 10, dur: 450, scale: 0.4, fade: true }, () => { Sound.play("pop"); bounce(face, scope, 1.15); });
       }, i * 200));
       scope.timeout(() => {
@@ -5645,17 +6084,23 @@ const LATTE_ARTS = [
     `<circle cx="91" cy="110" r="3.2" fill="${BEAN}"/><circle cx="109" cy="110" r="3.2" fill="${BEAN}"/><ellipse cx="100" cy="119" rx="3.6" ry="2.6" fill="#E98A7E"/>`,
     `<circle cx="84" cy="122" r="4" fill="#F2B8A8" opacity=".7"/><circle cx="116" cy="122" r="4" fill="#F2B8A8" opacity=".7"/>`] },
 ];
-const cupSVG = () => '<svg viewBox="0 0 200 200"><ellipse cx="100" cy="104" rx="96" ry="94" fill="#F4F1EA" stroke="#D9D2C6" stroke-width="3"/>' +
-  '<rect x="160" y="88" width="34" height="22" rx="10" fill="#FFFDF8" stroke="#D9D2C6" stroke-width="3"/>' +
-  '<circle cx="100" cy="102" r="70" fill="#FFFDF8" stroke="#D9D2C6" stroke-width="4"/>' +
-  '<defs><clipPath id="cfclip"><circle cx="100" cy="102" r="58"/></clipPath></defs>' +
-  '<circle class="cf-surf" cx="100" cy="102" r="58" fill="#EFE6D8"/><g class="cf-art" clip-path="url(#cfclip)"></g></svg>';
+// ななめ うえから みた カップ（らての えは だえんに つぶして かく）
+const cupSVG = () => '<svg viewBox="0 0 200 170"><ellipse cx="100" cy="144" rx="94" ry="22" fill="#EDE6DA"/><ellipse cx="100" cy="140" rx="92" ry="22" fill="#FBF8F2" stroke="#D9D2C6" stroke-width="3"/><ellipse cx="100" cy="138" rx="56" ry="11" fill="#EFE8DC"/>' +
+  '<path d="M160 74 Q196 74 192 100 Q188 124 156 118" fill="none" stroke="#D9D2C6" stroke-width="15" stroke-linecap="round"/><path d="M160 74 Q196 74 192 100 Q188 124 156 118" fill="none" stroke="#FFFDF8" stroke-width="9" stroke-linecap="round"/>' +
+  '<path d="M30 62 Q32 128 70 138 H130 Q168 128 170 62 Z" fill="#FFFDF8" stroke="#D9D2C6" stroke-width="3" stroke-linejoin="round"/>' +
+  '<path d="M44 78 Q48 116 70 126" stroke="#FFFFFF" stroke-width="6" fill="none" stroke-linecap="round" opacity=".9"/><path d="M48 100 Q100 112 152 100" stroke="#F2B8A8" stroke-width="4" fill="none" opacity=".6"/>' +
+  '<ellipse cx="100" cy="62" rx="70" ry="26" fill="#FFFDF8" stroke="#D9D2C6" stroke-width="3"/>' +
+  '<defs><clipPath id="cfclip"><ellipse cx="100" cy="64" rx="60" ry="21"/></clipPath></defs>' +
+  '<ellipse class="cf-surf" cx="100" cy="64" rx="60" ry="21" fill="#EFE6D8"/><g clip-path="url(#cfclip)"><g class="cf-art" transform="translate(100 64) scale(1.03 .37) translate(-100 -102)"></g></g>' +
+  '<g class="cf-steam" opacity="0"><path d="M80 34 Q72 22 80 12 Q88 2 80 -8" stroke="#FFFFFF" stroke-width="4" fill="none" stroke-linecap="round" opacity=".8"/><path d="M118 32 Q110 20 118 10 Q126 0 118 -10" stroke="#FFFFFF" stroke-width="4" fill="none" stroke-linecap="round" opacity=".8"/></g></svg>';
 screens.cafe = {
   el: $("#s-cafe"),
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="cf-area"><div class="cf-menu">めにゅー<br>☕ らて<br>🍰 けーき</div><div class="cf-cup">${cupSVG()}</div><div class="cf-tool"></div>${CUST_HTML}</div>
+      <div class="cf-area"><div class="cf-sea"><span class="cf-sun">☀️</span><span class="cf-boat">⛵</span><span class="cf-palm">🌴</span><span class="cf-para">⛱️</span><span class="cf-shell">🐚</span></div>
+        <div class="cf-awn"></div><div class="cf-sign">☕ うみべの かふぇ</div>
+        <div class="cf-menu">めにゅー<br>☕ らて<br>🍰 けーき</div><div class="cf-counter"></div><div class="cf-cup">${cupSVG()}</div><div class="cf-tool"></div>${CUST_HTML}</div>
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), cup = $(".cf-cup", st), surf = $(".cf-surf", st), artG = $(".cf-art", st), tool = $(".cf-tool", st);
@@ -5665,7 +6110,7 @@ screens.cafe = {
     const arts = () => S.mode === "girl" ? LATTE_ARTS : LATTE_ARTS.filter(a => a.name !== "うさぎさん");
     function newCustomer(){
       art = pick(arts()); n = 0;
-      surf.setAttribute("fill", "#EFE6D8"); artG.innerHTML = "";
+      surf.setAttribute("fill", "#EFE6D8"); artG.innerHTML = ""; $(".cf-steam", cup).setAttribute("opacity", 0);
       cup.style.transform = ""; cup.style.opacity = "";
       face.textContent = pick(ANIMALS); cb.style.opacity = 0; cbT.textContent = "";
       slideIn(scope, cust, 170, () => speak(`${art.name}の らてを ください`));
@@ -5682,7 +6127,7 @@ screens.cafe = {
     function step(){
       if (phase === "coffee") {
         phase = "busy"; n++; pour("🫖", BEAN);
-        scope.timeout(() => { surf.setAttribute("fill", n >= 2 ? BEAN : "#9C6E4E"); bounce(cup, scope, 1.03); if (n >= 2) { n = 0; phase = "milk"; typeText(banner, msg("cafeMilk"), scope); } else phase = "coffee"; }, 700);
+        scope.timeout(() => { surf.setAttribute("fill", n >= 2 ? BEAN : "#9C6E4E"); bounce(cup, scope, 1.03); if (n >= 2) { n = 0; phase = "milk"; $(".cf-steam", cup).setAttribute("opacity", 1); typeText(banner, msg("cafeMilk"), scope); } else phase = "coffee"; }, 700);
       } else if (phase === "milk") {
         phase = "busy"; n++; pour("🥛", "#FFF4E2");
         scope.timeout(() => { surf.setAttribute("fill", n >= 2 ? "#C68E5C" : "#A97A52"); bounce(cup, scope, 1.03); if (n >= 2) { n = 0; phase = "art"; typeText(banner, `${art.name}を かこう！`, scope); } else phase = "milk"; }, 700);
@@ -5738,9 +6183,22 @@ screens.magic = {
     let phase = "tap", taps = 0, last = "";
     crowd.innerHTML = shuffle(ANIMALS).slice(0, 4).map(a => `<span>${a}</span>`).join("");
     function ready(){
-      phase = "tap"; taps = 0;
+      phase = "busy"; taps = 0;
       stars.forEach(s => { s.classList.remove("on"); s.textContent = "☆"; });
-      typeText(banner, msg("magic"), scope);
+      // 「ぼうしの なかには なにも ありません」— さかさにして ふって みせる
+      typeText(banner, msg("magicEmpty"), scope);
+      scope.timeout(() => {
+        Sound.play("pick");
+        scope.anim(hat, [
+          { transform: "translateY(0px) rotate(0deg)" }, { transform: `translateY(${-U * 18}px) rotate(180deg)`, offset: 0.25 },
+          { transform: `translateY(${-U * 18}px) rotate(165deg)`, offset: 0.4 }, { transform: `translateY(${-U * 18}px) rotate(195deg)`, offset: 0.55 },
+          { transform: `translateY(${-U * 18}px) rotate(170deg)`, offset: 0.7 }, { transform: `translateY(${-U * 18}px) rotate(180deg)`, offset: 0.8 },
+          { transform: "translateY(0px) rotate(360deg)" },
+        ], { duration: 2600, easing: "ease-in-out" }, () => { hat.style.transform = ""; });
+        scope.timeout(() => Sound.play("tap"), 1000); scope.timeout(() => Sound.play("tap"), 1350); scope.timeout(() => Sound.play("tap"), 1700);
+        scope.timeout(() => { typeText(banner, msg("magicEmpty2"), scope); }, 1300);
+      }, 900);
+      scope.timeout(() => { phase = "tap"; typeText(banner, msg("magic"), scope); }, 4400);
     }
     // ちちんぷいぷい（3かい たたく）
     function tapHat(){
