@@ -236,7 +236,7 @@ html.girl .kb{background:#EED6DE}
 .sp-p{width:calc(var(--u)*11);height:calc(var(--u)*19)}
 .sp-p svg{width:100%;height:100%;display:block}
 .sp-a{display:block;font-size:calc(var(--u)*9);line-height:1}
-.sp-cheer{position:absolute;left:3%;bottom:calc(100% + var(--u)*21);transform-origin:20% 100%;background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.4) calc(var(--u)*3);font-size:calc(var(--u)*4.6);white-space:nowrap;opacity:0;z-index:5}
+.sp-cheer{position:absolute;left:3%;bottom:calc(100% + var(--u)*21);transform-origin:20% 100%;background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.4) calc(var(--u)*3);font-size:calc(var(--u)*4.4);white-space:normal;max-width:calc(var(--u)*30);line-height:1.35;opacity:0;z-index:5}
 .sp-pad{position:absolute;left:50%;top:0;width:calc(var(--u)*30);height:calc(var(--u)*4);margin-left:calc(var(--u)*-15);background:#8F8A84;border-radius:0 0 calc(var(--u)*1.5) calc(var(--u)*1.5)}
 .rocket{position:absolute;left:50%;bottom:20%;width:calc(var(--u)*20);height:calc(var(--u)*40);margin-left:calc(var(--u)*-10);z-index:3}
 .rocket svg{width:100%;height:100%;display:block;position:relative}
@@ -346,9 +346,14 @@ html.girl .cl-area{background:linear-gradient(180deg,#F6DCE6 0,#FBEDF0 calc(var(
 /* ---------- かふぇやさん ---------- */
 .cf-area{position:relative;flex:1;min-height:0;margin-top:calc(var(--u)*3);overflow:hidden;background:linear-gradient(180deg,#BFE5F6 0 26%,#79C2E4 26% 34%,#8FD0EA 34% 40%,#F6E7C4 40% 60%)}
 .cf-sea{position:absolute;inset:0;pointer-events:none}
-.cf-sea span{position:absolute;line-height:1}
-.cf-sun{right:6%;top:9%;font-size:calc(var(--u)*11)}.cf-boat{left:44%;top:21%;font-size:calc(var(--u)*7)}
-.cf-palm{right:2%;top:30%;font-size:calc(var(--u)*18)}.cf-para{left:3%;top:38%;font-size:calc(var(--u)*13)}.cf-shell{left:30%;top:52%;font-size:calc(var(--u)*5)}
+.cf-sea>div svg{width:100%;height:100%;display:block}
+.cf-sun{position:absolute;right:4%;top:calc(var(--u)*11.5);width:calc(var(--u)*11);height:calc(var(--u)*11)}
+.cf-boat{position:absolute;left:0;top:calc(26% - var(--u)*8);width:calc(var(--u)*11);height:calc(var(--u)*10)}
+.cf-boat-in{width:100%;height:100%;animation:boatbob 1.6s ease-in-out infinite alternate}
+@keyframes boatbob{0%{transform:translateY(0) rotate(-3deg)}100%{transform:translateY(calc(var(--u)*.8)) rotate(3deg)}}
+.cf-palm{position:absolute;right:1%;top:24%;width:calc(var(--u)*18);height:calc(var(--u)*27)}
+.cf-terrace{position:absolute;left:1%;bottom:calc(40% - var(--u)*1);width:calc(var(--u)*44);height:calc(var(--u)*37)}
+.cf-shell{position:absolute;left:47%;top:53%;width:calc(var(--u)*6);height:calc(var(--u)*5)}
 .cf-awn{position:absolute;left:0;right:0;top:0;height:calc(var(--u)*7);background:repeating-linear-gradient(90deg,#8FD3C6 0 calc(var(--u)*8),#FFFAF6 calc(var(--u)*8) calc(var(--u)*16))}
 .cf-awn::after{content:"";position:absolute;left:0;right:0;top:100%;height:calc(var(--u)*4);background:radial-gradient(circle at 50% 0,#8FD3C6 calc(var(--u)*4),transparent calc(var(--u)*4.2)) calc(var(--u)*-4) 0/calc(var(--u)*16) 100% repeat-x,radial-gradient(circle at 50% 0,#FFFAF6 calc(var(--u)*4),transparent calc(var(--u)*4.2)) calc(var(--u)*4) 0/calc(var(--u)*16) 100% repeat-x}
 html.girl .cf-awn{background:repeating-linear-gradient(90deg,#F4B9C8 0 calc(var(--u)*8),#FFFAF6 calc(var(--u)*8) calc(var(--u)*16))}
@@ -2039,7 +2044,7 @@ const ART = {
     return `<svg viewBox="0 0 100 100">${ringB}<circle cx="50" cy="50" r="32" fill="${p.c[0]}" stroke="${p.c[1]}" stroke-width="3"/>` +
       `<circle cx="40" cy="42" r="7" fill="${p.c[1]}" opacity=".35"/><circle cx="62" cy="62" r="5" fill="${p.c[1]}" opacity=".35"/><circle cx="58" cy="36" r="3" fill="#fff" opacity=".6"/>${ringF}</svg>`;
   },
-  excavator(){ return excavatorSVG("-6 74 336 136"); },
+  excavator(){ return excavatorSVG("-8 26 340 186"); },
   shipWheel(){
     let sp = "";
     for (let i = 0; i < 8; i++) {
@@ -5361,7 +5366,7 @@ screens.astronaut = {
       Sound.play("jet"); flame(true);
       const H = area.clientHeight;
       moveRocket({ y: -H * 0.22 }, 1700, "ease-in");
-      scope.anim(ground, [{ transform: "translateY(0%)" }, { transform: "translateY(130%)" }], { duration: 1500, easing: "ease-in" });
+      scope.anim(ground, [{ transform: "translateY(0%)" }, { transform: "translateY(320%)" }], { duration: 1500, easing: "ease-in" });
       area.classList.add("space");
       starAnim = scope.anim(stars, [{ transform: "translateY(0px)" }, { transform: "translateY(280px)" }], { duration: 1400, iterations: Infinity, easing: "linear" });
       scope.timeout(() => { scope.anim(count, [{ opacity: 1 }, { opacity: 0 }], { duration: 400 }); count.style.fontSize = ""; }, 1300);
@@ -5420,7 +5425,7 @@ screens.astronaut = {
       moveRocket({ x: 0, y: -H * 0.22, s: 1 }, 1200, "ease-in-out", () => {
         area.classList.remove("space");
         if (starAnim) { starAnim.cancel(); starAnim = null; }
-        scope.anim(ground, [{ transform: "translateY(130%)" }, { transform: "translateY(0%)" }], { duration: 1300, easing: "ease-out" });
+        scope.anim(ground, [{ transform: "translateY(320%)" }, { transform: "translateY(0%)" }], { duration: 1300, easing: "ease-out" });
         moveRocket({ y: 0 }, 1500, "ease-out", () => {
           flame(false); Sound.play("dosun");
           const c = cpt(rocket); FX.burst(c.x, c.y + U * 18, 6);
@@ -6084,6 +6089,32 @@ const LATTE_ARTS = [
     `<circle cx="91" cy="110" r="3.2" fill="${BEAN}"/><circle cx="109" cy="110" r="3.2" fill="${BEAN}"/><ellipse cx="100" cy="119" rx="3.6" ry="2.6" fill="#E98A7E"/>`,
     `<circle cx="84" cy="122" r="4" fill="#F2B8A8" opacity=".7"/><circle cx="116" cy="122" r="4" fill="#F2B8A8" opacity=".7"/>`] },
 ];
+// うみべの カフェの え（たいよう・ヨット・ヤシの き・パラソルの テーブルと いす・かいがら）
+const CAFE_ART = {
+  sun: '<svg viewBox="0 0 40 40">' + [...Array(10)].map((_, i) => { const a = i * Math.PI / 5; return `<path d="M${(20 + Math.cos(a) * 13).toFixed(1)} ${(20 + Math.sin(a) * 13).toFixed(1)} L${(20 + Math.cos(a) * 18).toFixed(1)} ${(20 + Math.sin(a) * 18).toFixed(1)}" stroke="#F5C04E" stroke-width="2.6" stroke-linecap="round"/>`; }).join("") +
+    '<circle cx="20" cy="20" r="11" fill="#FFD45C" stroke="#F5B83E" stroke-width="1.5"/><path d="M15 19 q1.5 -2 3 0 M22 19 q1.5 -2 3 0" stroke="#8A5A2A" stroke-width="1.3" fill="none" stroke-linecap="round"/>' +
+    '<path d="M17.5 23.5 q2.5 2 5 0" stroke="#8A5A2A" stroke-width="1.3" fill="none" stroke-linecap="round"/><circle cx="14.5" cy="22.5" r="1.6" fill="#F7A08E" opacity=".7"/><circle cx="25.5" cy="22.5" r="1.6" fill="#F7A08E" opacity=".7"/></svg>',
+  boat: '<svg viewBox="0 0 50 44"><path d="M25 4 V31" stroke="#8C6A4F" stroke-width="1.8"/><path d="M26 6 L44 29 H26 Z" fill="#FFFDF8" stroke="#D9D2C6" stroke-width="1.4" stroke-linejoin="round"/>' +
+    '<path d="M24 10 L9 29 H24 Z" fill="#F6C98A" stroke="#E0A85E" stroke-width="1.4" stroke-linejoin="round"/><path d="M25 4 L33 6.5 L25 9 Z" fill="#E98A7E"/>' +
+    '<path d="M3 31 H47 L41 40 Q25 43 9 40 Z" fill="#E98A7E" stroke="#C96B60" stroke-width="1.5" stroke-linejoin="round"/><circle cx="17" cy="35" r="1.6" fill="#FFFDF8"/><circle cx="25" cy="35" r="1.6" fill="#FFFDF8"/><circle cx="33" cy="35" r="1.6" fill="#FFFDF8"/></svg>',
+  palm: '<svg viewBox="0 0 60 90"><path d="M30 88 Q26 60 34 34" stroke="#B98A5E" stroke-width="7" fill="none" stroke-linecap="round"/>' +
+    '<path d="M27 80 h7 M27 70 h7 M28 60 h7 M29 50 h7 M31 41 h6" stroke="#9A7048" stroke-width="1.6" stroke-linecap="round"/>' +
+    '<g fill="#8CC7A1" stroke="#6FAF87" stroke-width="1.4"><path d="M34 34 Q16 20 2 32 Q18 26 34 34Z"/><path d="M34 34 Q52 20 58 34 Q46 26 34 34Z"/><path d="M34 34 Q26 12 12 8 Q28 18 34 34Z"/><path d="M34 34 Q44 10 56 10 Q42 20 34 34Z"/><path d="M34 34 Q34 14 34 4 Q38 18 34 34Z"/></g>' +
+    '<circle cx="31" cy="37" r="3.2" fill="#9A7048"/><circle cx="37" cy="38" r="3.2" fill="#8C6A4F"/></svg>',
+  terrace: '<svg viewBox="0 0 120 100"><ellipse cx="60" cy="97" rx="54" ry="3.5" fill="#000" opacity=".07"/>' +
+    // パラソル
+    '<path d="M60 26 V80" stroke="#A88660" stroke-width="2.6"/>' +
+    '<path d="M16 32 Q60 -6 104 32 Z" fill="#F4B9C8"/><path d="M38 32 Q46 6 60 6 Q50 10 50 32 Z M70 32 Q70 10 60 6 Q76 6 84 32 Z" fill="#FFFAF6"/>' +
+    '<path d="M16 32 q5.5 5 11 0 q5.5 5 11 0 q5.5 5 11 0 q5.5 5 11 0 q5.5 5 11 0 q5.5 5 11 0 q5.5 5 11 0 q5.5 5 11 0" fill="#F4B9C8" stroke="#E79AAE" stroke-width="1"/><circle cx="60" cy="5" r="2.5" fill="#E79AAE"/>' +
+    // テーブル
+    '<path d="M58 76 V96 M50 97 H70" stroke="#8C6A4F" stroke-width="3" stroke-linecap="round"/><ellipse cx="60" cy="75" rx="27" ry="6" fill="#FFFDF8" stroke="#D9D2C6" stroke-width="2"/>' +
+    '<path d="M50 66 h8 v6 q0 3 -4 3 q-4 0 -4 -3 Z" fill="#FFFDF8" stroke="#C9A27E" stroke-width="1.4"/><path d="M58 68 q3 0 3 2.5 q0 2 -3 2" stroke="#C9A27E" stroke-width="1.4" fill="none"/>' +
+    '<path d="M66 72 l5 -9 l5 9 Z" fill="#F6D4A6" stroke="#E0A85E" stroke-width="1.2" stroke-linejoin="round"/><circle cx="71" cy="63" r="1.8" fill="#E98A7E"/>' +
+    // いす（ひだり・みぎ）
+    '<g stroke="#B98A5E" stroke-width="3" stroke-linecap="round" fill="none"><path d="M14 62 V96 M14 80 H32 M30 80 V96 M14 66 H18 M14 72 H18"/><path d="M106 62 V96 M106 80 H88 M90 80 V96 M106 66 H102 M106 72 H102"/></g>' +
+    '<rect x="12" y="77" width="22" height="5" rx="2" fill="#E9C49A"/><rect x="86" y="77" width="22" height="5" rx="2" fill="#E9C49A"/></svg>',
+  shell: '<svg viewBox="0 0 22 18"><path d="M11 17 L2 9 Q2 2 11 1 Q20 2 20 9 Z" fill="#F8CFC8" stroke="#E7A79C" stroke-width="1.2" stroke-linejoin="round"/><path d="M11 17 L7 4 M11 17 V2 M11 17 L15 4" stroke="#E7A79C" stroke-width="1"/></svg>',
+};
 // ななめ うえから みた カップ（らての えは だえんに つぶして かく）
 const cupSVG = () => '<svg viewBox="0 0 200 170"><ellipse cx="100" cy="144" rx="94" ry="22" fill="#EDE6DA"/><ellipse cx="100" cy="140" rx="92" ry="22" fill="#FBF8F2" stroke="#D9D2C6" stroke-width="3"/><ellipse cx="100" cy="138" rx="56" ry="11" fill="#EFE8DC"/>' +
   '<path d="M160 74 Q196 74 192 100 Q188 124 156 118" fill="none" stroke="#D9D2C6" stroke-width="15" stroke-linecap="round"/><path d="M160 74 Q196 74 192 100 Q188 124 156 118" fill="none" stroke="#FFFDF8" stroke-width="9" stroke-linecap="round"/>' +
@@ -6098,7 +6129,7 @@ screens.cafe = {
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="cf-area"><div class="cf-sea"><span class="cf-sun">☀️</span><span class="cf-boat">⛵</span><span class="cf-palm">🌴</span><span class="cf-para">⛱️</span><span class="cf-shell">🐚</span></div>
+      <div class="cf-area"><div class="cf-sea"><div class="cf-sun">${CAFE_ART.sun}</div><div class="cf-boat"><div class="cf-boat-in">${CAFE_ART.boat}</div></div><div class="cf-palm">${CAFE_ART.palm}</div><div class="cf-terrace">${CAFE_ART.terrace}</div><div class="cf-shell">${CAFE_ART.shell}</div></div>
         <div class="cf-awn"></div><div class="cf-sign">☕ うみべの かふぇ</div>
         <div class="cf-menu">めにゅー<br>☕ らて<br>🍰 けーき</div><div class="cf-counter"></div><div class="cf-cup">${cupSVG()}</div><div class="cf-tool"></div>${CUST_HTML}</div>
     </div>`);
@@ -6106,6 +6137,10 @@ screens.cafe = {
     const banner = $(".t", st), cup = $(".cf-cup", st), surf = $(".cf-surf", st), artG = $(".cf-art", st), tool = $(".cf-tool", st);
     const cust = $(".cust2", st), face = $(".cust-face", cust), cb = $(".bubble", cust), cbT = $(".t2", cust);
     let phase = "busy", art = null, n = 0;
+    // ヨットが うみを ゆっくり すすむ
+    const boat = $(".cf-boat", st), W = $(".cf-area", st).clientWidth;
+    scope.anim(boat, [{ transform: `translateX(${-U * 14}px)` }, { transform: `translateX(${W + U * 4}px)` }], { duration: 20000, iterations: Infinity, easing: "linear" });
+    scope.anim($(".cf-sun svg", st), [{ transform: "rotate(-8deg)" }, { transform: "rotate(8deg)" }], { duration: 2400, iterations: Infinity, direction: "alternate", easing: "ease-in-out" });
     const speak = text => { scope.anim(cb, [{ opacity: 0 }, { opacity: 1 }], { duration: 250 }); typeText(cbT, text, scope); };
     const arts = () => S.mode === "girl" ? LATTE_ARTS : LATTE_ARTS.filter(a => a.name !== "うさぎさん");
     function newCustomer(){
