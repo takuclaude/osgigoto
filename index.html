@@ -473,6 +473,7 @@ html.girl .mg-area{background:radial-gradient(ellipse at 50% 55%,#8E6E9A 0,#654C
 .train.spin .wheel{animation:spin .6s linear infinite}
 .win{position:absolute;top:22%;width:17.3%;height:31%;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*9);line-height:1}
 .cockpit.trc{height:calc(var(--u)*34);margin-top:calc(var(--u)*3)}
+.drv{transform-box:fill-box;transform-origin:50% 100%}
 .trc .lever{width:calc(var(--u)*10);height:calc(var(--u)*21)}
 .tctl{display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*1.5)}
 .clab{font-size:calc(var(--u)*4);color:#F4F1EA}
@@ -523,7 +524,7 @@ html.girl .tr-scene{background:#F6E6EE}html.girl .cktray{background:#F7D8E0}html
 
 /* ---------- 9この あたらしい あそび ---------- */
 .s-fire{background:#F7E9E4}.s-doctor{background:#E9F2F4}.s-post{background:#F6EEE6}.s-chef{background:#F7EFE2}.s-salon{background:#EFEAF5}
-.s-farm{background:#EEF4E4}.s-flower{background:#EDF6EC}.s-carpenter{background:#F4EEE3}.s-sushi{background:#EEF1EC}
+.s-farm{background:#EEF4E4}.s-flower{background:#EDF6EC}.s-carpenter{background:#F4EEE3}.s-sushi{background:#F3E6CF}
 .c-fire{background:#F4CFC6}.c-doctor{background:#D1E6EC}.c-post{background:#F2D6C8}.c-chef{background:#F0DFC2}.c-salon{background:#DDD4EC}
 .c-farm{background:#D8E8C6}.c-flower{background:#F2D3DE}.c-carpenter{background:#E8D9C2}.c-sushi{background:#D6E4D4}
 html.girl .s-fire,html.girl .s-doctor,html.girl .s-post,html.girl .s-chef,html.girl .s-salon,html.girl .s-farm,html.girl .s-flower,html.girl .s-carpenter,html.girl .s-sushi{background:#FBEDF0}
@@ -704,6 +705,23 @@ html.girl .fshop{--aw:#F4B9C8;--w1:#FFF6F0;--w2:#FCEDE8;--sg:#D9A9B6;--sgt:#B86E
 .lane{position:relative;flex:none;height:calc(var(--u)*24);margin-top:calc(var(--u)*4);background:#C9BBA8;overflow:hidden;border-top:calc(var(--u)*1) solid #A99C8A;border-bottom:calc(var(--u)*1) solid #A99C8A}
 .plate{position:absolute;top:calc(var(--u)*2);left:0;width:calc(var(--u)*20);height:calc(var(--u)*20);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 calc(var(--u)*1.4) rgba(255,252,245,.7)}
 .plate svg{width:80%;height:80%;display:block}
+.noren{flex:none;display:flex;gap:calc(var(--u)*1);padding:0 calc(var(--u)*6);margin-top:calc(var(--u)*2);height:calc(var(--u)*10)}
+.noren div{flex:1;background:#3F5470;border-radius:0 0 calc(var(--u)*1.5) calc(var(--u)*1.5);display:flex;align-items:center;justify-content:center;border-top:calc(var(--u)*1.2) solid #8C6A4F}
+.noren span{color:#FFFDF8;font-size:calc(var(--u)*5);font-weight:bold}
+html.girl .noren div{background:#C96B85}
+.s-sushi .lane{margin-top:calc(var(--u)*1)}
+.sushi-bg{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,#EBD9B8 0 calc(var(--u)*10),#E4CFA9 calc(var(--u)*10) calc(var(--u)*10.5))}
+.fudas{position:absolute;left:30%;right:15%;top:3%;display:flex;justify-content:space-around}
+.fuda{writing-mode:vertical-rl;background:#FBF3E2;border:calc(var(--u)*.6) solid #A88660;border-radius:calc(var(--u)*1);padding:calc(var(--u)*1.2) calc(var(--u)*.8);font-size:calc(var(--u)*3.4);font-weight:bold;line-height:1;letter-spacing:.05em;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.12)}
+.chochin{position:absolute;top:calc(var(--u)*3);width:calc(var(--u)*9);height:calc(var(--u)*12);border-radius:45%;background:repeating-linear-gradient(180deg,#E9605A 0 calc(var(--u)*1.6),#D9534F calc(var(--u)*1.6) calc(var(--u)*2.2));border-top:calc(var(--u)*1.4) solid #3A3226;border-bottom:calc(var(--u)*1.4) solid #3A3226;animation:sway 2.6s ease-in-out infinite alternate;transform-origin:50% -40%}
+.chochin.l{display:none}.chochin.r{right:3%}
+.itamae{position:absolute;right:2%;top:calc(30% - var(--u)*6);width:calc(var(--u)*17);height:calc(var(--u)*29)}
+.itamae svg{width:100%;height:100%;display:block}
+.it-say{position:absolute;right:0;bottom:100%;background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.2) calc(var(--u)*2.4);font-size:calc(var(--u)*3.8);white-space:nowrap;opacity:0;transform-origin:100% 100%;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08)}
+.s-counter{position:absolute;left:0;right:0;top:calc(30% + var(--u)*18);bottom:0;background:linear-gradient(180deg,#F6E2BE 0 calc(var(--u)*3),#E9CFA2 calc(var(--u)*3));border-top:calc(var(--u)*1.2) solid #C9A270}
+.yunomi{position:absolute;left:6%;top:calc(30% + var(--u)*22);width:calc(var(--u)*10);height:calc(var(--u)*11)}
+.shoyu{position:absolute;left:19%;top:calc(30% + var(--u)*21);width:calc(var(--u)*6);height:calc(var(--u)*11)}
+.yunomi svg,.shoyu svg{width:100%;height:100%;display:block;overflow:visible}
 .board2{position:absolute;left:58%;top:30%;width:calc(var(--u)*48);height:calc(var(--u)*32);margin-left:calc(var(--u)*-24);background:#E3C394;border-radius:calc(var(--u)*3);box-shadow:0 calc(var(--u)*1.2) 0 #C9A270;display:flex;align-items:center;justify-content:center}
 .sushi1{width:calc(var(--u)*30);height:calc(var(--u)*26);position:relative}
 .sushi1 svg{width:100%;height:100%;display:block;overflow:visible}
@@ -1635,7 +1653,7 @@ const ART = {
     return S2('<path d="M50 64C26 48 12 38 12 24 12 13 21 6 31 6c8 0 14 4 19 11 5-7 11-11 19-11 10 0 19 7 19 18 0 14-14 24-38 40z" fill="#EDB27A" stroke="#B97B3E" stroke-width="3" stroke-linejoin="round"/><ellipse cx="34" cy="20" rx="8" ry="4" fill="#F8D9B0" opacity=".8"/>');
   },
   breadIcon(){ return ART.bread(0); },
-  train(){
+  train(driver){
     const c = S.mode === "girl" ? ["#F2B7C7", "#C98696"] : ["#9CC8DD", "#6F9DB5"];
     const wheel = x => `<g class="wheel"><circle cx="${x}" cy="80" r="9" fill="#4E4A47"/><circle cx="${x}" cy="80" r="3.5" fill="#CFC8BE"/><rect x="${x - 1}" y="72" width="2" height="5" fill="#CFC8BE"/></g>`;
     return '<svg viewBox="0 0 220 90">' +
@@ -1646,6 +1664,10 @@ const ART = {
       [22, 72, 122].map(x => `<rect x="${x}" y="20" width="38" height="28" rx="5" fill="#EEF7FA" stroke="${c[1]}" stroke-width="2.5"/>`).join("") +
       '<rect x="164" y="20" width="14" height="36" rx="3" fill="#E8F4F8" stroke="' + c[1] + '" stroke-width="2.5"/>' +
       '<circle cx="212" cy="64" r="3" fill="#F5E6B8"/>' +
+      // うんてんしさん（つくと にこっ）
+      (driver ? '<g class="drv"><circle cx="196" cy="31" r="7.5" fill="#F6DCC3"/><path d="M188.5 28 Q196 18 203.5 28 Z" fill="#3F5470"/><path d="M200 27.5 H207" stroke="#2E3F56" stroke-width="2.4" stroke-linecap="round"/><circle cx="196" cy="23.5" r="1.4" fill="#F5D88E"/>' +
+        '<g class="drv-n"><circle cx="193.5" cy="31.5" r="1.1" fill="#3A3226"/><circle cx="198.5" cy="31.5" r="1.1" fill="#3A3226"/><path d="M194.5 35 H197.5" stroke="#3A3226" stroke-width="1.1" stroke-linecap="round"/></g>' +
+        '<g class="drv-h" opacity="0"><path d="M192.3 32 Q193.5 30.4 194.7 32 M197.3 32 Q198.5 30.4 199.7 32" stroke="#3A3226" stroke-width="1" fill="none" stroke-linecap="round"/><path d="M193.5 34 Q196 37.5 198.5 34 Z" fill="#C9605A"/><circle cx="191.5" cy="34" r="1.3" fill="#F2A0A8" opacity=".7"/><circle cx="200.5" cy="34" r="1.3" fill="#F2A0A8" opacity=".7"/></g></g>' : "") +
       wheel(34) + wheel(60) + wheel(160) + wheel(186) + "</svg>";
   },
   cake(){
@@ -2029,6 +2051,7 @@ const ART = {
       fire: `<path d="M11 19 Q25 0 39 19 Z" fill="${o.hatC}"/><path d="M8 19 H42 Q44 22 40 23 H10 Q6 22 8 19Z" fill="${o.hatC}"/><rect x="21" y="6" width="8" height="9" rx="1.5" fill="#F5D88E"/>`,
       bandana: `<path d="M12 18 Q25 3 38 18 Z" fill="${o.hatC}"/><circle cx="17" cy="11" r="1.5" fill="#fff"/><circle cx="29" cy="9" r="1.5" fill="#fff"/><path d="M38 16 l6 3 l-5 2z" fill="${o.hatC}"/>`,
       none: '<path d="M13 20 Q14 8 25 8 Q36 8 37 20 Q33 13 25 13 Q17 13 13 20Z" fill="#6E5440"/>',
+      hachi: '<path d="M13 20 Q14 8 25 8 Q36 8 37 20 Q33 13 25 13 Q17 13 13 20Z" fill="#3A3226"/><path d="M12.5 16.5 Q25 12 37.5 16.5" stroke="#FFFFFF" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M12.5 16.5 Q25 12 37.5 16.5" stroke="#5E7FA8" stroke-width="1.4" fill="none" stroke-dasharray="3 2.5"/><path d="M13 17 l-5 -3 M13 17 l-5 2" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>',
       nurse: '<path d="M13 22 Q12 8 25 8 Q38 8 37 22 Q34 14 25 14 Q16 14 13 22Z" fill="#6E5440"/><path d="M15 13 Q25 5 35 13 L33.5 17 H16.5 Z" fill="#FFFFFF" stroke="#E3DACB" stroke-width="1.2"/><path d="M23 11.5 h4 M25 9.5 v4" stroke="#E98A7E" stroke-width="1.6" stroke-linecap="round"/>',
     };
     const ARM = { down: "M38 40 L42 58", up: "M38 40 L46 24", forward: "M38 41 L50 40", fwdUp: "M38 41 L50 32" };
@@ -3089,7 +3112,7 @@ screens.train = {
         <div class="tr-sky"><div class="clouds">${ART.cloudTile()}${ART.cloudTile()}</div><div class="tr-sun"><span>☀️</span></div><div class="tr-fly"></div></div>
         <div class="tr-bg">${ART.trainBgTile()}${ART.trainBgTile()}</div>
         <div class="rail"></div>
-        <div class="train"><div class="train-in">${ART.train()}<div class="win" style="left:10%"></div><div class="win" style="left:32.7%"></div><div class="win" style="left:55.5%"></div></div></div>
+        <div class="train"><div class="train-in">${ART.train(true)}<div class="win" style="left:10%"></div><div class="win" style="left:32.7%"></div><div class="win" style="left:55.5%"></div></div></div>
       </div>
       <div class="cockpit trc">
         <div class="tctl"><div class="ctl lever">${ART.lever()}</div><div class="clab">しゅっぱつ</div></div>
@@ -3099,6 +3122,12 @@ screens.train = {
     el.appendChild(st);
     const banner = $(".t", st), scene = $(".tr-scene", st), bg = $(".tr-bg", st), train = $(".train", st), trainIn = $(".train-in", st);
     const clouds = $(".tr-sky .clouds", st), sun = $(".tr-sun", st), fly = $(".tr-fly", st);
+    // うんてんしさんの かお（とうちゃくで にこっ）
+    function smile(on){
+      $(".drv-n", train).setAttribute("opacity", on ? 0 : 1);
+      $(".drv-h", train).setAttribute("opacity", on ? 1 : 0);
+      if (on) scope.anim($(".drv", train), [{ transform: "translateY(0px)" }, { transform: "translateY(-2px)" }, { transform: "translateY(0px)" }], { duration: 300, iterations: 3, fill: "none" });
+    }
     // そらの くもは いつも ゆっくり ながれる
     let cloudAnim = scope.anim(clouds, [{ transform: "translateX(0)" }, { transform: "translateX(-50%)" }], { duration: 40000, iterations: Infinity, easing: "linear" });
     scope.anim($("span", sun), [{ transform: "rotate(0deg) scale(1)" }, { transform: "rotate(20deg) scale(1.08)" }], { duration: 2200, iterations: Infinity, direction: "alternate", easing: "ease-in-out" });
@@ -3189,6 +3218,7 @@ screens.train = {
         train.classList.remove("spin");
         Sound.play("chime");
         typeText(banner, msg("trainDone"), scope);
+        smile(true);
         const THANKS = shuffle(MESSAGES.trainThanks);
         const box = $(".riders", plat);
         const off = [];
@@ -3216,7 +3246,7 @@ screens.train = {
         onboard = 0;
         scope.timeout(() => {
           off.forEach(r => scope.anim(r, [{ transform: "translateX(0px)", opacity: 1 }, { transform: `translateX(${-U * 30}px)`, opacity: 0 }], { duration: 600, easing: "ease-in" }, () => r.remove()));
-          scope.timeout(() => { phase = "board"; waiters(); typeText(banner, msg("train"), scope); }, off.length ? 650 : 0);
+          scope.timeout(() => { smile(false); phase = "board"; waiters(); typeText(banner, msg("train"), scope); }, off.length ? 650 : 0);
         }, off.length ? 1300 + off.length * 650 + 900 : 600);
       });
     }
@@ -4475,13 +4505,24 @@ screens.sushi = {
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
+      <div class="noren">${["お", "す", "し"].map(c => `<div><span>${c}</span></div>`).join("")}</div>
       <div class="lane"><div class="belt-stripes"></div></div>
-      <div class="area"><div class="sc-cust"><div class="cust-face"></div></div><div class="sc-say"><span class="t2"></span></div><div class="board2"><div class="sushi1"><div class="shari">${ART.shari()}</div><div class="neta-on"></div></div></div></div>
+      <div class="area"><div class="sushi-bg">
+        <div class="fudas">${[["まぐろ", "#E9767A"], ["さーもん", "#F2A07A"], ["たまご", "#E8B83A"], ["えび", "#F08A6A"], ["いくら", "#E9805A"], ["いか", "#9AA6AF"]].map(([n, c]) => `<div class="fuda" style="color:${c}">${n}</div>`).join("")}</div>
+        <div class="chochin l"></div><div class="chochin r"></div>
+        <div class="itamae">${ART.person({ shirt: "#FFFFFF", pants: "#3F5470", hat: "hachi", arm: "forward" })}<div class="it-say"><span class="t2"></span></div></div>
+        <div class="s-counter"></div><div class="yunomi"><svg viewBox="0 0 30 34"><path d="M3 8 H27 L24 31 Q15 34 6 31 Z" fill="#9BB89A" stroke="#6F8F6E" stroke-width="2"/><path d="M7 14 H23" stroke="#FFFDF8" stroke-width="1.5"/><path d="M9 22 Q14 17 19 22 Q14 27 9 22 Z M19 22 L23 19 V25 Z" fill="#FFFDF8"/><path d="M10 4 Q8 0 11 -2 M18 4 Q16 0 19 -2" stroke="#FFFFFF" stroke-width="1.5" fill="none" opacity=".8"/></svg></div>
+        <div class="shoyu"><svg viewBox="0 0 20 34"><path d="M6 10 H14 V8 Q14 4 10 4 Q6 4 6 8 Z" fill="#E98A7E"/><path d="M4 12 Q4 10 6 10 H14 Q16 10 16 12 V30 Q16 32 14 32 H6 Q4 32 4 30 Z" fill="#F4F1EA" stroke="#C9C2B5" stroke-width="1.5"/><rect x="6" y="18" width="8" height="12" rx="1.5" fill="#5A3E2E"/></svg></div>
+      </div><div class="sc-cust"><div class="cust-face"></div></div><div class="sc-say"><span class="t2"></span></div><div class="board2"><div class="sushi1"><div class="shari">${ART.shari()}</div><div class="neta-on"></div></div></div></div>
       <div class="tray2 tray8"></div>
     </div>`);
     el.appendChild(st);
     const banner = $(".t", st), lane = $(".lane", st), stripes = $(".belt-stripes", lane), s1 = $(".sushi1", st), netaOn = $(".neta-on", st), tray = $(".tray2", st);
     const cust = $(".sc-cust", st), cface = $(".cust-face", cust), say = $(".sc-say", st), sayT = $(".t2", say);
+    // いたまえさん
+    const ita = $(".itamae", st), itSay = $(".it-say", st), itT = $(".t2", itSay);
+    const itTalk = t => { scope.anim(itSay, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], { duration: 250 }); typeText(itT, t, scope); bounce(ita, scope, 1.05); scope.timeout(() => scope.anim(itSay, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 }), 2000); };
+    scope.timeout(() => itTalk("へい らっしゃい！"), 700);
     let phase = "make", made = 0, kind = 0, eaten = 0;
     scope.anim(stripes, [{ transform: "translateX(0px)" }, { transform: `translateX(${-U * 10}px)` }], { duration: 1200, iterations: Infinity });
     const speak = key => { scope.anim(say, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], { duration: 250 }); typeText(sayT, msg(key), scope); };
@@ -4498,6 +4539,7 @@ screens.sushi = {
       scope.anim($("svg", p), [{ transform: "scale(1)", opacity: 1 }, { transform: "scale(.3)", opacity: 0 }], { duration: 350 });
       eaten++;
       speak("sushiYum");
+      if (eaten === 1) scope.timeout(() => itTalk(pick(["まいど！", "へい おまち！", "ありがとうございます！"])), 900);
       scope.timeout(() => Sound.play("chime"), 200);
       if (eaten >= 3) scope.timeout(() => { speak("sushiBye"); scope.timeout(() => { scope.anim(say, [{ opacity: 1 }, { opacity: 0 }], { duration: 250 }); slideOut(scope, cust, -200, newCustomer); }, 1300); }, 1400);
     }
