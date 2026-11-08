@@ -118,7 +118,7 @@ button{font-family:inherit;color:inherit}
 .prod.gone{opacity:0}
 .scanline{position:absolute;left:0;right:0;top:0;height:calc(var(--u)*2.2);background:rgba(232,110,100,.75);box-shadow:0 0 calc(var(--u)*2) rgba(232,110,100,.8);opacity:0}
 .flyer{position:absolute;width:calc(var(--u)*16);height:calc(var(--u)*16);margin:calc(var(--u)*-8) 0 0 calc(var(--u)*-8);display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*13);line-height:1;z-index:25;pointer-events:none}
-.rg-cust{position:absolute;right:3%;bottom:calc(var(--u)*6);width:calc(var(--u)*52);display:flex;flex-direction:column;align-items:center;z-index:15;opacity:0;pointer-events:auto}
+.rg-cust{position:absolute;right:3%;bottom:calc(var(--u)*6);width:calc(var(--u)*52);display:flex;flex-direction:column;align-items:center;z-index:15;opacity:0;pointer-events:none}
 .rg-say{background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.4) calc(var(--u)*3);font-size:calc(var(--u)*4);white-space:nowrap;margin-bottom:calc(var(--u)*1.5);opacity:0;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08)}
 .rg-face{width:calc(var(--u)*22);height:calc(var(--u)*22);border-radius:50%;background:#FDF0DC;display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*15);line-height:1}
 .rg-cash{display:flex;flex-wrap:wrap;justify-content:center;gap:calc(var(--u)*1.4);margin-top:calc(var(--u)*-2);padding:calc(var(--u)*2.4);min-height:calc(var(--u)*12);width:100%;box-sizing:border-box;background:#5E8C6A;border-radius:calc(var(--u)*3);box-shadow:inset 0 calc(var(--u)*-1) 0 rgba(0,0,0,.15)}
@@ -535,6 +535,27 @@ html.girl .c-fire,html.girl .c-post,html.girl .c-flower{background:#F7D3DC}html.
 .scene2{position:relative;flex:1;margin-top:calc(var(--u)*3);overflow:hidden;background:#DDEDF4}
 html.girl .scene2{background:#F6E6EE}
 .bubble2{position:absolute;left:50%;bottom:6%;transform:translateX(-50%);background:var(--paper);border-radius:calc(var(--u)*4);padding:calc(var(--u)*2) calc(var(--u)*4);font-size:calc(var(--u)*5);white-space:nowrap;opacity:0;z-index:6}
+.clinic{position:absolute;inset:0;pointer-events:none}
+.cl-wall{position:absolute;inset:0;background:linear-gradient(180deg,#EAF4F6 0 62%,#D5E7EA 62% 64%,#EAF4F6 64%)}
+html.girl .cl-wall{background:linear-gradient(180deg,#FBEDF0 0 62%,#F2D9E0 62% 64%,#FBEDF0 64%)}
+.cl-floor{position:absolute;left:0;right:0;bottom:0;height:24%;background:repeating-linear-gradient(90deg,#DCE6E2 0 calc(var(--u)*12),#D2DED9 calc(var(--u)*12) calc(var(--u)*12.6));border-top:calc(var(--u)*1.2) solid #C3D3CE}
+.cl-win{position:absolute;left:3%;top:3%;width:calc(var(--u)*16);height:calc(var(--u)*18);background:linear-gradient(180deg,#BFE3F5,#E2F3FA);border:calc(var(--u)*1.4) solid #FFFDF8;border-radius:calc(var(--u)*2);box-shadow:0 0 0 calc(var(--u)*.5) #C9D6DA}
+.cl-win i{position:absolute;left:50%;top:0;bottom:0;width:calc(var(--u)*1);margin-left:calc(var(--u)*-.5);background:#FFFDF8}
+.cl-chart{position:absolute;right:3%;top:3%;width:calc(var(--u)*14);padding:calc(var(--u)*1.2) 0;background:#FFFDF8;border:calc(var(--u)*.6) solid #C9D6DA;border-radius:calc(var(--u)*1.5);display:flex;flex-direction:column;align-items:center;line-height:1.15;color:#5A6B78}
+.cl-chart b{font-size:calc(var(--u)*3.6);font-weight:bold}.cl-chart b:nth-child(2){font-size:calc(var(--u)*3)}.cl-chart b:nth-child(3){font-size:calc(var(--u)*2.4)}.cl-chart b.sm{font-size:calc(var(--u)*1.8)}
+.cl-curtain{position:absolute;left:0;top:44%;bottom:24%;width:12%;background:repeating-linear-gradient(90deg,#BFE0EE 0 calc(var(--u)*2.6),#A9D2E4 calc(var(--u)*2.6) calc(var(--u)*5.2));border-top:calc(var(--u)*1.2) solid #8FB7CC;border-radius:0 0 calc(var(--u)*3) 0}
+html.girl .cl-curtain{background:repeating-linear-gradient(90deg,#F6D4DE 0 calc(var(--u)*2.6),#EFC2D0 calc(var(--u)*2.6) calc(var(--u)*5.2));border-top-color:#E0A9BA}
+.cl-bed{position:absolute;left:13%;bottom:calc(24% - var(--u)*1);width:calc(var(--u)*36);height:calc(var(--u)*14)}
+.cl-bed svg,.cl-poster svg{width:100%;height:100%;display:block}
+.cl-poster{position:absolute;right:5%;top:50%;width:calc(var(--u)*18);white-space:nowrap;padding:calc(var(--u)*1.4);background:#FFFDF8;border:calc(var(--u)*.6) solid #F2B8C6;border-radius:calc(var(--u)*1.5);text-align:center;font-size:calc(var(--u)*3);line-height:1.3;color:#B86E82}
+.cl-poster svg{height:calc(var(--u)*6)}
+.cl-shelf{position:absolute;right:1%;bottom:24%;width:calc(var(--u)*15);height:calc(var(--u)*18)}
+.cl-shelf svg,.cl-desk svg{width:100%;height:100%;display:block}
+.cl-desk{position:absolute;right:4%;bottom:4%;width:calc(var(--u)*24);height:calc(var(--u)*14)}
+.nurse{position:absolute;left:0;bottom:6%;width:calc(var(--u)*15);height:calc(var(--u)*26);pointer-events:none}
+.nurse-in{width:100%;height:100%;position:relative}.nurse-in svg{width:100%;height:100%;display:block}
+.nurse-clip{position:absolute;left:84%;top:36%;width:calc(var(--u)*5);height:calc(var(--u)*6.4);background:#FFFDF8;border:calc(var(--u)*.6) solid #B98A5E;border-radius:calc(var(--u)*.8)}
+.nurse-say{position:absolute;left:50%;bottom:104%;transform-origin:50% 100%;margin-left:calc(var(--u)*-16);width:calc(var(--u)*32);text-align:center;background:var(--paper);border-radius:calc(var(--u)*3);padding:calc(var(--u)*1.2) 0;font-size:calc(var(--u)*3.6);opacity:0;box-shadow:0 calc(var(--u)*.6) 0 rgba(58,50,38,.08)}
 .face2{position:absolute;left:50%;top:4%;width:calc(var(--u)*80);height:calc(var(--u)*80);margin-left:calc(var(--u)*-40)}
 .face2 svg{width:100%;height:100%;display:block;overflow:visible}
 .tool{position:absolute;left:0;top:0;pointer-events:none;opacity:0;z-index:7}
@@ -642,6 +663,8 @@ html.girl .fshop{--aw:#F4B9C8;--w1:#FFF6F0;--w2:#FCEDE8;--sg:#D9A9B6;--sgt:#B86E
 .fs-tag{font-size:calc(var(--u)*3.2);background:#FFFDF8;border-radius:calc(var(--u)*1);padding:0 calc(var(--u)*1);margin-top:calc(var(--u)*-8);position:relative;color:#8A7A66}
 .s-flower .tray2{background:#E8CFAE;box-shadow:0 calc(var(--u)*1.4) 0 #CDAE86}
 .s-flower .bouquet,.s-flower .cust2{z-index:2}
+.s-flower .bouquet{left:31%;width:calc(var(--u)*46);height:calc(var(--u)*61);margin-left:calc(var(--u)*-23)}
+.s-flower .cust2 .bubble{width:calc(var(--u)*30)}
 .bouquet{position:absolute;left:36%;top:4%;width:calc(var(--u)*50);height:calc(var(--u)*66);margin-left:calc(var(--u)*-25)}
 .bouquet svg{width:100%;height:100%;display:block;overflow:visible}
 .bq-fl{position:absolute;inset:0}
@@ -936,6 +959,8 @@ const MESSAGES = {
   fireDone: [ "けしました！", "もう だいじょうぶ" ],
   doctor:   [ "すりきずに ばんそうこうを はろう", "{name}{kun} せんせい！ きずを なおしてね" ],
   doctorOuch:[ "ころんじゃった… いたいよ〜", "すりむいちゃった えーん" ],
+  nurseBusy:[ "つぎの かた どうぞ〜", "おくすり よういしますね", "ねつを はかりましょう", "ばんそうこう もってきますね", "はーい いま いきます！" ],
+  nurseBye:[ "おだいじに〜", "よく がんばったね！" ],
   doctorDone: [ "げんきに なった！", "もう いたくない" ],
   post:     [ "ぽすとに てがみを いれよう" ],
   postGo:   [ "てがみを とどけよう！" ],
@@ -2004,6 +2029,7 @@ const ART = {
       fire: `<path d="M11 19 Q25 0 39 19 Z" fill="${o.hatC}"/><path d="M8 19 H42 Q44 22 40 23 H10 Q6 22 8 19Z" fill="${o.hatC}"/><rect x="21" y="6" width="8" height="9" rx="1.5" fill="#F5D88E"/>`,
       bandana: `<path d="M12 18 Q25 3 38 18 Z" fill="${o.hatC}"/><circle cx="17" cy="11" r="1.5" fill="#fff"/><circle cx="29" cy="9" r="1.5" fill="#fff"/><path d="M38 16 l6 3 l-5 2z" fill="${o.hatC}"/>`,
       none: '<path d="M13 20 Q14 8 25 8 Q36 8 37 20 Q33 13 25 13 Q17 13 13 20Z" fill="#6E5440"/>',
+      nurse: '<path d="M13 22 Q12 8 25 8 Q38 8 37 22 Q34 14 25 14 Q16 14 13 22Z" fill="#6E5440"/><path d="M15 13 Q25 5 35 13 L33.5 17 H16.5 Z" fill="#FFFFFF" stroke="#E3DACB" stroke-width="1.2"/><path d="M23 11.5 h4 M25 9.5 v4" stroke="#E98A7E" stroke-width="1.6" stroke-linecap="round"/>',
     };
     const ARM = { down: "M38 40 L42 58", up: "M38 40 L46 24", forward: "M38 41 L50 40", fwdUp: "M38 41 L50 32" };
     const HAND = { down: [42, 60], up: [46, 22], forward: [51, 40], fwdUp: [51, 31] }[o.arm];
@@ -2619,7 +2645,7 @@ screens.register = {
       paying = true;
       const total = sum(list), money = coins(total);
       cFace.textContent = pick(ANIMALS); cash.innerHTML = ""; got.textContent = ""; cSay.style.opacity = 0;
-      cust.style.opacity = 1;
+      cust.style.opacity = 1; cust.style.pointerEvents = "auto";
       slideIn(scope, cust, 120, () => {
         scope.anim(cSay, [{ opacity: 0 }, { opacity: 1 }], { duration: 250 });
         typeText(cSayT, `${total}えん です ね。はい どうぞ`, scope);
@@ -2723,7 +2749,7 @@ screens.register = {
       FX.burst(r.left + r.width / 2, r.top + U * 4, 5);
       scope.anim(clip, [{ transform: "translateY(0) rotate(0deg)", opacity: 1 }, { transform: `translateY(${U * 60 * M}px) rotate(10deg)`, opacity: 0 }], { duration: 650, easing: "ease-in" }, () => clip.remove());
       typeText(banner, msg("registerDone"), scope);
-      scope.timeout(() => scope.anim(cust, [{ transform: "translateX(0%)", opacity: 1 }, { transform: `translateX(${120 * M}%)`, opacity: 0 }], { duration: 500, easing: "ease-in" }, () => { cust.style.opacity = 0; }), 600);
+      scope.timeout(() => scope.anim(cust, [{ transform: "translateX(0%)", opacity: 1 }, { transform: `translateX(${120 * M}%)`, opacity: 0 }], { duration: 500, easing: "ease-in" }, () => { cust.style.opacity = 0; cust.style.pointerEvents = "none"; }), 600);
       showTotal(sum(cart));
       if (cart.length >= 3) pay.classList.add("ready");
       scope.timeout(() => { if (!receipt) typeText(banner, msg("register"), scope); }, 2600);
@@ -3080,7 +3106,7 @@ screens.train = {
     // はしっている あいだ、とりや かぶとむしが とんでくる
     function flyer(){
       const W = scene.clientWidth, H = scene.clientHeight;
-      const [em, flip] = pick([["🐦", 1], ["🕊️", 1], ["🪲", 1], ["🦋", 1], ["🐝", 1], ["🎈", 0], ["✈️", 0]]);
+      const [em, flip] = pick([["🐦", 1], ["🕊️", 1], ["🪲", 1], ["🦋", 1], ["🐝", 1], ["🎈", 0], [PLANE_L, 0]]);
       const f = h(`<div class="trf">${em}</div>`), y = rnd(0.04, 0.32) * H;
       f.style.top = y + "px"; fly.appendChild(f);
       scope.anim(f, [{ transform: `translate(${W + U * 4}px,0px) scaleX(${flip ? 1 : 1})` }, { transform: `translate(${W / 2}px,${-U * 6}px)` }, { transform: `translate(${-U * 16}px,${U * 2}px)` }], { duration: 2600, easing: "linear" }, () => f.remove());
@@ -3227,6 +3253,10 @@ screens.train = {
 };
 
 /* ---------- ケーキやさん ---------- */
+// ひだりむきに とぶ ひこうき（よこから みた え）
+const PLANE_L = '<svg viewBox="0 0 60 26" style="width:calc(var(--u)*12);height:calc(var(--u)*5.2);display:block"><path d="M4 13 Q6 8 14 8 H48 L56 2 H59 L56 13 Q56 17 50 17 H12 Q4 17 4 13 Z" fill="#FFFDF8" stroke="#9AA6AF" stroke-width="1.6" stroke-linejoin="round"/>' +
+  '<path d="M26 15 L38 24 H43 L38 15 Z" fill="#8FB7DA" stroke="#6E93B3" stroke-width="1.2" stroke-linejoin="round"/><path d="M48 8 L54 2" stroke="#E98A7E" stroke-width="3" stroke-linecap="round"/>' +
+  '<circle cx="18" cy="12" r="1.8" fill="#9CC8E8"/><circle cx="24" cy="12" r="1.8" fill="#9CC8E8"/><circle cx="30" cy="12" r="1.8" fill="#9CC8E8"/><circle cx="36" cy="12" r="1.8" fill="#9CC8E8"/><path d="M5 12 Q7 9.5 10 9.5 V12 Z" fill="#9CC8E8"/></svg>';
 const TOPPINGS = ["🍓", "🍒", "🍫", "🍪", "🍊"];
 const GIRL_TOPPINGS = ["🍓", "🍒", "🌸", "💗", "🍫"];
 screens.cake = {
@@ -3650,17 +3680,50 @@ screens.fire = {
 };
 
 /* ---------- おいしゃさん ---------- */
+// しんりょうじょの はいけい（まど・しりょくけんさの ひょう・カーテン・くすりの たな・ゆか）
+const CLINIC_BG = '<div class="cl-wall"></div><div class="cl-floor"></div>' +
+  '<div class="cl-win"><i></i></div>' +
+  '<div class="cl-chart"><b>C</b><b>O C</b><b>O C O</b><b class="sm">C O C O</b></div>' +
+  '<div class="cl-curtain"></div>' +
+  '<div class="cl-bed"><svg viewBox="0 0 90 36"><path d="M10 22 V36 M80 22 V36" stroke="#AEB8BF" stroke-width="3.5" stroke-linecap="round"/><rect x="2" y="12" width="86" height="12" rx="4" fill="#9CC8E8" stroke="#7FAFCF" stroke-width="2"/>' +
+  '<rect x="6" y="4" width="22" height="10" rx="5" fill="#FFFDF8" stroke="#D9D2C6" stroke-width="1.5"/><rect x="34" y="9" width="50" height="5" rx="2" fill="#FFFDF8" opacity=".85"/></svg></div>' +
+  '<div class="cl-poster"><div>てあらい<br>うがい</div><svg viewBox="0 0 40 26"><circle cx="12" cy="13" r="8" fill="#E3F0F6" stroke="#9CC8E8" stroke-width="1.5"/><circle cx="26" cy="9" r="5" fill="#E3F0F6" stroke="#9CC8E8" stroke-width="1.5"/><circle cx="31" cy="19" r="4" fill="#E3F0F6" stroke="#9CC8E8" stroke-width="1.5"/></svg></div>' +
+  '<div class="cl-shelf"><svg viewBox="0 0 60 70"><rect x="2" y="2" width="56" height="66" rx="3" fill="#FFFDF8" stroke="#C9D6DA" stroke-width="2.5"/><path d="M2 24 H58 M2 46 H58" stroke="#C9D6DA" stroke-width="2.5"/>' +
+  '<rect x="8" y="8" width="9" height="15" rx="2" fill="#F2A7B8"/><rect x="21" y="11" width="8" height="12" rx="2" fill="#A9D49A"/><rect x="33" y="7" width="10" height="16" rx="2" fill="#9CC8E8"/><rect x="47" y="12" width="7" height="11" rx="2" fill="#F5D88E"/>' +
+  '<rect x="8" y="30" width="14" height="15" rx="2" fill="#FFFFFF" stroke="#E98A7E" stroke-width="1.5"/><path d="M15 34 v7 M11.5 37.5 h7" stroke="#E98A7E" stroke-width="2"/><rect x="27" y="33" width="9" height="12" rx="2" fill="#C9B3E6"/><rect x="40" y="31" width="12" height="14" rx="2" fill="#F6C98A"/>' +
+  '<rect x="8" y="52" width="20" height="14" rx="2" fill="#E3EEF4" stroke="#9CC8E8" stroke-width="1.5"/><rect x="33" y="54" width="10" height="12" rx="2" fill="#F2A7B8"/><rect x="46" y="51" width="8" height="15" rx="2" fill="#A9D49A"/></svg></div>' +
+  '<div class="cl-desk"><svg viewBox="0 0 70 40"><rect x="0" y="12" width="70" height="7" rx="2" fill="#D9B98C"/><path d="M6 19 V40 M64 19 V40" stroke="#B98A5E" stroke-width="4"/>' +
+  '<rect x="8" y="2" width="16" height="11" rx="1.5" fill="#FFFFFF" stroke="#C9D6DA" stroke-width="1.5"/><path d="M11 6 h10 M11 9 h7" stroke="#C9D6DA" stroke-width="1.2"/>' +
+  '<path d="M40 12 Q36 2 44 2 Q52 2 50 9" fill="none" stroke="#6E93B3" stroke-width="2.2" stroke-linecap="round"/><circle cx="50" cy="10" r="3" fill="#B9C2C9"/></svg></div>';
 const OUCH_SPOTS = [[50, 28], [22, 60], [78, 60], [50, 86]];
 screens.doctor = {
   el: $("#s-doctor"),
   enter(scope, el){
     const st = h(`<div class="stage">
       <div class="banner"><span class="t"></span></div>
-      <div class="area"><div class="face2"></div><div class="bubble2"><span class="t2"></span></div></div>
+      <div class="area"><div class="clinic">${CLINIC_BG}</div><div class="nurse"><div class="nurse-in">${ART.person({ shirt: "#F6C9D3", pants: "#FFFFFF", hat: "nurse", arm: "forward" })}<div class="nurse-clip"></div></div><div class="nurse-say"><span class="t2"></span></div></div>
+        <div class="face2"></div><div class="bubble2"><span class="t2"></span></div></div>
     </div>`);
     el.appendChild(st);
-    const banner = $(".t", st), face = $(".face2", st), bubble = $(".bubble2", st), bt = $(".t2", st);
+    const banner = $(".t", st), face = $(".face2", st), bubble = $(".bubble2", st), bt = $(".t2", bubble);
     let phase = "heal";
+    // かんごしさんが いそがしそうに いったり きたり
+    const nurse = $(".nurse", st), nIn = $(".nurse-in", st), nSay = $(".nurse-say", st), nSayT = $(".t2", nSay);
+    let nx = 0.12, dir = 1, walks = 0;
+    const nurseTalk = key => { scope.anim(nSay, [{ opacity: 0, transform: "scale(.6)" }, { opacity: 1, transform: "scale(1)" }], { duration: 250 }); typeText(nSayT, msg(key), scope); scope.timeout(() => scope.anim(nSay, [{ opacity: 1 }, { opacity: 0 }], { duration: 300 }), 2400); };
+    function walk(){
+      const W = $(".area", st).clientWidth - nurse.offsetWidth;
+      const to = nx < 0.4 ? rnd(0.55, 0.8) : rnd(0.04, 0.3);
+      dir = to > nx ? 1 : -1;
+      nIn.style.transform = `scaleX(${dir})`;
+      const from = nx; nx = to;
+      scope.anim(nurse, [{ transform: `translateX(${from * W}px)` }, { transform: `translateX(${to * W}px)` }], { duration: 1600, easing: "ease-in-out" });
+      scope.anim($("svg", nIn), [{ transform: "translateY(0px)" }, { transform: `translateY(${-U * 1.2}px)` }], { duration: 200, iterations: 8, direction: "alternate", fill: "none" });
+      if (++walks % 2 === 0) scope.timeout(() => nurseTalk("nurseBusy"), 1650);
+    }
+    nurse.style.transform = `translateX(${nx * ($(".area", st).clientWidth - nurse.offsetWidth)}px)`;
+    scope.timeout(walk, 1500);
+    scope.interval(walk, 4800);
     function newPatient(){
       phase = "heal";
       const [sp, col] = pick(PATIENTS);
@@ -3695,6 +3758,7 @@ screens.doctor = {
       Sound.play("chime"); bounce(face, scope, 1.06);
       const c = cpt(face); FX.burst(c.x, c.y, 7);
       typeText(banner, msg("doctorDone"), scope);
+      scope.timeout(() => nurseTalk("nurseBye"), 1800);
       scope.timeout(() => {
         scope.anim(bubble, [{ opacity: 0 }, { opacity: 1 }], { duration: 300 });
         typeText(bt, msg("pharmacyThanks"), scope, () => scope.timeout(() => {
